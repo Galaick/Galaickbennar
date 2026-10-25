@@ -1,0 +1,121 @@
+L67_great_pilgrimage = {
+	local_tax_modifier = 0.5
+	local_prosperity_growth = 2
+}
+
+L67_submerged_pilgrim = {
+	church_loyalty_modifier = 0.1
+	church_power_modifier = 0.1
+}
+
+L67_gentle_approach = {
+	local_missionary_strength = 0.01
+	local_unrest = -1
+}
+
+L67_a_citadel_reborn = {
+	local_build_cost = -0.1
+	local_great_project_upgrade_cost = -0.1
+}
+
+L67_amphibious_temple = {
+	local_tax_modifier = 0.25
+	local_institution_spread = 0.25
+}
+
+L67_brackish_temple = {
+	local_tax_modifier = 1
+	local_institution_spread = 1
+	local_prosperity_growth = 1
+}
+
+L67_luxurious_blends_and_vintages = {
+	trade_value_modifier = 0.1
+}
+
+L67_newfound_purpose = {
+	local_manpower = 0.5
+	regiment_recruit_speed = -0.25
+}
+
+L67_transmuted_soil = {
+	local_development_cost = -0.25
+	local_prosperity_growth = 1
+}
+
+L67_massive_garrison = {
+	local_garrison_size = 0.2
+	local_garrison_damage = 0.2
+}
+
+L67_dug_in = {
+	garrison_growth = 0.33
+	local_defender_dice_roll_bonus = 1
+}
+
+L67_land_dowry = {
+	local_core_creation = -0.5
+}
+
+L67_food_shortages = {
+	global_unrest = 5
+	global_manpower_modifier = -0.15
+}
+
+L67_the_fusing_of_the_realms = {
+	diplomatic_annexation_cost = -0.25
+	diplomatic_reputation = 5
+}
+
+L67_lightning_heralds_war = { 
+	warscore_cost_vs_other_religion = -0.1
+}
+
+L67_rain_induces_growth = {
+	mages_mana_regen = 0.1
+}
+
+L67_sunshine_predicts_unity = { 
+	diplomatic_reputation = 3 
+}
+
+L67_thunderous_victory = {
+	monthly_splendor = 1
+	global_rebel_suppression_efficiency = 1
+}
+L67_arcane_prosperity = {
+	mercantilism_cost = -0.5
+	inflation_reduction = 0.1
+}
+L67_radiant_confederation = {
+	estate_interaction_cooldown_modifier = -0.33
+	all_estate_loyalty_equilibrium = 0.1
+}
+
+L67_king_of_castles = {
+	defensiveness = 0.15
+	army_tradition_from_battle = 2
+}
+
+L67_king_of_the_farms = {
+	expand_infrastructure_cost_modifier = -0.25
+	global_tax_modifier = 0.15
+}
+
+L67_king_of_the_wild = {
+	prestige_per_development_from_conversion = 0.3
+	culture_conversion_cost = -0.2
+}
+
+L67_export_agreements = {
+	local_production_efficiency = -10
+}
+
+L67_food_abundance = {
+	development_cost = -0.15
+	global_manpower_modifier = 0.15
+}
+
+L67_suppressed_grain_trade = {
+	trade_value_modifier = -1
+}

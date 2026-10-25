@@ -1,0 +1,595 @@
+namespace = kidsit
+
+# Omens Above
+country_event = {
+	id = kidsit.3
+	title = kidsit.3.t
+	desc = kidsit.3.desc
+	picture = MYSTIC_IN_PRAYER_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kidsit.3.a
+		random_list = {
+			10 = {
+				modifier = { factor = 2 has_country_modifier = L67_king_of_castles }
+				add_country_modifier = { name = L67_lightning_heralds_war duration = 5475 }
+			}
+			10 = {
+				modifier = { factor = 2 has_country_modifier = L67_king_of_the_farms }
+				hidden_effect = {
+					if = {
+						limit = { NOT = { has_country_modifier = L67_rain_induces_growth } }
+						set_variable = { which = tradeGoodSpellsCast value = 0 }
+					}
+				}
+				add_country_modifier = { name = L67_rain_induces_growth duration = 5475 }
+			}
+			10 = {
+				modifier = { factor = 2 has_country_modifier = L67_king_of_the_wild }
+				hidden_effect = {
+					if = {
+						limit = { NOT = { has_country_modifier = L67_sunshine_predicts_unity } }
+						set_variable = { which = annexedDevelopment value = 0 }
+					}
+				}
+				add_country_modifier = { name = L67_sunshine_predicts_unity duration = 5475 }
+			}
+		}
+	}
+}
+
+# Prophecy fulfilled: Lightning Heralds War
+country_event = {
+	id = kidsit.106
+	title = kidsit.106.t
+	desc = kidsit.106.desc
+	picture = BATTLE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = kidsit.106.a
+		remove_country_modifier = L67_lightning_heralds_war
+		add_country_modifier = { name = L67_thunderous_victory duration = 5475 }
+	}
+}
+
+# Prophecy fulfilled: Rain Induces Growth
+country_event = {
+	id = kidsit.107
+	title = kidsit.107.t
+	desc = kidsit.107.desc
+	picture = asiangfx_FARMING_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = kidsit.107.a
+		remove_country_modifier = L67_rain_induces_growth
+		add_country_modifier = { name = L67_arcane_prosperity duration = 5475 }
+	}
+}
+
+# Prophecy fulfilled: Sunshine Predicts Unity
+country_event = {
+	id = kidsit.108
+	title = kidsit.108.t
+	desc = kidsit.108.desc
+	picture = KING_DOING_GREAT_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = kidsit.108.a
+		remove_country_modifier = L67_sunshine_predicts_unity
+		add_country_modifier = { name = L67_radiant_confederation duration = 5475 }
+	}
+}
+
+# Table of Kings Election
+country_event = {
+	id = kidsit.4
+	title = kidsit.4.t
+	desc = kidsit.4.desc
+	picture = COUNCIL_TRENT_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		has_reform = table_of_kings_reform
+		ruler_can_revive = no
+		NOT = { has_country_flag = L67_table_of_kings_election_in_progress }
+		NOT = { has_ruler_flag = L67_table_of_kings_elected_during_regency }
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = L67_table_of_kings_election_in_progress
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			clr_country_flag = L67_table_of_kings_election_in_progress
+		}
+	}
+
+	option = {
+		name = kidsit.4.g
+		trigger = { has_ruler_flag = L67_table_of_kings_candidate }
+		add_legitimacy = -10
+		random_list = {
+			1 = {
+				add_ruler_modifier = {
+					name = L67_king_of_castles
+					duration = -1
+				}
+			}
+			1 = {
+				add_ruler_modifier = {
+					name = L67_king_of_the_wild
+					duration = -1
+				}
+			}
+			1 = {
+				add_ruler_modifier = {
+					name = L67_king_of_the_farms
+					duration = -1
+				}
+			}
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.h
+		trigger = {
+			has_regency = yes
+			has_heir = yes
+			has_heir_flag = L67_table_of_kings_candidate
+		}
+		add_legitimacy = -20
+		custom_tooltip = kidsit.4.h.tt
+		custom_tooltip = empty_line_tt
+		hidden_effect = {
+			set_heir_flag = L67_table_of_kings_elected_during_regency
+			random_list = {
+				1 = { set_heir_flag = L67_table_of_kings_castles }
+				1 = { set_heir_flag = L67_table_of_kings_wild }
+				1 = { set_heir_flag = L67_table_of_kings_farms }
+			}
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.a
+		trigger = { NOT = { mission_completed = L67_mezhi_of_the_eastern_citadel } }
+		define_ruler = {
+			culture = ROOT
+			religion = ROOT
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.d
+		trigger = { mission_completed = L67_mezhi_of_the_eastern_citadel }
+		if = {
+			limit = { has_government_attribute = has_improved_ruler_election }
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+				change_mil = 2
+			}
+		}
+		else = {
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+		add_ruler_modifier = {
+			name = L67_king_of_castles
+			duration = -1
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.b
+		trigger = { NOT = { mission_completed = L67_make_them_forget } }
+		define_ruler = {
+			culture = ROOT
+			religion = ROOT
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.e
+		trigger = { mission_completed = L67_make_them_forget }
+		if = {
+			limit = { has_government_attribute = has_improved_ruler_election }
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+				change_dip = 2
+			}
+		}
+		else = {
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+		add_ruler_modifier = {
+			name = L67_king_of_the_wild
+			duration = -1
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.c
+		trigger = { NOT = { mission_completed = L67_what_kings_crave } }
+		define_ruler = {
+			culture = ROOT
+			religion = ROOT
+		}
+		ai_chance = { factor = 1 }
+	}
+
+	option = {
+		name = kidsit.4.f
+		trigger = { mission_completed = L67_what_kings_crave }
+		if = {
+			limit = { has_government_attribute = has_improved_ruler_election }
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+				change_adm = 2
+			}
+		}
+		else = {
+			define_ruler = {
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+		add_ruler_modifier = {
+			name = L67_king_of_the_farms
+			duration = -1
+		}
+		ai_chance = { factor = 1 }
+	}
+}
+
+# No Zealot Like a Convert
+country_event = {
+	id = kidsit.5
+	title = kidsit.5.t
+	desc = kidsit.5.desc
+	picture = AFRICAN_MARRIAGE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kidsit.5.a
+		custom_tooltip = L67_conversion_reduces_separatism_tt
+
+		custom_tooltip = empty_line_tt
+
+		custom_tooltip = L67_unlock_king_of_the_wild_tt
+	}
+}
+
+# The First Banquet of the Second Age
+country_event = {
+	id = kidsit.6
+	title = kidsit.6.t
+	desc = kidsit.6.desc
+	picture = muslimgfx_FEAST_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kidsit.6.a
+		add_splendor = 800
+		add_country_modifier = {
+			name = L67_the_fusing_of_the_realms
+			duration = 5475
+		}
+	}
+}
+
+# Kidsit Yiti Pulse Event Handler
+country_event = {
+	id = kidsit.100
+	title = kidsit.100.t
+	desc = kidsit.100.desc
+	picture = FAMINE_eventPicture
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = { }
+				100 = {
+					trigger = {
+						mission_completed = L67_what_kings_crave
+						any_owned_province = {
+							region = denibari_region
+							has_terrain = marsh
+							trade_goods = grain
+							devastation = 1
+						}
+					}
+					country_event = { id = kidsit.101 }
+				}
+				25 = {
+					country_event = { id = kidsit.102 }
+				}
+				25 = {
+					country_event = { id = kidsit.103 }
+				}
+				25 = {
+					country_event = { id = kidsit.104 }
+				}
+				25 = {
+					country_event = { id = kidsit.105 }
+				}
+			}
+		}
+	}
+
+	option = { name = kidsit.100.a }
+}
+
+# Famine!
+country_event = {
+	id = kidsit.101
+	title = kidsit.101.t
+	desc = kidsit.101.desc
+	picture = FAMINE_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = kidsit.101.a
+		add_legitimacy = -20
+	}
+	option = {
+		name = kidsit.101.b
+		add_years_of_income = -1
+	}
+	option = {
+		name = kidsit.101.c
+		highlight = yes
+		trigger = {
+			OR = {
+				ruler_has_personality = kind_hearted_personality
+				ruler_has_personality = benevolent_personality
+			}
+		}
+		add_prestige = -10
+	}
+}
+
+# A Grand Pilgrimage
+country_event = {
+	id = kidsit.102
+	title = kidsit.102.t
+	desc = kidsit.102.desc
+	picture = muslimgfx_PILGRIMAGE_eventPicture
+	is_triggered_only = yes
+	trigger = { mission_completed = L67_at_rivers_end }
+
+	option = {
+		name = kidsit.102.a
+		add_splendor = 5
+		random_list = {
+			50 = {
+				5505 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+			50 = {
+				5529 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = kidsit.102.b
+		add_years_of_income = -0.25
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		random_list = {
+			50 = {
+				5505 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+			50 = {
+				5529 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = kidsit.102.c
+		highlight = yes
+		trigger = { ruler_has_personality = zealot_personality }
+		add_ruler_modifier = {
+			name = L67_submerged_pilgrim
+			duration = 1825
+		}
+		random_list = {
+			50 = {
+				5505 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+			50 = {
+				5529 = {
+					add_province_modifier = {
+						name = L67_great_pilgrimage
+						duration = 1825
+					}
+				}
+			}
+		}
+	}
+}
+
+# What the Heart Wants
+country_event = {
+	id = kidsit.103
+	title = kidsit.103.t
+	desc = kidsit.103.desc
+	picture = QUEEN_AT_COUNCIL_TABLE_eventPicture
+	is_triggered_only = yes
+	trigger = { mission_completed = L67_the_ties_that_bind }
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = { save_event_target_as = L67_royal_scandal_province }
+		}
+	}
+
+	option = {
+		name = kidsit.103.a
+		add_legitimacy = -10
+	}
+	option = {
+		name = kidsit.103.b
+		goto = L67_royal_scandal_province
+		add_manpower = -0.001
+		event_target:L67_royal_scandal_province = { add_unrest = 30 }
+	}
+	option = {
+		name = kidsit.103.c
+		highlight = yes
+		trigger = { ruler_has_personality = fertile_personality }
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 5
+		}
+	}
+}
+
+# Heathen Holdouts
+country_event = {
+	id = kidsit.104
+	title = kidsit.104.t
+	desc = kidsit.104.desc
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		mission_completed = L67_make_them_forget
+		any_owned_province = { NOT = { religion = ROOT } }
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { NOT = { religion = ROOT } }
+				save_event_target_as = heathen_holdout_province
+			}
+		}
+	}
+
+	goto = heathen_holdout_province
+
+	option = {
+		name = kidsit.104.a
+		event_target:heathen_holdout_province = {
+			spawn_rebels = {
+				type = religious_rebels
+				size = 1
+			}
+			change_religion = ROOT
+		}
+	}
+	option = {
+		name = kidsit.104.b
+		event_target:heathen_holdout_province = {
+			add_province_modifier = {
+				name = religious_zeal_at_conv
+				duration = 1825
+			}
+		}
+	}
+	option = {
+		name = kidsit.104.c
+		highlight = yes
+		trigger = { ruler_has_personality = calm_personality }
+		event_target:heathen_holdout_province = {
+			add_province_modifier = {
+				name = L67_gentle_approach
+				duration = 3650
+			}
+		}
+	}
+}
+
+# Indolent Nobles
+country_event = {
+	id = kidsit.105
+	title = kidsit.105.t
+	desc = kidsit.105.desc
+	picture = NOBLE_ESTATE_eventPicture
+	is_triggered_only = yes
+	trigger = { mission_completed = L67_the_final_kingdom }
+
+	option = {
+		name = kidsit.105.a
+		add_legitimacy = -10
+	}
+	option = {
+		name = kidsit.105.b
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -5
+		}
+	}
+	option = {
+		name = kidsit.105.c
+		highlight = yes
+		trigger = {
+			OR = {
+				ruler_has_personality = lawgiver_personality
+				ruler_has_personality = well_connected_personality
+			}
+		}
+		change_government_reform_progress = 25
+	}
+}
+
+# Rice exports available again
+country_event = {
+	id = kidsit.110
+	title = kidsit.110.t
+	desc = kidsit.110.desc
+	picture = FEAST_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = kidsit.110.a
+	}
+}

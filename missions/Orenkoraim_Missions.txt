@@ -1,0 +1,1514 @@
+#Developer: LVT
+#Writers:   Fantastic Kitten, LVT
+#Coders:	LVT, Xand
+
+G71_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+	}
+
+	G71_under_the_giants_gaze = {
+		icon = mission_nomsyulhan_ogre_statue
+		required_missions = { }
+		position = 2
+		
+		provinces_to_highlight = {
+			province_id = 6559
+			OR = {
+				NOT = { development = 12 }
+				has_trade_building_trigger = no
+			}
+		}
+
+		trigger = {
+			is_at_war = no
+			OR = {
+				treasury = 100
+				6559 = { has_fort_building_trigger = yes }
+			}
+			6559 = {
+				development = 12
+				has_trade_building_trigger = yes
+			}
+		}
+		
+		effect = {
+			set_capital = 6559
+			6559 = {
+				add_province_modifier = {
+					name = G71_gate_of_kalavend
+					duration = -1
+				}
+			}
+			complex_dynamic_effect_without_alternative = {
+				first_custom_tooltip = G71_under_the_giants_gaze_fct
+				first_limit = "6559 = { has_fort_building_trigger = no }"
+				first_effect = "
+					add_treasury = -100
+					6559 = {
+						add_building_construction = {
+							building = fort_15th
+							speed = 1
+							cost = 0
+						}
+					}
+				"
+				second_custom_tooltip = G71_under_the_giants_gaze_sct
+				second_limit = "6559 = { development = 15 }"
+				second_effect = "6559 = { center_of_trade = 2 }"
+			}
+		}
+	}
+
+	G71_taming_thekvussam = {
+		icon = mission_market_place_with_asian_traders
+		required_missions = {
+			G71_flow_of_river_flow_of_riches
+		}
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				area = kattisangamar_area
+				area = vuls_tenvach_area
+				area = sibisimra_area
+			}
+			OR = {
+				NOT = { country_or_subject_holds = ROOT }
+				AND = {
+					country_or_subject_holds = ROOT
+					area_for_scope_province = { type = all has_trade_building_trigger = no }
+				}
+			}
+		}
+
+		trigger = {
+			kattisangamar_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			kattisangamar_area = { has_trade_building_trigger = yes }
+			vuls_tenvach_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			vuls_tenvach_area = { has_trade_building_trigger = yes }
+			sibisimra_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			sibisimra_area = { has_trade_building_trigger = yes }
+		}
+		
+		effect = {
+			gophira_kendram_area = { add_permanent_claim = ROOT }
+			tirsin_area = { add_permanent_claim = ROOT }
+			sthanan_ith_vussam_area = { add_permanent_claim = ROOT }
+			nagarchend_area = { add_permanent_claim = ROOT }
+			add_country_modifier = {
+				name = G71_new_trading_connections
+				duration = 10950
+			}
+			custom_tooltip = G71_taming_thekvussam_effect_ct
+		}
+	}
+
+	G71_the_port_of_all_taychend = {
+		icon = mission_recover_konkan_ports
+		required_missions = {
+			G71_taming_thekvussam
+			G71_where_courage_fails
+		}
+		position = 5
+		
+		provinces_to_highlight = {
+			province_id = 6559
+			OR = {
+				has_dock_building_trigger = no
+				has_coast_defense_building_trigger = no
+				has_shipyard_building_trigger = no
+				has_tax_building_trigger = no
+				has_production_building_trigger = no
+				NOT = { has_great_project = { type = any tier = 3 } }
+			}
+		}
+
+		trigger = {
+			6559 = {
+				has_dock_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+				has_shipyard_building_trigger = yes
+				has_tax_building_trigger = yes
+				has_production_building_trigger = yes
+				has_great_project = { type = any tier = 3 }
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_the_port_of_all_taychend_effect_ct
+			hidden_effect = {
+				6559 = {
+					remove_province_modifier = G71_gate_of_kalavend
+					add_province_modifier = {
+						name = G71_gate_of_taychend
+						duration = -1
+					}
+					remove_building = marketplace
+					remove_building = trade_depot
+					add_building = stock_exchange
+				}
+			}
+		}
+	}
+}
+
+G71_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+	}
+
+	G71_scions_of_the_wallmaker = {
+		icon = mission_great_wall
+		required_missions = { }
+		position = 1
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			has_fort_building_trigger = yes
+			NOT = { num_of_times_improved_by_owner = 2 }
+		}
+		
+		trigger = {
+			has_estate_privilege = estate_nobles_development_of_castles
+			num_of_owned_provinces_with = {
+				value = 3
+				has_fort_building_trigger = yes
+				num_of_times_improved_by_owner = 2
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_scions_of_the_wallmaker_effect_ct
+			hidden_effect = {
+				for = {
+					amount = 4
+					effect = "
+						random_owned_province = {
+							limit = { 
+								has_fort_building_trigger = yes 
+								NOT = { has_province_modifier = G71_imitating_elrandar }
+							} 
+							add_province_modifier = {
+								name = G71_imitating_elrandar
+								duration = 18250 #50 years
+							}
+						}
+					"
+				}
+			}
+			G71_decrease_level_of_nayak_cowardice = yes
+		}
+	}
+
+	G71_feign_death = {
+		icon = mission_assassination
+		required_missions = {
+			G71_scions_of_the_wallmaker
+		}
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				owned_by = G52
+				owned_by = G64
+			}
+			is_capital = yes
+			owner = { NOT = { has_50_opinion_improved_relation = { target = ROOT } } }
+		}
+
+		trigger = {
+			G52 = { has_50_opinion_improved_relation = { target = ROOT } }
+			G64 = { has_50_opinion_improved_relation = { target = ROOT } }
+			prestige = 10
+			NOT = { land_maintenance = 0.1 }
+		}
+		
+		effect = {
+			add_prestige = -60
+			G52 = {
+				add_trust = { who = ROOT value = 25 }
+				custom_tooltip = G71_feign_death_effect_1_ct
+				hidden_effect = { add_opinion = { who = ROOT modifier = G71_not_a_threat } }
+			}
+			G64 = {
+				add_trust = { who = ROOT value = 25 }
+				custom_tooltip = G71_feign_death_effect_2_ct
+				hidden_effect = { add_opinion = { who = ROOT modifier = G71_not_a_threat } }
+			}
+			G71_decrease_level_of_nayak_cowardice = yes
+		}
+	}
+
+	G71_flow_of_river_flow_of_riches = {
+		icon = mission_zambezi_gold
+		required_missions = {
+			G71_under_the_giants_gaze
+			G71_feign_death
+			G71_tale_of_three_fools
+		}
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 2495
+						province_id = 2500
+						province_id = 2509
+					}	
+					NOT = { owned_by = ROOT }
+					NOT = { province_has_center_of_trade_of_level = 2 }
+				}
+				AND = {
+					area = nanru_nakar_area
+					OR = {
+						NOT = { owned_by = ROOT }
+						unrest = 1
+					}
+				}
+			}
+		}
+
+		trigger = {
+			1544 = {
+				trade_share = {
+					country = ROOT
+					share = 70
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = G71_flow_of_river_flow_of_riches_1_ctt
+				nanru_nakar_area = {
+					type = all
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { unrest = 1 }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = G71_flow_of_river_flow_of_riches_2_ctt
+				2495 = { province_has_center_of_trade_of_level = 2 }
+				2500 = { province_has_center_of_trade_of_level = 2 }
+				2509 = { province_has_center_of_trade_of_level = 2 }
+			}
+		}
+		
+		effect = {
+			nanru_nakar_area = {
+				add_devastation = -100
+			}
+			2495 = { change_trade_goods = slaves }
+			6559 = { change_trade_goods = precursor_relics }
+			1544 = { add_trade_node_income = 24 }
+		}
+	}
+
+	G71_where_courage_fails = {
+		icon = mission_kheionai_laskaris
+		required_missions = {
+			G71_flow_of_river_flow_of_riches
+			G71_defy_the_defier
+		}
+		position = 4
+		
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				OR = {
+					tag = G52
+					tag = J99
+				}
+				NOT = {
+					ROOT = {
+						has_won_war_against = {
+							who = PREV
+							max_years_since = 20
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_where_courage_fails_trigger_ct
+				OR = {
+					has_won_war_against = { who = G52 max_years_since = 20 }
+					has_won_war_against = { who = J99 max_years_since = 20 }
+					AND = {
+						G52 = { exists = no }
+						J99 = { exists = no }
+					}
+				}
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_where_courage_fails_effect_ct
+			hidden_effect = {
+				6559 = { remove_province_triggered_modifier = G71_nayak_cowardice_1 }
+				add_country_modifier = {
+					name = G71_legacy_of_wallmakers
+					duration = -1
+				}
+				taychend_superregion = {
+					limit = {
+						OR = {
+							is_core = G52
+							is_core = J99
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+}
+
+G71_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+	}
+
+	G71_slay_the_beasts = {
+		icon = mission_unite_west_india
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			area = uesrennu_area
+			OR = {
+				NOT = { country_or_subject_holds = ROOT }
+				AND = {
+					province_id = 2502
+					NOT = {
+						num_of_units_in_province = {
+							amount = 10
+							who = ROOT
+						}
+					}
+				}
+				AND = {
+					owned_by = ROOT
+					OR = {
+						local_autonomy = 10
+						NOT = { has_province_modifier = autonomy_decreased }
+					}
+				}
+				AND = {
+					owned_by = J78
+					owner = {
+						OR = {
+							liberty_desire = 50
+							NOT = {
+								has_opinion = {
+									who = ROOT
+									value = 50
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			uesrennu_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			2502 = {
+				num_of_units_in_province = {
+					amount = 10
+					who = ROOT
+				}
+			}
+			OR = {
+				J78 = {
+					AND = {
+						is_subject_of = ROOT
+						NOT = { liberty_desire = 50 }
+						has_opinion = {
+							who = ROOT
+							value = 50
+						}
+					}
+				}
+				uesrennu_area = {
+					type = all
+					OR = {
+						has_province_modifier = autonomy_decreased
+						NOT = { local_autonomy = 10 }
+					}
+				}
+			}
+		}
+		
+		effect = {
+			nanru_nakar_area = { add_permanent_claim = ROOT }
+			complex_dynamic_effect = {
+				first_custom_tooltip = G71_slay_the_beasts_fct
+				first_limit = "J78 = { is_subject_of = ROOT }"
+				first_effect = "
+					J78 = {
+						kill_ruler = yes
+						add_liberty_desire = -25
+					}
+				"
+				second_custom_tooltip = G71_slay_the_beasts_sct
+				second_limit = "uesrennu_area = { type = all owned_by = ROOT }"
+				second_effect = "custom_tooltip = G71_slay_the_beasts_se_ct hidden_effect = { uesrennu_area = { remove_province_modifier = autonomy_decreased add_local_autonomy = -10 } }"
+			}
+		}
+	}
+
+	G71_tale_of_three_fools = {
+		icon = mission_taychend_nanru_nakar_city
+		required_missions = {
+			G71_scions_of_the_wallmaker
+			G71_slay_the_beasts
+			G71_the_end_of_the_world
+		}
+		position = 2
+		
+		provinces_to_highlight = {
+			area = nanru_nakar_area
+			NOT = { country_or_subject_holds = ROOT }
+		}
+
+		trigger = {
+			OR = {
+				nanru_nakar_area = {
+					type = all
+					owned_by = ROOT
+				}
+				custom_trigger_tooltip = {
+					tooltip = G71_tale_of_three_fools_ctt_1
+					OR = {
+						AND = {
+							calc_true_if = {
+								amount = 1
+								nanru_nakar_area = {
+									owned_by_subject_of = ROOT
+								}
+							}
+							treasury = 100
+						}
+						AND = {
+							calc_true_if = {
+								amount = 2
+								nanru_nakar_area = {
+									owned_by_subject_of = ROOT
+								}
+							}
+							treasury = 200
+						}
+						AND = {
+							calc_true_if = {
+								amount = 3
+								nanru_nakar_area = {
+									owned_by_subject_of = ROOT
+								}
+							}
+							treasury = 300
+						}
+					}
+				}
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = G71_tale_of_three_fools_ctt_2
+					OR = {
+						religion = gods_of_the_taychend_reformed
+						taychend_glory_is_level_3 = yes
+					}
+				}
+				legitimacy = 90
+			}
+			
+		}
+		
+		effect = {
+			custom_tooltip = G71_tale_of_three_fools_effect_ct
+			hidden_effect = {
+				nanru_nakar_area = {
+					limit = {
+						owner = { is_subject_of = ROOT }
+					}
+					cede_province = ROOT
+					ROOT = { add_treasury = -100 }
+				}	
+			}
+			nanru_nakar_area = { add_nationalism = -15 }
+			kalavend_region = { add_permanent_claim = ROOT }
+		}
+	}
+
+	G71_defy_the_defier = {
+		icon = mission_persian_soldiers
+		required_missions = {
+			G71_feign_death
+			G71_tale_of_three_fools
+		}
+		position = 2
+		
+		provinces_to_highlight = {
+			owned_by = G64
+			is_capital = yes
+		}
+
+		trigger = {
+			OR = {
+				AND = {
+					G64 = { exists = no }
+					2487 = { owned_by = ROOT }
+				}
+				AND = {
+					G64 = {
+						capital_scope = {
+							controlled_by = ROOT
+						}
+					}
+					war_score_against = {
+						who = G64
+						value = 75
+					}
+				}
+			}
+		}
+		
+		effect = {
+			complex_dynamic_effect = {
+				first_custom_tooltip = G71_defy_the_defier_fct
+				first_limit = "G64 = { exists = no }"
+				first_effect = "
+					custom_tooltip = G71_defy_the_defier_fe_ct
+					hidden_effect = { taychend_superregion = { remove_core = G64 } }
+					add_permanent_power_projection = {
+						type = 10_permanent_power_projection
+						amount = 10
+					}
+				"
+				second_custom_tooltip = G71_defy_the_defier_sct
+				second_limit = "war_with = G64"
+				second_effect = "
+					custom_tooltip = G71_defy_the_defier_se_ct
+					hidden_effect = {
+						white_peace = G64
+						G64 = {
+							release_all_possible_countries = yes
+							release_all_subjects = yes
+							kill_ruler = yes
+						}
+						taychend_superregion = {
+							limit = {
+								is_capital = yes
+							}
+							owner = {
+								add_aggressive_expansion = {
+									who = G71
+									value = -50
+									apply_calc = no
+								}
+							}
+						}
+					}
+				"
+			}
+		}
+	}
+}
+
+G71_3_branching = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		NOT = { has_country_flag = G71_taychendi_won }
+		NOT = { has_country_flag = G71_cannorians_won }
+	}
+
+	G71_branching_1 = {
+		icon = mission_unknown_mission
+		required_missions = {
+			G71_where_courage_fails
+			G71_branching_2
+		}
+		position = 5
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_branching_1_desc
+				always = no
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_branching_1_desc
+		}
+	}
+}
+
+G71_3_cannorian = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = G71
+		has_country_flag = G71_cannorians_won
+	}
+
+	G71_a_model_partnership = {
+		icon = mission_reliable_allies
+		required_missions = {
+			G71_where_courage_fails
+			G71_goods_of_taychend
+		}
+		position = 5
+
+		provinces_to_highlight = {
+			continent = south_america
+			is_capital = yes
+			owner = {
+				NOT = { tag = ROOT }
+				monthly_income = ROOT
+			}
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_a_model_partnership_ctt
+				south_america = {
+					type = all
+					OR = {
+						NOT = { is_city = yes }
+						owner = {
+							OR = {
+								tag = ROOT
+								NOT = { monthly_income = ROOT }
+								capital_scope = { NOT = { continent = south_america } }
+							}
+						}
+					}
+				}
+			}
+			calc_true_if = {
+				amount = 3
+				desc = G71_a_model_partnership_cti
+				all_known_country = {
+					capital_scope = { continent = europe }
+					has_90_opinion_improved_relation = { target = ROOT }
+					religion_group = cannorian
+				}
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_G71.6
+			}
+			custom_tooltip = G71_a_model_partnership_effect_ct
+			hidden_effect = { set_country_flag = G71_can_form_taychendi_administration }
+			rezailan_area = { add_siberian_construction = 500 }
+		}
+	}
+}
+
+G71_3_taychendi = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		has_country_flag = G71_taychendi_won
+	}
+
+	G71_cowards_victory = {
+		icon = mission_rajendras_ambition
+		required_missions = {
+			G71_where_courage_fails
+			G71_invade_the_highlands
+		}
+		position = 5
+
+		provinces_to_highlight = {
+			superregion = taychend_superregion
+			is_capital = yes
+			owner = {
+				NOT = { tag = ROOT }
+				OR = {
+					army_size = ROOT
+					NOT = { has_been_eclipsed_by = ROOT }
+				}
+			}
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_cowards_victory_1_ctt
+				all_known_country = {
+					OR = {
+						NOT = { capital_scope = { superregion = taychend_superregion } }
+						NOT = { army_size = ROOT }
+					}
+				}
+
+			}
+			custom_trigger_tooltip = {
+				tooltip = G71_cowards_victory_2_ctt
+				all_known_country = {
+					OR = {
+						NOT = { capital_scope = { superregion = taychend_superregion } }
+						has_been_eclipsed_by = ROOT
+					}
+				}
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 6
+				has_fort_building_trigger = yes
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_G71.7
+			}
+			custom_tooltip = G71_cowards_victory_effect_ct
+			hidden_effect = {
+				if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 36
+							has_fort_building_trigger = yes
+						}
+					}
+					change_mil = 6
+				}
+				else_if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 30
+							has_fort_building_trigger = yes
+						}
+					}
+					change_mil = 5
+				}
+				else_if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 24
+							has_fort_building_trigger = yes
+						}
+					}
+					change_mil = 4
+				}
+				else_if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 18
+							has_fort_building_trigger = yes
+						}
+					}
+					change_mil = 3
+				}
+				else_if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 12
+							has_fort_building_trigger = yes
+						}
+					}
+					change_mil = 2
+				}
+				else = { change_mil = 1 }
+			}
+		}
+	}
+}
+
+G71_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = G71
+	}
+
+	G71_the_end_of_the_world = {
+		icon = mission_fortify_rajputana
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			area = katelperai_area
+			OR = {
+				NOT = { owned_by = ROOT }
+				AND = {
+					province_id = 6758
+					NOT = { has_ruler_leader_from = ROOT }
+				}
+			}
+		}
+
+		trigger = {
+			katelperai_area = {
+				type = all
+				owned_by = ROOT
+			}
+			6758 = { has_ruler_leader_from = ROOT }
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_G71.2
+			}
+			G71_decrease_level_of_nayak_cowardice = yes
+		}
+	}
+
+	G71_building_to_last = {
+		icon = per_build_the_fire_temples
+		required_missions = {
+			G71_tale_of_three_fools
+			G71_and_what_lies_beyond
+		}
+		position = 3
+		
+		provinces_to_highlight = {
+			region = kalavend_region
+			owned_by = ROOT
+			OR = {
+				AND = {
+					OR = {
+						NOT = { base_tax = 6 }
+						has_tax_building_trigger = no
+					}
+					NOT = {
+						owner = {
+							num_of_owned_provinces_with = {
+								value = 6
+								region = kalavend_region
+								OR = {
+									base_tax = 6
+									has_tax_building_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					OR = {
+						NOT = { base_production = 6 }
+						has_production_building_trigger = no
+					}
+					NOT = {
+						owner = {
+							num_of_owned_provinces_with = {
+								value = 6
+								region = kalavend_region
+								OR = {
+									base_production = 6
+									has_production_building_trigger = yes
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					OR = {
+						NOT = { base_manpower = 6 }
+						has_manpower_building_trigger = no
+					}
+					NOT = {
+						owner = {
+							num_of_owned_provinces_with = {
+								value = 6
+								region = kalavend_region
+								OR = {
+									base_manpower = 6
+									has_manpower_building_trigger = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			has_reform = taychend_kingdom_gov
+			num_of_owned_provinces_with = {
+				value = 6
+				region = kalavend_region
+				OR = {
+					base_tax = 6
+					has_tax_building_trigger = yes
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 6
+				region = kalavend_region
+				OR = {
+					base_production = 6
+					has_production_building_trigger = yes
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 6
+				region = kalavend_region
+				OR = {
+					base_manpower = 6
+					has_manpower_building_trigger = yes
+				}
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_building_to_last_effect_ct
+			hidden_effect = { kalavend_region = { add_local_autonomy = -100 } }
+			add_country_modifier = {
+				name = G71_new_power_of_the_north
+				duration = 9125
+			}
+		}
+	}
+}
+
+G71_4_branching = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		NOT = { has_country_flag = G71_taychendi_won }
+		NOT = { has_country_flag = G71_cannorians_won }
+	}
+
+	G71_branching_2 = {
+		icon = mission_unknown_mission
+		required_missions = {
+			G71_defy_the_defier
+			G71_building_to_last
+			G71_glory_beyond_our_shores
+		}
+		position = 4
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_branching_2_desc
+				always = no
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_branching_2_desc
+		}
+	}
+}
+
+G71_4_cannorian = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = G71
+		has_country_flag = G71_cannorians_won
+	}
+
+	G71_goods_of_taychend = {
+		icon = mission_jawal_silver_mine
+		required_missions = {
+			G71_defy_the_defier
+			G71_building_to_last
+			G71_glory_beyond_our_shores
+		}
+		position = 4
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				trade_goods = dyes
+				trade_goods = gems
+				trade_goods = precursor_relics
+				trade_goods = spices
+				trade_goods = tea
+			}
+			has_production_building_trigger = no
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_goods_of_taychend_ctt
+				check_variable = {
+					which = g71ExploitedDevelopment
+					value = 7
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 5
+				has_production_building_trigger = yes
+				OR = {
+					trade_goods = dyes
+					trade_goods = gems
+					trade_goods = precursor_relics
+					trade_goods = spices
+					trade_goods = tea
+				}
+			}
+		}
+		
+		effect = {
+			2508 = {
+				add_province_modifier = {
+					name = G71_glass_in_demand
+					duration = -1
+				}
+			}
+			custom_tooltip = G71_goods_of_taychend_effect_ct
+			hidden_effect = {
+				distribute_development = {
+					amount = 7
+					type = production
+					limit = "has_production_building_trigger = yes"
+				}
+			}
+		}
+	}
+}
+
+G71_4_taychendi = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		has_country_flag = G71_taychendi_won
+	}
+
+	G71_invade_the_highlands = {
+		icon = mission_subdue_rajputana
+		required_missions = {
+			G71_defy_the_defier
+			G71_building_to_last
+			G71_glory_beyond_our_shores
+		}
+		position = 4
+
+		provinces_to_highlight = {
+			region = larankarha_highlands_region
+			NOT = { country_or_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			taychend_hero_cult_has_passed_reform = { reform = 3 }
+			custom_trigger_tooltip = {
+				tooltip = G71_invade_the_highlands_ctt
+				OR = {
+					religion = gods_of_the_taychend_reformed
+					taychend_glory_is_level_4 = yes
+				}
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				region = larankarha_highlands_region
+			}
+		}
+		
+		effect = {
+			add_splendor = 400
+			custom_tooltip = G71_invade_the_highlands_effect_ct
+			hidden_effect = { set_country_flag = G71_can_form_taychendi_empire }
+		}
+	}
+}
+
+G71_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = G71
+	}
+
+	G71_and_what_lies_beyond = {
+		icon = mission_arabian_sea_trade
+		required_missions = {
+			G71_the_end_of_the_world
+		}
+		position = 2
+		
+		trigger = {
+			has_dip_advisor = yes
+			num_of_light_ship = 10
+			estate_loyalty = {
+				estate = estate_burghers
+				loyalty = 60
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = G71_searching_for_glory
+				duration = 18250
+			}
+			define_explorer = {
+				shock = 2
+				fire = 1
+				manuever = 6
+				siege = 0
+			}
+		}
+	}
+
+	G71_glory_beyond_our_shores = {
+		icon = trade_with_the_natives
+		required_missions = {
+			G71_and_what_lies_beyond
+		}
+		position = 3
+		
+		provinces_to_highlight = {
+			region = turtleback_isle_region
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_glory_beyond_our_shores_ctt
+				any_country = {
+					capital_scope = { continent = europe }
+					turtleback_isle_region = { has_discovered = PREV }
+				}
+				turtleback_isle_region = { has_discovered = ROOT }
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_G71.3
+			}
+		}
+	}
+}
+
+G71_5_hidden = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		has_country_flag = G71_cannorian_merchants
+	}
+
+	G71_plotting_cannorians = {
+		icon = mission_iberian_conquistador
+		required_missions = {
+			G71_glory_beyond_our_shores
+		}
+		position = 4
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_plotting_cannorians_ctt
+				has_country_flag = G71_plutocratic_coup_done
+			}
+		}
+		
+		effect = {
+			swap_non_generic_missions = yes
+			complex_dynamic_effect = {
+				first_custom_tooltip = G71_plotting_cannorians_fct
+				first_limit = "custom_trigger_tooltip = { tooltip = G71_plotting_cannorians_fl_ctt has_country_flag = G71_cannorians_won }" #The Effect is done in 3 lines due to 512 character limit
+				first_effect = "
+					custom_tooltip = G71_plotting_cannorians_fe_ct
+					large_increase_of_human_tolerance_effect = yes
+					large_increase_of_elven_tolerance_effect = yes
+					large_increase_of_gnomish_tolerance_effect = yes
+					large_increase_of_dwarven_tolerance_effect = yes
+					large_increase_of_halfling_tolerance_effect = yes
+				"
+				second_custom_tooltip = G71_plotting_cannorians_sct
+				second_limit = "custom_trigger_tooltip = { tooltip = G71_plotting_cannorians_sl_ctt has_country_flag = G71_taychendi_won }"
+				second_effect = "custom_tooltip = G71_plotting_cannorians_se_ct"
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_country_flag = G71_cannorians_won }
+					6559 = {
+						add_elven_minority_size_effect = yes
+						add_gnomish_minority_size_effect = yes
+						add_dwarven_minority_size_effect = yes
+						add_halfling_minority_size_effect = yes
+					}
+				}
+				else = {
+					change_estate_land_share = { estate = all share = -5 } 
+					change_estate_land_share = { estate = estate_burghers share = -5 }
+				}
+			}
+		}
+	}
+}
+
+G71_5_branching = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		NOT = { has_country_flag = G71_taychendi_won }
+		NOT = { has_country_flag = G71_cannorians_won }
+	}
+
+	G71_branching_3 = {
+		icon = mission_unknown_mission
+		required_missions = {
+			G71_branching_2
+		}
+		position = 5
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = G71_branching_3_desc
+				always = no
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_branching_3_desc
+		}
+	}
+}
+
+G71_5_cannorian = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = G71
+		has_country_flag = G71_cannorians_won
+	}
+
+	G71_an_evolving_crown = {
+		icon = mission_entrepot_of_india
+		required_missions = {
+			G71_goods_of_taychend
+			G71_plotting_cannorians
+		}
+		position = 5
+		
+		trigger = {
+			has_institution = renaissance
+			OR = {
+				has_institution = new_world_i
+				AND = {
+					adm_power = 100
+					dip_power = 100
+					mil_power = 100
+				}
+			}
+			legitimacy_equivalent = 90
+			has_adm_advisor_2 = yes
+			has_dip_advisor_2 = yes
+			has_mil_advisor_2 = yes
+		}
+		
+		effect = {
+			complex_dynamic_effect = {
+				first_custom_tooltip = G71_an_evolving_crown_fct
+				first_limit = "NOT = { has_institution = new_world_i }"
+				first_effect = "add_adm_power = -100 add_dip_power = -100 add_mil_power = -100"
+			}
+			add_country_modifier = {
+				name = G71_the_hidden_crown
+				duration = -1
+			}
+		#	custom_tooltip = G71_an_evolving_crown_effect_ct #Will be uncomented once Taychendi Administration drops
+		#	hidden_effect = { set_country_flag = G71_improved_elections }
+		}
+	}
+}
+
+G71_5_taychendi = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		OR = {
+			tag = G71
+			AND = {
+				tag = J84 #Taychendi Empire
+				was_tag = G71
+			}
+		}
+		has_country_flag = G71_taychendi_won
+	}
+
+	G71_bind_them_in_gold = {
+		icon = mission_warrior_gold
+		required_missions = {
+			G71_invade_the_highlands
+			G71_plotting_cannorians
+		}
+		position = 5
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				is_subject_of = ROOT
+				OR = {
+					liberty_desire = 50
+					NOT = { is_subject_of_type = march }
+					NOT = { total_development = 70 }
+				}
+			}
+		}
+		
+		trigger = {
+			calc_true_if = {
+				amount = 5
+				desc = G71_bind_them_in_gold_cti
+				all_known_country = {
+					is_subject_of = ROOT
+					is_subject_of_type = march
+					NOT = { liberty_desire = 50 }
+					total_development = 70
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = G71_bind_them_in_gold_ctt
+				OR = {
+					AND = {
+						num_of_subjects = 10
+						treasury = 1000
+					}
+					AND = {
+						num_of_subjects = 9
+						treasury = 900
+					}
+					AND = {
+						num_of_subjects = 8
+						treasury = 800
+					}
+					AND = {
+						num_of_subjects = 7
+						treasury = 700
+					}
+					AND = {
+						num_of_subjects = 6
+						treasury = 600
+					}
+					AND = {
+						num_of_subjects = 5
+						treasury = 500
+					}
+				}
+			}
+		}
+		
+		effect = {
+			custom_tooltip = G71_bind_them_in_gold_effect_ct
+			hidden_effect = {
+				set_country_flag = G71_improved_subjects
+				trigger_switch = {
+					on_trigger = num_of_subjects
+					10 = { add_treasury = -1000 add_mil_power = 400 }
+					9 = { add_treasury = -900 add_mil_power = 360 }
+					8 = { add_treasury = -800 add_mil_power = 320 }
+					7 = { add_treasury = -700 add_mil_power = 280 }
+					6 = { add_treasury = -600 add_mil_power = 240 }
+					5 = { add_treasury = -500 add_mil_power = 200 }
+				}
+			}
+		}
+	}
+}

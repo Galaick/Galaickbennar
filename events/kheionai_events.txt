@@ -1,0 +1,2097 @@
+#Events for kheionai systems (Deathwinds, Nekheis, Degarikes, etc)
+namespace = kheionai
+
+#Events 0-99 : Deathwinds
+ #Events 50-59 : Kheion and Kaydhano Magical Project
+#Events 100-199 : Nekheis
+#Events 200-299 : Degarikes
+
+#Events 900-999 : Misc System Events
+
+#Setup event for the to deathwinds
+country_event = {
+	id = kheionai.0
+	title = none
+	desc = none
+	picture = none
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+	
+	trigger = { owns = 2728 } #Arpedifer
+	
+	option = {
+		name = none
+		#Deathwinds aPUI bar setup
+		deiros_region = {
+			set_aPUI_cap = { name = deathwinds amount = 108 } #9 years in months (9*12=108)
+			change_aPUI_var_bar_provincial = { name = deathwinds amount = 95 } #Next deathwind is 13 months away (108-13=95)
+			
+			#Define variables to appropriate values for UI tooltips
+			set_variable = { deathwinds_warded_var = -1 }
+		}
+		hidden_effect = {
+			#Do the first storm on Jan 1st 1446
+			2936 = { #Metei
+				set_aPUI_cap = { name = deathwinds amount = 108 } #9 years in months (9*12=108)
+				change_aPUI_var_bar_provincial = { name = deathwinds amount = 95 } #Next deathwind is 13 months away (108-13=95)
+				set_variable = { deathwinds_var = -1 }
+				set_variable = { deathwinds_previous_var = 8 } #Lore!
+				set_variable = { deathwinds_high_level_var = 4 }
+				set_variable = { deathwinds_low_level_var = 1 }
+				set_variable = { deathwinds_months_var = 13 } #Time left until next Deathwind, 13 months
+				set_variable = { deathwinds_active_months_var = -71 }
+			}
+			2728 = { #Arpedifer
+				set_province_flag = deathwinds_warning_event
+				province_event = {
+					id = kheionai.2 #Warning event happens 6 months before
+					days = 225 #June 1st 1445 (minus 6 days)
+				}
+			}
+		}
+	}
+}
+
+#Deathwinds Handler Event
+
+#Deathwinds start > Notif event happens, add deathwind modifiers based on province group and windward level
+# > 1 year later destruction event happens
+# > 1 year later deathwinds end notif event happens (modifiers go away on their own)
+# > 6.5 years later deathwinds warning event
+# > 0.5 years later deathwinds start again
+province_event = {
+	id = kheionai.1
+	title = none
+	desc = none
+	picture = none
+
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		has_global_flag = enable_deathwinds_handler_flag
+		NOT = { has_global_flag = permanently_ended_deathwinds }
+	}
+
+	option = {
+		name = none
+		#Cycles between 4 events based one which province flag is set
+		trigger_switch = {
+			on_trigger = has_province_flag
+			deathwinds_warning_event = {
+				#Every country with a province in Deiros gets the deathwinds warning event
+				deiros_region = { owner = { country_event = { id = kheionai.3 } } }
+
+				#Prep the deathwinds start event
+				province_event = { id = kheionai.2 days = 175 } #6 months (Couple days behind to ensure the next monthly pulse fires it)
+				clr_province_flag = deathwinds_warning_event
+				set_province_flag = deathwinds_start_event
+			}
+			deathwinds_start_event = {
+				#Every country with a province in Deiros gets the deathwinds start event
+				2936 = { setup_deathwinds = yes } #Metei
+				deiros_region = { owner = { country_event = { id = kheionai.4 } } }
+
+				#Prep the deathwinds destruction event
+				province_event = { id = kheionai.2 days = 360 } #1 year
+				clr_province_flag = deathwinds_start_event
+				set_province_flag = deathwinds_destruction_event
+			}
+			deathwinds_destruction_event = {
+				#Every country with a province in Deiros gets the deathwinds destruction event
+				deiros_region = { owner = { country_event = { id = kheionai.5 } } }
+
+				#Prep the deathwinds ends event
+				province_event = { id = kheionai.2 days = 360 } #1 year
+				clr_province_flag = deathwinds_destruction_event
+				set_province_flag = deathwinds_end_event
+			}
+			deathwinds_end_event = {
+				#Every country with a province in Deiros gets the deathwinds ends event
+				end_deathwinds = yes
+				deiros_region = { owner = { country_event = { id = kheionai.6 } } }
+
+				#Prep the deathwinds warning event
+				province_event = { id = kheionai.2 days = 2365 } #6.5 years
+				clr_province_flag = deathwinds_end_event
+				set_province_flag = deathwinds_warning_event
+			}
+		}
+		clr_global_flag = enable_deathwinds_handler_flag
+	}
+}
+
+#Second event to enable kheionai.1 again to fire in the monthly pulse after enough time has passed
+province_event = {
+	id = kheionai.2
+	title = none
+	desc = none
+	picture = none
+	
+	is_triggered_only = yes
+	hidden = yes
+	trigger = { NOT = { has_global_flag = permanently_ended_deathwinds } }
+
+	option = {
+		name = none
+		set_global_flag = enable_deathwinds_handler_flag
+	}
+}
+
+#Deathwinds 6 Months earlier warning Event
+country_event = {
+	id = kheionai.3
+	title = kheionai.3.t
+	desc = kheionai.3.desc
+	picture = MARCHING_PEASANTS_eventPicture
+
+	is_triggered_only = yes
+	trigger = { 
+		NOT = { has_country_flag = deathwinds_disable_events_flag }
+		NOT = { has_country_flag = deathwinds_warn_event_flag }
+	}
+
+	#Flags so the event only fires once and not once per province in Deiros
+	after = { clr_country_flag = deathwinds_warn_event_flag }
+	immediate = { hidden_effect = { set_country_flag = deathwinds_warn_event_flag } }
+
+	option = {
+		name = kheionai.3.a
+	}
+
+	option = {
+		name = kheionai.3.b
+		trigger = { has_not_full_deathwinds_system = yes }
+		disable_deathwind_events = yes
+	}
+}
+
+#Deathwinds start event
+country_event = {
+	id = kheionai.4
+	title = kheionai.4.t
+	desc = kheionai.4.desc
+	picture = WOUNDED_SOLDIERS_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+	major_trigger = {
+		any_owned_province = { superregion = kheionai_superregion }
+		NOT = { any_owned_province = { region = deiros_region } }
+	}
+	
+	#Flags so the event only fires once and not once per province in Deiros
+	trigger = { NOT = { has_country_flag = deathwinds_disable_events_flag } NOT = { has_country_flag = deathwinds_start_event_flag } }
+	after = { clr_country_flag = deathwinds_start_event_flag }
+	immediate = { hidden_effect = { set_country_flag = deathwinds_start_event_flag } }
+
+	option = {
+		name = kheionai.4.a
+	}
+
+	option = {
+		name = kheionai.3.b
+		trigger = { has_not_full_deathwinds_system = yes }
+		disable_deathwind_events = yes
+	}
+}
+
+#Deathwinds destruction event
+country_event = {
+	id = kheionai.5
+	title = kheionai.5.t
+	desc = kheionai.5.desc
+	picture = LOOMING_DEATH_eventPicture
+	
+	is_triggered_only = yes
+	
+	#Flags so the event only fires once and not once per province in Deiros
+	trigger = { NOT = { has_country_flag = deathwinds_disable_events_flag } NOT = { has_country_flag = deathwinds_devastation_event_flag } }
+	after = { clr_country_flag = deathwinds_devastation_event_flag }
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = deathwinds_devastation_event_flag
+			every_owned_province = {
+				limit = { has_deathwind_modifier = yes }
+				#Every affected provicne gains 5 devastation per deathwind level in the provicne
+				if = {
+					limit = { NOT = { has_province_flag = windwards_reinforce_with_manpower_flag } }
+					for_variable_amount = {
+						variable = deathwinds_warded_var
+						effect = "add_devastation = 5"
+					}
+				}
+				else = { clr_province_flag = windwards_reinforce_with_manpower_flag }
+				
+				#If the deathwinds are at level 7+, destroy a random tax, manpower, forcelimit, dock, shipyard, or production building
+				if = {
+					limit = {
+						OR = {
+							has_province_modifier = deathwind_level_7
+							has_province_modifier = deathwind_level_8
+							has_province_modifier = deathwind_level_9
+							has_province_modifier = deathwind_level_10
+						}
+					}
+					random_list = {
+						1 = {
+							trigger = { has_tax_building_trigger = yes }
+							remove_building = temple
+							remove_building = cathedral
+						}
+						1 = {
+							trigger = { has_manpower_building_trigger = yes }
+							remove_building = barracks
+							remove_building = training_fields
+						}
+						1 = {
+							trigger = { has_forcelimit_building_trigger = yes }
+							remove_building = regimental_camp
+							remove_building = conscription_center
+						}
+						1 = {
+							trigger = { has_dock_building_trigger = yes }
+							remove_building = dock
+							remove_building = drydock
+						}
+						1 = {
+							trigger = { has_shipyard_building_trigger = yes }
+							remove_building = shipyard
+							remove_building = grand_shipyard
+						}
+						1 = {
+							trigger = { has_production_building_trigger = yes }
+							remove_building = workshop
+							remove_building = counting_house
+						}
+					}
+				}
+			}
+			#If deathwinds are 7+ in any province destroy 10 units in Deiros
+			if = {
+				limit = {
+					any_owned_province = {
+						OR = {
+							has_province_modifier = deathwind_level_7
+							has_province_modifier = deathwind_level_8
+							has_province_modifier = deathwind_level_9
+							has_province_modifier = deathwind_level_10
+						}
+					}
+				}
+				for = {
+					amount = 10
+					effect = "
+						random_owned_province = {
+							limit = {
+								has_deathwind_modifier = yes
+								land_units_in_province = { effect = ROOT }
+							}
+							kill_land_units = { who = ROOT amount = 1 }
+						}
+					"
+				}
+			}
+			else_if = { #Otherwise if they're 4-6 in any province destroy 5 units in Deiros
+				limit = {
+					any_owned_province = {
+						OR = {
+							has_province_modifier = deathwind_level_4
+							has_province_modifier = deathwind_level_5
+							has_province_modifier = deathwind_level_6
+						}
+					}
+				}
+				for = {
+					amount = 5
+					effect = "
+						random_owned_province = {
+							limit = {
+								has_deathwind_modifier = yes
+								land_units_in_province = { effect = ROOT }
+							}
+							kill_land_units = { who = ROOT amount = 1 }
+						}
+					"
+				}
+			}
+		}
+	}
+
+	option = {
+		name = kheionai.5.a
+		trigger = { any_owned_province = { has_deathwind_modifier = yes } }
+
+		custom_tooltip = deathwinds_devastation_tt
+
+		if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						has_province_modifier = deathwind_level_7
+						has_province_modifier = deathwind_level_8
+						has_province_modifier = deathwind_level_9
+						has_province_modifier = deathwind_level_10
+					}
+				}
+			}
+			custom_tooltip = deathwinds_building_yes_tt
+			custom_tooltip = deathwinds_units_yes_tt
+			custom_tooltip = deathwinds_units_small_no_tt
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						has_province_modifier = deathwind_level_4
+						has_province_modifier = deathwind_level_5
+						has_province_modifier = deathwind_level_6
+					}
+				}
+			}
+			custom_tooltip = deathwinds_building_no_tt
+			custom_tooltip = deathwinds_units_no_tt
+			custom_tooltip = deathwinds_units_small_yes_tt
+		}
+		else = {
+			custom_tooltip = deathwinds_building_no_tt
+			custom_tooltip = deathwinds_units_no_tt
+			custom_tooltip = deathwinds_units_small_no_tt
+		}
+	}
+
+	option = {
+		name = kheionai.5.b
+		highlight = yes
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = no_deathwinds_tt
+				NOT = { any_owned_province = { has_deathwind_modifier = yes } }
+			}
+		}
+		add_splendor = 10
+	}
+
+	option = {
+		name = kheionai.3.b
+		trigger = { has_not_full_deathwinds_system = yes }
+		disable_deathwind_events = yes
+	}
+}
+
+#Deathwinds end event
+country_event = {
+	id = kheionai.6
+	title = kheionai.6.t
+	desc = kheionai.6.desc
+	picture = WOUNDED_SOLDIERS_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+	major_trigger = {
+		any_owned_province = { superregion = kheionai_superregion }
+		NOT = { any_owned_province = { region = deiros_region } }
+	}
+
+	#Flags so the event only fires once and not once per province in Deiros
+	trigger = { NOT = { has_country_flag = deathwinds_disable_events_flag } NOT = { has_country_flag = deathwinds_end_event_flag } }
+	after = { clr_country_flag = deathwinds_end_event_flag }
+	immediate = { hidden_effect = { set_country_flag = deathwinds_end_event_flag } }
+
+	option = {
+		trigger = {
+			NOT = { has_reform = tame_the_storm }
+		}
+		name = kheionai.6.a
+	}
+
+	option = { #kheion gov reform
+		name = kheionai.6.a
+		highlight = yes
+		trigger = {
+			has_reform = tame_the_storm
+		}
+		custom_tooltip = tame_the_storm_event_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					region = deiros_region
+					OR = {
+						has_province_modifier = windward_level_5
+						has_province_modifier = windward_level_6
+						has_province_modifier = windward_level_7
+						has_province_modifier = windward_level_8
+						has_province_modifier = windward_level_9
+						has_province_modifier = windward_level_10
+						AND = {
+							has_province_modifier = windward_level_4
+							has_building = mage_tower
+						}
+					}
+				}
+				add_province_modifier = {
+					name = tame_the_storm_ward_bonus
+					duration = 1825
+				}
+			}
+		}
+	}
+
+	option = {
+		name = kheionai.3.b
+		trigger = { has_not_full_deathwinds_system = yes }
+		disable_deathwind_events = yes
+	}
+}
+
+#1444 Deathwinds intro event
+country_event = {
+	id = kheionai.7
+	title = kheionai.7.t
+	picture = WOUNDED_SOLDIERS_eventPicture
+
+	desc = {
+		desc = kheionai.7.descKheionai
+		trigger = { NOT = { tag = G60 } }
+	}
+	desc = {
+		desc = kheionai.7.descEltikan
+		trigger = { tag = G60 } #Eltikan
+	}
+
+	is_triggered_only = yes
+	trigger = {
+		capital_scope = { region = deiros_region }
+		NOT = { has_country_flag = had_deathwinds_intro_event }
+	}
+	immediate = { set_country_flag = had_deathwinds_intro_event }
+
+	option = { #Kheionai
+		name = kheionai.7.k
+		trigger = { NOT = { tag = G60 } }
+		custom_tooltip = deathwinds_intro_tt
+		custom_tooltip = deathwinds_1444_intro_tt
+	}
+
+	option = { #Eltikan
+		name = kheionai.7.e
+		trigger = { tag = G60 }
+		custom_tooltip = deathwinds_intro_tt
+		custom_tooltip = deathwinds_1444_intro_tt
+	}
+}
+
+#Invading Deathwinds intro event
+province_event = {
+	id = kheionai.8
+	title = kheionai.8.t
+	desc = kheionai.8.desc
+	picture = WOUNDED_SOLDIERS_eventPicture
+	
+	is_triggered_only = yes
+	trigger = {
+		region = deiros_region
+		owner = { NOT = { has_country_flag = had_deathwinds_intro_event } }
+	}
+	immediate = { owner = { set_country_flag = had_deathwinds_intro_event } }
+
+	option = {
+		name = kheionai.8.a
+		custom_tooltip = deathwinds_intro_tt
+	}
+
+	option = {
+		name = kheionai.3.b
+		trigger = { owner = { has_not_full_deathwinds_system = yes } }
+		owner = { disable_deathwind_events = yes }
+	}
+}
+
+#######################################
+# Kheion and Kaydhano Magical Project
+
+# Stage 1 #
+
+#
+country_event = {
+	id = kheionai.50
+	title = kheionai.50.t
+	desc = kheionai.50.desc
+	picture = MAGIC_STUDY_AND_RELAX_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.50.a
+		increase_deathwinds_level = {
+			amount = 1
+			tooltip = magical_advancement
+		}
+		add_country_modifier = {
+			name = kaydhano_exp_mod_1
+			duration = -1
+			desc = until_advancement_concludes
+		}
+	}
+}
+#
+country_event = {
+	id = kheionai.51
+	title = kheionai.51.t
+	desc = kheionai.51.desc
+	picture = TEXTILE_INDUSTRY_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.51.a
+
+	}
+}
+#
+country_event = {
+	id = kheionai.52
+	title = kheionai.52.t
+	desc = kheionai.52.desc
+	picture = MAGE_MOON_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.52.a
+		upgrade_highest_level_windward = yes
+		remove_country_modifier = kaydhano_exp_mod_1
+		decrease_deathwinds_level = { amount = 1 }
+	}
+}
+
+# Stage 2 #
+
+#
+country_event = {
+	id = kheionai.53
+	title = kheionai.53.t
+	desc = kheionai.53.desc
+	picture = MAGIC_STUDY_AND_RELAX_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.53.a
+		increase_deathwinds_level = {
+			amount = 2
+			tooltip = magical_advancement
+		}
+		add_country_modifier = {
+			name = kaydhano_exp_mod_2
+			duration = -1
+			desc = until_advancement_concludes
+		}
+	}
+}
+#
+country_event = {
+	id = kheionai.54
+	title = kheionai.54.t
+	desc = kheionai.54.desc
+	picture = EP_ISLAND_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.54.a
+
+	}
+}
+#
+country_event = {
+	id = kheionai.55
+	title = kheionai.55.t
+	desc = kheionai.55.desc
+	picture = DAMESTEAR_CORE_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.55.a
+		upgrade_highest_level_windward = yes
+		remove_country_modifier = kaydhano_exp_mod_2
+		decrease_deathwinds_level = { amount = 2 }
+	}
+}
+
+# Stage 3 #
+
+#
+country_event = {
+	id = kheionai.56
+	title = kheionai.56.t
+	desc = kheionai.56.desc
+	picture = MAGIC_STUDY_AND_RELAX_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.56.a
+		increase_deathwinds_level = {
+			amount = 3
+			tooltip = magical_advancement
+		}
+		add_country_modifier = {
+			name = kaydhano_exp_mod_3
+			duration = -1
+			desc = until_advancement_concludes
+		}
+	}
+}
+#
+country_event = {
+	id = kheionai.57
+	title = kheionai.57.t
+	desc = kheionai.57.desc
+	picture = BYZ_ADVISOR_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+
+		name = kheionai.57.a
+	}
+}
+#
+country_event = {
+	id = kheionai.58
+	title = kheionai.58.t
+	desc = kheionai.58.desc
+	picture = GOLDEN_CITY_eventPicture
+	
+	is_triggered_only = yes
+	immediate = { set_country_flag = in_magic_progress_event }
+    after = { clr_country_flag = in_magic_progress_event }
+
+	option = {
+		name = kheionai.58.a
+		deirosi_capital_provinces = {
+			add_province_modifier = {
+				name = trading_in_deathsand
+				duration = -1
+			}
+		}
+		remove_country_modifier = kaydhano_exp_mod_3
+		decrease_deathwinds_level = { amount = 3 }
+	}
+}
+
+# #random flavour events
+# # enemy damages warding
+# country_event = {
+# 	id = kheionai.5
+# 	title = kheionai.5.t
+# 	desc = kheionai.5.d
+# 	picture = ASSASSINATION_eventPicture
+
+# 	trigger = {
+# 		any_owned_province = {
+# 			region = deiros_region
+# 			has_province_modifier = no_deathwinds_effects
+# 			NOT = { has_province_flag = has_temporary_windward_damage }
+# 		}
+# 		any_enemy_country = {
+# 			culture_group = kheionai_ruinborn_elf
+# 		}
+# 	}
+
+# 	is_triggered_only = yes
+	
+# 	goto = damaged_ward_province
+
+# 	immediate = {
+# 		hidden_effect = {
+# 			random_owned_province = {
+# 				limit = {
+# 					region = deiros_region
+# 					has_province_modifier = no_deathwinds_effects
+# 					NOT = { has_province_flag = has_temporary_windward_damage }
+# 				}
+# 				save_event_target_as = damaged_ward_province
+# 			}
+# 			random_enemy_country = {
+# 				limit = { culture_group = kheionai_ruinborn_elf }
+# 				save_event_target_as = enemy_country
+# 			}
+# 		}
+# 	}
+
+# 	option = { #bastards
+# 		name = kheionai.5.a
+# 		event_target:damaged_ward_province = {
+# 			add_temporary_windward_damage = {
+# 				damage = 1
+# 				length = 365
+# 			}
+# 			add_devastation = 5
+# 		}
+# 		add_opinion = {
+# 			who = event_target:enemy_country
+# 			modifier = damaged_warding
+# 		}
+# 	}
+# }
+
+#################
+# Nekhei Events #
+#################
+
+# Culture ties weakened - Kheionai
+country_event = {
+	id = kheionai.100
+	title = kheionai.100.t
+	desc = kheionai.100.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+	
+	trigger = {
+		culture_group = kheionai_ruinborn_elf
+		NOT = { tag = G52 } #Ameion
+		NOT = { tag = G00 } #Nakyra
+		capital_scope = {
+			NOT = { region = deiros_region }
+		}
+		NOT = { has_country_flag = new_kheionai_culture }
+		NOT = { has_country_flag = no_formable_culture_shift }
+		if = {
+			limit = { 
+				tag = G56 #Deyeion
+				ai = no
+			}
+			has_country_flag = G56_independence_flag
+		}
+		
+		is_at_war = no
+		OR = {
+			is_subject = no
+			has_country_flag = G56_independence_flag
+		}
+		
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+		modifier = {
+			factor = 0.7
+			stability = 1
+		}
+		modifier = {
+			factor = 0.25
+			num_of_cities = 10
+		}
+		modifier = {
+			factor = 0.1
+			in_golden_age = yes
+		}
+	}
+	
+	option = { # Empkeios
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G53 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = empkhebhen }
+	}
+	
+	option = { # Besolaki
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G54 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = besolabhen }
+	}
+	
+	option = { # Eneion
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G55 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = enebhen }
+	}
+
+	option = { # Deyeion
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G56 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = deyebhen }
+	}
+	
+	option = { # Apikhoxi
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G57 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = apikhobhen }
+	}
+	
+	option = { # Keyolion
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G58 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = keyobhen }
+	}
+	
+	option = { # Anisikheion
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G59 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = anisibhen }
+	}
+	
+	option = { # Amgremos
+		name = kheionai.100.a
+		trigger = { is_or_was_tag = { tag = G62 } }
+		ai_chance = { factor = 1000 }
+		nekhei_culture_change_effect = { culture = amgrebhen }
+	}
+	
+	option = { # Resist cultural change
+		name = kheionai.100.b
+		trigger = { NOT = { has_country_flag = G56_independence_flag } }
+		ai_chance = { factor = 1 }
+		
+		add_prestige = -10
+		set_country_flag = no_formable_culture_shift
+	}
+}
+
+
+country_event = { #theinos culture drift
+	id = kheionai.101
+	title = kheionai.101.t
+	desc = kheionai.101.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	hidden = yes
+	fire_only_once = yes
+
+	trigger = {
+		NOT = { #should fire as soon as the starting era ends
+			current_age = age_of_discovery
+		}
+		culture_group = kheionai_ruinborn_elf
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = kheionai.101.a
+
+		theinos_region = {
+			limit = {
+				NOT = {
+					OR = {
+						province_id = 2721
+						province_id = 2720
+						province_id = 2719
+						province_id = 2774
+						province_id = 2681
+						province_id = 2750
+					}
+				}
+			}
+			trigger_switch = {
+				on_trigger = culture
+
+				kimabhen = { change_culture = amgrebhen }
+				arpebhen = { change_culture = empkhebhen }
+				oktibhen = { change_culture = keyobhen }
+				degabhen = { change_culture = enebhen }
+				lokebhen = { change_culture = besolabhen }
+				ormabhen = { change_culture = apikhobhen }
+				kherkabhen = { change_culture = anisibhen }
+			}
+		}
+
+		mteibas_valley_region = {
+			trigger_switch = {
+				on_trigger = culture
+
+				kimabhen = { change_culture = amgrebhen }
+				arpebhen = { change_culture = empkhebhen }
+				oktibhen = { change_culture = keyobhen }
+				degabhen = { change_culture = deyebhen }
+				lokebhen = { change_culture = besolabhen }
+				ormabhen = { change_culture = apikhobhen }
+				kherkabhen = { change_culture = anisibhen }
+			}
+		}
+
+		andic_reach_region = {
+			trigger_switch = {
+				on_trigger = culture
+
+				kimabhen = { change_culture = amgrebhen }
+				arpebhen = { change_culture = empkhebhen }
+				oktibhen = { change_culture = keyobhen }
+				degabhen = { change_culture = deyebhen }
+				lokebhen = { change_culture = besolabhen }
+				ormabhen = { change_culture = apikhobhen }
+				kherkabhen = { change_culture = anisibhen }
+			}
+		}
+
+		every_known_country = {
+			if = {
+				limit = { is_a_nekhei = yes }
+				country_event = {
+					id = kheionai.102
+				}
+			}
+			else_if = {
+				limit = {
+					any_owned_province = {
+						culture_group = kheionai_ruinborn_elf
+					}
+				}
+				country_event = {
+					id = kheionai.103
+				}
+			}
+		}
+		ROOT = {
+			if = {
+				limit = { is_a_nekhei = yes }
+				country_event = {
+					id = kheionai.102
+				}
+			}
+			else_if = {
+				limit = {
+					any_owned_province = {
+						culture_group = kheionai_ruinborn_elf
+					}
+				}
+				country_event = {
+					id = kheionai.103
+				}
+			}
+		}
+
+		trigger_switch = {
+			on_trigger = tag
+			G53 = { change_primary_culture = empkhebhen }
+			G54 = { change_primary_culture = besolabhen }
+			G55 = { change_primary_culture = enebhen }
+			G56 = { change_primary_culture = deyebhen }
+			G57 = { change_primary_culture = apikhobhen }
+			G58 = { change_primary_culture = keyobhen }
+			G59 = { change_primary_culture = anisibhen }
+			G62 = { change_primary_culture = kimabhen }
+		}
+	}
+}
+country_event = { #theinos culture drift for nekheis
+	id = kheionai.102
+	title = kheionai.102.t
+	desc = kheionai.102.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kheionai.102.a
+	}
+}
+
+country_event = { #theinos culture drift for everyone else
+	id = kheionai.103
+	title = kheionai.103.t
+	desc = kheionai.103.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kheionai.103.a
+	}
+}
+
+country_event = {
+	id = kheionai.104 #Deirosi Nekhei Trade Bonus
+	title = kheionai.104.t
+	desc = kheionai.104.d
+	picture = COLONIZATION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kheionai.104.a
+		hidden_effect = {
+			remove_all_nekhei_overlord_modifiers = yes
+		}
+		if = { 
+			limit = { check_variable = { which = nekhei_dev value = 1000 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_1000 duration = -1 }
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 900 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_900 duration = -1 }
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 800 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_800 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 700 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_700 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 600 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_600 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 500 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_500 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 400 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_400 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 300 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_300 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 200 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_200 duration = -1 } 
+		}
+		else_if = { 
+			limit = { check_variable = { which = nekhei_dev value = 100 } }
+			add_country_modifier = { name = nekhei_overlord_modifier_100 duration = -1 } 
+		}
+		else = { custom_tooltip = nekheis_lose_overlord_modifier_tt }
+	}
+}
+
+country_event = {
+	id = kheionai.105 #Nekhei Colonizing Bonus
+	title = kheionai.105.t
+	desc = kheionai.105.d
+	picture = COLONIZATION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kheionai.105.a
+		hidden_effect = {
+			remove_all_nekhei_subject_modifiers = yes
+		}
+		if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 1000 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_1000 duration = -1 }
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 900 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_900 duration = -1 }
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 800 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_800 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 700 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_700 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 600 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_600 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 500 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_500 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 400 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_400 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 300 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_300 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 200 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_200 duration = -1 } 
+		}
+		else_if = { 
+			limit = { overlord = { check_variable = { which = nekhei_dev value = 100 } } }
+			add_country_modifier = { name = nekhei_subject_modifier_100 duration = -1 } 
+		}
+		else = { custom_tooltip = nekheis_lose_subject_modifier_tt }
+	}
+}
+
+#You got a nekhei you shouldn't have
+country_event = {
+	id = kheionai.106
+	title = kheionai.106.t
+	desc = kheionai.106.desc
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		has_invalid_nekhei = yes
+	}
+
+	option = {
+		name = kheionai.106.a #Make them a vassal
+		ai_chance = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				any_subject_country = {
+					is_subject_of_type = nekhei 
+					is_valid_nekhei = no
+					liberty_desire = 50
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_nekhei = yes
+			}
+		}
+		every_subject_country = {
+			limit = { 
+				is_subject_of_type = nekhei 
+				is_valid_nekhei = no
+			}
+			ROOT = {
+				create_subject = {
+					subject_type = vassal
+					subject = PREV
+				}
+			}
+			add_liberty_desire = 25
+		}
+	}
+
+	option = {
+		name = kheionai.106.b #Make them an autonomous vassal
+		ai_chance = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				any_subject_country = {
+					is_subject_of_type = nekhei 
+					is_valid_nekhei = no
+					OR = {
+						NOT = { liberty_desire = 50 }
+						liberty_desire = 100
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_nekhei = yes
+			}
+		}
+		every_subject_country = {
+			limit = { 
+				is_subject_of_type = nekhei 
+				is_valid_nekhei = no
+			}
+			ROOT = {
+				create_subject = {
+					subject_type = autonomous_vassal
+					subject = PREV
+				}
+			}
+		}
+	}
+
+	option = {
+		name = kheionai.106.c #Free Them
+		ai_chance = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				any_subject_country = {
+					is_subject_of_type = nekhei 
+					is_valid_nekhei = no
+					NOT = { liberty_desire = 100 }
+				}
+			}
+			modifier = {
+				factor = 0
+				has_valid_nekhei = yes
+			}
+		}
+		every_subject_country = {
+			limit = { 
+				is_subject_of_type = nekhei 
+				is_valid_nekhei = no
+			}
+			grant_independence = yes
+		}
+	}
+
+	option = {
+		name = kheionai.106.dd #Merge them into our other Nekheis
+		ai_chance = {
+			factor = 1000
+			modifier = {
+				factor = 0
+				any_subject_country = {
+					is_subject_of_type = nekhei
+					is_valid_nekhei = no
+					ai = no
+				}
+			}
+		}
+		highlight = yes
+		trigger = { 
+			custom_trigger_tooltip = {
+				tooltip = has_a_nekhei_tt
+				has_valid_nekhei = yes 
+			}
+		}
+		every_subject_country = {
+			limit = { 
+				is_subject_of_type = nekhei 
+				is_valid_nekhei = no
+			}
+			every_owned_province = {
+				cede_province = ROOT
+			}
+		}
+	}
+
+	after = {
+		every_subject_country = {
+			limit = { 
+				is_subject_of_type = nekhei 
+				NOT = { num_of_colonists = 1 }
+			}
+			add_country_modifier = {
+				name = nekheis_new_colonies
+				duration = -1
+			}
+			add_country_modifier = {
+				name = nekheis_cheap_colonies
+				duration = 18250 #50 Years
+			}
+		}
+	}
+}
+
+#Choose to grant or refuse war rights
+country_event = {
+	id = kheionai.107
+	title = kheionai.107.t
+	desc = kheionai.107.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = { #Grant War Rights
+		name = kheionai.107.a
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				FROM = {
+					NOT = { 
+						AND = { 
+							any_neighbor_country = {  
+								NOT = { overlord_of = ROOT }
+								ROOT = { has_casus_belli_against = PREV }
+							}
+							NOT = { liberty_desire = 100 } 
+						}
+					}
+				}
+			}
+		}
+		FROM = { country_event = { id = kheionai.108 } }
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = nekhei_granted_war_rights
+					duration = 1825 #5 years
+				}
+			}
+		}
+		if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_1000 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_1000 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_900 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_900 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_800 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_800 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_700 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_700 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_600 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_600 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_500 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_500 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_400 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_400 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_300 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_300 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_200 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_200 duration = 1825 } #5 years 
+		}
+		else_if = {
+			limit = { has_country_modifier = nekhei_overlord_modifier_100 }
+			add_country_modifier = { name = nekhei_negate_overlord_modifier_100 duration = 1825 } #5 years 
+		}
+	}
+
+	option = { #Refuse War Rights
+		name = kheionai.107.b
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				FROM = {
+					any_neighbor_country = { 
+						NOT = { tag = ROOT }
+						FROM = { has_casus_belli_against = PREV }
+					}
+					NOT = { liberty_desire = 100 }
+				}
+			}
+		}
+		FROM = { country_event = { id = kheionai.109 } }
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = nekhei_refused_war_rights
+					duration = 1825 #5 years
+				}
+			}
+		}
+	}
+}
+
+#War rights granted
+country_event = {
+	id = kheionai.108
+	title = kheionai.108.t
+	desc = kheionai.108.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kheionai.108.a
+		add_country_modifier = {
+			name = nekhei_granted_war_rights
+			duration = 1825 #5 years
+		}
+		hidden_effect = {
+			set_country_flag = nekhei_granted_war_rights_flag
+			country_event = {
+				id = kheionai.110
+				days = 1826 #5 years 1 days
+			}
+		}
+	}
+}
+
+#War rights denied
+country_event = {
+	id = kheionai.109
+	title = kheionai.109.t
+	desc = kheionai.109.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kheionai.109.a
+		add_country_modifier = {
+			name = nekhei_refused_war_rights
+			duration = 1825 #5 years
+		}
+		hidden_effect = {
+			set_country_flag = nekhei_refused_war_rights_flag
+			country_event = {
+				id = kheionai.110
+				days = 1826 #5 years 1 day
+			}
+		}
+	}
+}
+
+country_event = { #Event to remove the war rights flag if you shouldn't have it
+	id = kheionai.110
+	title = kheionai.110.t
+	desc = kheionai.110.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = kheionai.110.a
+		if = {
+			limit = { NOT = { has_country_modifier = nekhei_granted_war_rights } }
+			clr_country_flag = nekhei_granted_war_rights_flag
+		}
+		if = {
+			limit = { NOT = { has_country_modifier = nekhei_refused_war_rights } }
+			clr_country_flag = nekhei_refused_war_rights_flag
+		}
+	}
+}
+
+province_event = {
+	id = kheionai.111 #Hidden event to make sure the game doesn't CTD
+	title = kheionai.111.t
+	desc = kheionai.111.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		owner = {
+			OR = {
+				has_subject_of_type = nekhei
+				is_subject_of_type = nekhei
+			}
+		}
+	}
+
+	option = {
+		name = kheionai.111.a
+		transfer_single_province_to_nekhei = yes
+		owner = {
+			update_nekhei_dev_modifier = yes
+		}
+	}
+}
+
+country_event = { #Hidden event to make the Nekheis start colonizing
+	id = kheionai.112
+	title = kheionai.112.t
+	desc = kheionai.112.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = { #Blank option for those with their own startup events
+		name = kheionai.112.c
+		ai_chance = { factor = 100 }
+		trigger = {
+			OR = {
+				tag = G55 #Eneion
+				tag = G58 #Keyolion
+				tag = G59 #Anisikheion
+			}
+		}
+	}
+
+	option = { #Empkeios
+		name = kheionai.112.a
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G53
+		}
+		2597 = { #Harkhayn
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825
+			}
+        }
+	}
+
+	option = { #Besolaki
+		name = kheionai.112.b
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G54
+		}
+		2678 = { #Grnaeghuzi
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825
+			}
+        }
+	}
+
+	option = { #Deyeion
+		name = kheionai.112.d
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G56
+		}
+		2634 = { #Knkholayh
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825
+			}
+        }
+	}
+
+	option = { #Apikhoxi
+		name = kheionai.112.e
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G57
+		}
+		2679 = { #Phr Kynd
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825
+			}
+        }
+	}
+
+	option = { #Amgremos
+		name = kheionai.112.g
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G62
+		}
+		2683 = { #Dyekhaes
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825
+			}
+        }
+	}
+
+	option = { #Ameion
+		name = kheionai.112.g
+		ai_chance = { factor = 100 }
+		trigger = {
+			tag = G52
+		}
+		2590 = { #Hussarnbyst
+            create_colony = 50
+            add_permanent_province_modifier = {
+				name = G58_on_startup_growth
+				duration = 1825 #50 years
+			}
+        }
+	}
+}
+
+####################
+# Degarikes Events #
+####################
+
+country_event = { #Inform about Degarikes
+	id = kheionai.200
+	title = kheionai.200.t
+	desc = kheionai.200.d
+	picture = SMUGGLERS_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		culture_group = kheionai_ruinborn_elf
+		any_owned_province = {
+			has_province_modifier = kheionai_shipyard
+		}
+	}
+
+	option = {
+		name = kheionai.200.a
+		custom_tooltip = kheionai_shipyards_explanation
+	}
+}
+
+country_event = { #Enable Degarikes - Winner
+	id = kheionai.201
+	title = kheionai.201.t
+	desc = kheionai.201.d
+	picture = FLAGSHIP_SUNK_eventPicture
+
+	trigger = {
+		OR = {
+            AND = {
+                culture_group = kheionai_ruinborn_elf
+                is_year = 1450
+            }
+            AND = {
+                OR = {
+                    culture_group = eltibhari_ruinborn_elf
+                    culture_group = devandi_ruinborn_elf
+                    culture_group = taychendi_ruinborn_elf
+                    has_country_flag = can_get_degarikes #Potential MT content
+                }
+                is_year = 1500
+            }
+        }
+        navy_tradition = 25
+        navy_size = 25
+		OR = {
+			tag = G79
+			was_tag = G79
+			any_owned_province = {
+				has_province_modifier = kheionai_shipyard
+			}
+		}
+	}
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		OR = {
+			culture_group = kheionai_ruinborn_elf
+			culture_group = eltibhari_ruinborn_elf
+			culture_group = devandi_ruinborn_elf
+			culture_group = taychendi_ruinborn_elf
+			has_country_flag = can_get_degarikes
+		}
+		any_owned_province = {
+			has_port = yes
+		}
+	}
+
+	option = {
+		name = kheionai.201.a
+		add_prestige = 20
+		enable_degarikes = yes
+        hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_province_modifier = kheionai_shipyard
+				}
+				spawn_units_for = { type = geobukseon_galley who = ROOT amount = 2 }
+			}
+			set_global_flag = degarikes_rediscovered
+		}
+	}
+}
+
+country_event = { #Enable Degarikes - Rest
+	id = kheionai.202
+	title = kheionai.202.t
+	desc = {
+		trigger = { 
+			OR = {
+				culture_group = devandi_ruinborn_elf
+				culture_group = eltibhari_ruinborn_elf
+				culture_group = taychendi_ruinborn_elf
+			}
+		}
+		desc = "kheionai.202.d.b"
+	}
+	desc = {
+		trigger = { 
+			NOT = {
+				culture_group = devandi_ruinborn_elf
+				culture_group = eltibhari_ruinborn_elf
+				culture_group = taychendi_ruinborn_elf
+			}
+		}
+		desc = "kheionai.202.d.k"
+	}
+	picture = NAVAL_MILITARY_eventPicture
+
+	trigger = {
+		has_global_flag = degarikes_rediscovered
+        NOT = { has_country_flag = has_degarikes }
+        OR = {
+            culture_group = kheionai_ruinborn_elf
+            culture_group = eltibhari_ruinborn_elf
+            culture_group = devandi_ruinborn_elf
+            culture_group = taychendi_ruinborn_elf
+            has_country_flag = can_get_degarikes #Potential MT content
+        }
+        navy_tradition = 25
+        navy_size = 25
+		OR = {
+			tag = G79
+			was_tag = G79
+			any_owned_province = {
+				has_province_modifier = kheionai_shipyard
+			}
+		}
+	}
+
+	option = {
+		name = kheionai.202.a
+		trigger = {
+			NOT = {
+				culture_group = taychendi_ruinborn_elf
+				culture_group = devandi_ruinborn_elf
+			}
+		}
+        enable_degarikes = yes
+	}
+	option = {
+		name = kheionai.202.b
+		trigger = { culture_group = taychendi_ruinborn_elf }
+        enable_degarikes = yes
+	}
+	option = {
+		name = kheionai.202.c
+		trigger = { culture_group = devandi_ruinborn_elf }
+        enable_degarikes = yes
+	}
+}
+
+######################
+# Misc System Events #
+######################
+
+country_event = { #Urban Litea find highest dev in region event since the game hates when I put it in a scripted effect for some god forsaken reason
+	id = kheionai.900
+	title = none
+	desc = none
+	picture = none
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = none
+		every_owned_province = {
+			limit = {
+				development = 20
+				num_of_times_expanded_infrastructure = 1
+				continent = south_america
+			}
+			if = {
+				limit = { superregion = kheionai_superregion }
+				ROOT = { set_country_flag = has_kheionai_superregion_prov }
+				if = { limit = { region = theinos_region } ROOT = { set_country_flag = has_theinos_region_prov } }
+				if = { limit = { region = mteibas_valley_region } ROOT = { set_country_flag = has_mteibas_valley_region_prov } }
+				if = { limit = { region = andic_reach_region } ROOT = { set_country_flag = has_andic_reach_region_prov } }
+				if = { limit = { region = chendhya_region } ROOT = { set_country_flag = has_chendhya_region_prov } }
+			}
+			if = {
+				limit = { superregion = effelai_superregion }
+				ROOT = { set_country_flag = has_effelai_superregion_prov }
+				if = { limit = { region = soruin_region } ROOT = { set_country_flag = has_soruin_region_prov } }
+				if = { limit = { region = leechdens_region } ROOT = { set_country_flag = has_leechdens_region_prov } }
+				if = { limit = { region = south_effelai_region } ROOT = { set_country_flag = has_south_effelai_region_prov } }
+				if = { limit = { region = east_effelai_region } ROOT = { set_country_flag = has_east_effelai_region_prov } }
+				if = { limit = { region = west_effelai_region } ROOT = { set_country_flag = has_west_effelai_region_prov } }
+				if = { limit = { region = dry_coast_region } ROOT = { set_country_flag = has_dry_coast_region_prov } }
+				if = { limit = { region = mushroom_forest_region } ROOT = { set_country_flag = has_mushroom_forest_region_prov } }
+				if = { limit = { region = severed_coast_region } ROOT = { set_country_flag = has_severed_coast_region_prov } }
+				if = { limit = { region = turtleback_isle_region } ROOT = { set_country_flag = has_turtleback_isle_region_prov } }
+			}
+			if = {
+				limit = { superregion = taychend_superregion }
+				ROOT = { set_country_flag = has_taychend_superregion_prov }
+				if = { limit = { region = yodhanchend_region } ROOT = { set_country_flag = has_yodhanchend_region_prov } }
+				if = { limit = { region = larankarha_highlands_region } ROOT = { set_country_flag = has_larankarha_highlands_region_prov } }
+				if = { limit = { region = southern_coast_region } ROOT = { set_country_flag = has_southern_coast_region_prov } }
+				if = { limit = { region = kalavend_region } ROOT = { set_country_flag = has_kalavend_region_prov } }
+				if = { limit = { region = gauraddhi_region } ROOT = { set_country_flag = has_gauraddhi_region_prov } }
+			}
+			if = {
+				limit = { superregion = torn_gates_superregion }
+				ROOT = { set_country_flag = has_torn_gates_superregion_prov }
+				if = { limit = { region = amadia_region } ROOT = { set_country_flag = has_amadia_region_prov } }
+				if = { limit = { region = tor_nayyi_region } ROOT = { set_country_flag = has_tor_nayyi_region_prov } }
+			}
+			if = { limit = { region = ruined_isles_region } ROOT = { set_country_flag = has_ruined_isles_region_prov } }
+		}
+		#Kheionai
+		if = {
+			limit = { has_country_flag = has_kheionai_superregion_prov }
+			if = {
+				limit = { has_country_flag = has_theinos_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = theinos_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_mteibas_valley_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = mteibas_valley_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_andic_reach_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = andic_reach_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_chendhya_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = chendhya_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+		}
+		#Effalai
+		if = {
+			limit = { has_country_flag = has_effelai_superregion_prov }
+			if = {
+				limit = { has_country_flag = has_soruin_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = soruin_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_leechdens_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = leechdens_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_south_effelai_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = south_effelai_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_east_effelai_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = east_effelai_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_west_effelai_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = west_effelai_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_dry_coast_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = dry_coast_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_mushroom_forest_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = mushroom_forest_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_severed_coast_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = severed_coast_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_turtleback_isle_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = turtleback_isle_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+		}
+		#Taychend
+		if = {
+			limit = { has_country_flag = has_taychend_superregion_prov }
+			if = {
+				limit = { has_country_flag = has_yodhanchend_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = yodhanchend_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_larankarha_highlands_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = larankarha_highlands_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_southern_coast_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = southern_coast_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_kalavend_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = kalavend_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = gauraddhi_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+				limit = { has_country_flag = has_gauraddhi_region_prov }
+			}
+		}
+		#Amadia & Ruined Isles
+		if = {
+			limit = { has_country_flag = has_torn_gates_superregion_prov }
+			if = {
+				limit = { has_country_flag = has_amadia_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = amadia_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+			if = {
+				limit = { has_country_flag = has_tor_nayyi_region_prov }
+				select_highest_dev_province_in_location_with_limit = {
+					index = 0
+					location = tor_nayyi_region
+					limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+					effect = "add_urban_litea_modifiers = yes"
+				}
+			}
+		}
+		if = {
+			limit = { has_country_flag = has_ruined_isles_region_prov }
+			select_highest_dev_province_in_location_with_limit = {
+				index = 0
+				location = ruined_isles_region
+				limit = "owned_by = ROOT development = 20 num_of_times_expanded_infrastructure = 1"
+				effect = "add_urban_litea_modifiers = yes"
+			}
+		}
+		clr_country_flag = has_theinos_region_prov
+		clr_country_flag = has_mteibas_valley_region_prov
+		clr_country_flag = has_andic_reach_region_prov
+		clr_country_flag = has_chendhya_region_prov
+
+		clr_country_flag = has_soruin_region_prov
+		clr_country_flag = has_leechdens_region_prov
+		clr_country_flag = has_south_effelai_region_prov
+		clr_country_flag = has_east_effelai_region_prov
+		clr_country_flag = has_west_effelai_region_prov
+		clr_country_flag = has_dry_coast_region_prov
+		clr_country_flag = has_mushroom_forest_region_prov
+		clr_country_flag = has_severed_coast_region_prov
+		clr_country_flag = has_turtleback_isle_region_prov
+		
+		clr_country_flag = has_yodhanchend_region_prov
+		clr_country_flag = has_larankarha_highlands_region_prov
+		clr_country_flag = has_southern_coast_region_prov
+		clr_country_flag = has_kalavend_region_prov
+		clr_country_flag = has_gauraddhi_region_prov
+		
+		clr_country_flag = has_amadia_region_prov
+		clr_country_flag = has_tor_nayyi_region_prov
+		
+		clr_country_flag = has_ruined_isles_region_prov
+	}
+}
+
+# #Duumvirat stuff
+#If general die new duunvir rise
+country_event = {
+	id = kheionai.902
+	title = kheionai.902.t
+	desc = kheionai.902.d
+	picture = REFORM_eventPicture
+	
+	hidden = yes
+
+	trigger = {
+		has_reform = duumvirate
+		NOT = {
+			has_leader = "Daftaterodegis"
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	immediate = {
+		if = {
+			limit = { has_consort = yes }
+			kill_consort = yes
+		}
+	}
+	
+	option = {		
+		name = "kheionai.902.a"
+        duumvirate_effect = yes
+	}
+}

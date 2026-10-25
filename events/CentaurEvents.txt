@@ -1,0 +1,1333 @@
+
+namespace = centaur
+
+#Irdaeos Conversion Pick Religious Schools Event
+country_event = {
+	id = centaur.0
+	title = centaur.0.t
+	desc = centaur.0.d
+	picture = RELIGION_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_dlc = "Cradle of Civilization"
+		religion = irdaeos_worship
+		has_religious_school = no
+	}
+
+	option = {
+		name = centaur.0.a #Filustkhuga
+		trigger = {
+			NOT = { has_global_flag = I80_filustkhuga_dead }
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				culture = inaer_centaur
+				factor = 0.5
+			}
+		}
+		set_religious_school = {
+			group = centaur_religion
+			school = filustkhuga_school
+		}
+	}
+	option = {
+		name = centaur.0.b #Irdukhuga
+		ai_chance = {
+			factor = 100
+			modifier = {
+				culture = inaer_centaur
+				factor = 2
+			}
+		}
+		set_religious_school = {
+			group = centaur_religion
+			school = irdukhuga_school
+		}
+	}
+	option = {
+		name = centaur.0.c #Maslekhuga
+		ai_chance = {
+			factor = 100
+			modifier = {
+				culture = inaer_centaur
+				factor = 0.5
+			}
+		}
+		set_religious_school = {
+			group = centaur_religion
+			school = maslekhuga_school
+		}
+	}
+	option = {
+		name = centaur.0.e #Malukhuga
+		ai_chance = {
+			factor = 100
+			modifier = {
+				culture = inaer_centaur
+				factor = 0.5
+			}
+		}
+		set_religious_school = {
+			group = centaur_religion
+			school = malukhuga_school
+		}
+	}
+}
+
+#Ai declare war
+country_event = {
+	id = centaur.2
+	title = centaur.2.t
+	desc = centaur.2.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_reform = centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		is_subject = no
+		is_at_war = no
+		NOT = { num_of_subjects = 10 }
+		any_neighbor_country = {
+			ROOT = {
+				army_strength = {
+					who = PREV
+					value = 1
+				}
+			}
+			OR = {
+				has_reform = centaur_horde
+				has_reform = I55_centaur_horde
+			}
+			NOT = { truce_with = ROOT }
+			is_subject = no
+			ai = yes
+		}
+		ai = yes
+		NOT = { has_global_flag = I78_caehns_authority_no_war }
+	}
+	
+	option = {
+		name = centaur.2.a
+		ai_chance = { factor = 1 }
+		#replace with mission thing
+		add_manpower = 2
+		if = {
+			limit = { 
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 100 }
+				}
+			}
+			#remove later
+			add_treasury = 20
+		}
+		capital_scope = { cavalry = ROOT }
+		random_neighbor_country = {
+			limit = {
+				OR = {
+					has_reform =  centaur_horde
+					has_reform = I55_centaur_horde
+				}
+				ROOT = {
+					army_strength = {
+						who = PREV
+						value = 1
+					}
+				}
+				NOT = { truce_with = ROOT }
+				is_subject = no
+				ai = yes
+			}
+			ROOT = {
+				declare_war_with_cb = {
+					 who = PREV
+					 casus_belli = cb_monster_vs_civ
+				}
+			}
+		}
+	}
+}
+##Setup event for centaur
+country_event = {
+	id = centaur.3
+	title = centaur.3.t
+	desc = centaur.3.d
+	picture = GOOD_WITH_MONARCH_eventPicture
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		always = yes
+	}
+	
+	option = {
+		name = centaur.3.a
+		ai_chance = { factor = 1 }
+		
+		every_country = {
+			limit = {
+				culture_group = centaur
+				NOT = { culture = zhadshai_centaur }
+			}
+			country_event = {
+				id = centaur.400
+			}
+			add_country_modifier = {
+				name = centaur_horde_1
+				duration = -1
+			}
+			if = {
+				limit = {
+					NOT = { tag = I78 }
+				}
+				if = {
+					limit = { ai = yes }
+					add_manpower = 10
+					add_treasury = 400
+					add_country_modifier = {
+						name = centaur_pride_of_the_new_horde
+						duration = 3650
+					}
+					set_ai_personality = {
+						personality = ai_militarist
+						locked = yes
+					}
+				}
+				else = {
+					add_manpower = 5
+					add_treasury = 200
+				}
+			}
+
+			if = {
+				limit = {
+					OR = {
+						tag = I74
+						tag = I72
+					}
+				}
+				country_event = { id = centaur.200 } # shattered invasion setup
+			}
+
+			capital_scope = {
+				PREV = {
+					cavalry	= PREV
+					cavalry	= PREV
+					# cavalry	= PREV
+					# cavalry	= PREV
+					# cavalry	= PREV
+				}
+			}
+			set_country_flag = count_wars_won
+			if = {
+				limit = {
+					NOT = { tag = I91 }
+					NOT = { tag = I92 }
+					NOT = { tag = I93 }
+					NOT = { tag = I94 }
+					NOT = { tag = I95 }
+					NOT = { tag = I96 }
+					NOT = { tag = I97 }
+				}
+				set_estate_privilege = estate_monstrous_tribes_free_clans
+			}
+		}
+	}
+}
+
+country_event = {
+	id = centaur.4
+	title = centaur.4.t
+	desc = centaur.4.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+		
+	option = {
+		name = centaur.4.a
+		highlight = yes
+		trigger = {
+			OR = {
+				religious_school = {
+					group = centaur_religion
+					school = filustkhuga_school
+				}
+				has_country_modifier = filustkhuga_scholar_modifier
+			}
+		}
+		set_country_flag = scourge_of_irdaeos_unlocked
+		custom_tooltip = unlock_scourge_of_irdaeos_tt
+	}
+	
+	option = {
+		name = centaur.4.b
+		set_estate_privilege = estate_monstrous_tribes_gozlamoir_system
+		set_country_flag = expand_the_gozlamoir_system_unlocked
+		# custom_tooltip = unlock_expand_the_gozlamoir_system_tt
+	}
+}
+
+country_event = {
+	id = centaur.5
+	title = centaur.5.t
+	desc = centaur.5.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+		
+	option = {
+		name = centaur.5.a
+		highlight = yes
+		trigger = {
+			has_reform = scourge_of_irdaeos_reform
+		}
+		add_country_modifier = {
+			name = centaur_great_scourge
+			duration = 18250 #50 years
+		}
+	}
+	
+	option = {
+		name = centaur.5.b
+		add_country_modifier = {
+			name = centaur_great_reforms
+			duration = 18250 #50 years
+		}
+	}
+}
+
+#The Three Stallions of War
+country_event = {
+	id = centaur.9
+	title = centaur.9.t
+	desc = centaur.9.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = centaur.9.a
+		ai_chance = { factor = 1 }
+		define_general = {
+			shock = 4
+			fire = 3
+			manuever = 5
+			siege = 2
+			name = "Tirek"
+		}
+		define_general = {
+			shock = 6
+			fire = 1
+			manuever = 6
+			siege = 3
+			name = "Glitterhoof"
+		}
+		define_general = {
+			shock = 7
+			fire = 0
+			manuever = 10
+			siege = 2
+			name = "Redmane Sparkle"
+			female = yes
+		}
+	}
+}
+
+#The centaur wrath
+country_event = {
+	id = centaur.10
+	title = centaur.10.t
+	desc = centaur.10.d
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	major = yes
+
+	trigger = {
+		always = yes
+	}
+	
+	option = {
+		name = centaur.10.a
+		ai_chance = { factor = 1 }
+		every_owned_province = {
+			limit = {
+				OR = {
+					region = west_castanor_region
+					region = inner_castanor_region
+					region = south_castanor_region
+				}
+			}
+			add_base_tax = -2
+			add_base_production = -2
+			add_base_manpower = -3
+			add_devastation = 50
+		}
+		add_country_modifier = {
+			name = the_centaur_wrath
+			duration = -1
+		}
+		#TO DO : Event for cannor country : The Centaur Menace
+	}
+}
+
+#The Burning Lance awaken
+country_event = {
+	id = centaur.11
+	title = centaur.11.t
+	desc = centaur.11.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 35
+			superregion = bulwar_superregion
+		}
+	}
+	
+	option = {
+		name = centaur.11.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_burning_spear_tt
+		set_country_flag = burning_spear_flag
+	}
+}
+
+#The Verdant Bliss Rise
+country_event = {
+	id = centaur.12
+	title = centaur.12.t
+	desc = centaur.12.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 25
+			OR = {
+				superregion = escann_superregion
+				superregion = deepwoods_superregion
+			}
+		}
+	}
+	
+	option = {
+		name = centaur.12.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_verdant_bliss_tt
+		set_country_flag = verdant_bliss_flag
+	}
+}
+
+#The Tiger Bane
+country_event = {
+	id = centaur.13
+	title = centaur.13.t
+	desc = centaur.13.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 30
+			OR = {
+				superregion = rahen_superregion
+				superregion = vimdatrong_superregion
+			}
+		}
+	}
+	
+	option = {
+		name = centaur.13.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_tiger_bane_tt
+		set_country_flag = tiger_bane_flag
+	}
+}
+
+#The Raging Blizzard awaken
+country_event = {
+	id = centaur.18
+	title = centaur.18.t
+	desc = centaur.18.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 20
+			OR = {
+				superregion = gerudia_superregion
+				region = alenic_frontier_region
+				region = dragon_coast_region
+			}
+		}
+	}
+	
+	option = {
+		name = centaur.18.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_raging_blizzard_tt
+		set_country_flag = raging_blizzard_flag
+	}
+}
+
+#The Vine Tearer awaken
+country_event = {
+	id = centaur.19
+	title = centaur.19.t
+	desc = centaur.19.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 35
+			NOT = { superregion = bulwar_superregion }
+			continent = africa
+		}
+	}
+	
+	option = {
+		name = centaur.19.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_vine_tearer_tt
+		set_country_flag = vine_tearer_flag
+	}
+}
+
+#The Rosen Rider awaken
+country_event = {
+	id = centaur.20
+	title = centaur.20.t
+	desc = centaur.20.d
+	picture = CONQUEST_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		num_of_owned_provinces_with = {
+			value = 35
+			NOT = { region = alenic_frontier_region }
+			NOT = { region = dragon_coast_region }
+			superregion = western_cannor_superregion
+		}
+	}
+	
+	option = {
+		name = centaur.20.a
+		ai_chance = { factor = 1 }
+		custom_tooltip = I89_enable_rosen_rider_tt
+		set_country_flag = rosen_rider_flag
+	}
+}
+
+#Centaur good herding year random event
+country_event = {
+	id = centaur.25
+	title = centaur.25.t
+	desc = centaur.25.d
+	picture = FEAST_eventPicture
+
+	trigger = {
+		has_country_modifier = centaur_administration
+	
+		OR = {
+			has_adm_advisor_2 = yes
+			adm = 4
+
+		}
+		num_of_owned_provinces_with = {
+			value = 2
+			OR = {
+				has_terrain = grasslands
+				has_terrain = farmlands
+				has_terrain = steppe
+			}
+			superregion = forbidden_lands_superregion
+		}
+		NOT = { has_country_modifier = centaur_a_blessed_year
+		}
+	}
+	is_triggered_only = yes
+	option = {
+		name = centaur.25.a
+		add_years_of_income = 0.5
+		add_prestige = 5
+	}
+	option = {
+		name = centaur.25.b
+		add_country_modifier = {
+			name = centaur_a_blessed_year
+			duration = 1825
+		}
+	}
+}
+
+#make leader a general or face consequences
+country_event = {
+	id = centaur.26
+	title = centaur.26.t
+	desc = centaur.26.d
+	picture = ACCUSATION_eventPicture
+	trigger = {
+		has_country_modifier = centaur_administration
+		OR = {
+			has_reform =  centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		has_regency = no
+		has_consort_regency = no
+		is_monarch_leader = no
+		NOT = {
+			mil = 5
+			ruler_has_personality = strict_personality
+			ruler_has_personality = inspiring_leader_personality
+			has_ruler_modifier = a_brave_caehn
+			has_ruler_modifier = centaur_rumors_entrenched
+		}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = centaur.26.a
+		convert_ruler_to_general = 30
+		add_ruler_modifier = {
+			name = a_brave_caehn
+		}
+	}
+	option = {
+		name = centaur.26.b
+		add_prestige = -5
+		add_horde_unity = -5
+		custom_tooltip = centaur.26.tooltip
+		hidden_effect = {
+			random = {
+				chance = 50
+				country_event = {
+					id = centaur.27
+					days = 365
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = centaur.27
+	title = centaur.27.t
+	desc = centaur.27.d
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = centaur.27.a
+		if = {
+			limit = { monthly_income = 50 }
+			add_treasury = -300
+		}
+		else = {
+			add_years_of_income = -0.5
+		}
+		add_horde_unity = 3
+	}
+	option = {
+		name = centaur.27.b
+		add_ruler_modifier = {
+			name = centaur_rumors_entrenched
+			duration = 1825
+		}
+	}
+}
+
+##################
+## Background Events
+##################
+country_event = {
+	id = centaur.100
+	title = centaur.100.t
+	desc = centaur.100.d
+	picture = RELIGION_eventPicture
+	
+	hidden = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = I89
+		NOT = { has_country_modifier = centaur_zeal_timer }
+		NOT = { has_country_flag = centaur_no_zeal }
+	}
+	
+	option = {
+		name = centaur.100.a
+		subtract_variable = { centaur_zeal = 1 }
+		if = {
+			limit = { NOT = { check_variable = { centaur_zeal = 1 } } }
+			set_country_flag = centaur_no_zeal
+			remove_country_modifier = centaur_unification_zeal
+		}
+	}
+}
+
+
+# Generic Event - Clan Dispute!
+country_event = { 
+	id = centaur.104
+	title = centaur.104.t
+	desc = centaur.104.d
+	picture = HORDE_ON_HORSEBACK_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		has_country_modifier = centaur_administration
+		OR = {
+			has_reform =  centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		any_owned_province = { superregion = forbidden_lands_superregion }
+		NOT = { any_owned_province = {
+				OR = {
+					has_province_modifier = clans_pacified
+					has_province_modifier = clan_disputes
+				}
+			}
+		}
+		religion = irdaeos_worship
+	}
+
+	option = { # Send in the troops!
+		name = centaur.104.a
+		if = { limit = { manpower = 33 }
+		add_yearly_manpower = -0.5
+		}
+
+		else = { add_manpower = -1.8 }
+		random_owned_area = {
+			limit = {
+				owned_by = ROOT
+				NOT = { 
+					OR = {
+						has_province_modifier = clan_disputes
+						has_province_modifier = clans_pacified
+					}
+				}
+			}
+			add_province_modifier = {
+				name = clans_pacified
+				duration = 1825
+			}
+		}
+	}
+	option = { # Well shit.
+		name = centaur.104.b
+		random_owned_area = {
+			add_province_modifier = {
+				name = clan_disputes
+				duration = 1825
+			}
+		}
+	}
+	option = { # Settle this like reasonable centaurs!
+		name = centaur.104.c
+		highlight = yes
+
+		trigger = {
+			OR = {
+				ruler_has_personality = well_connected_personality
+				ruler_has_personality = lawgiver_personality
+				ruler_has_personality = benevolent_personality
+				has_country_modifier = irdukhuga_scholar_modifier
+				}
+			}
+		add_dip_power = -15
+		random_owned_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = clans_pacified
+				duration = 1825
+			}
+		}
+	}
+}
+# Generic Event - Roc Sighted!
+country_event = { 
+	id = centaur.105
+	title = centaur.105.t
+	desc = centaur.105.d
+	picture = COMET_SIGHTED_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		has_country_modifier = centaur_administration
+		OR = {
+			has_reform =  centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		NOT = { has_country_modifier = roc_sighted }
+		religion = irdaeos_worship
+	}
+	option = { # It's a blessing!
+		name = centaur.105.a
+		add_country_modifier = {
+			name = roc_sighted
+			duration = 1825
+		}
+	}
+	option = {
+		name = centaur.105.b
+		if = {
+			limit = { NOT = { monthly_income = 50 } }
+			add_treasury = -300
+		}
+		else = { add_years_of_income = -0.5 }
+
+		if = {
+			limit = { stability = 3 }
+			add_adm_power = 50
+		}
+		else = { add_stability = 1 }
+	}
+	option = { # Give it a feast!
+		name = centaur.105.c
+		highlight = yes
+		trigger = {
+			OR = {
+				ruler_has_personality = zealot_personality
+				ruler_has_personality = kind_hearted_personality
+				has_country_modifier = malukhuga_scholar_modifier
+			}
+		}
+		if = {
+			limit = { NOT = { monthly_income = 50 } }
+			add_treasury = -450
+		}
+		else = { add_years_of_income = -0.75 }
+		if = {
+			limit = { stability = 3 }
+			add_adm_power = 50
+		}
+		else = { add_stability = 1 }
+		add_church_power = 20
+	}
+}
+
+# Generic Event - Change in Tactics! 
+country_event = { #Change our Tactics!
+	id = centaur.106
+	title = centaur.106.t
+	desc = centaur.106.d
+	picture = GENERALS_DISCUSSING_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		has_country_modifier = centaur_administration
+		OR = {
+			has_reform =  centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		NOT = {
+			OR = {
+				has_country_modifier = siege_focus
+				has_country_modifier = militant_faithful
+			}
+		}
+		OR = {
+			mil = 4
+			army_tradition = 15
+		}
+		mil_tech = 7
+	}
+	option = { #The old ways have never betrayed us!
+		name = centaur.106.a
+		add_army_tradition = -5
+		add_country_modifier = {
+			name = siege_focus
+			duration = 3650
+		}
+	}
+	option = {
+		name = centaur.106.b
+		add_army_tradition = 10
+	}
+	option = { #We fight to venerate Irdaeos!
+		name = centaur.106.c
+		highlight = yes
+
+		trigger = {
+			OR = {
+				has_country_modifier = filustkhuga_scholar_modifier
+				ruler_has_personality = conqueror_personality
+				ruler_has_personality = inspiring_leader_personality
+				ruler_has_personality = bold_fighter_personality
+			}
+		}
+
+		add_country_modifier = {
+			name = militant_faithful
+			duration = 3650
+		}
+	}
+}
+
+# Generic Event - Frontier Defense! 
+country_event = { 
+	id = centaur.107
+	title = centaur.107.t
+	desc = centaur.107.d
+	picture = FORT_eventPicture
+
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_reform =  centaur_horde
+			has_reform = I55_centaur_horde
+		}
+		religion = irdaeos_worship
+		has_country_modifier = centaur_administration
+		any_owned_province = {
+			has_fort_building_trigger = yes
+			is_capital = no
+		}
+		NOT = { capital_scope = { all_neighbor_province = { OR = {
+						owned_by_subject_of = root
+						owned_by = root
+					}
+				}
+			}
+		}
+		NOT = { capital_scope = { has_province_modifier = taxfunded_defenses } }
+		NOT = { 
+			OR = {
+				has_country_modifier = taxfunded_defenses
+				has_country_modifier = taxfunded_weapons
+				has_country_modifier = rejected_frontier
+			}	
+		}
+		NOT = {
+            capital_scope = {
+                any_neighbor_province = {
+                    NOT = { owned_by = ROOT }
+                    owner = { alliance_with = ROOT }
+                }
+            }
+        }
+	}
+	option = { #Fortify the capital
+		name = centaur.107.a
+		add_treasury = -100
+		capital_scope = {
+			add_province_modifier = {
+				name = taxfunded_defenses
+				duration = 3650
+			}
+		}
+	}
+	option = { # Murderhobo
+		name = centaur.107.b
+		add_years_of_income = -0.75
+		add_country_modifier = {
+			name = taxfunded_weapons 
+			duration = 3650
+		}
+	}
+	option = { # We're fine as is
+		name = centaur.107.c
+		add_prestige = 10
+		add_estate_loyalty = {
+			estate = estate_monstrous_tribes
+			loyalty = -10
+		}
+		hidden_effect = { add_country_modifier = {
+				name = rejected_frontier
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+	option = { # Fortify EVERYTHING.
+		name = centaur.107.e
+		highlight = yes
+
+		trigger = {
+			OR = {
+				ruler_has_personality = careful_personality
+				ruler_has_personality = tactical_genius_personality
+				ruler_has_personality = martial_educator_personality
+				has_country_modifier = malukhuga_scholar_modifier
+			}	
+		}
+
+		add_years_of_income = -0.75
+		add_country_modifier = {
+			name = taxfunded_defenses
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = centaur.200
+	title = centaur.200.t
+	desc = centaur.200.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	
+	
+	trigger = { NOT = { has_country_flag = shattered_invasion_setup_flag } }
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = shattered_invasion_setup_flag
+			add_manpower = -12
+		}
+	}
+	
+	option = {
+		name = centaur.200.a
+		add_country_modifier = {
+			name = shattered_invasion_minor
+			duration = 5475
+		}
+		add_horde_unity = -50
+		hidden_effect = {
+			every_known_country = {
+				limit = { has_country_modifier = lake_federation_member }
+				add_truce_with = ROOT
+			}
+		}
+	}
+}
+
+country_event = { #To Fire Both
+	id = centaur.300
+	title = centaur.300.t
+	desc = centaur.300.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		OR = {
+			5213 = { #Nachatai
+				owned_by = ROOT
+				has_province_modifier = fp_gathering_centaur_incursion
+			}
+			5177 = { #Loghnuul
+				owned_by = ROOT
+				has_province_modifier = fp_gathering_centaur_incursion
+			}
+		}
+		culture_group = centaur
+		is_year = 1470
+	}
+
+	option = {
+		name = centaur.300.a
+		if = {
+			limit = {
+				5213 = {
+					has_province_modifier = fp_gathering_centaur_incursion
+					owner = {
+						culture_group = centaur
+					}
+				}
+			}
+			5213 = {
+				owner = {
+					country_event = {
+						id = centaur.301
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				5177 = {
+					has_province_modifier = fp_gathering_centaur_incursion
+					owner = {
+						culture_group = centaur
+					}
+				}
+			}
+			5177 = {
+				owner = {
+					country_event = {
+						id = centaur.301
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Centaurs Push East
+	id = centaur.301
+	title = centaur.301.t
+	desc = centaur.301.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			superregion = forbidden_lands_superregion
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { owns = 5213 } #Nachatai
+				5213 = {  remove_province_modifier = fp_gathering_centaur_incursion }
+			}
+			if = {
+				limit = { owns = 5177 } #Loghnuul
+				5177 = { remove_province_modifier = fp_gathering_centaur_incursion }
+			}
+		}
+	}
+	
+	option = {
+		name = centaur.301.a
+
+		if = {
+			limit = { owns = 5213 }	#Nachatai
+			zoital_area = {
+				limit = {
+					is_empty = yes
+				}
+				add_siberian_construction = 500
+				change_culture = sochar_centaur
+				change_religion = irdaeos_worship
+				add_core = J58
+			}
+			if = {
+				limit = {
+					5212 = { is_empty = yes }
+				}
+				5212 = {
+					add_siberian_construction = 500
+					change_culture = sochar_centaur
+					change_religion = irdaeos_worship
+					add_core = J58
+				}
+			}
+			if = { #If Burning Frost is a Vassal of Great Storm
+				limit = { 
+					tag = J58
+					overlord = { is_or_was_tag = { tag = I80 } }
+				}
+				overlord = {
+					zoital_area = { add_core = PREV }
+					5212 = { add_core = PREV }
+				}
+			}
+		}
+		if = {
+			limit = { owns = 5177 }	#Loghnuul
+			hidden_effect = {
+				akandhil_area = {
+					limit = {
+						is_empty = yes
+					}
+					add_siberian_construction = 500
+					change_culture = ghanzamh_centaur
+					change_religion = irdaeos_worship
+					add_core = I69
+				}
+			}
+		}
+		custom_tooltip = fp_centaur_invasion_khaasalg_moduk_vision_TT
+		hidden_effect = {
+			khaashalg_region = { 
+				add_claim = ROOT
+				discover_country = ROOT
+			}
+			moduk_region = { 
+				add_claim = ROOT
+				discover_country = ROOT
+			}
+			ilabomar_area = {
+				add_claim = ROOT
+			}
+			baizoi_area = {
+				add_claim = ROOT
+			}
+			6565 = {
+				discover_country = ROOT
+			}
+			4136 = {
+				discover_country = ROOT
+			}
+			yanshen_lakes = { 
+				discover_country = ROOT 
+			}
+			bird_rider_lake = {
+				discover_country = ROOT
+			}
+			4134 = {
+				discover_country = ROOT
+			}
+			4135 = {
+				discover_country = ROOT
+			}
+			4136 = {
+				discover_country = ROOT
+			}
+			2194 = {
+				discover_country = ROOT
+			}
+			6565 = {
+				discover_country = ROOT
+			}
+			1903 = {
+				discover_country = ROOT
+			}
+			overlord = {
+				khaashalg_region = { 
+					add_claim = PREV
+					discover_country = PREV
+				}
+				moduk_region = { 
+					add_claim = PREV
+					discover_country = PREV
+				}
+				ilabomar_area = {
+					add_claim = PREV
+				}
+				baizoi_area = {
+					add_claim = PREV
+				}
+				6565 = {
+					discover_country = ROOT
+				}
+				4136 = {
+					discover_country = ROOT
+				}
+				yanshen_lakes = { 
+					discover_country = ROOT 
+				}
+				bird_rider_lake = {
+					discover_country = ROOT
+				}
+				4134 = {
+					discover_country = ROOT
+				}
+				4135 = {
+					discover_country = ROOT
+				}
+				4136 = {
+					discover_country = ROOT
+				}
+				2194 = {
+					discover_country = ROOT
+				}
+				6565 = {
+					discover_country = ROOT
+				}
+				1903 = {
+					discover_country = ROOT
+				}
+			}
+		}
+	}
+
+	after = {
+		5206 = {
+			owner = {
+				if = {
+					limit = {
+						NOT = { culture_group = centaur }
+					}
+					country_event = { id = centaur.302 }
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Centaurs Threaten Gozengun
+	id = centaur.302
+	title = centaur.302.t
+	desc = centaur.302.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			OR = {
+				superregion = gozengun_superregion
+				superregion = yanshen_superregion
+			}
+		}
+	}
+	
+	option = {
+		name = centaur.302.a
+
+		custom_tooltip = fp_centaurs_threaten_gozengun_TT
+		5206 = {
+			add_permanent_province_modifier = {
+				name = fp_gz_vanguard_against_centaurs
+				duration = 18250
+			}
+		}
+	}
+}
+
+country_event = { #AI Centaurs get small buffs
+	id = centaur.400
+	title = centaur.400.t
+	desc = centaur.400.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		ai = yes
+		culture_group = centaur
+		has_generic_centaur_mt = no
+	}
+	
+	option = {
+		name = centaur.400.a
+		set_country_flag = centaur_caehns_valor_1
+		set_estate_privilege = estate_monstrous_tribes_caehns_valor
+		country_event = {
+			id = centaur.401
+			days = 9125
+		}
+	}
+}
+
+country_event = { #AI Centaurs get small buffs
+	id = centaur.401
+	title = centaur.401.t
+	desc = centaur.401.d
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	
+	option = {
+		name = centaur.401.a
+		set_country_flag = centaur_caehns_valor_2
+	}
+}

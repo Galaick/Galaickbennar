@@ -1,0 +1,54 @@
+
+setup_vision_south_aelantir = yes
+government = tribal
+add_government_reform = tribal_despotism
+government_rank = 1
+mercantilism = 5
+primary_culture = quchamar
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2384
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+1434.1.1 = {
+	monarch = { #Dynasty is named after the ancestral spear from the NI. Maybe implies a long kingship? Only female ruler in Amadia
+		name = "Séwi II"
+		dynasty = "Cahplanzá"
+		birth_date = 1415.1.1
+		adm = 2
+		dip = 5
+		mil = 4
+		female = yes
+	}
+	add_ruler_personality = fierce_negotiator_personality
+	add_ruler_personality = entrepreneur_personality
+}
+
+1439.1.1 = {
+	queen = { #Galché Chamasqan's younger brother. Semi-plausiblethat he may become ruler if you disinherit Jahúel and Sewi dies before you get a new heri
+		name = "Dúrach"
+		dynasty = "Chamasqan"
+		birth_date = 1399.1.1
+		death_date = 1450.1.1
+		adm = 4
+		dip = 4
+		mil = 3
+		female = no
+	}
+	add_queen_personality = well_connected_personality
+}
+
+1430.1.1 = {
+	heir = { #Séwi's younger brother, who she is basically co-rulers with. A general jackass, who Séwi should try to get rid of - but nobles like him
+		name = "Jahúel"
+		dynasty = "Cahplanzá"
+		birth_date = 1418.1.1
+		death_date = 1450.1.1
+		adm = 0
+		dip = 2
+		mil = 4
+		claim = 100
+	}
+	add_heir_personality = embezzler_personality
+}

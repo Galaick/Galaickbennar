@@ -1,0 +1,3598 @@
+
+L63_row_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { is_or_was_tag = { tag = L63 } } 
+
+	l63_secure_the_flanks = {
+		icon = claim_the_borderlands
+		position = 4
+		required_missions = { l63_back_in_buisness } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 5542
+						province_id = 5541
+						province_id = 5540
+						area = ishmajyepfo_area
+						area = guinyaswa_area
+					}
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = ishmajyepfo_area
+					NOT = {
+						area_for_scope_province  = {
+							province_has_current_tech_fort_trigger = yes
+						}
+					}
+				}
+				AND = {
+					province_id = 5540
+					NOT = {
+						province_has_current_tech_fort_trigger = yes
+					}
+				}
+			}
+			
+		} 
+
+		trigger = {
+			5542 = { #Chenidukaa
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			5541 = { #rufutemba
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			5540 = { #limpekat
+				country_or_non_sovereign_subject_holds = ROOT
+				province_has_current_tech_fort_trigger = yes
+			}
+			guinyaswa_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ishmajyepfo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ishmajyepfo_area = {
+				type = any
+				province_has_current_tech_fort_trigger = yes
+			}
+			OR = {
+				has_country_flag = merfolk_opinion_allied
+				any_owned_province = {
+					has_province_modifier = merfolk_recently_interacted
+				}
+			}
+		} 
+
+		effect = {
+			dhal_tanizuud_area = {
+				add_permanent_claim = ROOT
+			}
+			juritaqa_area = {
+				add_permanent_claim = ROOT
+			}
+			ashamad_bariga_area = {
+				add_permanent_claim = ROOT
+			}
+			5653 = { #ilbaakhnim dhamakeed
+				add_permanent_claim = ROOT
+			}
+			5581 = { #badda caydhsadde
+				add_permanent_claim = ROOT
+			}
+			6061 = { #pumzish haayo
+				add_permanent_claim = ROOT
+			}
+			custom_tooltip = L63_unlock_imzeri_TT
+			merfolk_add_opinion_effect_large = yes
+		} 
+	}
+
+	l63_spit_on_the_sunchasers = {
+		icon = mission_naval_dominance
+		position = 5
+		required_missions = { l63_secure_the_flanks } 
+		provinces_to_highlight = {
+			OR = {
+				area = ashamad_bariga_area
+				area = juritaqa_area
+				area = dhal_tanizuud_area
+				province_id = 5653
+				province_id = 6061
+				province_id = 5581
+			}
+			NOT = {
+				province_id = 6674
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		} 
+
+		trigger = {
+			ashamad_bariga_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			juritaqa_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			6675 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			6017 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			6671 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			5653 = { #ilbaakhnim dhamakeed
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			6061 = { #badda caydhsadde
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			5581 = { #pumzish haayo
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dhal_tanizuud_area = {
+				is_owned_by_trade_company = yes
+				has_trade_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.7
+			}
+		}
+	}
+
+	l63_biggest_little_market = {
+		icon = mission_mnd_maj_cloves
+		position = 7
+		required_missions = { l63_djinnakah_bejeweled } 
+		provinces_to_highlight = {
+			OR = {
+				area = tebajik_area
+				area = ibibakely_area
+				area = zohejirofo_area
+				area = tebolelmasi_area
+				#area = sil_berkhens_land_area
+				#area = far_uelos_isles_area
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		} 
+
+		trigger = {
+			tebajik_area = {
+				type = all
+				owned_by = ROOT
+			}
+			ibibakely_area = {
+				type = all
+				owned_by = ROOT
+			}
+			zohejirofo_area = {
+				type = all
+				owned_by = ROOT
+			}
+			tebolelmasi_area = {
+				type = all
+				owned_by = ROOT
+			}
+			OR = {
+				medium_tolerance_halfling_race_trigger = yes
+				high_tolerance_halfling_race_trigger = yes
+			}
+			
+			trading_bonus = {
+				trade_goods = cloves
+				value = yes
+			}
+		} 
+
+		effect = {
+			add_country_modifier = {
+				name = L63_spiced_coffee_craze
+				duration = -1
+			}
+			sil_berkhens_land_area = {
+				add_permanent_claim = ROOT
+			}
+			far_uelos_isles_area = {
+				add_permanent_claim = ROOT
+			}
+			3114 = {
+				discover_country = ROOT
+			}
+			1450 = {
+				discover_country = ROOT
+			}
+			3088 = {
+				discover_country = ROOT
+			}
+			hidden_effect = {
+				country_event = {
+					id = flavor_butuguzi.10
+					days = 1825
+				}
+			}
+		} 
+	}
+
+	l63_strangle_the_gulf = {
+		icon = mission_grand_bengali_shipyards
+		position = 9
+		required_missions = { l63_cannorian_customers } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						area = telekenid_islands_area
+						province_id = 4380
+						province_id = 5505
+						province_id = 4570
+					}
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					has_port = yes
+					sea_zone = {
+						region = gulf_of_rahen_region
+					}
+					province_has_center_of_trade_of_level = 1
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 1348 #jadd sea
+						province_id = 1347 #ofehibi coast
+						province_id = 1361 #gulf of rahen
+						province_id = 1364 #tamran sea
+					}
+					NOT = {
+						trade_share = {
+							country = ROOT
+							share = 40
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			telekenid_islands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4380 = { #sardika
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			5505 = { #dakmender
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4570 = { #pruhakhin
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				sea_zone = {
+					region = gulf_of_rahen_region
+				}
+				has_port = yes
+				province_has_center_of_trade_of_level = 1
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1348 = { #jadd sea
+				trade_share = {
+					country = ROOT
+					share = 40
+				}
+			}
+			1347 = { #ofehibi coast
+				trade_share = {
+					country = ROOT
+					share = 40
+				}
+			}
+			1361 = { #gulf of rahen
+				trade_share = {
+					country = ROOT
+					share = 40
+				}
+			}
+			1364 = { #tamran sea
+				trade_share = {
+					country = ROOT
+					share = 40
+				}
+			}
+			
+		} 
+
+		effect = {
+			4547 = { #tiphiya
+				add_province_modifier = {
+					name = L63_pearl_toll
+					duration = -1
+				}
+			}
+			4807 = { #monglingsaau
+				add_province_modifier = {
+					name = L63_pearl_toll
+					duration = -1
+				}
+			}
+			6592 = { #van
+				add_province_modifier = {
+					name = L63_pearl_toll
+					duration = -1
+				}
+			}
+			L63_broken_monopoly_handler = yes
+		} 
+	}
+
+	l63_burnt_beans = {
+		icon = mission_xhaz_fire_village_burn
+		position = 10
+		required_missions = { l63_strangle_the_gulf } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					superregion = bulwar_superregion
+					trade_goods = coffee
+					NOT = {
+						owner = {
+							OR = {
+								has_spy_network_from = {
+									who = ROOT
+									value = 50
+								}
+								overlord = {
+									has_spy_network_from = {
+										who = ROOT
+										value = 50
+									}
+								}
+							}
+						}
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					province_id = 3072
+					NOT = {
+						num_of_units_in_province  = {
+							who = ROOT
+							type = infantry
+							amount = 10
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			calc_true_if = {
+				amount = 3
+				bulwar_superregion = {
+					type = all
+					trade_goods = coffee
+					OR = {
+						owner = {
+							OR = {
+								has_spy_network_from = {
+									who = ROOT
+									value = 50
+								}
+							}
+							overlord = {
+								has_spy_network_from = {
+									who = ROOT
+									value = 50
+								}
+							}
+						}
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+			has_mana = { amount = 200 }
+			OR = {
+				is_overall_abjuration_level_3 = yes
+				is_overall_necromancy_level_3 = yes
+				is_overall_illusion_level_3 = yes
+				is_overall_enchantment_level_3 = yes
+				is_overall_evocation_level_3 = yes
+				is_overall_transmutation_level_3 = yes
+				is_overall_conjuration_level_3 = yes
+				is_overall_divination_level_3 = yes
+			}
+			3072 = { #salahad bay
+				num_of_units_in_province  = {
+					who = ROOT
+					type = infantry
+					amount = 10
+				}
+			}
+		} 
+
+		effect = {
+			3072 = {
+				kill_units = {
+					who = ROOT
+					type = infantry
+					amount = 10
+				}
+			}
+			country_event = {
+				id = flavor_butuguzi.15
+				days = 30
+			}
+		} 
+	}
+
+	
+}
+
+L63_hidden_row_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { has_country_flag = L63_missions_unlock } 
+
+	l63_godfall_veterans = {
+		icon = mission_son_military_expertise
+		position = 15
+		required_missions = { l63_storms_end } 
+		provinces_to_highlight = {
+			has_province_modifier = L63_shifter_monk_monastery_3
+			NOT = {
+				AND = {
+					has_building = soldier_households
+					has_forcelimit_building_trigger = yes
+					has_manpower_building_trigger = yes
+				}
+			}
+		} 
+
+		trigger = {
+			OR = {
+				army_professionalism = 0.8
+				army_tradition = 80
+				mil_power = 400
+			}
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					NOT = {
+						has_province_modifier = L63_shifter_monk_monastery_3
+					}
+					AND = {
+						has_building = soldier_households
+						has_forcelimit_building_trigger = yes
+						has_manpower_building_trigger = yes
+					}
+				}
+			}
+		} 
+
+		effect = {
+			remove_country_modifier = L63_way_of_ancestral_wisdom_empowered
+			add_country_modifier = {
+				name = L63_way_of_ancestral_wisdom_enlightened
+				duration = -1
+			}
+			if = {
+				limit = {
+					army_professionalism = 0.8
+				}
+				add_army_tradition = 20
+			}
+			if = {
+				limit = {
+					army_tradition = 80
+				}
+				add_army_professionalism = 0.1
+			}
+		}
+	}
+}
+
+l63_row_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { is_or_was_tag = { tag = L63 } }  
+
+	L63_call_in_our_markers = {
+		icon = mission_plc_governance_act
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				owned_by = L58
+				owned_by = Y64
+				owned_by = L62
+			}
+			is_capital = yes
+			NOT = {
+				owner = {
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = improved_relation
+						value = 20
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			if = {
+				limit = {
+					NOT = {
+						has_dlc = "King of Kings"
+						has_dlc = "Emperor"
+					}
+				}
+				estate_influence = {
+					estate = estate_burghers
+					influence = 50
+				}
+			}
+			else = {
+				has_estate_privilege = estate_burghers_private_trade_fleets
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_call_in_our_markers_trigger_tt
+				OR = {
+					AND = {
+						L58 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+						Y64 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+					}
+					AND = {
+						L58 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+						L62 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+					}
+					AND = {
+						L62 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+						Y64 = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 20
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		effect = {
+			if = {
+				limit = {
+					L58 = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = improved_relation
+							value = 20
+						}
+					}
+					L62 = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = improved_relation
+							value = 20
+						}
+					}
+					Y64 = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = improved_relation
+							value = 20
+						}
+					}
+				}
+				add_country_modifier = {
+					name = l63_sum_of_all_debts
+					duration = 7300
+				}
+			}
+			else = {
+				add_country_modifier = {
+					name = l63_called_in_markers
+					duration = 7300
+				}
+			}
+		} 
+	}
+
+	l63_appeal_to_greed = {
+		icon = mission_horde_trade
+		position = 2
+		required_missions = {
+			L63_call_in_our_markers
+			l63_take_it_back
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 5585
+				province_id = 5580
+				province_id = 5574
+			}
+			owner = {
+				NOT = {
+					has_spy_network_from = { 
+						who = ROOT 
+						value = 20 
+					}
+				}
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		} 
+
+		trigger = {
+			treasury = 25
+			OR = {
+				5585 = { #Kuvunika
+					owner = {
+						has_spy_network_from = { 
+							who = ROOT 
+							value = 20 
+						}
+					}
+				}
+				5580 = { #inshibonde
+					owner = {
+						has_spy_network_from = { 
+							who = ROOT 
+							value = 20 
+						}
+					}
+				}
+				5574 = { #kaziradoka
+					owner = {
+						has_spy_network_from = { 
+							who = ROOT 
+							value = 20 
+						}
+					}
+				}
+				AND = {
+					5585 = {
+						owned_by = ROOT
+					}
+					5574 = {
+						owned_by = ROOT
+					}
+					5580 = {
+						owned_by = ROOT
+					}
+				}
+			}
+		}
+
+		effect = {
+			add_treasury = -25
+			if = {
+				limit = {
+					5585 = { #Kuvunika
+						owned_by = ROOT
+					}
+					5580 = { #inshibonde
+						owned_by = ROOT
+					}
+					5574 = { #kaziradoka
+						owned_by = ROOT
+					}
+				}
+				chunsikazira_area = {
+					add_nationalism = -5
+				}
+				hejukazira_area = {
+					add_nationalism = -5
+				}
+				iburengampakad_area = {
+					add_nationalism = -5
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						NOT = {
+							5585 = { #Kuvunika
+								owned_by = ROOT
+							}
+						}
+					}
+					5585 = {
+						add_province_modifier = {
+							name = L63_bribed_garrison
+							duration = 3650
+						}
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							5580 = { #inshibonde
+								owned_by = ROOT
+							}
+						}
+					}
+					5580 = {
+						add_province_modifier = {
+							name = L63_bribed_garrison
+							duration = 3650
+						}
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							5574 = { #kaziradoka
+								owned_by = ROOT
+							}
+						}
+					}
+					5574 = {
+						add_province_modifier = {
+							name = L63_bribed_garrison
+							duration = 3650
+						}
+					}
+				}
+			}
+		} 
+	}
+
+	l63_the_ringlet_council = {
+		icon = mission_claim_the_canaries
+		position = 4
+		required_missions = { l63_back_in_buisness } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 5529
+					NOT = {
+						OR = {
+							owner = {
+								OR = {
+									is_subject_of = ROOT
+									is_in_trade_league_with = ROOT
+								}
+							}
+							owned_by = ROOT
+						}
+					}
+				}
+				AND = {
+					province_id = 6592
+					NOT = {
+						OR = {
+							owner = {
+								OR = {
+									is_subject_of = ROOT
+									is_in_trade_league_with = ROOT
+								}
+							}
+							owned_by = ROOT
+						}
+					}
+				}
+				AND = {
+					owned_by = Y64
+					NOT = {
+						Y64 = {
+							alliance_with = ROOT
+							trust = { who = ROOT value = 60 }
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			treasury = 500
+			dip_power = 100
+			Y64 = { #pinghoi
+				OR = {
+					AND = {
+						alliance_with = ROOT
+						trust = { who = ROOT value = 60 }
+					}
+					exists = no
+				}
+			}
+			L58 = { #yetmesira
+				OR = {
+					is_subject_of = ROOT
+					is_in_trade_league_with = ROOT
+					5529 = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+			L62 = { #vandipha
+				OR = {
+					is_subject_of = ROOT
+					is_in_trade_league_with = ROOT
+					6592 = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.4
+			}
+			custom_tooltip = L63_ringlet_council_tt
+		} 
+	}
+
+	l63_settling_the_isles = {
+		icon = mission_water_rocky_bay_gulf
+		position = 5
+		required_missions = { l63_the_ringlet_council } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 3248
+						province_id = 3247
+						province_id = 3246
+					}
+					NOT = {
+						owned_by = ROOT
+					}
+				}
+				AND = {
+					region = ringlet_isles_region
+					NOT = {
+						AND = {
+							has_trade_building_trigger = yes
+							has_dock_building_trigger = yes
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			3248 = { #Kahupala
+				owned_by = ROOT
+			}
+			3247 = { #Unaugatt
+				owned_by = ROOT
+			}
+			3246 = { #ganhbayen
+				owned_by = ROOT
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 4
+				region = ringlet_isles_region
+				has_trade_building_trigger = yes
+				has_dock_building_trigger = yes
+			}
+		} 
+
+		effect = {
+			anb_add_accepted_culture_or_dip_power = { culture = gataw free = yes }
+
+			if = {
+				limit = {
+					Y64 = { #pinghoi
+						exists = yes
+					}
+				}
+				lembiahar_area = {
+					add_permanent_claim = Y64
+				}
+				arawkelin_area = {
+					add_permanent_claim = Y64
+				}
+				mesatulek_area = {
+					add_permanent_claim = Y64
+				}
+				pingurnsai_area = {
+					add_permanent_claim = Y64
+				}
+			}
+			else = {
+				lembiahar_area = {
+					add_permanent_claim = ROOT
+				}
+				arawkelin_area = {
+					add_permanent_claim = ROOT
+				}
+				mesatulek_area = {
+					add_permanent_claim = ROOT
+				}
+				pingurnsai_area = {
+					add_permanent_claim = ROOT
+				}
+			}
+		} 
+	}
+
+	l63_djinnakah_bejeweled = {
+		icon = mission_haasa
+		position = 6
+		required_missions = {
+			l63_settling_the_isles
+			l63_spit_on_the_sunchasers
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					superregion = djinnakah_superregion
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+					NOT = {
+						AND = {
+							has_trade_building_trigger = yes
+							has_dock_building_trigger = yes
+							owned_by = ROOT
+						}
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 1330
+						province_id = 1449
+					}
+					NOT = {
+						trade_share = {
+							country = ROOT
+							share = 50
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L63_djinnakah_jasiir_tt
+				jasiir_jadid_region = {
+					type = all
+					OR = {
+						has_port = no
+						NOT = {
+							province_has_center_of_trade_of_level = 1
+						}
+						AND = {
+							owned_by = ROOT
+							has_dock_building_trigger = yes
+							has_trade_building_trigger = yes
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_djinnakah_ardimya_tt
+				ardimya_region = {
+					type = all
+					OR = {
+						has_port = no
+						NOT = {
+							province_has_center_of_trade_of_level = 1
+						}
+						AND = {
+							owned_by = ROOT
+							has_dock_building_trigger = yes
+							has_trade_building_trigger = yes
+						}
+					}
+				}
+			}
+			1330 = { #ardimya
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+			}
+			1449 = { #biya mubdiya
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+			}
+			has_country_flag = merfolk_opinion_allied
+		}
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.9
+			}
+		} 
+	}
+
+	l63_cannorian_customers = {
+		icon = mission_danzig_or_war
+		position = 8
+		required_missions = {
+			l63_djinnakah_bejeweled
+		}
+		provinces_to_highlight = {
+			trade_goods = coffee
+			region = bamaliwuni_region
+			has_production_building_trigger = no
+		} 
+
+		trigger = {
+			development_in_provinces = {
+				value = 200
+				trade_goods = coffee
+				region = bamaliwuni_region
+			}
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					NOT = {
+						trade_goods = coffee
+					}
+					has_production_building_trigger = yes
+				}
+			}
+			calc_true_if = {
+				amount = 2
+				all_known_country = {
+					capital_scope = {
+						continent = europe
+					}
+					has_opinion = {
+						who = ROOT
+						value = 120
+					}
+				}
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.11
+			}
+		} 
+	}
+
+	l63_ecu_kiyaga = {
+		icon = mission_fleet
+		position = 11
+		required_missions = {
+			l63_sanddollar_star
+			l63_burnt_beans
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						region = ardimya_region
+						region = ringlet_isles_region
+					}
+					NOT = {
+						is_city = yes
+						owner = {
+							capital_scope = {
+								continent = europe
+							}
+						}
+					}
+				}
+				AND = {
+					is_capital = yes
+					continent = europe
+					owner = {
+						navy_size = ROOT
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			ringlet_isles_region = {
+				type = all
+				is_city = yes
+				NOT = {
+					owner = {
+						capital_scope = {
+							continent = europe
+						}
+					}
+				}
+			}
+			ardimya_region = {
+				type = all
+				is_city = yes
+				NOT = {
+					owner = {
+						capital_scope = {
+							continent = europe
+						}
+					}
+				}
+			}
+			all_country = {
+				OR = {
+					NOT = {
+						capital_scope = {
+							continent = europe
+						}
+					}
+					NOT = {
+						navy_size = ROOT
+					}
+				}
+			}
+		} 
+
+		effect = {
+			set_estate_privilege = estate_nobles_ringlet_sea_mobilization
+			if = {
+				limit = {
+					has_global_flag = bad_side_effect_happened
+				}
+				add_years_of_income = 5
+			}
+			else = {
+				custom_tooltip = L63_prevent_price_change_tt
+				set_global_flag = bad_side_effect_happened
+			}
+			custom_tooltip = L63_thalassocracy_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_port = yes
+						province_has_center_of_trade_of_level = 3
+						sea_zone = {
+							OR = {
+								region = ringlet_sea_region
+								region = kedwali_gulf_region
+							}
+						}
+					}
+					if = {
+						limit = {
+							ROOT = { has_country_modifier = thalassocracy }
+						}
+						add_province_modifier = {
+							name = L63_ecu_kiyaga_mod
+							duration = -1
+						}
+					}
+					else = {
+						add_province_modifier = {
+							name = L63_our_sea_mod
+							duration = -1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	
+}
+
+L63_hidden_row_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { has_country_flag = L63_missions_unlock }
+
+	l63_finding_a_champion = {
+		icon = mission_tidal_wave
+		position = 13
+		required_missions = { l63_the_beacon_line } 
+		provinces_to_highlight = {  } 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L63_finding_a_champion_trigger_tt
+				OR = {
+					has_country_modifier = cinulau_primary_modifier
+					has_country_modifier = cinulau_modifier
+					has_country_flag = cinulau_appeased
+				}
+			}
+		} 
+
+		effect = {
+			custom_tooltip = L63_hujan_price_tt
+
+			add_country_modifier = {
+				name = L63_dreadnaughts_aid
+				duration = -1
+			}
+		}
+	}
+
+	l63_carving_channels = {
+		icon = mission_pue_irrigation_cannals
+		position = 16
+		required_missions = {
+			l63_godfall_veterans
+			l63_working_with_the_whale
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					trade_goods = coffee
+					owned_by = ROOT
+					region = bamaliwuni_region
+					NOT = {
+						has_building = plantations
+					}
+				}
+				AND = {
+					region = bamaliwuni_region
+					has_province_flag = merfolk_settlement
+					NOT = {
+						development = 30
+					}
+				}
+			}
+		}
+
+		trigger = {
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					NOT = {
+						trade_goods = coffee
+					}
+					has_building = plantations
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 3
+				region = bamaliwuni_region
+				has_province_flag = merfolk_settlement
+				development = 30
+			}
+		} 
+
+		effect = {
+			5541 = { #rufuembta
+				add_bumbadada_to_size = yes
+			}
+			5545 = { #goufeingon
+				add_bumbadada_to_size = yes
+			}
+			5577 = { #daabapwabi
+				add_bumbadada_to_size = yes
+			}
+		} 
+	}
+
+	l63_precursor_efficencey = {
+		icon = mission_magical_forest
+		position = 17
+		required_missions = {
+			l63_carving_channels
+			l63_a_deprived_land
+		}
+		provinces_to_highlight = {
+			OR = {
+				trade_goods = damestear
+				trade_goods = precursor_relics
+			}
+			OR = {
+				owned_by = ROOT
+				owner = {
+					is_subject_of = ROOT
+				}
+			}
+			NOT = {
+				AND = {
+					base_production = 10
+					has_manufactory_trigger = yes
+				}
+			}
+		} 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L63_precursor_efficencey_trigger_tt
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_precursor_efficencey_more_exploration_trigger_tt
+				calc_true_if = {
+					amount = 2
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3376
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_6386
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3153
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3329
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3415
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3551
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_3173
+					has_country_flag = aPUI_gene_pillar_explored_level_1_in_6962
+				}
+			}
+			any_owned_or_subject_province = {
+				trade_goods = damestear
+				base_production = 10
+				has_manufactory_trigger = yes
+			}
+			any_owned_or_subject_province = {
+				trade_goods = precursor_relics
+				base_production = 10
+				has_manufactory_trigger = yes
+			}
+		} 
+
+		effect = {
+			custom_tooltip = L63_precursor_efficencey_tt
+		} 
+	}
+}
+
+L63_row_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { is_or_was_tag = { tag = L63 } } 
+
+	l63_take_it_back = {
+		icon = mission_the_battle_for_raichur
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				province_id = 5558
+				owned_by = S32
+			}
+			NOT = {
+				owned_by = ROOT
+			}
+		} 
+
+		trigger = {
+			5558 = { #Fuhoengwaan
+				owned_by = ROOT
+			}
+			S32 = { #gumti
+				exists = no
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.1
+			}
+		}
+	}
+
+	l63_nessecary_repairs = {
+		icon = mng_tame_china_sorrow
+		position = 2
+		required_missions = { l63_take_it_back } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = rimvuawuni_area
+					NOT = {
+						has_state_edict = edict_encourage_development
+					}
+				}
+				AND = {
+					province_id = 5558
+					NOT = {
+						AND = {
+							num_of_times_expanded_infrastructure = 1
+							province_has_center_of_trade_of_level = 2
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			if = {
+				limit = {
+					NOT = { has_dlc = "Mandate of Heaven" }
+				}
+				treasury = 25
+			}
+			else = {
+				rimvuawuni_area = {
+					has_state_edict = edict_encourage_development
+				}
+			}
+			5558 = {
+				province_has_center_of_trade_of_level = 2
+				if = {
+					limit = {
+						NOT = { has_dlc = "Domination" }
+					}
+					development = 15
+				}
+				else = {
+					num_of_times_expanded_infrastructure = 1
+				}
+			}
+		} 
+
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_dlc = "Mandate of Heaven" }
+				}
+				add_treasury = -25
+			}
+			if = {
+				limit = {
+					NOT = {
+						5558 = {
+							has_production_building_trigger = yes
+						}
+					}
+				}
+				5558 = {
+					add_building = workshop
+				}
+			}
+			else = {
+				add_prestige  = 20
+			}
+			add_country_modifier = {
+				name = L63_druidic_cooperation
+				duration = -1
+			}
+		} 
+	}
+
+	l63_back_in_buisness = {
+		icon = mission_tianlou
+		position = 3
+		required_missions = {
+			l63_appeal_to_greed
+			l63_nessecary_repairs
+			l63_reliable_suppliers
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = bamaliwuni_region
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+					NOT = {
+						has_trade_building_trigger = yes
+						province_id = 5581
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 1339 #ujusden bay
+						province_id = 1343 #yetmesira bay
+					}
+					NOT = {
+						is_strongest_trade_power = ROOT
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			tag = S84
+			navy_size = 25
+			custom_trigger_tooltip = {
+				tooltip = L63_back_in_buisness_trigger_tt
+				5558 = {
+					has_trade_building_trigger = yes
+				}
+				5574 = {
+					has_trade_building_trigger = yes
+				}
+				5586 = {
+					has_trade_building_trigger = yes
+				}
+			}
+			1339 = {
+				is_strongest_trade_power = ROOT
+			}
+			1343 = {
+				is_strongest_trade_power = ROOT
+			}
+		} 
+
+		effect = {
+			guinyaswa_area = {
+				add_permanent_claim = ROOT
+			}
+			ishmajyepfo_area = {
+				add_permanent_claim = ROOT
+			}
+			mpaka_area = {
+				add_permanent_claim = ROOT
+			}
+			5540 ={ #limpekat
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = L63_into_the_storm
+				duration = -1
+			}
+		} 
+	}
+
+	l63_coffee_bloom = {
+		icon = yem_coffee
+		position = 4
+		required_missions = { l63_back_in_buisness }
+		provinces_to_highlight = {
+			trade_goods = coffee
+			region = bamaliwuni_region
+			NOT = {
+				AND = {
+					has_production_building_trigger = yes
+					NOT = { devastation = 1 }
+				}
+			}
+		}
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				region = bamaliwuni_region
+				trade_goods = coffee
+				has_production_building_trigger = yes
+				NOT = { devastation = 1 }
+			}
+			trading_bonus = {
+				trade_goods = coffee
+				value = yes
+			}
+		}
+		effect = {
+			custom_tooltip = L63_coffee_bloom_tt
+			tooltip = {
+				add_province_modifier = {
+					name = l63_rebuilt_plantations
+					duration = 7300
+				}
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						region = bamaliwuni_region
+						trade_goods = coffee
+						has_production_building_trigger = yes
+						NOT = { devastation = 1 }
+					}
+					add_province_modifier = {
+						name = l63_rebuilt_plantations
+						duration = 7300
+					}
+					if = {
+						limit = {
+							is_prosperous = yes
+						}
+						add_base_production = 1
+					}
+					add_prosperity = 50
+				}	
+			}
+		}
+	}
+
+	l63_secured_exculsivity = {
+		icon = mission_mnd_siam_subjugate_vietnam
+		position = 6
+		required_missions = { l63_settling_the_isles } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						area = arawkelin_area
+						area = lembiahar_area
+						area = mesatulek_area
+						area = pingurnsai_area
+					}
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					has_port = yes
+					same_trade_node_as = 1366 #arawkelin node
+					province_has_center_of_trade_of_level = 1
+					NOT = {
+						province_has_center_of_trade_of_level = 2
+						has_trade_building_trigger = yes
+					}
+				}
+				AND = {
+					province_id = 4774
+					NOT = {
+						has_great_project = {
+							type = port_of_two_spirits
+							tier = 1
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			arawkelin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lembiahar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mesatulek_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			pingurnsai_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_secured_exclusivity_trigger_tt
+				4963 = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 2
+				}
+				4774 = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 2
+				}
+				6153 = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 2
+				}
+				6138 = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 2
+				}
+				
+			}
+			4774 = { #kuta
+				has_great_project = {
+					type = port_of_two_spirits
+					tier = 1
+				}
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					exists = Y64
+				}
+				custom_tooltip = L63_claim_nodes_vimadtrong_pinghoi
+				hidden_effect = {
+					1366 = { #arawkelin
+						every_trade_node_member_province = {
+							limit = {
+								is_sea = no
+								is_wasteland = no
+							}
+							add_permanent_claim = Y64
+						}
+					}
+					1369 = { #yemakai
+						every_trade_node_member_province = {
+							limit = {
+								is_sea = no
+								is_wasteland = no
+							}
+							add_permanent_claim = Y64
+						}
+					}
+				}
+			}
+			else = {
+				custom_tooltip = L63_claim_nodes_vimadtrong
+				hidden_effect = {
+					1366 = { #arawkelin
+						every_trade_node_member_province = {
+							limit = {
+								is_sea = no
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+					1369 = { #yemakai
+						every_trade_node_member_province = {
+							limit = {
+								is_sea = no
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+				}
+			}
+			set_country_flag = L63_private_trade_fleets_upgrade
+			custom_tooltip = L63_private_trade_fleets_upgrade_tt
+		}
+	}
+
+	l63_survery_the_storm = {
+		icon = mission_arabian_sea_trade
+		position = 7
+		required_missions = {
+			l63_secured_exculsivity
+			l63_druidic_gardening
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 5581
+						province_id = 4805
+						province_id = 6141
+						province_id = 6147
+					}
+					NOT = {
+						AND = {
+							has_dock_building_trigger = yes
+							has_coast_defense_building_trigger = yes
+						}
+						
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 4773
+						province_id = 6148
+					}
+					NOT = {
+						AND = {
+							has_building = mage_tower
+							development = 10
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			5581 = { #badda caydhsadde
+				has_dock_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+			}
+			4805 = { #houdouwo
+				has_dock_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+			}
+			6141 = { #posyunziu
+				has_dock_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+			}
+			6147 = { #ilauti
+				has_dock_building_trigger = yes
+				has_coast_defense_building_trigger = yes
+			}
+			4773 = { #meijyun
+				has_building = mage_tower
+				development = 10
+			}
+			6148 = { #kalamaga
+				has_building = mage_tower
+				development = 10
+			}
+		} 
+
+		effect = {
+			add_country_modifier = {
+				name = L63_monsoon_mastery
+				duration = -1
+			}
+			set_country_flag = L63_unlocked_storm_spirit_charts
+			custom_tooltip = L63_new_flagship_mod_tt
+		} 
+	}
+
+	l63_end_the_squabbling = {
+		icon = mission_patronize_sufi_scholars
+		position = 9
+		required_missions = { l63_cannorian_customers } 
+		provinces_to_highlight = {  } 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L63_foolish_flag_tt
+				has_country_flag = L63_foolish_investments_flag
+			}
+			estate_loyalty = {
+				estate = estate_burghers
+				loyalty = 80
+			}
+			estate_loyalty = {
+				estate = all
+				loyalty = 60
+			}
+			OR = {
+				crown_land_share = 50
+				estate_territory = {
+					estate = estate_burghers
+					territory = 20
+				}
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.13
+			}
+		} 
+	}
+
+	l63_sanddollar_star = {
+		icon = mission_goldscale_kobold
+		position = 10
+		required_missions = { l63_end_the_squabbling } 
+		provinces_to_highlight = {
+			continent = europe
+			has_terrain = city_terrain
+			has_port = yes
+			NOT = {
+				owner = {
+					has_25_opinion_sent_gift = { target = ROOT}
+				}
+			}
+		} 
+
+		trigger = {
+			calc_true_if = {
+				amount = 3
+				europe = {
+					type = all
+					has_terrain = city_terrain
+					has_port = yes
+					owner = {
+						has_25_opinion_sent_gift = { target = ROOT}
+					}
+				}
+			}
+			OR = {
+				medium_tolerance_kobold_race_trigger = yes
+				high_tolerance_kobold_race_trigger = yes
+			}
+			OR = {
+				dip_power = 100
+				innovativeness = 10
+			}
+			prestige = 50
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.14
+			}
+			if = {
+				limit = {
+					NOT = {
+						innovativeness = 10
+					}
+				}
+				add_dip_power = -100
+			}
+		}
+	}
+
+	l63_the_beacon_line = {
+		icon = mission_well_of_majesty
+		position = 12
+		required_missions = {
+			l63_ecu_kiyaga
+			l63_from_the_land_to_the_land
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 5550
+					NOT = {
+						AND = {
+							development = 45
+							has_building = mage_tower
+						}
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 6592
+						province_id = 6153
+						province_id = 6138
+					}
+					NOT = {
+						AND = {
+							development = 15
+							has_building = mage_tower
+						}
+					}
+				}
+				AND = {
+					is_capital = yes
+					OR = {
+						superregion = vimdatrong_superregion
+						superregion = yanshen_superregion
+						superregion = rahen_superregion
+					}
+					NOT = {
+						owner = {
+							has_opinion_modifier = {
+								who = ROOT
+								modifier = improved_relation
+								value = 90
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			5550 = { #guwazi
+				development = 45
+				has_building = mage_tower
+			}
+			6592 = { #van
+				development = 15
+				has_building = mage_tower
+			}
+			6153 = { #gamdou
+				development = 15
+				has_building = mage_tower
+			}
+			6138 = { #lanobuk
+				development = 15
+				has_building = mage_tower
+			}
+			any_known_country = {
+				capital_scope = {
+					superregion = vimdatrong_superregion
+				}
+				has_90_opinion_improved_relation = { target = ROOT }
+			}
+			any_known_country = {
+				capital_scope = {
+					superregion = yanshen_superregion
+				}
+				has_90_opinion_improved_relation = { target = ROOT }
+			}
+			any_known_country = {
+				capital_scope = {
+					superregion = rahen_superregion
+				}
+				has_90_opinion_improved_relation = { target = ROOT }
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.18
+			}
+		} 
+	}
+}
+
+L63_hidden_row_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { has_country_flag = L63_missions_unlock }
+
+	l63_storms_end = {
+		icon = mission_stormy_seas
+		position = 14
+		required_missions = {
+			l63_finding_a_champion
+			l63_hiring_consultants
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 5550
+					NOT = {
+						num_of_units_in_province = {
+							who = ROOT
+							amount = 100
+						}
+					}
+				}
+				AND = {
+					province_id = 1342
+					NOT = {
+						light_ships_in_province = 200
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			#num_of_regiments_at_full_drill = 100
+			5550 = { #guwazi
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 100
+				}
+			}
+			1342 = { #coffee coast
+				light_ships_in_province = 200
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.20
+			}
+		} 
+	}
+
+	l63_working_with_the_whale = {
+		icon = mission_dawn_sky_cloud
+		position = 15
+		required_missions = { l63_storms_end } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = ringlet_isles_region
+					NOT = {
+						AND = {
+							OR = {
+								has_production_or_gold_building_trigger = yes
+							}
+							has_shipyard_building_trigger = yes
+							has_dock_building_trigger = yes
+						}
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 6138 #lanobuk
+						province_id = 6153 #gamdou
+					}
+					NOT = {
+						AND = {
+							development = 30
+							province_has_center_of_trade_of_level = 3
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			ringlet_isles_region = {
+				type = all
+				OR = {
+					has_production_building_trigger = yes
+					trade_goods = gold
+				}
+				has_shipyard_building_trigger = yes
+				has_dock_building_trigger = yes
+			}
+			6138 = { #lanobuk
+				development = 30
+				province_has_center_of_trade_of_level = 3
+			}
+			6153 = { #gamdou
+				development = 30
+				province_has_center_of_trade_of_level = 3
+			}
+		} 
+
+		effect = {
+			ringlet_isles_region = {
+				change_trade_goods = fish
+				change_religion = mystic_accord
+				add_province_modifier = {
+					name = L63_cinulaus_domain
+					duration = -1
+				}
+			}
+			remove_country_modifier = L63_quiet_skies
+			batinguk_nurtja_region = {
+				add_permanent_claim = ROOT
+			}
+			tagaala_mangroves_region = {
+				add_permanent_claim = ROOT
+			}
+		} 
+	}
+
+	l63_a_deprived_land = {
+		icon = yem_coffee
+		position = 16
+		required_missions = { l63_working_with_the_whale } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						region = tagaala_mangroves_region
+						region = batinguk_nurtja_region
+					}
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					province_id = 6950
+					NOT = {
+						owner = {
+							has_country_flag = aPUI_gene_pillar_explored_level_1_in_6950
+						}
+					}
+				}
+				AND = {
+					province_id = 3554
+					NOT = {
+						owned_by = ROOT
+					}
+				}
+				AND = {
+					region = tagaala_mangroves_region
+					NOT = {
+						owner = {
+							any_owned_province = {
+								region = tagaala_mangroves_region
+								development = 40
+								has_dock_building_trigger = yes
+								has_shipyard_building_trigger = yes
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			tagaala_mangroves_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			batinguk_nurtja_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tagaala_mangroves_region = {
+				type = any
+				development = 40
+				has_dock_building_trigger = yes
+				has_shipyard_building_trigger = yes
+			}
+			3554 = { #yortawoka
+				owned_by = ROOT
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_a_deprived_land_trigger_tt
+				has_country_flag = aPUI_gene_pillar_explored_level_1_in_6950
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = magic_artificery_mage_only
+					}
+				}
+				mission_reward_artifice_points_10 = yes
+				6950 = {
+					add_province_modifier = {
+						name = L63_spirit_pillar_research_camp_artifice
+						duration = -1
+					}
+				}
+			}
+			else = {
+				6950 = {
+					add_province_modifier = {
+						name = L63_spirit_pillar_research_camp_magic
+						duration = -1
+					}
+				}
+			}
+			custom_tooltip = L63_deprived_land_claim_tt
+			hidden_effect = {
+				3651 = { #yahou lapahtol
+					every_trade_node_member_province = {
+						limit = {
+							is_sea = no
+						}
+						add_permanent_claim = ROOT
+					}
+				}
+			}
+		} 
+	}
+
+	l63_salt_and_flame = {
+		icon = mission_dragon_turtle_grandfather_moss
+		position = 17
+		required_missions = { l63_a_deprived_land } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 3651
+					NOT = {
+						trade_share = {
+							country = ROOT
+							share = 70
+						}
+					}
+				}
+				AND = {
+					superregion = kanolowele_superregion
+					same_trade_node_as = 3651 #yahou lapahtol
+					OR = {
+						province_has_center_of_trade_of_level = 1
+						has_province_modifier = palimeli_toll
+						has_province_modifier = pauhnextli_toll
+						has_province_modifier = ponquimetzto_toll
+					}
+					NOT = {
+						AND = {
+							country_or_non_sovereign_subject_holds = ROOT
+							has_coast_defense_building_trigger = yes
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			3651 = {
+				trade_share = {
+					country = ROOT
+					share = 70
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_salt_and_flame_trigger_tt
+				kanolowele_superregion = {
+					type = all
+					OR = {
+						NOT = {
+							same_trade_node_as = 3651 #yahou lapahtol
+						}
+						NOT = {
+							province_has_center_of_trade_of_level = 1
+							has_province_modifier = palimeli_toll
+							has_province_modifier = pauhnextli_toll
+							has_province_modifier = ponquimetzto_toll
+						}
+						AND = {
+							country_or_non_sovereign_subject_holds = ROOT
+							has_coast_defense_building_trigger = yes
+						}
+					}
+				}
+				
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.23
+			}
+		} 
+	}
+
+	l63_ever_awake = {
+		icon = imperial_navy
+		position = 18
+		required_missions = {
+			l63_precursor_efficencey
+			l63_salt_and_flame
+			l63_bulwark_against_instability
+		}
+		provinces_to_highlight = {
+			region = bamaliwuni_region
+			has_terrain = jungle
+			NOT = {
+				trade_goods = coffee
+				trade_goods = gold
+			}
+		} 
+
+		trigger = {
+			OR = {
+				is_hegemon_of_type = naval_hegemon
+				is_hegemon_of_type = economic_hegemon
+			}
+			development_in_provinces = {
+				value = 1000
+				region = bamaliwuni_region
+			}
+			check_variable = {
+				which = bamaliwuni_infusion_tracker_var
+				value = 100
+			}
+			if = {
+				limit = {
+					has_country_flag = magic_artificery_mage_only
+				}
+				at_least_magic_project_level = {
+					project = homunculus
+					level = 3
+				}
+			}
+			else = {
+				num_of_owned_provinces_with = {
+					value = 20
+					has_mechanim_minority_trigger = yes
+					NOT = {
+						continent = oceania
+					}
+				}
+			}
+			
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					NOT = {
+						has_terrain = jungle
+					}
+					trade_goods = gold
+					trade_goods = coffee
+				}
+				
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.25
+			}
+		} 
+	}
+}
+
+L63_row_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { is_or_was_tag = { tag = L63 } } 
+
+	l63_reliable_suppliers = {
+		icon = mission_kon_anzikus_copper
+		position = 2
+		required_missions = { l63_take_it_back } 
+		provinces_to_highlight = {
+			OR = {
+				trade_goods = copper
+				trade_goods = gems
+			}
+			region = bamaliwuni_region
+			NOT = {
+				AND = {
+					OR = {
+						has_province_modifier = autonomy_decreased
+						NOT = { local_autonomy = 20 }
+					}
+					num_of_units_in_province = {
+						who = ROOT
+						type = infantry
+						amount = 1
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = l63_reliable_suppliers_tt
+				bamaliwuni_region = {
+					type = all
+					OR = {
+						NOT = { 
+							trade_goods = copper
+							trade_goods = gems 
+						}
+						AND = {
+							num_of_units_in_province = {
+								who = ROOT
+								type = infantry
+								amount = 1
+							}
+							OR = {
+								has_province_modifier = autonomy_decreased
+								NOT = {
+									local_autonomy = 20
+								}
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.2
+			}
+		} 
+	}
+
+	l63_restoring_trade_routes = {
+		icon = mission_junk_boat
+		position = 4
+		required_missions = { l63_back_in_buisness } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 4839
+					NOT = {
+						owner = {
+							tag = Y23
+							OR = {
+								has_opinion = {
+									who = ROOT
+									value = 150
+								}
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = improved_relation
+									value = 90
+								}
+							}
+						}
+						owner = {
+							has_spy_network_from = {
+								who = ROOT
+								value = 40
+							}
+						}
+					}
+				}
+				AND = {
+					province_id = 1370
+					NOT = {
+						AND = {
+							light_ships_in_province = ROOT
+							light_ships_in_province = 10
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			OR = {
+				Y23 = { #zyujyut
+					OR = {
+						has_opinion = {
+							who = ROOT
+							value = 150
+						}
+						has_90_opinion_improved_relation = { target = ROOT }
+					}
+				}
+				AND = {
+					Y23 = {
+						exists = no
+					}
+					4839 = { #zyugok
+						owner = {
+							has_spy_network_from = {
+								who = ROOT
+								value = 40
+							}
+						}
+					}
+				}
+			}
+			1370 = { #phokhao pass
+				light_ships_in_province = 10
+				light_ships_in_province = ROOT
+			}
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.6
+			}
+		} 
+	}
+
+	l63_to_catch_the_storm = {
+		icon = mission_haless_rending_people
+		position = 5
+		required_missions = { 
+			l63_restoring_trade_routes
+			l63_coffee_bloom
+		} 
+		provinces_to_highlight = {
+			province_id = 5550
+			NOT = {
+				AND = {
+					num_of_units_in_province = {
+						who = ROOT
+						type = infantry
+						amount = 2
+					}
+					num_of_times_expanded_infrastructure = 1
+				}
+			}
+		} 
+
+		trigger = {
+			5550 = { #Guwazi
+				num_of_units_in_province = {
+					who = ROOT
+					type = infantry
+					amount = 2
+				}
+				if = {
+					limit = {
+						NOT = { has_dlc = "Domination" }
+					}
+					development = 15
+				}
+				else = {
+					num_of_times_expanded_infrastructure = 1
+				}
+			}
+			has_estate_privilege = estate_mages_seek_magical_advice
+		} 
+
+		effect = {
+			country_event = {
+				id = flavor_butuguzi.8
+			}
+		} 
+	}
+
+	l63_druidic_gardening = {
+		icon = mission_jungle_pilgrim
+		position = 6
+		required_missions = { l63_to_catch_the_storm } 
+		provinces_to_highlight = {
+			trade_goods = coffee
+			owned_by = ROOT
+			NOT = {
+				has_building = mage_tower
+			}
+		} 
+
+		trigger = {
+			has_cast_plant_growth = yes
+			is_overall_transmutation_level_1_minimum = yes
+			at_least_magical_infrastructure_level_1 = yes
+			num_of_owned_provinces_with = {
+				value = 2
+				trade_goods = coffee
+				has_building = mage_tower
+			}
+		}
+
+		effect = {
+			set_country_flag = L63_plant_growth_upgrade
+			custom_tooltip = L63_plant_growth_upgrade_tt
+			set_country_flag = L63_coffee_mage_tower_upgrade
+			custom_tooltip = L63_coffee_mage_tower_upgrade_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = coffee
+						has_building = mage_tower
+					}
+					add_province_modifier = {
+						name = L63_coffee_mage_tower_upgrade_mod
+						duration = -1
+					}
+				}
+			}
+		} 
+	}
+
+	l63_storm_catch_system = {
+		icon = mng_jing_hang_grand_canal
+		position = 8
+		required_missions = { l63_survery_the_storm } 
+		provinces_to_highlight = {
+			OR = {
+				province_id	= 5563
+				province_id	= 5576
+				province_id	= 5582
+			}
+			NOT = {
+				AND = {
+					num_of_times_expanded_infrastructure = 1
+					has_tax_building_trigger = yes
+					has_building = mage_tower
+				}
+			}
+		} 
+
+		trigger = {
+			has_cast_reshape_terrain = yes
+			5563 = { #gubamalmay
+				if = {
+					limit = {
+						NOT = { has_dlc = "Domination" }
+					}
+					development = 15
+				}
+				else = {
+					num_of_times_expanded_infrastructure = 1
+				}
+				has_tax_building_trigger = yes
+				has_building = mage_tower
+			}
+			5576 = { #degutkombe
+				if = {
+					limit = {
+						NOT = { has_dlc = "Domination" }
+					}
+					development = 15
+				}
+				else = {
+					num_of_times_expanded_infrastructure = 1
+				}
+				has_tax_building_trigger = yes
+				has_building = mage_tower
+			}
+			5582 = { #katikbumay
+				if = {
+					limit = {
+						NOT = { has_dlc = "Domination" }
+					}
+					development = 15
+				}
+				else = {
+					num_of_times_expanded_infrastructure = 1
+				}
+				has_tax_building_trigger = yes
+				has_building = mage_tower
+			}
+		} 
+
+		effect = {
+			5563 = { #gubamalmay
+				add_bumbadada_to_size = yes
+			}
+			5576 = { #degutkombe
+				add_bumbadada_to_size = yes
+			}
+			5582 = { #katikbumay
+				add_bumbadada_to_size = yes
+			}
+		} 
+	}
+
+	l63_bottom_up_design = {
+		icon = mission_jungle
+		position = 10
+		required_missions = {
+			l63_end_the_squabbling
+			l63_storm_catch_system
+		}
+		provinces_to_highlight = {
+			region = bamaliwuni_region
+			has_port = yes
+			NOT = {
+				AND = {
+					possible_buildings = 3
+					OR = {
+						num_free_building_slots = 0
+						num_of_buildings_in_province = 5
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					NOT = {
+						has_port = yes
+					}
+					AND = {
+						possible_buildings = 3
+						OR = {
+							num_free_building_slots = 0
+							num_of_buildings_in_province = 5
+						}
+					}
+				}
+
+			}
+		} 
+
+		effect = {
+			custom_tooltip = L63_bottom_up_design_tt
+			set_country_flag = L63_expand_infra_flag
+			every_owned_province = {
+				limit = {
+					region = bamaliwuni_region
+					trade_goods = coffee
+					num_of_times_expanded_infrastructure = 1
+				}
+				if = {
+					limit = {
+						num_of_times_expanded_infrastructure = 4
+					}
+					add_province_modifier = {
+						name = L63_sculpted_terrain_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_times_expanded_infrastructure = 3
+					}
+					add_province_modifier = {
+						name = L63_sculpted_terrain_3
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_times_expanded_infrastructure = 2
+					}
+					add_province_modifier = {
+						name = L63_sculpted_terrain_2
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						num_of_times_expanded_infrastructure = 1
+					}
+					add_province_modifier = {
+						name = L63_sculpted_terrain_1
+						duration = -1
+					}
+				}
+			}
+		} 
+	}
+
+	l63_from_the_land_to_the_land = {
+		icon = mission_rice_farming
+		position = 11
+		required_missions = {
+			l63_bottom_up_design
+			l63_schools_of_haless
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 6648
+					NOT = {
+						has_great_project = {
+							type = bustebe_dajadera
+							tier = 3
+						}
+					}
+				}
+				AND = {
+					region = bamaliwuni_region
+					has_terrain = jungle
+					NOT = {
+						trade_goods = coffee
+					}
+				}
+			}
+			
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				region = bamaliwuni_region
+				trade_goods = coffee
+			}
+			check_variable = {
+				which = bamaliwuni_infusion_tracker_var
+				value = 30
+			}
+			6648 = {
+				has_great_project = {
+					type = bustebe_dajadera
+					tier = 3
+				}
+			}
+		} 
+
+		effect = {
+			custom_tooltip = L63_monastery_upgrade_3_tt
+			tooltip = {
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery_3
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_province_modifier = L63_shifter_monk_monastery_2
+					}
+					remove_province_modifier = L63_shifter_monk_monastery_2
+					add_province_modifier = {
+						name = L63_shifter_monk_monastery_3
+						duration = -1
+					}
+				}
+			}
+			bamaliwuni_region = {
+				remove_province_modifier = L63_transmutative_practices
+				add_province_modifier = {
+					name = L63_through_you
+					duration = -1
+				}
+			}
+		} 
+	}
+}
+
+L63_hidden_row_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { has_country_flag = L63_missions_unlock }
+
+	l63_hiring_consultants = {
+		icon = mission_to_the_south_china_sea
+		position = 13
+		required_missions = { l63_the_beacon_line } 
+		provinces_to_highlight = {
+			is_capital = yes
+			OR = {
+				superregion = yanshen_superregion
+				superregion = rahen_superregion
+				superregion = vimdatrong_superregion
+			}
+			owner = {
+				NOT = {
+					AND = {
+						is_subject_of = ROOT
+						NOT = {
+							has_opinion = {
+								who = ROOT
+								value = 180
+							}
+						}
+					}
+					AND = {
+						is_subject = yes
+						NOT = { is_subject_of = ROOT }
+					}
+					ROOT = {
+						has_won_war_against = {
+							who = PREV
+							max_years_since = 20
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			OR = {
+				has_cast_enchanting_envoy = yes
+				has_cast_eye_for_talent = yes
+			}
+			all_subject_country = {
+				OR = {
+					NOT = {
+						capital_scope = {
+							continent = asia
+						}
+					}
+					has_opinion = {
+						who = ROOT
+						value = 180
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_hiring_consultants_yanshen_trigger_tt
+				OR = {
+					has_country_modifier = L63_won_yanshen_war
+					all_known_country = {
+						OR = {
+							is_subject = yes
+							capital_scope = {
+								NOT = {
+									superregion = yanshen_superregion
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_hiring_consultants_rahen_trigger_tt
+				OR = {
+					has_country_modifier = L63_won_rahen_war
+					all_known_country = {
+						OR = {
+							is_subject = yes
+							capital_scope = {
+								NOT = {
+									superregion = rahen_superregion
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_hiring_consultants_vimadtrong_trigger_tt
+				OR = {
+					has_country_modifier = L63_won_vim_war
+					all_known_country = {
+						OR = {
+							is_subject = yes
+							capital_scope = {
+								NOT = {
+									superregion = vimdatrong_superregion
+								}
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		effect = {
+			set_estate_privilege = estate_adventurers_spirit_hunters
+			every_country = {
+				limit = {
+					has_estate_privilege = estate_adventurers_spirit_hunters
+				}
+				add_country_modifier = {
+					name = L63_poached_spirit_hunters
+					duration = 7300
+				}
+				add_opinion = {
+					who = ROOT
+					modifier = L63_opinion_poached_spirit_hunters
+				}
+			}
+		} 
+	}
+
+	l63_the_yemaki_connection = {
+		icon = mission_indian_soldier_elephant
+		position = 15
+		required_missions = { l63_storms_end } 
+		provinces_to_highlight = {
+			superregion = vimdatrong_superregion
+			same_trade_node_as = 1369 #yemakai node
+			NOT = {
+				AND = {
+					country_or_non_sovereign_subject_holds = ROOT
+					has_forcelimit_building_trigger = yes
+				}
+			}
+		} 
+
+		trigger = {
+			treasury = 3000
+			custom_trigger_tooltip = {
+				tooltip = L63_yemakai_collection_trigger_tt
+				vimdatrong_superregion = {
+					type = all
+					OR = {
+						NOT = {
+							same_trade_node_as = 1369 #yemakai node
+						}
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L63_yemakai_collection_building_trigger_tt
+				num_of_provinces_owned_or_owned_by_subjects_with = {
+					value = 20
+					same_trade_node_as = 1369 #yemakai node
+					has_forcelimit_building_trigger = yes
+				}
+			}
+		}
+
+		effect = {
+			add_treasury = -3000
+			custom_tooltip = L63_road_building_tt
+			hidden_effect = {
+				6301 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4754 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4752 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4745 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4746 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4742 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4731 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4729 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4728 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4774 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4727 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4722 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				4763 = {
+					add_province_modifier = {
+						name = L63_relief_road_construction
+						duration = 1825
+					}
+				}
+				country_event = {
+					id = flavor_butuguzi.22
+					days = 1825
+				}
+			}
+		}
+	}
+
+	l63_bulwark_against_instability = {
+		icon = mission_high_temple_yanhe_rending
+		position = 17
+		required_missions = { l63_the_yemaki_connection } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = lower_yanshen_region
+					NOT = {
+						owner = {
+							is_or_was_tag = { tag = Y23 }
+						}
+						owned_by = ROOT
+					}
+				}
+				AND = {
+					region = lower_yanshen_region
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+					NOT = {
+						AND = {
+							num_of_times_improved = 5
+							has_manufactory_trigger = yes
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			dip_power = 150
+			Y23 = {
+				OR = {
+					has_25_opinion_sent_gift = { target = ROOT }
+					exists = no
+				}
+			}
+			lower_yanshen_region = {
+				type = all
+				OR = {
+					owned_by = ROOT
+					owner = {
+						is_or_was_tag = { tag = Y23 }
+					}
+				}
+			}
+			4871 = { #tianlou
+				num_of_times_improved = 5
+				has_manufactory_trigger = yes
+			}
+			4879 = { #feiten
+				num_of_times_improved = 5
+				has_manufactory_trigger = yes
+			}
+			4884 = { #cuihiok
+				num_of_times_improved = 5
+				has_manufactory_trigger = yes
+			}
+		} 
+
+		effect = {
+			Y23 = {
+				country_event = {
+					id = flavor_butuguzi.24
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = bamaliwuni_region
+					has_port = yes
+					NOT = {
+						culture = antmvura
+					}
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				change_culture = antmvura
+			}
+			random_owned_province = {
+				limit = {
+					region = bamaliwuni_region
+					has_port = yes
+					NOT = {
+						culture = antmvura
+					}
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				change_culture = antmvura
+			}
+			random_owned_province = {
+				limit = {
+					region = bamaliwuni_region
+					has_port = yes
+					NOT = {
+						culture = antmvura
+					}
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				change_culture = antmvura
+			}
+			random_owned_province = {
+				limit = {
+					region = bamaliwuni_region
+					has_port = yes
+					NOT = {
+						culture = antmvura
+					}
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				change_culture = antmvura
+			}
+		} 
+	}
+}
+
+L63_row_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { is_or_was_tag = { tag = L63 } } 
+
+	l63_reminder_of_our_patronage = {
+		icon = mission_mnd_dai_temples
+		position = 1
+		provinces_to_highlight = {
+			province_id = 6648
+			NOT = {
+
+				if = {
+					limit = {
+						NOT = { has_dlc = "Mandate of Heaven" }
+					}
+					5996 = { #zulbur
+						num_of_times_improved_by_owner = 2
+					}
+				}
+				else = {
+					rimvuawuni_area = {
+						has_state_edict = edict_religious_unity
+					}
+					6648 = { #joenghoenggong
+						num_of_times_improved_by_owner = 1
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			manpower = 2
+			has_estate_privilege = estate_church_for_the_faith
+			6648 = { #joenghoenggong
+				num_of_times_improved_by_owner = 1
+			}
+			rimvuawuni_area = {
+				if = {
+					limit = {
+						NOT = { has_dlc = "Mandate of Heaven" }
+					}
+					6648 = { #joenghoenggong
+						num_of_times_improved_by_owner = 2
+					}
+				}
+				else = {
+					has_state_edict = edict_promote_military_recruitment
+				}
+			}
+		} 
+
+		effect = {
+			add_country_modifier = {
+				name = L63_way_of_ancestral_wisdom_novice
+				duration = -1
+			}
+			6648 = {
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+				samurai_infantry = ROOT
+				samurai_infantry = ROOT
+			}
+			add_manpower = -2
+		} 
+	}
+
+	l63_lodges_to_monasteries = {
+		icon = mission_mnd_dai_temples
+		position = 5
+		required_missions = {
+			l63_restoring_trade_routes
+			l63_reminder_of_our_patronage
+		}
+		provinces_to_highlight = {  
+			OR = {
+				province_id = 5546
+				province_id = 5557
+				province_id = 5580
+				province_id = 5585
+				province_id = 5574
+			}
+			NOT = {
+				AND = {
+					province_has_current_tech_fort_trigger = yes
+					has_tax_building_trigger = yes
+				}
+			}
+		} 
+
+		trigger = {
+			5546 = { #kelelekombiwuni
+				province_has_current_tech_fort_trigger = yes
+				has_tax_building_trigger = yes
+			}
+			5557 = { #Digirbonde
+				province_has_current_tech_fort_trigger = yes
+				has_tax_building_trigger = yes
+			}
+			5580 = { #inshibonde
+				province_has_current_tech_fort_trigger = yes
+				has_tax_building_trigger = yes
+			}
+			5585 = { #Kuvunika
+				province_has_current_tech_fort_trigger = yes
+				has_tax_building_trigger = yes
+			}
+			5574 = { #kaziradoka
+				province_has_current_tech_fort_trigger = yes
+				has_tax_building_trigger = yes
+			}
+			has_estate_privilege = estate_burghers_enforced_interfaith_dialogue
+		} 
+
+		effect = {
+			set_country_flag = L63_enforced_interfaith_dialogue_buff_flag
+			custom_tooltip = L63_enforced_interfaith_dialogue_buff_TT
+			5546 = { #kelelekombiwuni
+				change_religion = transmutative_path
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+			}
+			5557 = { #Digirbonde
+				change_religion = transmutative_path
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+			}
+			5580 = { #inshibonde
+				change_religion = transmutative_path
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+			}
+			5585 = { #Kuvunika
+				change_religion = transmutative_path
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+			}
+			5574 = {
+				change_religion = transmutative_path
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery
+					duration = -1
+				}
+			}
+		} 
+	}
+
+	l63_spreading_wisdom = {
+		icon = mission_buddhist_monk_praying
+		position = 7
+		required_missions = {
+			l63_lodges_to_monasteries
+			l63_druidic_gardening
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 6648
+					NOT = {
+						has_great_project = {
+							type = bustebe_dajadera
+							tier = 2
+						}
+					}
+				}
+				AND = {
+					region = bamaliwuni_region
+					NOT = {
+						AND = {
+							has_tax_building_trigger = yes
+							owner = {
+								num_of_owned_provinces_with = {
+									value = 10
+									region = bamaliwuni_region
+									has_tax_building_trigger = yes
+								}
+							}
+						}
+					}
+				}
+			}
+		} 
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				region = bamaliwuni_region
+				has_tax_building_trigger = yes
+			}
+			6648 = {
+				has_great_project = {
+					type = bustebe_dajadera
+					tier = 2
+				}
+			}
+			check_variable = {
+				which = bamaliwuni_infusion_tracker_var
+				value = 10
+			}
+		} 
+
+		effect = {
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						region = bamaliwuni_region
+						has_terrain = jungle
+					}
+					add_province_modifier = {
+						name = L63_transmutative_practices
+						duration = -1
+					}
+				}
+				every_owned_province = {
+					limit = {
+						has_province_modifier = L63_shifter_monk_monastery
+					}
+					remove_province_modifier = L63_shifter_monk_monastery
+					add_province_modifier = {
+						name = L63_shifter_monk_monastery_2
+						duration = -1
+					}
+				}
+			}
+			custom_tooltip = spreading_wisdom_tt1
+			tooltip = {
+				add_province_modifier = {
+					name = L63_transmutative_practices
+					duration = -1
+				}
+			}
+			custom_tooltip = spreading_wisdom_tt2
+			tooltip = {
+				add_province_modifier = {
+					name = L63_shifter_monk_monastery_2
+					duration = -1
+				}
+			}
+		} 
+	}
+
+	l63_schools_of_haless = {
+		icon = mission_haless_map
+		position = 10
+		required_missions = { l63_spreading_wisdom } 
+		provinces_to_highlight = {
+			region = lower_yanshen_region
+			same_trade_node_as = 1371 #feiten node
+			has_port = yes
+			NOT = {
+				owned_by = ROOT
+				owned_by = Y23
+				owned_by = Z66
+			}
+		} 
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L63_schools_of_haless_feiten_tt
+				lower_yanshen_region = {
+					type = all
+					OR = {
+						NOT = {
+							has_port = yes
+						}
+						NOT = {
+							same_trade_node_as = 1371
+						}
+						owned_by = ROOT
+						owner = {
+							is_or_was_tag = { tag = Y23 }
+						}
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					Y23 = {
+						exists = yes
+					}
+				}
+				Y23 = {
+					OR = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = great_power_influence
+						}
+						is_great_power = yes
+					}
+					has_10_opinion_getting_subsidies = { target = ROOT }
+				}
+			}
+			has_church_aspect = transmutative_path_universal_martial_education
+		} 
+
+		effect = {
+			remove_country_modifier = L63_way_of_ancestral_wisdom_novice
+			add_country_modifier = {
+				name = L63_way_of_ancestral_wisdom_empowered
+				duration = -1
+			}
+
+			if = {
+				limit = {
+					Y23 = {
+						exists = yes
+					}
+				}
+				Y23 = {
+					country_event = {
+						id = flavor_butuguzi.17
+					}
+				}
+			}
+			else = {
+				country_event = {
+					id = flavor_butuguzi.28
+				}
+			}
+		} 
+	}
+}

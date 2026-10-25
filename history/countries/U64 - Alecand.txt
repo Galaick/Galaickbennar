@@ -1,0 +1,10 @@
+
+government = republic
+technology_group = tech_cannorian
+primary_culture = east_damerian
+religion = ravelian
+capital = 2738
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+set_country_flag = has_full_deathwinds_system_flag

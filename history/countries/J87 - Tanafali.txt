@@ -1,0 +1,27 @@
+
+setup_vision_south_aelantir = yes
+government = native
+add_government_reform = native_federation_reform
+add_government_reform = native_oral_tradition_reform
+add_government_reform = native_settle_down_reform
+government_rank = 1
+mercantilism = 5
+primary_culture = faalte
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2447
+
+1403.1.1 = {
+	monarch = { #Dynasty name means "sweet sky". Could be female?
+		name = "Denché"
+		dynasty = "Jachúbis"
+		birth_date = 1388.1.1
+		adm = 3
+		dip = 4
+		mil = 2
+	}
+	add_ruler_personality = well_advised_personality
+	add_ruler_personality = charismatic_negotiator_personality
+	add_ruler_personality = loose_lips_personality
+}
+

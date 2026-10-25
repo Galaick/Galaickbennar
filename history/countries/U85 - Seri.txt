@@ -1,0 +1,14 @@
+
+setup_vision_north_aelantir = yes
+government = native
+add_government_reform = epednar_custodian_of_the_expanse_tier1_reform
+government_rank = 1
+primary_culture = epednar
+religion = eotomolaque
+technology_group = tech_harafic
+capital = 1853
+
+add_historical_friend = U82
+
+initialise_custom_spell_list = { group = bardic }
+set_country_flag = bardic_magic_spell_3_unlocked

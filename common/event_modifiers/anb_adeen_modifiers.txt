@@ -1,0 +1,130 @@
+adeen_barracks = {
+	local_has_streltsy = yes
+	province_trade_power_value = 2.5
+	amount_of_streltsy = 1
+	local_unrest = 2
+	regiment_recruit_speed = 0.5
+	local_manpower_modifier = -1
+}
+
+
+#####################
+#Privilege Modifiers#
+#####################
+
+adeen_families_low = {
+	global_regiment_cost = 0.05
+	is_streltsy_modifier = yes
+}
+
+adeen_families_mid = {
+	global_regiment_cost = 0.1
+	is_streltsy_modifier = yes
+}
+
+adeen_families_high = {
+	global_regiment_cost = 0.15
+	is_streltsy_modifier = yes
+}
+
+adeen_land_grants_cost = {
+	land_maintenance_modifier = 0.1
+	is_streltsy_modifier = yes
+}
+
+adeen_barracks_upgraded = {
+	local_has_streltsy = yes
+	province_trade_power_value = 2.5
+	amount_of_streltsy = 2
+	local_unrest = 2
+	regiment_recruit_speed = 0.5
+	local_manpower_modifier = -1
+	min_local_autonomy = 0.2
+}
+
+adeen_strict_drills_low = {
+	drill_decay_modifier = -0.10
+	is_streltsy_modifier = yes
+}
+adeen_strict_drills_mid = {
+	drill_decay_modifier = -0.20
+	is_streltsy_modifier = yes
+}
+adeen_strict_drills_high = {
+	drill_decay_modifier = -0.30
+	is_streltsy_modifier = yes
+}
+adeen_strict_drills_always = {
+	drill_gain_modifier = 0.25
+	is_streltsy_modifier = yes
+}
+
+adeen_professional_supply_low = {
+	reinforce_speed = 0.1
+	is_streltsy_modifier = yes
+}
+adeen_professional_supply_mid = {
+	reinforce_speed = 0.15
+	is_streltsy_modifier = yes
+}
+adeen_professional_supply_high = {
+	reinforce_speed = 0.2
+	is_streltsy_modifier = yes
+}
+adeen_professional_supply_always = {
+	reserves_organisation = 0.5
+	is_streltsy_modifier = yes
+}
+
+adeen_siege_training = {
+	reinforce_speed = -0.1
+	infantry_cost = 0.25
+	is_streltsy_modifier = yes
+}
+
+adeen_merfolk_modifier = {
+	light_ship_power = 0.2
+}
+
+adeen_lizard_modifier = {
+	shock_damage = 0.1
+	is_streltsy_modifier = yes
+}
+
+adeen_shifter_modifier = {
+	is_streltsy_modifier = yes
+	morale_damage = 0.05
+}
+
+adeen_traditional_modifier = {
+	is_streltsy_modifier = yes
+	infantry_power = 0.05
+}
+
+adeen_payments_modifier = {
+	global_tax_modifier = -0.15
+}
+
+estate_adeen_adasa_slave_mod = {
+	trade_goods_size = -2
+	local_manpower_modifier = 0.4
+}
+
+adeen_revoke_cooldown_mod = {
+}
+
+adeen_payments_modifier = {
+	global_tax_modifier = -0.15
+}
+
+support_adeen_families_cooldown = {
+}
+
+commission_new_guns_cooldown = {
+}
+
+adeen_right_of_arms_mod = {
+	fire_damage = 0.1
+	infantry_power = 0.1
+	is_streltsy_modifier = yes
+}

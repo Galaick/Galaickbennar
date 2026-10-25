@@ -1,0 +1,38 @@
+
+setup_vision_north_aelantir = yes
+government = native
+add_government_reform = U83_decuvie_shaman_rule_reform
+government_rank = 1
+primary_culture = chiunife
+religion = great_tceusluhd
+technology_group = tech_harafic
+capital = 3298
+
+add_historical_rival = U81
+
+1000.1.1 = {
+	auvultadih_area = {
+		discover_country = ROOT
+	}
+	kinn_rondi_area = {
+		discover_country = ROOT
+	}
+	# Resets prestige from being the first in the tech group to discover a province
+	add_prestige = -200
+	add_prestige = 100
+	set_country_flag = has_mages_estate_equiv # The effect in U83_decuvie_shaman_rule_reform doesn't run at startup
+}
+
+1430.1.11 = {
+	monarch = {
+		name = "Arfil"
+		dynasty = "Nightbranch"
+		birth_date = 1412.11.1
+		culture = chiunife
+		adm = 2
+		dip = 1
+		mil = 5
+	}
+	add_ruler_personality = shapeshifter_personality
+	define_powerful_mage = { type = ruler necromancy = 2 }
+}

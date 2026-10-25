@@ -1,0 +1,308 @@
+﻿l_english:
+
+###Missions
+###Column 1
+ B23_looking_to_the_future_title:0 "Looking to the Future"
+ B23_looking_to_the_future_desc:0 "Ugol looks over the destruction he has wrought and for the first time feels hope rather than regret."
+ B23_sons_of_ugol:0 "Sons of Ugol"
+
+ B23_raid_the_slave_pens_title:0 "Raid the Slave Pens"
+ B23_raid_the_slave_pens_desc:0 "It would do much benefit to our image if we freed some slaves"
+ B23_raid_the_slave_pens_venom_effect_tt:0 "If §Y[Root.GetName]§! is in a war against §YVenomtooth§! as a participant and more than §Y90§! War Score and §Y[Root.GetName]§! has units in §YVenomfen§!:"
+ B23_raided_slave_pens_opinion:0 "Raided the Slave Pens"
+ B23_raid_the_slave_pens_opinion_tt:0 "Every §Ygoblin ally§!'s opinion of §Y[Root.GetName]§! changed by §G+50§!.\n§Y[Root.GetName]§!'s opinion of every §Ygoblin ally§! changed by §G+50§!.\nGain §G+10§! mutual trust with every §Ygoblin ally§!.\n\nEvery §Ynon-orcish, non-goblin§! country with a capital in §YWest Castanor§!'s opinion of §Y[Root.GetName]§! changed by §G+25§!.\n§Y[Root.GetName]§!'s opinion of every §Ynon-orcish, non-goblin§! country with a capital in §YWest Castanor§! changed by §G+25§!."
+
+###Column 2
+
+ B23_protector_of_the_weak_title:0 "Protector of the Weak"
+ B23_protector_of_the_weak_desc:0 "The storm has been weathered. Perhaps it is not too late for us to learn from each other?"
+ B23_dealt_with_opportunists_tt:0 "We have dealt with the §YOpportunists§!"
+ B23_protector_of_the_weak_tribal_land_reward:0 "Our §YGoblin Subjects§! will §Gcede§! all tribal land to us."
+ B23_protector_of_weak_scutage_reward_tt:0 "For each of our §YGoblin Vassals§! paying §YScutage§!:"
+ B23_protecting_the_vulnerable:0 "Protecting the Vulnerable"
+
+ B23_learning_teaching_doing_title:0 "Teaching and Learning"
+ B23_learning_teaching_doing_desc:0 "[B43.Monarch.GetTitle] [B43.Monarch.GetName] comes to [Root.Monarch.GetTitle] [Root.Monarch.GetName] with a proposition"
+
+ B23_crush_the_humans_title:0 "Crush the Humans"
+ B23_crush_the_humans_desc:0 "It's time to finish what the Dookanson started"
+ B23_monstrous_backsliding:0 "Monstrous Backsliding"
+ B23_backsliding_reputation:0 "Backsliding Reputation"
+ B23_crush_humans_tooltip:0 "All provinces in the Silvervord, Adenica, Rohibon, Valefort, Taran Plains, Verteben, Nortmerewood, Upcreek, Merescker, Catelsvord, Oudeben, Vernham, Clovenwood, Banesfork, Beastgrave, and Doston's Way Areas:\n   One of the following must be true:\n      Is a §YRotcleaver§! state core\n      Is Tribal Land of §YRotcleaver§!\n      Owned by Subject of §YRotcleaver§!"
+ B23_crush_humans_opinion_tt:0 "Every neighbor country's opinion of §Y[Root.GetName]§! changed by §R-20§!.\n§Y[Root.GetName]§!'s opinion of every neighbor country changed by §R-20§!."
+
+ B23_to_the_bladeskeep_title:0 "To the Bladeskeep"
+ B23_to_the_bladeskeep_desc:0 "[Root.Monarch.GetName] takes [Root.Monarch.GetHerHis] Covenbladic companion to Bladeskeep to become a Blade Steward."
+
+###Column 3
+ B23_making_amends_title:0 "Making Amends"
+ B23_making_amends_desc:0 "If we are to live in this land, we must make amends with our neighbors."
+ B23_making_amends_allied_tt:0 "If allied to §YFlying Hound§!, §YGrasshopper Muncher§!, or §YEarworm§!:\n   For each, gain §G+30§! §YDiplomatic Power§! and §G+10§! §YTrust§!"
+ B23_making_amends_nonallied_tt:0 "If not allied to §YFlying Hound§!, §YGrasshopper Muncher§!, or §YEarworm§!:\n   For each, §Gbecome allies§!, §Gremove as rivals§!, and gain §G+5§! §YTrust§!"
+ B23_redemption_opinion:0 "Redemption"
+ B23_denounced_korgus_opinion:0 "Denounced Korgus"
+
+ B23_peace_and_reparations_title:0 "Peace and Reparations"
+ B23_peace_and_reparations_desc:0 "A vow of absolute defense to the wronged"
+ flavour_rotcleaver.2.i:0 "The nearby adventurers will attack our now-weakened subjects"
+
+ B23_hakhud_mission_title:0 "Hakhud"
+ B23_hakhud_mission_desc:0 "A new orcish tradition is born"
+ B23_hakhud_opinion:0 "Hakhud"
+ B23_hakhud_completed:0 "Completed Hakhud"
+
+ B23_inheritance_title:0 "Inheritance"
+ B23_inheritance_desc:0 "Every father dreams of being succeeded by their children. But this?"
+
+ B23_inheritance_too_title:0 "Inheritance, Too"
+ B23_inheritance_too_desc:0 "Etrega returns to Acenthan, challenging [Root.Monarch.GetName] to an OZarm'Chadash"
+ B23_etrega_finished_hakhud_tt:0 "§YEtrega§! has completed her §YHakhud§!"
+ B23_inheritance_too_squire_state_tt:0 "If §YFlying Hound§! is our §YMarch§!:"
+
+ B23_song_of_our_people_title:0 "The Song of Our People"
+ B23_song_of_our_people_desc:0 "The orcs have found their future, and Etrega finds herself in Acenthan alone"
+
+###Column 4
+ B23_hakhud_kabir_mission_title:0 "Hakhud Kabir"
+ B23_hakhud_kabir_mission_desc:0 "Upon his return, [Root.Monarch.GetTitle] [Root.Monarch.GetName] declares the beginning of the Great Roaming."
+ B23_hakhud_kabir_one_modifier:0 "Hakhud Kabir (I)"
+
+ B23_cutting_teeth_title:0 "Cutting Teeth"
+ B23_cutting_teeth_desc:0 "The Deadfang clan still lives, just beyond our reach. End them."
+ B23_cutting_teeth_dead_deadfang_effect_tt:0 "If §YDeadfang§! does NOT exist:"
+ B23_cutting_teeth_alive_deadfang_effect_tt:0 "If §YDeadfang§! exists:"
+
+ B23_the_sceptre_of_evil_title:0 "The Sceptre of Evil"
+ B23_the_sceptre_of_evil_desc:0 "The Order of the Iron Sceptre practices necromancy and must be destroyed"
+ B23_war_vs_evil_expansion_tt:0 "We will gain the unique §YCleave the Rot§! Casus Belli against nations with levels in §YNecromancy§!, evaluated yearly.\n"
+ B23_sceptre_of_evil_dead_tt:0 "If The §YOrder of the Iron Scepter§! or §YEsthil§! do NOT exist:"
+
+###Column 5
+ B23_led_astray_title:0 "Led Astray"
+ B23_led_astray_desc:0 "Korgus Dookanson was a false prophet, a fraud. We follow him no longer."
+ B23_led_astray:0 "Led Astray"
+ B23_led_astray_opinion_tt:0 "Every known §YGreat Dookan§! country's opinion of §Y[Root.GetName]§! changed by §R-50§!.\n§Y[Root.GetName]§!'s opinion of every known §YGreat Dookan§! country changed by §R-50§!."
+
+ B23_songs_of_a_better_future_title:0 "Songs of a Better Future"
+ B23_songs_of_a_better_future_desc:0 "Dookan is dead, and Korgus has wated our lives. It is time to find a new path"
+ B23_songs_tt:0 "Every owned province of §YOld Dookan§! religion:"
+
+ B23_something_new_title:0 "Something New"
+ B23_something_new_desc:0 "In the ashes of the old, borne through hardship, the new takes form"
+ B23_hakhud_kabir_two_modifier:0 "Hakhud Kabir (II)"
+
+ B23_errant_daughter_title:0 "Errant Daughter"
+ B23_errant_daughter_desc:0 "Zathra was not an only child. His sister wanders the land, on her own Hakhud"
+ B23_hakhud_kabir_three_modifier:0 "Hakhud Kabir (III)"
+
+###Events
+ flavour_rotcleaver.1.t:0 "Your Future, In This Land"
+ flavour_rotcleaver.1.d:0 "The warrior looks on as the children play in the field. They gleefully jump throughout the clearing, leaping from rock to rock as they chase each other around the open space. They look back to him, and he smiles. He forgets the last time he had the innocence of youth. He hopes he can protect the children from the world longer than his own father sheltered him.\n\n“Ugol,” the shaman calls from the tree line. “The scouts have come back from the front.” The warrior sighs, standing from his reverie and walking towards the shaman, his armor glinting softly in the afternoon sun.\n\n“How many?” he asks, knowing the answer will not please him.\n\n“Five, each prepared for battle.” The shaman looks concerned as she relays the report. “They haven't crossed the boundary, but they will soon. Your reputation won't protect us forever.”\n\nThe warrior scowls, setting down his axe. “We've been over this before, Zien. When the time comes, we will be ready for them.”"
+ flavour_rotcleaver.1.a:0 "“We have to be, for their sake.”"
+ B23_respected_ruler:0 "Respected Ruler"
+ B23_philosophies_of_reconciliation:0 "Philosophies of Reconciliation"
+ respected_ruler_trigger_tt:0 "As long as this modifier is active, §Y[Root.Monarch.GetTitle] [Root.Monarch.GetName]§! cannot be challenged to an §YOzarm'Chadash§!.\nThis modifier will be §Rlost§! if you make §Y[Root.Monarch.GetTitle] [Root.Monarch.GetName]§! a §YGeneral§!.\n\n"
+ philosophies_of_reconciliation_trigger_tt:0 "You will break all alliances with any §YOrc§! nations with capitals in the §YEscann§! Superregion.\nThis modifier will be §Rlost§! if you ally another §YOrc§! nation with a capital in the §YEscann§! Superregion\n"
+ B23_dookansfall_warning_tt:0 "§RWarning§!: Avoid making §Y[Root.Monarch.GetTitle] [Root.Monarch.GetName]§! a §YGeneral§!"
+ B23_uncertain_future:0 "Uncertain Future"
+ B23_uncertain_future_desc:0 "While §Y[Root.GetName]§! has this modifier, we §Rcannot reform out of Tribal§!."
+ 
+ flavour_rotcleaver.2.t:0 "Opportunists"
+ flavour_rotcleaver.2.d:0 "Adventurers suck and are declaring war on us and our little dudes"
+ flavour_rotcleaver.2.a:0 "[Root.Dip_Advisor.GetName], I think we're gonna have to kill these guys"
+ B23_opportunists_will_strike_tt:0 "\n§RExpect further opportunist strikes from the adventurers...§!\n"
+ B23_absolute_defense_of_the_wronged:0 "Absolute Defense of the Wronged"
+ B23_absolute_defense_of_the_wronged_trigger_tt:0 "This modifier will last until you are no longer at war with the §Yopportunistic adventurers§!."
+ cb_opportunists:0 "Opportunistic Reclamation of Escann"
+ cb_opportunists_desc:0 "Escann is ours for the taking!"
+ B23_opportunity_war_SoD_ptm:0 "War Against the Opportunists - §YSons of Dameria§!"
+ B23_opportunity_war_SoD_ptm_desc:0 "We must show these opportunistic adventurers that they hold no power over us. We will need §G+100.0%§! War Score against them. It will not be possible to peace out, and §Y[B07.GetName]§! will not be considered dealt with, before then! Upon gaining §G+100.0%§! War Score, we will §Gwhite peace§! any non-opportunist allies and §Gannex§! the opportunist."
+ B23_opportunity_war_RB_ptm:0 "War Against the Opportunists - §YRaven Banner§!"
+ B23_opportunity_war_RB_ptm_desc:0 "We must show these opportunistic adventurers that they hold no power over us. We will need §G+100.0%§! War Score against them. It will not be possible to peace out, and §Y[B14.GetName]§! will not be considered dealt with, before then! Upon gaining §G+100.0%§! War Score, we will §Gwhite peace§! any non-opportunist allies and §Gannex§! the opportunist."
+ B23_opportunity_war_GF_ptm:0 "War Against the Opportunists - §YGallant Friends§!"
+ B23_opportunity_war_GF_ptm_desc:0 "We must show these opportunistic adventurers that they hold no power over us. We will need §G+100.0%§! War Score against them. It will not be possible to peace out, and §Y[B08.GetName]§! will not be considered dealt with, before then! Upon gaining §G+100.0%§! War Score, we will §Gwhite peace§! any non-opportunist allies and §Gannex§! the opportunist."
+ B23_opportunists_have_struck_tt:0 "All §Yopportunistic adventurers§! have struck."
+ 
+ flavour_rotcleaver.3.t:0 "Opportunists 2"
+ flavour_rotcleaver.3.d:0 "This should be hidden! If you are seeing this and didn't just load your save, please make a bug report on the discord!"
+ flavour_rotcleaver.3.a:0 "<3"
+ flavour_rotcleaver.4.t:0 "Opportunists 3"
+ flavour_rotcleaver.4.d:0 "This should be hidden! If you are seeing this and didn't just load your save, please make a bug report on the discord!"
+ flavour_rotcleaver.4.a:0 "<3"
+
+ flavour_rotcleaver.5.t:0 "The First Lesson"
+ flavour_rotcleaver.5.d:0 "Maybe adventurers don't suck"
+ flavour_rotcleaver.5.a:0 "Ugol learns about chivalry n stuff" 
+
+ flavour_rotcleaver.6.t:0 "The First Hakhud: Year 1"
+ flavour_rotcleaver.6.d:0 "Ugol embarks, accompanied by an unusual friend - an adventurer"
+ flavour_rotcleaver.6.a:0 ""Never thought I'd be travelling side by side with an orc""
+
+ flavour_rotcleaver.7.t:0 "The First Hakhud: Year 2"
+ flavour_rotcleaver.7.d:0 "Ugol and co. travel to the Trialmount, where he learns the story of Galinda sil na Ean"
+ flavour_rotcleaver.7.a:0 "A light against decay and corruption"
+
+ flavour_rotcleaver.8.t:0 "The First Hakhud: Year 3"
+ flavour_rotcleaver.8.d:0 "Ugol and co. meet with Arosha Oakbreaker and learn her story"
+ flavour_rotcleaver.8.a:0 "Another chieftain turned against Dookanson" 
+
+ flavour_rotcleaver.9.t:0 "The First Hakhud: Year 4"
+ flavour_rotcleaver.9.d:0 "Ugol and co. wander the edge of the Deepwoods, where they meet orcs of the Cursed Howl clan, learning of the songs they sing"
+ flavour_rotcleaver.9.a:0 "A night under the canopy" 
+
+ flavour_rotcleaver.10.t:0 "The First Hakhud: Year 5"
+ flavour_rotcleaver.10.d:0 "On the way back to Acenthan, Ugol's companion is gravely injured, and reveals himself to have previously been an Adenner Knight"
+ flavour_rotcleaver.10.a:0 ""How about side by side with a friend?"" 
+ B23_guilt:0 "Guilt"
+ B23_mercenary_unlock_tt:0 "Gain access to Non-Monstrous Cannorian Mercenary Companies"
+
+ flavour_rotcleaver.11.t:0 "Orcs Depart on Hakhud!"
+ flavour_rotcleaver.11.d:0 "A group of orcs have left the clan for their Hakhud"
+ flavour_rotcleaver.11.a:0 "Wish them well" 
+
+ flavour_rotcleaver.12.t:0 "Orcs Return from Hakhud!"
+ flavour_rotcleaver.12.d:0 "Our errant orcs have returned!"
+ flavour_rotcleaver.12.a:0 "Welcome back!" 
+
+ flavour_rotcleaver.13.t:0 "Food Makes Friends"
+ flavour_rotcleaver.13.d:0 "The Hakhud comes across some adventurers and share a meal"
+ flavour_rotcleaver.13.a:0 "Recruit them" 
+ flavour_rotcleaver.13.b:0 "Join them for an adventure"
+
+ flavour_rotcleaver.14.t:0 "A Beset Caravan"
+ flavour_rotcleaver.14.d:0 "A merchant caravan is being attacked by monsters and gets saved by the Hakhud"
+ flavour_rotcleaver.14.a:0 "Refuse reward" 
+ flavour_rotcleaver.14.b:0 "Accept reward" 
+
+ flavour_rotcleaver.15.t:0 "The Apprenticeship"
+ flavour_rotcleaver.15.d:0 "Hakhud all join as apprentices of a dwarven smith in Inner Castanor"
+ flavour_rotcleaver.15.a:0 "Smith from Iron Hammers" 
+ flavour_rotcleaver.15.b:0 "Smith from Silverforge"  
+
+ flavour_rotcleaver.16.t:0 "The Dargom and the Ozdan"
+ flavour_rotcleaver.16.d:0 "A group of Ozdan raid a farm where the Hakhud rest"
+ flavour_rotcleaver.16.a:0 "Drive them off" 
+ flavour_rotcleaver.16.b:0 "Recruit them"  
+
+ flavour_rotcleaver.17.t:0 "Legacy of Corin"
+ flavour_rotcleaver.17.d:0 "Hakhud meet some Corinite Knights in South Castanor"
+ flavour_rotcleaver.17.a:0 "Spar!" 
+ flavour_rotcleaver.17.b:0 "Invite them to join"  
+
+ flavour_rotcleaver.18.t:0 "Shrine of Vortza Lesa"
+ flavour_rotcleaver.18.d:0 "The Hakhud finds a small shrine of Vortzaa Lesa at the edge of the Deepwoods. It is in total disrepair"
+ flavour_rotcleaver.18.a:0 "Repair it" 
+ flavour_rotcleaver.18.b:0 "Let the goblins know"  
+
+ flavour_rotcleaver.19.t:0 "Hakhud Attacked!"
+ flavour_rotcleaver.19.d:0 "Guards, adventurers, or even just your average man, all have reasons they may attack a roving band of orcs. Your intent is irrelevant"
+ flavour_rotcleaver.19.a:0 "Run away!" 
+ flavour_rotcleaver.19.b:0 "Defend yourself"  
+
+ flavour_rotcleaver.20.t:0 "The Oldhaven Tournament"
+ flavour_rotcleaver.20.d:0 "The Hakhud is invited to partake in a tournamnet in Oldhaven while passing through"
+ flavour_rotcleaver.20.a:0 "Partake in the Melee" 
+ flavour_rotcleaver.20.b:0 "The joust calls"  
+
+ flavour_rotcleaver.21.t:0 "Infernal Workings"
+ flavour_rotcleaver.21.d:0 "The Hakhud interrupts an infernalist raid on a small village"
+ flavour_rotcleaver.21.a:0 "Capture them and turn them over to the authorities" 
+ flavour_rotcleaver.21.b:0 "Execute them all"  
+ B23_infernal_workings_ae_tt:0 "Every §YCorinite§! or §YRegent Court§! country:"
+
+ flavour_rotcleaver.22.t:0 "The Past Always Catches Up"
+ flavour_rotcleaver.22.d:0 "The Hakhud finds an Escanni homestead ruined by the Greentide. The owner lives there still"
+ flavour_rotcleaver.22.a:0 "Rebuild it for him" 
+ flavour_rotcleaver.22.b:0 "Leave some orcs to work for him"  
+
+ flavour_rotcleaver.23.t:0 "Battlefield Scavengers"
+ flavour_rotcleaver.23.d:0 "A battlefield, days old, is crawling with ghouls. The Hakhud must decide their approach. No reward awaits them for this task"
+ flavour_rotcleaver.23.a:0 "Clear the field" 
+ flavour_rotcleaver.23.b:0 "Make a wide berth"  
+
+ flavour_rotcleaver.24.t:0 "To Be Better"
+ flavour_rotcleaver.24.d:0 "Flying Hound clanboss wants to be Ugol's squire. Flying Hound goblins ALL want to be squires."
+ flavour_rotcleaver.24.a:0 "EVERYBODY! GET IN HERE!"
+ flavour_rotcleaver.24.b:0 "There ain't enough room in this town for the both of us"
+ B23_to_be_better_squire_state_tt:0 "We will no longer gain the benefits of '§YProtecting the Vulnerable§!' from Flying Hound.\nAs long as §YFlying Hound§! is our §YMarch§!, they will §Ggain§!:"
+ B23_to_be_better_overlord_tt:0 "As long as §YFlying Hound§! is our §YMarch§!, we will §Ggain§!:"
+ B23_squire_state:0 "Squire State (I)"
+ B23_teaching_the_vulnerable:0 "Teaching the Vulnerable"
+ B23_refused_squirehood_opinion:0 "Refused Squirehood"
+ B23_refused_squirehood_modifier:0 "Refused Goblin Squirehood"
+
+ flavour_rotcleaver.25.t:0 "Inheritance"
+ flavour_rotcleaver.25.d:0 "The boy finds him standing over the last embers of the fire. Rage burns hot behind his gaze as he throws an axe at the warrior's feet. “Old man!” the boy screams as the rest of the camp stirs. “You seek to destroy us by consorting with those who want us dead! Did you think I would sit idly by while you brought us all to ruin?!”\n\nThe warrior sighs, bending slowly to seize the axe from the ground. “We cannot fight them forever, Zathra. How far will you go to see every human in these lands dead?”\n\n“As far as I must to protect my people. Do you know how many of us died while you wandered?” The boy walks to the warrior, planting a finger in his chest. “Never again will we suffer a human to live. This I swear.”\n\nThe warrior looks down at the boy as only a father could. “So it's Ozarm'chadash, then.”\n\nThe boy gravely nods. “There can be no other way.”\n\nA crowd has formed around them now, obscuring them from outside view with the bodies of their people. The girl, waking from her slumber, steps out of her tent in the treeline and sees the crowd forming. She runs, trying to push through to the sound of axes clashing. Finally, she pushes into the circle.\n\nThe warrior lies defeated, blood pouring from a wound on his head. He looks around the crowd until his eyes find the girl. He gives one last weak smile. They both know what it means.\n\nThe boy pushes the warrior onto his back, planting his boot on his chest and leaning into his face. “Am I worthy now, father? Do you finally see how my strength will guide us forward?”\n\nThe warrior looks into the boy's eyes, his strength draining fast into the dirt. “You were always worthy,” he wheezes, “for a father cannot help but love his son.”\n\nThe boy screams, pushes off the warrior's body, and swings his axe into his chest.\n\nThe tyrant stands, looking over the people of his new clan."
+ flavour_rotcleaver.25.a:0 "And the girl is nowhere to be found"
+ B23_emulant_of_korgus_tribal_tt:0 "While §Y[Root.GetName]§! has this modifier, we §Rcannot reform out of Tribal§!."
+ B23_emulant_of_korgus_tribal:0 "Emulant of the Dookanson"
+ B23_emulant_of_korgus:0 "Emulant of the Dookanson"
+
+ flavour_rotcleaver.26.t:0 "The Penultimate Ozarm'Chadash"
+ flavour_rotcleaver.26.d:0 "[Root.Monarch.GetName] challenges the ruler of Deadfang to an Ozarm'Chadash. [B29.Monarch.GetName] dishonors himself by attacking with undead. [Root.Monarch.GetName] kills them all. Afterwards, he pillages Beastgrave"
+ flavour_rotcleaver.26.a:0 "I'm ready! How about you?"
+
+ flavour_rotcleaver.27.t:0 "Her Hakhud: Year 1"
+ flavour_rotcleaver.27.d:0 "Lost, confused, Etrega retraces Ugol's footsteps in the First Hakhud to find her purpose, starting in the Trialmount"
+ flavour_rotcleaver.27.a:0 "Her shoes can never quite fill his"
+
+ flavour_rotcleaver.28.t:0 "Her Hakhud: Year 2"
+ flavour_rotcleaver.28.d:0 "A Covenbladic Knight of Farrani descent joins Etrega, traveling with her to Steelhyl, home of the Bladebreaker clan"
+ flavour_rotcleaver.28.a:0 "The first of her council"
+
+ flavour_rotcleaver.29.t:0 "Her Hakhud: Year 3"
+ flavour_rotcleaver.29.d:0 "Etrega is joined by a Bladebreaker orc, a follower of Corin, and they travel south to Pixiebury where the Heartgrinder orcs live alongside humans"
+ flavour_rotcleaver.29.a:0 "Replenishing her faith in her orcish bretheren"
+
+ flavour_rotcleaver.30.t:0 "Her Hakhud: Year 4"
+ flavour_rotcleaver.30.d:0 "Joined by a Heartgrinder merchant seeking new frontiers, Etrega's party is assaulted by a group fo adventurers seeking slaves"
+ flavour_rotcleaver.30.a:0 "Evil is all amongst us..."
+
+ flavour_rotcleaver.31.t:0 "Her Hakhud: Year 5"
+ flavour_rotcleaver.31.d:0 "Etrega returns to the edge of Rotcleaver land and witnesses the devastation wrought by [Root.Monarch.GetName]'s rule. She knows what she must do"
+ flavour_rotcleaver.31.a:0 "... It is our duty to vanquish it."
+
+ flavour_rotcleaver.32.t:0 "The Final Ozarm'Chadash"
+ flavour_rotcleaver.32.d:0 "Etrega confronts her brother, slaying him after explaining the differences between them. She wields a sword and incorporates elements of orcish and Cannorian fighting styles"
+ flavour_rotcleaver.32.a:0 "Cheers erupt upon her victory. She is silent."
+ B23_emulant_of_rotcleaver_tribal:0 "Emulant of the Rotcleaver"
+ B23_emulant_of_rotcleaver:0 "Emulant of the Rotcleaver"
+ bulgu_songs_of_the_first_knight_one:0 "Songs of the First Knight"
+ desc_bulgu_songs_of_the_first_knight_one:0 "Peace. Innocence. Patience. Wisdom. Redemption."
+ bulgu_songs_of_the_first_knight_two:0 "Songs of the First Knight"
+ desc_bulgu_songs_of_the_first_knight_two:0 "Peace. Innocence. Patience. Wisdom. Redemption.\n\nIf we have completed §Y24§! Hakhud, we will gain a General with §G100§! tradition and §G5.00% Army Professionalism§!."
+ B23_songs_of_first_knight_unlock:0 "Unlock the unique §YBulgu Orazan§! aspect §YSongs of the First Knight§!. This aspect will be upgraded at §Y8§! and §Y24§! Hakhud completed!"
+ B23_song_of_first_knight_upgrade_effect_tt:0 "If we have completed §Y24§! Hakhud:"
+ cb_B23_evil_ruler:0 "Cleave the Rot"
+ cb_B23_evil_ruler_desc:0 "Their realm and ruler have dabbled in the arts of necromancy, shackling innocent victims to enforced servitude after death. It is our duty to cleave this practice from the world, and liberate the tethered spirits to peacefully go once more to the afterlife."
+
+ flavour_rotcleaver.33.t:0 "Order of the Flying Hound"
+ flavour_rotcleaver.33.d:0 "With the clan under new management, [B43.Monarch.GetTitle] [B43.Monarch.GetName] has come to [Root.Monarch.GetName] [Root.Monarch.GetTitle] to codify their status as a Knightly Order of [Root.GetName]"
+ flavour_rotcleaver.33.a:0 "Of course. And your little dog, too!"
+ B23_squire_state_order:0 "Order of the Flying Hound"
+ B23_squire_state_order_ADJ: "Order of the Flying Hound"
+ B23_squire_state_two:0 "Squire State (II)"
+
+ flavour_rotcleaver.34.t:0 "Stewardship of the Blade"
+ flavour_rotcleaver.34.d:0 "Arriving in Bladeskeep, the two are approached by Blade Stewards who bear §O(Calindal, the Gleaming Blade)§!. [Root.Monarch.GetName] averts [Root.Monarch.GetHerHis] eyes and Sofina takes it, being accepted by it. She then swears an oath of fealty to [Root.Monarch.GetName] on the spot"
+ flavour_rotcleaver.34.a:0 "Accept her oath"
+ flavour_rotcleaver.34.b:0 "Refuse it"
+ B23_friends_with_stewards:0 "Friends with Stewards"
+ B23_blademarches_squire_state_tt:0 "As long as §YBlademarches§! is our §YMarch§!, they will §Ggain§!:"
+
+ flavour_rotcleaver.35.t:0 "The End of the Hakhud Kabir"
+ flavour_rotcleaver.35.d:0 "Etrega declares the end of the Great Roaming as orcish warriors begin to return to Rotcleaver lands. She also announces her abdication, and the establishment of a new government: The Ugolan Order, in emulation of the Knightly Orders that used to make this land their Home"
+ flavour_rotcleaver.35.a:0 "There is not a dry eye in the crowd."
+ B23_orcish_ridars:0 "Orcish Ridars"
+ B23_learnings_of_the_hakhud:0 "Learnings of the Hakhud"
+ B23_learnings_of_the_hakhud_desc:0 "Our people have travelled far and wide and learned much of other cultures."
+
+ B23_hakhud_decision_unlock:0 "The §YHakhud§! Decision has been §Gunlocked§!, allowing [Root.GetName] to send orcs out to embark on a §YHakhud§!"
+ B23_hakhud_decision_title:0 "Embark on Hakhud"
+ B23_hakhud_decision_desc:0 "Send a group of orcs out on a Hakhud, a journey beyond the clan’s hearth to cleanse the lands their ancestors had despoiled and learn from both the old knightly orders and new adventuring bands to take the first steps towards reconciliation."
+ B23_recent_hakhud:0 "Recent Hakhud"
+ B23_recent_hakhud_desc:0 "We have recently embarked on a Hakhud, and will not be able to go on another until this modifier expires"
+ flavour_rotcleaver.110.t:0 "Hakhud Handler"
+ flavour_rotcleaver.110.d:0 "This should be hidden! If you are seeing this and didn't just load your save, please make a bug report on the discord!"
+ flavour_rotcleaver.110.a:0 "<3"
+###Flavour

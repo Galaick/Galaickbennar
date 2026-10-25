@@ -1,0 +1,101 @@
+#### Diplomacy File for Forbidden Plains ####
+#	alliance = {
+#		first = X       					# One side of the alliance - The "Giver" or "Overlord" depending the type
+#		second = X     						# The other side of the alliance - The "Receiver" or "Subject" depending the type
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# Types: alliance - royal_marriage - vassal - march
+	# dependency as seen bellow can also be used but requires the addition of "subject_type"
+
+#	dependency = { 
+#		subject_type = tributary_state_anb	# The type of subject for the relationship
+#		first = X      						# The overlord, if the relation is a overlord-subject relation
+#		second = X    						# The subject, if the relation is a overlord-subject relation
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# NOTE: "vassal" and "march" type relations are created in the same way as alliances
+
+
+#### Humans ####
+
+vassal = {
+	first = J10
+	second = J11
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#### Centaurs ####
+
+#Wild Hunt Vassals
+vassal = {
+	first = I78
+	second = I74
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = I78
+	second = I72
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+dependency = {
+	subject_type = tributary_state_anb
+	first = V10
+	second = I54
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+
+#### Ogres ####
+
+vassal = {
+	first = I90
+	second = J35
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = I90
+	second = J36
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = I90
+	second = J37
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+dependency = {
+	subject_type = tributary_state_anb
+	first = I90
+	second = J38
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+dependency = {
+	subject_type = tributary_state_anb
+	first = I90
+	second = J39
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+dependency = {
+	subject_type = tributary_state_anb
+	first = I90
+	second = J40
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}

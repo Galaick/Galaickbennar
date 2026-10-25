@@ -1,0 +1,114 @@
+issue_sponsor_excavations = {
+	trade_goods_size_modifier = 0.25
+}
+
+issue_help_from_chronicles = {
+	institution_growth = 0.5
+}
+
+issue_tea_act = {
+	trade_goods_size_modifier = 0.25
+}
+
+gov_moon_elf_slot = {
+	num_accepted_cultures = 1
+}
+
+gov_moon_elf_tolerance = {
+	local_culture_conversion_cost = 100
+}
+
+gov_moon_elven_religion_tolerance = {
+	local_religious_unity_contribution = -10
+	local_missionary_strength = -1
+}
+
+gov_ties_with_anbennarian_I = {
+	num_accepted_cultures = 1
+}
+
+gov_ties_with_anbennarian_II = {
+	num_accepted_cultures = 2
+}
+
+gov_ties_with_anbennarian_III = {
+	num_accepted_cultures = 3
+}
+
+gov_ties_with_anbennarian_IV = {
+	num_accepted_cultures = 4
+}
+
+gov_empire_heretic = {
+	local_missionary_maintenance_cost = 1
+    local_tax_modifier = -0.25
+	local_production_efficiency = -0.25
+	local_manpower_modifier = -0.25
+	local_unrest = 2
+}
+
+gov_vg_efficiency = {
+	local_production_efficiency = 0.2
+	local_unrest = 1
+}
+
+gov_plateau_bonus = {
+	trade_goods_size_modifier = 0.4
+}
+
+gov_plateau_malus = {
+	trade_goods_size_modifier = -0.4
+}
+
+gov_mage_tower_mana_capacity = {
+	mages_mana_capacity = 2
+}
+
+gov_mage_tower_mana_channeling_0 = {
+}
+
+gov_mage_tower_mana_channeling_I = {
+	mages_mana_regen = 0.05
+}
+
+gov_mage_tower_mana_channeling_II = {
+	mages_mana_regen = 0.1
+}
+
+gov_mage_tower_mana_channeling_III = {
+	mages_mana_regen = 0.15
+}
+
+gov_mage_tower_mana_channeling_IV = {
+	mages_mana_regen = 0.20
+}
+
+gov_mage_tower_mana_channeling_V = {
+	mages_mana_regen = 0.25
+}
+
+gov_paragons_of_reverence = {
+	local_development_cost = -0.2
+	trade_value = 0.25
+}
+
+gov_reform_elven_forebears_mod = {
+	tolerance_own = 2
+	institution_spread_from_true_faith = 0.2
+	mages_monthly_experience = 1
+}
+
+magocracy_scholar_heir = {
+	mages_estate_experience_mod = 0.15
+}
+magocracy_knight_heir = {
+	army_tradition_decay = -0.01
+}
+
+feeding_the_flame_local_cult_buff = {
+	local_regiment_cost = -0.15
+}
+
+sociocultural_synthesis_local_heathen_buff = {
+	local_tolerance_of_heathens = 1
+}

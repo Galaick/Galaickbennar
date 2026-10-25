@@ -1,0 +1,54 @@
+
+setup_vision_south_aelantir = yes
+government = tribal
+add_government_reform = tribal_despotism
+government_rank = 1
+mercantilism = 5
+primary_culture = quchamar
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2392
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+1426.1.1 = {
+	monarch = { #Dynasty name means "Light of Thunder". high regnal number implies kings take on the name Udraco. This guy can be the guy who tries to take over Cara Lafquen in 1458
+		name = "Údraco X"
+		dynasty = "Dalcamléun"
+		birth_date = 1411.1.1
+		adm = 2
+		dip = 0
+		mil = 6
+	}
+	add_ruler_personality = bold_fighter_personality
+	add_ruler_personality = conqueror_personality
+	add_ruler_personality = naive_personality
+}
+
+1430.1.1 = {
+	queen = {
+		name = "Tanáwey"
+		dynasty = "Chúqcha"
+		birth_date = 1412.1.1
+		death_date = 1450.1.1
+		adm = 3
+		dip = 3
+		mil = 4
+		female = yes
+	}
+	add_queen_personality = drunkard_personality
+}
+
+1433.1.1 = {
+	heir = { #Takes over after his dad dies
+		name = "Údraco"
+		dynasty = "Dalcamléun"
+		birth_date = 1433.1.1
+		death_date = 1450.1.1
+		adm = 3
+		dip = 3
+		mil = 4
+		claim = 100
+	}
+	add_heir_personality = careful_personality
+}

@@ -1,0 +1,53 @@
+
+setup_vision_north_aelantir = yes
+government = native
+add_government_reform = native_hereditary_reform
+add_government_reform = native_land_tradition_reform
+add_government_reform = native_settle_down_reform
+government_rank = 1
+primary_culture = chiunife
+religion = great_tceusluhd
+technology_group = tech_harafic
+capital = 3305
+
+add_accepted_culture = epednar
+add_historical_friend = U85
+
+1000.1.1 = {
+	kehtauk_area = {
+		discover_country = ROOT
+	}
+	paihubi_area = {
+		discover_country = ROOT
+	}
+	wohya_area = {
+		discover_country = ROOT
+	}
+	# Resets prestige from being the first in the tech group to discover a province
+	add_prestige = -200
+	add_prestige = 100
+}
+
+1430.1.11 = {
+	monarch = {
+		name = "Oloris"
+		dynasty = "Windarrow"
+		birth_date = 1400.11.4
+		culture = chiunife
+		adm = 4
+		dip = 5
+		mil = 2
+	}
+	add_ruler_personality = reformist_personality
+	add_ruler_personality = free_thinker_personality
+	add_ruler_personality = craven_personality
+
+	add_country_modifier = {
+		name = shifter_sub_type_werecoyote
+		duration = -1
+	}
+	add_ruler_modifier = { 
+		name = ruler_is_werecoyote_shifter
+		duration = -1  
+	}
+}

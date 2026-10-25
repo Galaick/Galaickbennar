@@ -1,0 +1,397 @@
+#Country Name: Please see filename.
+
+graphical_culture = westerngfx
+
+color = { 231  231  231 }
+
+random_nation_chance = 0
+
+historical_idea_groups = {
+	trade_ideas
+	mercenary_ideas
+	economic_ideas
+	offensive_ideas
+	innovativeness_ideas
+	maritime_ideas
+	infrastructure_ideas
+	plutocracy_ideas
+}
+
+historical_units = {
+	cannorian_1_medieval_infantry
+	cannorian_1_medieval_knights
+	cannorian_5_men_at_arms
+	cannorian_9_adventurer_band
+	cannorian_10_gun_knights
+	cannorian_12_thorn_formation
+	cannorian_14_outriders
+	cannorian_15_volley_infantry
+	cannorian_18_reformed_outriders
+	cannorian_19_thorn_formation2
+	cannorian_23_dragoons
+	cannorian_23_line_infantry
+	cannorian_26_carabiners
+	cannorian_26_dragoncoat_infantry
+	cannorian_28_impulse_infantry
+	cannorian_28_cuirassier
+	cannorian_30_sparkdrive_irregulars
+}
+
+monarch_names = {
+
+	#Generic Anbennarian Name List
+	"Adelar #0" = 50
+	"Ademar #0" = 50
+	"Adran #0" = 50
+	"Adrian #0" = 50
+	"Adrien #0" = 50
+	"Alain #0" = 50
+	"Alec #0" = 50
+	"Albert #0" = 50
+	"Aldred #0" = 50
+	"Alfons #0" = 50
+	"Alfred #0" = 50
+	"Alos #0" = 50
+	"Alvar #0" = 50
+	"Andrel #0" = 50
+	"Ardan #0" = 50
+	"Ardor #0" = 50
+	"Aril #0" = 50
+	"Arman #0" = 50
+	"Artorian #0" = 50
+	"Artur #0" = 50
+	"Aucan #0" = 50
+	"Austyn #0" = 50
+	"Avery #0" = 50
+	"Awen #0" = 50
+	"Borian #0" = 50
+	"Brandon #0" = 50
+	"Brayan #0" = 50
+	"Brayden #0" = 50
+	"Calas #0" = 50
+	"Caylen #0" = 50
+	"Castén #0" = 50
+	"Castín #0" = 50
+	"Cecill #0" = 50
+	"Corin #0" = 50
+	"Cristof #0" = 50
+	"Daran #0" = 50
+	"Darran #0" = 50
+	"Davan #0" = 50
+	"Denar #0" = 50
+	"Dominic #0" = 50
+	"Dustin #0" = 50
+	"Edmund #0" = 50
+	"Elran #0" = 50
+	"Emil #0" = 50
+	"Erel #0" = 50
+	"Eren #0" = 50
+	"Erlan #0" = 50
+	"Evin #0" = 50
+	"Frederic #0" = 50
+	"Galin #0" = 50
+	"Gelman #0" = 50
+	"Kalas #0" = 50
+	"Laurens #0" = 50
+	"Lucian #0" = 50
+	 
+	"Marion #0" = 50
+	"Maurise #0" = 50
+	"Nara #0" = 50
+	"Olor #0" = 50
+	"Otó #0" = 50
+	"Reán #0" = 50
+	"Riannón #0" = 50
+	"Ricain #0" = 50
+	"Rión #0" = 50
+	"Robin #0" = 50
+	"Rogier #0" = 50
+	"Sandur #0" = 50
+	"Taelar #0" = 50
+	"Teagan #0" = 50
+	"Thal #0" = 50
+	"Thiren #0" = 50
+	"Tomás #0" = 50
+	"Trian #0" = 50
+	"Tristan #0" = 50
+	"Trystan #0" = 50
+	"Valen #0" = 50
+	"Valeran #0" = 50
+	"Varian #0" = 50
+	"Varil #0" = 50
+	"Varilor #0" = 50
+	"Varion #0" = 50
+	"Vernell #0" = 50
+	"Vincen #0" = 50
+	"Willam #0" = 50
+	
+	"Adeline #0" = -50
+	"Adra #0" = -50
+	"Alara #0" = -50
+	"Aldresia #0" = -50
+	"Alina #0" = -50
+	"Alisanne #0" = -50
+	"Amarien #0" = -50
+	"Amina #0" = -50
+	"Arabella #0" = -50
+	"Aria #0" = -50
+	"Athana #0" = -50
+	"Adela #0" = -50
+	"Aucanna #0" = -50
+	"Bella #0" = -50
+	"Calassa #0" = -50
+	"Casténnia #0" = -50
+	"Castína #0" = -50
+	"Cecille #0" = -50
+	"Cela #0" = -50
+	"Celadora #0" = -50
+	"Clarimonde #0" = -50
+	"Constance #0" = -50
+	"Cora #0" = -50
+	"Coraline #0" = -50
+	"Corina #0" = -50
+	"Corin #0" = -50
+	"Eilís #0" = -50
+	"Eilísabet #0" = -50
+	"Eléanore #0" = -50
+	"Emilíe #0" = -50
+	"Erela #0" = -50
+	"Erella #0" = -50
+	"Galina #0" = -50
+	"Galinda #0" = -50
+	"Giséle #0" = -50
+	"Isabel #0" = -50
+	"Isabella #0" = -50
+	"Isobel #0" = -50
+	"Cela #0" = -50
+	"Laurenne #0" = -50
+	"Lianne #0" = -50
+	"Madaléin #0" = -50
+	"Margery #0" = -50
+	"Maria #0" = -50
+	"Mariana #0" = -50
+	"Marianna #0" = -50
+	"Marianne #0" = -50
+	"Marien #0" = -50
+	"Marina #0" = -50
+	"Reánna #0" = -50
+	"Sofia #0" = -50
+	"Sofie #0" = -50
+	"Sybille #0" = -50
+	"Thalia #0" = -50
+	"Valence #0" = -50
+	"Varina #0" = -50
+	"Varinna #0" = -50
+	"Willamina #0" = -50
+	"Lisolette #0" = -50
+
+
+	#Generic Taychendi Names
+	"Adrajiv #0" = 50
+	"Aldam #0" = 50
+	"Aldatam #0" = 50
+	"Alvaratam #0" = 50
+	"Andrellatam #0" = 50
+	"Aranrudu #0" = 50
+	"Ardpan #0" = 50
+	"Ardpanatam #0" = 50
+	"Artoratam #0" = 50
+	"Calindash #1" = 50
+	"Camna #0" = 50
+	"Camnatam #0" = 50
+	"Camnata #0" = 50
+	"Daranaysh #0" = 50
+	"Daratam #0" = 50
+	"Denariatam #0" = 50
+	"Dorenpan #0" = 50
+	"Ebenatam #0" = 50
+	"Eboratam #0" = 50
+	"Elatam #0" = 50
+	"Eletam #0" = 50
+	"Elranpan #0" = 50
+	"Elratam #0" = 50
+	"Erankar #1" = 50
+	"Erlankar #0" = 50
+	"Ervan #0" = 50
+	"Ervanpan #0" = 50
+	"Evindash #0" = 50
+	"Filinar #0" = 50
+	"Finoratam #0" = 50
+	"Galinpan #0" = 50
+	"Gelekom #0" = 50
+	"Gelmonshok #0" = 50
+	"Jahlor #0" = 50
+	"Jahloratam #0" = 50
+	"Jalinpan #0" = 50
+	"Jalinta #0" = 50
+	"Munatam #0" = 50
+	"Oloram #0" = 50
+	"Pelopan #0" = 50
+	"Seronpan #0" = 50
+	"Seronpar #0" = 50
+	"Seronraha #0" = 50
+	"Taila #0" = 50
+	"Tailarudu #0" = 50
+	"Tailatam #0" = 50
+	"Teshalashpan #0" = 50
+	"Teshalropan #0" = 50
+	"Tesharopan #0" = 50
+	"Tesheladar #0" = 50
+	"Teshelapan #0" = 50
+	"Thalsury #0" = 50
+	"Thanel #0" = 50
+	"Thelriatam #0" = 50
+	"Thirendep #0" = 50
+	"Thirenshok #0" = 50
+	"Thretrudu #0" = 50
+	"Triandeep #0" = 50
+	"Ultatam #0" = 50
+	"Uratam #0" = 50
+	"Varam #0" = 50
+	"Varamep #0" = 50
+	"Varamesh #0" = 50
+	"Varamta #0" = 50
+	"Varanarma #0" = 50
+	"Varelrudu #0" = 50
+	"Vatesheran #0" = 50
+	"Vindar #0" = 50
+	"Erelash #0" = 50
+	"Erenpan #0" = 50
+	
+	"Aladevi #0" = -50
+	"Alanarha #0" = -50
+	"Alariata #0" = -50
+	"Alerchana #0" = -50
+	"Amarchana #0" = -50
+	"Ariajali #0" = -50
+	"Arichana #0" = -50
+	"Calsithara #0" = -50
+	"Camdana #0" = -50
+	"Celapana #0" = -50
+	"Deveni #0" = -50
+	"Eburiata #0" = -50
+	"Elariata #0" = -50
+	"Elechana #0" = -50
+	"Erlanarha #0" = -50
+	"Eruna #0" = -50
+	"Filinardana #0" = -50
+	"Galiarha #0" = -50
+	"Imatama #0" = -50
+	"Isehris #0" = -50
+	"Iserdana #0" = -50
+	"Iserha #0" = -50
+	"Istralania #0" = -50
+	"Ivranarha #0" = -50
+	"Ivranarhi #0" = -50
+	"Jexihila #0" = -50
+	"Ladrarha #0" = -50
+	"Lanahari #0" = -50
+	"Lanodana #0" = -50
+	"Leliatha #0" = -50
+	"Leslarha #0" = -50
+	"Liandarha #0" = -50
+	"Merialeth #0" = -50
+	"Mihtratama #0" = -50
+	"Narathya #0" = -50
+	"Nathachana #0" = -50
+	"Selusitha #0" = -50
+	"Seronchana #0" = -50
+	"Shariata #0" = -50
+	"Sharinarha #0" = -50
+	"Sheranu #0" = -50
+	"Shiadevi #0" = -50
+	"Taneliata #0" = -50
+	"Thaliarha #0" = -50
+	"Valahila #0" = -50
+	"Varilama #0" = -50
+	"Varilata #0" = -50
+	"Varindana #0" = -50
+	"Veharata #0" = -50
+	"Vehari #0" = -50
+	"Vesiandra #0" = -50
+	"Zaleriata #0" = -50
+}
+
+leader_names = {
+	#Country Specific
+	"of Kalavend"
+	"of Yodhanchend"
+	"of Thektoram"
+	"of Urvand"
+	"of Port Orenkoraim"
+	"of Nagar Vyechi"
+	"of Minkorai"
+	
+	#Country Neighbours
+	Velama
+	Reddy
+	Gona 
+	Rai
+	Gannaiah
+	Roy
+	Ambadeva
+	Pandava
+	Racha
+	Suryavamsa
+	
+	#Geographic Neighbours
+	"of Cannor" "of the the Dry Coast" "of the Effelai" "of the Severed Coast" "of Theinos" "of Turtleback" "of the Isles"
+	
+	#Generic Anbennarian/Elvenized
+	Auern Rósarn Fwinern Esmarn Jercostarn Redcoaster Hylern Hylman Leonarn Liatharn Dostan Grey Sfern Pearler Alen Aranern Aistern Adenern Eánarn Bladern Castanern Vrorenern Damern Reigharn Bulwarn Khetarn Lunarn Akasirn Caorarn Rever Arbern Pírandern Airge Silsuinairge Anben Báisdaerh Cestirn Dhíarn Dhenern Silvarn Fwinern Duchaelarn Pírduchaelern Séthírn Magairn Párnern Verenvítern Tenachern Dortem Trínvítern Ciobisern Ciobiscúniacern Cúwern Trédárn Crécócarn Cócarn Cúbaírn Thanasern Bocharn Aíthrn Ýrthavítrn Célodir Gwalvítl Annceí Deabílanneí Cuísern Mathúisern Hirn Cínndiheí Niodágern Avusrael Laoch Gaóhern Bochoch Tenachvítarn Suíréach Cófravítrn Mérgirn Grùdídhern Avusíllern Fílívítarn Cígalern Dathaí Iascirn Eúnech Flárnarn Riéntenachirn Dáineí Pígu Adarvítí Mielvítí Melefvítí Orgórn Afesgórn Eresgórn Airgegórn Eumhígórn Bíanoch Gàrd Altírí Pítse Seina Fíhl Adachí Seíththorimí Cístern Sílreianí Gal Teder Liath Deir Var Jer Cam Iruan Pash Bron Vulsin Aríth Badhál Díhr Búel Cúw Agnel Geária Oulhá Stamh
+	Rogpid Bradá Breác Eúne Melilar Bhac Derdíl Fabhn Finúch Crodach Bogeán Véirse Liubán Óbehr Sábal Ritach Bíobar Colúm Lánchs "sina Arademele" "sina Minarsdemele" "sina Damesdemele" "sina Necropolis" "sina Adensdemele" "sina Balgarstenach" "sina Fiarndemele" "sina Gráidemele" "of Builderstemple"
+}
+
+ship_names = {
+	#Generic Cannorian
+	Adamant Advantage Adventure Advice Answer Ardent Armada Arrogant Assistance Association Assurance Atlas Audacious 
+	Bear Beaver "Black Galley" "Black Pinnace" "Black Prince" "Black Blood"
+	Captain Centurion Coronation Courage Crocodile Crown
+	Daisy Defence Defiance Devastation Diamond Director Dolphin Dragon Drake Dreadnaught Duke Duchess
+	Eagle Elephant Excellent Exchange Expedition Experiment
+	Falcon Fame Favourite Fellowship Fleetwood Flight Flirt Formidable Forrester Fortitude Fortune
+	Gillyflower Globe "Golden Horse" "Golden Lion" "Golden Phoenix" Goliath Goodgrace Governor "Grand Mistress" "Great Bark" "Great Charity" "Great Galley" "Great Gift"  "Great Pinnace" "Great Zebra" "Green Dragon" Greyhound Griffin Guide
+	"Half Moon" Hare Harpy Hawke Hazardous Heart Hero Hope "Hope Bark" "Hopeful Adventure" Humble Hunter
+	Illustrious Impregnable Increase Indefatigable Inflexible Intrepid Invincible
+	Lively Lizard Lion
+	Magnanime Magnificent Majestic Makeshift Medusa Minotaur Moderate Monarch Moon Moor
+	"New Bark" "New Moon"
+	Ocean 
+	Pansy Panther Parrot Porcupine Powerful President Prince "Prince Consort" "Prince Royal"
+	Redoubtable Reformation Regent Renown Repulse Research Reserve Resistance Resolution Restoration Revenge 
+	Salamander Sandwich Sapphire Satisfaction Seahorse Search Sheerness Speaker Speedwell Sphinx Splendid Sprite Stag Standard Stately Success Sunlight Sunbeam Superb Swan Sweepstake Swift Swiftsure
+	Terrible Terror Thunderer Tiger Tremendous Trident Trinity Triumph Trusty
+	Unicorn Union Unity
+	Valiant Vanguard Venerable Vestal Veteran Victor Vindictive Virtue Violet
+	Warrior Warspite
+	"Young Prince"
+	Zealous
+
+	Survey Surveillance Cow Ox Bird Hawk Sovereign Emperor Count Lord Baron
+
+	Knight Paladin Dragonslayer Cleric Rogue Fighter Ranger Sorcerer Wizard Warlock Monk Druid
+	Strength Dexterity Constitution Intelligence Wisdom Charisma
+	
+	#Elven
+	Lunetéin Agraseina 
+	
+	#Regent Court Deities
+	Castellos Dame "The Dame" Halanna Ysh Yshtralania Agrados Adean Esmaryal Ryala Edronias Falah Nerat Ara Minara Munas Moonsinger Nathalyne Begga Corin Balgar
+	Uelos Draxos Aesanna
+
+	#Generic Taychendi
+	Rakshasa Naga Rahu
+	Hidimba Rajahmundry Masulipatnam Vizianagaram
+	Rachakonda Devarakonda Warangal Kataya
+	Kumar Anantavarman Konark Lakshmi
+	Godavari Bishnupriya Paradeep Parvati
+	Krishnapriya Radha Sarasvati Satapada
+}
+
+army_names = {
+	"United Company Army" "Army of $PROVINCE$" "Taychendi Company Army" "Cannorian Expeditionary Army" "Taychendi Field Army" "Company Reserve"
+}
+
+fleet_names = {
+	"United Company Fleet" "Taychendi Company Fleet" "Company Trade Fleet" "Company Convoy" "Merchant Escort Squadron" "Taychendi Patrol Fleet"
+}

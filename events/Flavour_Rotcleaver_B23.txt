@@ -1,0 +1,1461 @@
+namespace = flavour_rotcleaver
+
+###Missions
+country_event = { #Opportunists
+	id = flavour_rotcleaver.2
+	title = flavour_rotcleaver.2.t
+	desc = flavour_rotcleaver.2.d
+	picture = BORDER_TENSION_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.2.a"
+		B07 = { #Sons of Dameria
+			declare_war_with_cb = {
+				casus_belli = cb_opportunists
+				who = ROOT
+			}
+		}
+		B46 = { #Grasshopper Muncher
+			join_all_defensive_wars_of = ROOT
+		}
+		custom_tooltip = B23_opportunity_war_SoD_ptm_desc
+		custom_tooltip = B23_opportunists_will_strike_tt
+		add_country_modifier = { #+10% Morale of Armies
+			name = B23_absolute_defense_of_the_wronged
+			duration = -1
+		}
+		custom_tooltip = B23_absolute_defense_of_the_wronged_trigger_tt
+		hidden_effect = {
+			country_event = { #Raven Banner Strikes Flying Hound
+				id = flavour_rotcleaver.3
+				days = 90
+			}
+			country_event = { #Gallant Friends Strikes Earworm
+				id = flavour_rotcleaver.4
+				days = 180
+			}
+			if = {
+				limit = { ai = no }
+				capital_scope = {
+					add_province_triggered_modifier = B23_opportunity_war_SoD_ptm
+				}
+			}
+			set_country_flag = B23_opportunists_have_struck
+		}
+	}
+
+	after = { #Stop Offensive Fed
+		hidden_effect = {
+			every_war_enemy_country = {
+				limit = {
+					NOT = {
+						tag = B08
+						tag = B14
+						tag = B07
+					}
+					is_in_war = {
+						attacker_leader = B07
+						defender_leader = ROOT
+						casus_belli = cb_opportunists
+					}
+				}
+				white_peace = ROOT
+			}
+		}
+	}
+}
+
+country_event = { #Raven Banner??? Strikes Flying Hound (wtf this comment was so wrong before)
+	id = flavour_rotcleaver.3
+	title = flavour_rotcleaver.3.t
+	desc = flavour_rotcleaver.3.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = "flavour_rotcleaver.3.a"
+		B14 = { #Raven Banner
+			declare_war_with_cb = {
+				casus_belli = cb_opportunists
+				who = ROOT
+			}
+		}
+		B43 = { #Flying Hound
+			join_all_defensive_wars_of = ROOT
+		}
+		custom_tooltip = B23_opportunity_war_RB_ptm_desc
+		hidden_effect = {
+			if = {
+				limit = { ai = no }
+				capital_scope = {
+					add_province_triggered_modifier = B23_opportunity_war_RB_ptm
+				}
+			}
+		}
+	}
+
+	after = { #Stop Offensive Fed
+		hidden_effect = {
+			every_war_enemy_country = {
+				limit = {
+					NOT = {
+						tag = B08
+						tag = B14
+						tag = B07
+					}
+					is_in_war = {
+						attacker_leader = B14
+						defender_leader = ROOT
+						casus_belli = cb_opportunists
+					}
+				}
+				white_peace = ROOT
+			}
+		}
+	}
+}
+
+country_event = { #Gallant Friends Strike Earworm
+	id = flavour_rotcleaver.4
+	title = flavour_rotcleaver.4.t
+	desc = flavour_rotcleaver.4.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = "flavour_rotcleaver.4.a"
+		B08 = { #Gallant Friends
+			declare_war_with_cb = {
+				casus_belli = cb_opportunists
+				who = ROOT
+			}
+		}
+		B41 = { #Earworm
+			join_all_defensive_wars_of = ROOT
+		}
+		custom_tooltip = B23_opportunity_war_GF_ptm_desc
+		hidden_effect = {
+			if = {
+				limit = { ai = no }
+				capital_scope = {
+					add_province_triggered_modifier = B23_opportunity_war_GF_ptm
+				}
+			}
+			set_country_flag = B23_all_opportunists_done
+		}
+	}
+
+	after = { #Stop Offensive Fed
+		hidden_effect = {
+			every_war_enemy_country = {
+				limit = {
+					NOT = {
+						tag = B08
+						tag = B14
+						tag = B07
+					}
+					is_in_war = {
+						attacker_leader = B08
+						defender_leader = ROOT
+						casus_belli = cb_opportunists
+					}
+				}
+				white_peace = ROOT
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavour_rotcleaver.5
+	title = flavour_rotcleaver.5.t
+	desc = flavour_rotcleaver.5.d
+	picture = HORDE_ON_HORSEBACK_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.5.a"
+		define_advisor = {
+			type = commandant
+			skill = 2
+			culture = east_damerian
+			religion = regent_court
+			discount = yes
+		}
+	}
+}
+
+country_event = { #To Be Better
+	id = flavour_rotcleaver.24
+	title = flavour_rotcleaver.24.t
+	desc = flavour_rotcleaver.24.d
+	picture = HORDE_ON_HORSEBACK_eventPicture
+	is_triggered_only = yes
+
+	option = { #Sure
+		name = "flavour_rotcleaver.24.a"
+		inherit = B46 #Grasshopper Muncher
+		inherit = B41 #Earworm
+		add_historical_friend_mutual = { tag = B43 } #Flying Hound
+		create_march = B43
+		B43 = {
+			hidden_effect = {
+				start_demonsterization_effect = yes #Early Demonsterization
+			}
+			custom_tooltip = ce_pen_and_axe.tt #Stealing from Clouded Eye
+		}
+		custom_tooltip = B23_to_be_better_squire_state_tt
+		tooltip = {
+			B43 = {
+				add_country_modifier = {
+					name = B23_squire_state
+					duration = -1
+				}
+			}
+		}
+		custom_tooltip = B23_to_be_better_overlord_tt
+		tooltip = {
+			add_country_modifier = {
+				name = B23_teaching_the_vulnerable
+				duration = -1
+			}
+		}
+		set_country_flag = B23_accepted_squire
+	}
+
+	option = { #Uh, no
+		name = "flavour_rotcleaver.24.b"
+		B43 = {
+			add_opinion = {
+				who = ROOT
+				modifier = B23_refused_squirehood_opinion
+				years = 50
+			}
+			add_liberty_desire = 50
+		}
+		add_country_modifier = {
+			name = B23_refused_squirehood_modifier
+			duration = 9125
+		}
+	}
+}
+
+country_event = { #Inheritance
+	id = flavour_rotcleaver.25
+	title = flavour_rotcleaver.25.t
+	desc = flavour_rotcleaver.25.d
+	picture = REVOLT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.25.a"
+		kill_ruler = yes
+		define_ruler = {
+			name = "Zathra"
+			culture = green_orc
+			religion = great_dookan
+			dynasty = "Rotcleaver"
+			age = 17
+			adm = 2
+			dip = 2
+			mil = 6
+			male = yes
+			leader = {
+				fire = 0
+				shock = 6
+				manuever = 3
+				siege = 3
+			}
+		}
+		add_ruler_personality = strict_personality
+		add_ruler_personality = cruel_personality
+		if = {
+			limit = { is_tribal = yes }
+			add_ruler_modifier = {
+				name = B23_emulant_of_korgus_tribal
+				duration = -1
+			}
+		}
+		else = {
+			add_ruler_modifier = {
+				name = B23_emulant_of_korgus
+				duration = -1
+			}
+		}
+		oudeben_area = {
+			add_permanent_claim = ROOT
+		}
+		vernham_area = {
+			add_permanent_claim = ROOT
+		}
+		dostans_way_area = {
+			add_permanent_claim = ROOT
+		}
+		clovenwood_area = {
+			add_permanent_claim = ROOT
+		}
+		banesfork_area = {
+			add_permanent_claim = ROOT
+		}
+		beastgrave_area = {
+			add_permanent_claim = ROOT
+		}
+		blademarch_area = {
+			add_permanent_claim = ROOT
+		}
+		795 = {
+			kill_units = {
+				who = ROOT
+				type = infantry
+				amount = 5
+			}
+		}
+	}
+
+	after = { 
+		country_event = { 
+			id = monstrous.113 
+		} 
+	} #Backwards Ruler
+}
+
+country_event = {
+	id = flavour_rotcleaver.26
+	title = flavour_rotcleaver.26.t
+	desc = flavour_rotcleaver.26.d
+	picture = CIVIL_WAR_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.26.a"
+		B29 = {
+			kill_ruler = yes
+		}
+		if = {
+			limit = {
+				B29 = { NOT = { total_development = 200 } }
+			}
+			inherit = B29
+		}
+		812 = {
+			add_base_tax = -3
+			add_base_production = -3
+			add_base_manpower = -3
+			add_devastation = 100
+		}
+		795 = {
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1					
+		}
+		add_power_projection_mission = { amount = 10 }
+	}
+}
+
+country_event = { #The Final Ozarm'Chadash
+	id = flavour_rotcleaver.32
+	title = flavour_rotcleaver.32.t
+	desc = flavour_rotcleaver.32.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.32.a"
+		kill_ruler = yes
+		define_ruler = {
+			name = "Etrega"
+			dynasty = "Rotcleaver"
+			culture = green_orc
+			religion = bulgu_orazan
+			age = 24
+			adm = 4
+			dip = 3
+			mil = 5
+			female = yes
+			leader = {
+				fire = 1
+				shock = 5
+				manuever = 4
+				siege = 4
+			}
+		}
+		add_ruler_personality = just_personality
+		add_ruler_personality = benevolent_personality
+		if = {
+			limit = { is_tribal = yes }
+			add_ruler_modifier = {
+				name = B23_emulant_of_rotcleaver_tribal
+				duration = -1
+			}
+		}
+		else = {
+			add_ruler_modifier = {
+				name = B23_emulant_of_rotcleaver
+				duration = -1
+			}
+		}
+		if = {
+			limit = { exists = B20 } #Order of Iron Scepter
+			add_casus_belli = {
+				target = B20
+				type = cb_B23_evil_ruler
+				months = 6000
+			}
+		}
+		else_if = {
+			limit = { exists = B54 } #Esthil
+			add_casus_belli = {
+				target = B54
+				type = cb_B23_evil_ruler
+				months = 6000
+			}
+		}
+		custom_tooltip = B23_songs_of_first_knight_unlock
+	}
+}
+
+country_event = { #Order of the Flying Hound
+	id = flavour_rotcleaver.33
+	title = flavour_rotcleaver.33.t
+	desc = flavour_rotcleaver.33.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.33.a"
+		dostans_way_area = {
+			cede_province = B43
+		}
+		devaced_area = {
+			cede_province = B43
+		}
+		B43 = {
+			override_country_name = B23_squire_state_order
+			change_government = theocracy
+			add_government_reform = secular_order_reform
+		}
+		custom_tooltip = B23_to_be_better_squire_state_tt
+		tooltip = {
+			B43 = {
+				add_country_modifier = {
+					name = B23_squire_state_two
+					duration = -1
+				}
+			}
+		}
+		clr_country_flag = B23_accepted_squire
+		set_country_flag = B23_upgraded_squire
+	}
+}
+
+country_event = { #Stewardship of the <blade>
+	id = flavour_rotcleaver.34
+	title = flavour_rotcleaver.34.t
+	desc = flavour_rotcleaver.34.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = { #Accept
+		name = "flavour_rotcleaver.34.a"
+		add_country_modifier = {
+			name = B23_friends_with_stewards
+			duration = -1
+		}
+		blademarch_area = {
+			change_culture = marcher
+			add_core = B33 #Just in case
+		}
+		release_with_religion_and_culture = { tag = B33 religion = bulgu_orazan culture = marcher }
+		create_march = B33
+		B33 = {
+			define_ruler = {
+				name = "Sofina"
+				dynasty = "sil na Ean"
+				culture = farrani_half_elf
+				religion = bulgu_orazan
+				female = yes
+				adm = 3
+				dip = 4
+				mil = 5
+			}
+			hidden_effect = {
+				change_government = theocracy
+				add_government_reform = secular_order_reform
+				country_event = { id = anbennar_setup.3 }
+				add_treasury = 100
+				add_adm_power = 100
+				add_dip_power = 100
+				add_mil_power = 100
+				add_manpower = 10
+				capital_scope = { build_to_forcelimit = { infantry = 0.7 cavalry = 0.2 } }
+			}
+		}
+		custom_tooltip = B23_blademarches_squire_state_tt
+		tooltip = {
+			B33 = {
+				add_country_modifier = {
+					name = B23_squire_state_two
+					duration = -1
+				}
+			}
+		}
+	}
+
+	option = { #Lol nah
+		name = "flavour_rotcleaver.34.b"
+		blademarch_area = {
+			add_local_autonomy = 25
+			add_nationalism = 10
+			change_culture = marcher
+		}
+	}
+}
+
+country_event = {
+	id = flavour_rotcleaver.35
+	title = flavour_rotcleaver.35.t
+	desc = flavour_rotcleaver.35.d
+	picture = TEA_PARTY_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.35.a"
+		remove_country_modifier = B23_uncertain_future
+		if = { # Anbennar
+			limit = { has_reform = greentide_horde }
+			custom_tooltip = lose_reform_progress_tt
+			hidden_effect = { change_government_reform_progress = -1000 } # Like adventurers get
+			every_tribal_land_province = {
+				limit = { NOT = { owner = { exists = yes } } }
+				settle_province = ROOT
+			}
+		}
+		else = {
+			every_tribal_land_province = {
+				limit = { NOT = { owner = { exists = yes } } }
+				settle_province = ROOT
+			}
+		}
+		if = {
+			limit = {
+				has_ruler = "Etrega"
+			}
+			exile_ruler_as = {
+				name = B23_Etrega_Rotcleaver
+			}
+			add_stability = 1
+		}
+		change_government = theocracy
+		add_government_reform = secular_order_reform
+		add_government_reform = B23_learnings_of_the_hakhud
+		remove_country_modifier = B23_hakhud_kabir_three_modifier
+		add_country_modifier = {
+			name = B23_orcish_ridars
+			duration = -1
+		}
+	}
+}
+
+###Hakhud Events
+country_event = { #Hakhud Handler
+	id = flavour_rotcleaver.110
+	title = flavour_rotcleaver.110.t
+	desc = flavour_rotcleaver.110.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = "flavour_rotcleaver.110.a"
+		random_list = {
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_food_makes_friends_cooldown }
+				}
+				country_event = { #Food Makes Friends
+					id = flavour_rotcleaver.13
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_beset_caravan_cooldown }
+				}
+				country_event = { #A Beset Caravan
+					id = flavour_rotcleaver.14
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_apprenticeship_cooldown }
+				}
+				country_event = { #The Apprenticeship
+					id = flavour_rotcleaver.15
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_dargom_ozdan_cooldown }
+				}
+				country_event = { #The Dargom and the Ozdan
+					id = flavour_rotcleaver.16
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_legacy_of_corin_cooldown }
+				}
+				country_event = { #Legacy of Corin
+					id = flavour_rotcleaver.17
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_vortza_lesa_cooldown }
+				}
+				country_event = { #Shrine of Vortza Lesa
+					id = flavour_rotcleaver.18
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_hakhud_attacked_cooldown }
+					has_country_flag = removing_monstrous
+				}
+				country_event = { #Hakhud Attacked
+					id = flavour_rotcleaver.19
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_oldhaven_tournament_cooldown }
+				}
+				country_event = { #The Oldhaven Tournament
+					id = flavour_rotcleaver.20
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_infernal_workings_cooldown }
+				}
+				country_event = { #Infernal Workings
+					id = flavour_rotcleaver.21
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_past_cooldown }
+					any_owned_province = {
+						OR = {
+							trade_goods = livestock
+							trade_goods = grain
+							trade_goods = fur
+						}
+					}
+				}
+				country_event = { #The Past Catches Up
+					id = flavour_rotcleaver.22
+				}
+			}
+			5 = {
+				trigger = {
+					NOT = { has_country_modifier = B23_hakhud_battlefield_scavengers_cooldown }
+				}
+				country_event = { #Battlefield Scavengers
+					id = flavour_rotcleaver.23
+				}
+			}
+		}
+	}
+}
+
+country_event = { #The First Hakhud Year 1
+	id = flavour_rotcleaver.6
+	title = flavour_rotcleaver.6.t
+	desc = flavour_rotcleaver.6.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.6.a"
+		hidden_effect = {
+			start_demonsterization_effect = yes #Early Demonsterization
+		}
+		change_government_reform_progress = 10
+		custom_tooltip = ce_pen_and_axe.tt #Stealing from Clouded Eye
+		decrease_monstrous_3 = yes #Large is 3
+		country_event = { #Year 2
+			id = flavour_rotcleaver.7
+			days = 365
+		}
+	}
+}
+
+country_event = { #First Hakhud Year 2
+	id = flavour_rotcleaver.7
+	title = flavour_rotcleaver.7.t
+	desc = flavour_rotcleaver.7.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.7.a"
+		add_mil_power = 100
+		decrease_monstrous_3 = yes
+		if = {
+			limit = { exists = B19 }
+			B19 = { #Sword Covenant
+				B23_hakhud_opinion_effect = {
+					multiplier = 2
+				}
+			}
+		}
+		else_if = {
+			limit = { exists = Z37 }
+			Z37 = { #Covenblad
+				B23_hakhud_opinion_effect = {
+					multiplier = 2
+				}
+			}
+		}
+		country_event = { #First Hakhud Year 3
+			id = flavour_rotcleaver.8
+			days = 365
+		}
+	}
+}
+
+country_event = { #First Hakhud Year 3
+	id = flavour_rotcleaver.8
+	title = flavour_rotcleaver.8.t
+	desc = flavour_rotcleaver.8.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.8.a"
+		add_dip_power = 100
+		decrease_monstrous_3 = yes
+		if = {
+			limit = { exists = B02 }
+			B02 = { #Corintar
+				B23_hakhud_opinion_effect = {
+					multiplier = 2
+				}
+			}
+		}
+		else = {
+			random_known_country = {
+				limit = { religion = corinite }
+				B23_hakhud_opinion_effect = {
+					multiplier = 2
+				}
+			}
+		}
+		country_event = { #First Hakhud Year 4
+			id = flavour_rotcleaver.9
+			days = 365
+		}
+	}
+}
+
+country_event = { #First Hakhud Year 4
+	id = flavour_rotcleaver.9
+	title = flavour_rotcleaver.9.t
+	desc = flavour_rotcleaver.9.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.9.a"
+		add_adm_power = 100
+		deepwoods_flower_grove = {
+			discover_country = ROOT
+		}
+		decrease_monstrous_3 = yes
+		small_increase_of_elven_tolerance_effect = yes
+		country_event = { #First Hakhud Year 5
+			id = flavour_rotcleaver.10
+			days = 365
+		}
+	}
+}
+
+country_event = { #First Hakhud Year 5
+	id = flavour_rotcleaver.10
+	title = flavour_rotcleaver.10.t
+	desc = flavour_rotcleaver.10.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.10.a"
+		change_government_reform_progress = 10
+		change_adm = -1
+		change_dip = -1
+		change_mil = -3
+		if = {
+			limit = { has_ruler = "Ugol" }
+			add_ruler_modifier = { #-3 All Monthly Power, +1000% Advisor Cost
+				name = B23_guilt
+				duration = -1
+			}
+		}
+		change_variable = {
+			which = B23_hakhud_completed
+			value = 1
+		}
+		custom_tooltip = B23_hakhud_decision_unlock
+		custom_tooltip = B23_mercenary_unlock_tt
+		set_country_flag = B23_mercenary_unlock
+	}
+}
+
+country_event = { #We're going on a Hakhud!
+	id = flavour_rotcleaver.11
+	title = flavour_rotcleaver.11.t
+	desc = flavour_rotcleaver.11.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.11.a"
+		country_event = { #Returning from Hakhud
+			id = flavour_rotcleaver.12
+			days = 1830
+		}
+		hidden_effect = {
+			country_event = { #Hakhud Handler
+				id = flavour_rotcleaver.110 
+				days = 913
+			}
+			country_event = { #Hakhud Handler
+				id = flavour_rotcleaver.110 
+				days = 1825
+			}
+		}
+	}
+}
+
+country_event = { #our friends are back!
+	id = flavour_rotcleaver.12
+	title = flavour_rotcleaver.12.t
+	desc = flavour_rotcleaver.12.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.12.a"
+		add_prestige = 5
+		add_splendor = 5
+		change_variable = {
+			which = B23_hakhud_completed
+			value = 1
+		}
+	}
+}
+
+country_event = {
+	id = flavour_rotcleaver.13
+	title = flavour_rotcleaver.13.t
+	desc = flavour_rotcleaver.13.d
+	picture = DIPLOMACY_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			export_to_variable = {
+				variable_name = B23_max_manpower
+				value = max_manpower
+			}
+			divide_variable = {
+				which = B23_max_manpower
+				value = 120
+			}
+		}
+	}
+
+	option = { #Recruit
+		name = "flavour_rotcleaver.13.a"
+		if = {
+			limit = {
+				OR = {
+					has_country_modifier = B23_hakhud_kabir_one_modifier
+					has_country_modifier = B23_hakhud_kabir_two_modifier
+					has_country_modifier = B23_hakhud_kabir_three_modifier
+				}
+			}
+			random_hired_mercenary_company = { ###TODO: Double check before PRing if anyone every told you if every merc company is possible to scope to
+				add_company_manpower = 0.40
+			}
+		}
+		if = {
+			limit = { has_country_modifier = B23_orcish_ridars }
+			if = {
+				limit = { 
+					check_variable = {
+						which = B23_max_manpower
+						value = 1.1
+					}
+				}
+				add_manpower = 10
+			}
+			else = {
+				add_yearly_manpower = 0.25
+			}
+		}
+		decrease_monstrous_1 = yes #1 is Small
+	}
+
+	option = { #Join
+		name = "flavour_rotcleaver.13.b"
+		random_known_country = {
+			limit = { 
+				has_reform = adventurer_reform
+				capital_scope = { superregion = escann_superregion }
+			}
+			B23_hakhud_opinion_effect = { multiplier = 1 }
+		}
+		change_government_reform_progress = 10
+		decrease_monstrous_1 = yes #1 is Small
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = food_makes_friends } }
+}
+
+country_event = { #A beset caravan
+	id = flavour_rotcleaver.14
+	title = flavour_rotcleaver.14.t
+	desc = flavour_rotcleaver.14.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = { #No reward needed
+		name = "flavour_rotcleaver.14.a"
+		change_government_reform_progress = 10
+		decrease_monstrous_2 = yes #2 is medium
+		define_advisor = {
+			type = trader
+			skill = 2
+			culture = east_damerian
+			religion = regent_court
+			cost_multiplier = 0.25
+		}
+	}
+
+	option = { #gimme gold
+		name = "flavour_rotcleaver.14.b"
+		change_government_reform_progress = 10
+		decrease_monstrous_1 = yes #1 is Small
+		add_treasury = 75
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = beset_caravan } }
+}
+
+country_event = { #The Apprenticeship
+	id = flavour_rotcleaver.15
+	title = flavour_rotcleaver.15.t
+	desc = flavour_rotcleaver.15.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.15.a"
+		add_mil_power = 25
+		change_government_reform_progress = 10
+		decrease_monstrous_2 = yes #2 is medium
+		small_increase_of_dwarven_tolerance_effect = yes
+		if = {
+			limit = { exists = B18 }
+			B18 = { #Iron Hammers
+				B23_hakhud_opinion_effect = { multiplier = 1 }
+			}
+		}
+		else_if = {
+			limit = { exists = Z36 }
+			Z36 = { #Hammerhome
+				B23_hakhud_opinion_effect = { multiplier = 1 }
+			}
+		}
+	}
+
+	option = {
+		name = "flavour_rotcleaver.15.b"
+		trigger = { any_known_country = { tag = A73 } }
+		add_mil_power = 25
+		change_government_reform_progress = 10		
+		decrease_monstrous_2 = yes #2 is medium
+		small_increase_of_dwarven_tolerance_effect = yes
+		A73 = { #Silverforge
+			B23_hakhud_opinion_effect = { multiplier = 1 }
+		}
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = apprenticeship } }
+}
+
+country_event = { #Ozdan and Dargom
+	id = flavour_rotcleaver.16
+	title = flavour_rotcleaver.16.t
+	desc = flavour_rotcleaver.16.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			export_to_variable = {
+				variable_name = B23_max_manpower
+				value = max_manpower
+			}
+			divide_variable = {
+				which = B23_max_manpower
+				value = 120
+			}
+		}		
+	}
+
+	option = { #Drive em off
+		name = "flavour_rotcleaver.16.a"
+		add_army_tradition = 10
+		add_prestige = 10
+	}
+
+	option = { #Recruit em
+		name = "flavour_rotcleaver.16.b"
+		if = {
+			limit = { 
+				check_variable = {
+					which = B23_max_manpower
+					value = 1.1
+				}
+			}
+			add_manpower = 10
+		}
+		else = {
+			add_yearly_manpower = 0.25
+		}
+		add_prestige = 10
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = dargom_ozdan } }
+}
+
+country_event = { #legacy of corin
+	id = flavour_rotcleaver.17
+	title = flavour_rotcleaver.17.t
+	desc = flavour_rotcleaver.17.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+	
+	option = { #Spar!
+		name = "flavour_rotcleaver.17.a"
+		decrease_monstrous_1 = yes #1 is Small
+		add_army_professionalism = 0.025
+		add_prestige = 10
+	}
+
+	option = { #Invite
+		name = "flavour_rotcleaver.17.b"
+		decrease_monstrous_2 = yes #2 is medium
+		add_prestige = 10
+		if = {
+			limit = {
+				NOT = { army_tradition = 10 }
+			}
+			create_general = { tradition = 20 }
+		}
+		else_if = {
+			limit = {
+				army_tradition = 10
+				NOT = { army_tradition = 30 }
+			}
+			create_general = { tradition = 40 }
+		}
+		else_if = {
+			limit = {
+				army_tradition = 30
+				NOT = { army_tradition = 50 }
+			}
+			create_general = { tradition = 60 }
+		}
+		else_if = {
+			limit = {
+				army_tradition = 50
+				NOT = { army_tradition = 70 }
+			}
+			create_general = { tradition = 80 }
+		}
+		else = {
+			create_general = { tradition = 100 }
+		}
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = legacy_of_corin } }
+}
+
+country_event = { #Shrine of Vortza Lesa
+	id = flavour_rotcleaver.18
+	title = flavour_rotcleaver.18.t
+	desc = flavour_rotcleaver.18.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = { #repair
+		name = "flavour_rotcleaver.18.a"
+		add_church_power = 50
+		B42 = {
+			B23_hakhud_opinion_effect = { multiplier = 1 }
+		}
+	}
+
+	option = { #Let em know
+		name = "flavour_rotcleaver.18.b"
+		every_known_country = {
+			limit = {
+				has_country_modifier = goblin_administration
+				capital_scope = { superregion = escann_superregion }
+			}
+			B23_hakhud_opinion_effect = { multiplier = 1 }
+		}
+		add_prestige = 10
+		change_government_reform_progress = 10
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = vortza_lesa } }
+}
+
+country_event = { #Hakhud Attacked!
+	id = flavour_rotcleaver.19
+	title = flavour_rotcleaver.19.t
+	desc = flavour_rotcleaver.19.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+		
+	option = { #Run!
+		name = "flavour_rotcleaver.19.a"
+		decrease_monstrous_3 = yes #Large is 3
+		add_prestige = -20
+		add_stability = -1
+	}
+
+	option = { #FIGHT
+		name = "flavour_rotcleaver.19.b"
+		increase_monstrous_3 = yes #Large is 3
+		small_decrease_of_human_tolerance_effect = yes
+		add_army_tradition = 10
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = hakhud_attacked } }
+}
+
+country_event = { #Oldhaven Tourney
+	id = flavour_rotcleaver.20
+	title = flavour_rotcleaver.20.t
+	desc = flavour_rotcleaver.20.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+	
+	option = { #Melee
+		name = "flavour_rotcleaver.20.a"
+		decrease_monstrous_1 = yes
+		add_treasury = 50
+		if = {
+			limit = { NOT = { owns = 874 } }
+			874 = {
+				owner = {
+					B23_hakhud_opinion_effect = { multiplier = 1 }
+				}
+			}
+		}
+	}
+
+	option = { #Joust
+		name = "flavour_rotcleaver.20.b"
+		decrease_monstrous_1 = yes
+		add_prestige_or_monarch_power = { amount = 20 }
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = oldhaven_tournament } }
+}
+
+country_event = { #Infernal Workings
+	id = flavour_rotcleaver.21
+	title = flavour_rotcleaver.21.t
+	desc = flavour_rotcleaver.21.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = { #Capture
+		name = "flavour_rotcleaver.21.a"
+		decrease_monstrous_1 = yes
+		custom_tooltip = B23_infernal_workings_ae_tt
+		tooltip = {
+			add_aggressive_expansion = {
+				who = ROOT
+				value = -10
+				apply_calc = no
+			}
+		}
+		hidden_effect = {
+			every_known_country = {
+				limit = {
+					OR = {
+						religion = corinite
+						religion = regent_court
+					}
+				}
+				add_aggressive_expansion = {
+					who = ROOT
+					value = -10
+					apply_calc = no
+				}
+			}			
+		}
+	}
+
+	option = { #Execute
+		name = "flavour_rotcleaver.21.b"
+		decrease_monstrous_1 = yes
+		add_dip_power = 25
+		add_prestige = 10
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = infernal_workings } }
+}
+
+country_event = { #Past Always Catches up
+	id = flavour_rotcleaver.22
+	title = flavour_rotcleaver.22.t
+	desc = flavour_rotcleaver.22.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = { #Rebuild
+		name = "flavour_rotcleaver.22.a" 
+		decrease_monstrous_1 = yes
+		if = {
+			limit = {
+				monthly_income = 67
+			}
+			add_treasury = 200
+		}
+		else = {
+			add_years_of_income = 0.25
+		}
+		random_owned_province = {
+			limit = {
+				OR = {
+					trade_goods = livestock
+					trade_goods = grain
+					trade_goods = fur
+				}
+			}
+			add_base_production = 1
+			add_local_autonomy = 25
+		}
+	}
+
+	option = { #Leave some orcs
+		name = "flavour_rotcleaver.22.b"
+		decrease_monstrous_1 = yes
+		add_manpower = -2
+		random_owned_province = {
+			limit = {
+				OR = {
+					trade_goods = livestock
+					trade_goods = grain
+					trade_goods = fur
+				}
+			}
+			add_base_manpower = 1
+		}
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = past } }	
+}
+
+country_event = { #Battlefield Scavengers
+	id = flavour_rotcleaver.23
+	title = flavour_rotcleaver.23.t
+	desc = flavour_rotcleaver.23.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = { #Clear the field
+		name = "flavour_rotcleaver.23.a"
+		add_manpower = -2
+		decrease_monstrous_2 = yes
+		random_known_country = {
+			limit = { capital_scope = { superregion = escann_superregion } }
+			B23_hakhud_opinion_effect = { multiplier = 1 }
+		}
+	}
+
+	option = { #Make a wide berth
+		name = "flavour_rotcleaver.23.b"
+		add_prestige = -10
+		escann_superregion = {
+			type = random
+			amount = 1
+			limit = { NOT = { has_any_type_of_aw = yes } }
+			province_event = {
+				id = aw_ghouls.0
+			}
+			owner = {
+				add_casus_belli = {
+					target = ROOT
+					type = cb_aw_monster_attack
+					months = 60
+				}
+			}
+		}
+	}
+
+	after = { B23_hakhud_cooldown_effect = { hakhud = battlefield_scavengers } }	
+}
+
+country_event = { #Her Hakhud: Year 1
+	id = flavour_rotcleaver.27
+	title = flavour_rotcleaver.27.t
+	desc = flavour_rotcleaver.27.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.27.a"
+		add_dip_power = 50
+		795 = { add_next_institution_embracement = 20 }
+		840 = {	owner = { B23_hakhud_opinion_effect = { multiplier = 2 } } }
+		country_event = {
+			id = flavour_rotcleaver.28
+			days = 365
+		}
+	}
+}
+
+country_event = { #Her Hakhud: Year 2
+	id = flavour_rotcleaver.28
+	title = flavour_rotcleaver.28.t
+	desc = flavour_rotcleaver.28.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.28.a"
+		add_mil_power = 50
+		795 = { add_next_institution_embracement = 20 }
+		860 = { owner = { B23_hakhud_opinion_effect = { multiplier = 2 } } }
+		country_event = {
+			id = flavour_rotcleaver.29
+			days = 365
+		}
+	}
+}
+
+country_event = { #Her Hakhud: Year 3
+	id = flavour_rotcleaver.29
+	title = flavour_rotcleaver.29.t
+	desc = flavour_rotcleaver.29.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.29.a"
+		add_treasury = 100
+		795 = { add_next_institution_embracement = 20 }
+		888 = { owner = { B23_hakhud_opinion_effect = { multiplier = 2 } } }
+		country_event = {
+			id = flavour_rotcleaver.30
+			days = 365
+		}
+	}
+}
+
+country_event = { #Her Hakhud: Year 4
+	id = flavour_rotcleaver.30
+	title = flavour_rotcleaver.30.t
+	desc = flavour_rotcleaver.30.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.30.a"
+		add_church_power = 50
+		add_army_tradition = 10
+		795 = { add_next_institution_embracement = 20 }
+		country_event = {
+			id = flavour_rotcleaver.31
+			days = 365
+		}
+	}
+}
+
+country_event = { #Her Hakhud: Year 5
+	id = flavour_rotcleaver.31
+	title = flavour_rotcleaver.31.t
+	desc = flavour_rotcleaver.31.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes	
+
+	option = {
+		name = "flavour_rotcleaver.31.a"
+		add_adm_power = 50
+		decrease_monstrous_3 = yes
+		795 = { add_next_institution_embracement = 20 }
+		set_country_flag = B23_etrega_finished_hakhud_flag
+	}
+}
+
+###Events
+country_event = { #Your Future, in This Land
+	id = flavour_rotcleaver.1
+	title = flavour_rotcleaver.1.t
+	desc = flavour_rotcleaver.1.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavour_rotcleaver.1.a"
+		hire_advisor = {
+			type = theologian
+			skill = 1
+			name = "Zien Steelshaper"
+			female = yes
+			religion = old_dookan
+			culture = green_orc
+			cost_multiplier = 0.25
+		}
+		change_adm = 1
+		add_ruler_modifier = { #+50% Ruler Lifespan, Rulers Cannot Become Generals, -1000% Heir Chance
+			name = B23_respected_ruler
+			duration = 9125
+		}
+		custom_tooltip = respected_ruler_trigger_tt
+		hidden_effect = { #Tooltip looks weird. Have added explanation to philosophies_of_reconciliation_trigger_tt
+			every_ally = {
+				limit = {
+					has_country_modifier = orcish_administration
+					capital_scope = {
+						superregion = escann_superregion
+					}
+				}
+				break_alliance = ROOT
+			}			
+		}
+		add_country_modifier = { #+15% Improve Relations and +1 Dip Relation Slot
+			name = B23_philosophies_of_reconciliation
+			duration = 18250
+		}
+		custom_tooltip = philosophies_of_reconciliation_trigger_tt
+		add_country_modifier = {
+			name = B23_uncertain_future
+			duration = -1
+		}
+		custom_tooltip = B23_emulant_of_korgus_tribal_tt
+	}
+}

@@ -1,0 +1,22 @@
+
+# No previous file for Kastoria
+culture = epednar
+religion = eotomolaque
+capital = ""
+
+tribal_owner = U85
+owner = U85
+controller = U85
+add_core = U85
+
+hre = no
+
+base_tax = 2
+base_production = 1
+base_manpower = 1
+
+trade_goods = unknown
+
+native_size = 20
+native_ferocity = 9
+native_hostileness = 10

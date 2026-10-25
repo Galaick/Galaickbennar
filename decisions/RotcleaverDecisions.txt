@@ -1,0 +1,32 @@
+country_decisions = {
+	#Hakhud
+	B23_hakhud_decision = {
+		major = yes
+		potential = {
+			ai = no
+			check_variable = {
+				which = B23_hakhud_completed
+				value = 1
+			}
+		}
+
+		allow = {
+			hidden_trigger = { ai = no }
+			NOT = { has_country_modifier = B23_recent_hakhud }
+			treasury = 25
+			has_legitimacy_equivalent = { VAL = 85 }	
+		}
+
+		effect = {
+			add_treasury = -25
+			add_legitimacy_equivalent = { amount = -5 republican_tradition = -1.6 }
+			add_country_modifier = { #+1 Yearly Prestige
+				name = B23_recent_hakhud
+				duration = 2190
+			}
+			country_event = {
+				id = flavour_rotcleaver.11 #Setting off on a Hakhud!
+			}
+		}
+	}
+}

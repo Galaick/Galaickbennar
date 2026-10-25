@@ -1,0 +1,830 @@
+
+R86_first_row = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = R86
+	}
+	has_country_shield = yes
+	
+	R86_cultivation_of_land = {
+		position = 2
+		icon = mission_peasantry
+		required_missions = { R86_conclave_of_maidens }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			NOT = {
+				num_of_estate_privileges = {
+					estate = estate_nobles
+					value = 1
+				}
+			}
+			NOT = {
+				estate_influence = {
+					estate = estate_nobles
+					influence = 30
+				}
+			}
+			NOT = {
+				estate_loyalty = {
+					estate = estate_nobles
+					loyalty = 30
+				}
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.2
+			}
+		}
+	}
+
+	R86_fading_is_the_harvest_moon = {
+		position = 4
+		icon = mission_pol_breadbasket_europe
+		required_missions = { R86_cultivation_of_land }
+
+		provinces_to_highlight = {
+			OR = {
+				superregion = yanshen_superregion
+				superregion = vimdatrong_superregion
+				superregion = rahen_superregion
+			}
+			owned_by = ROOT
+			OR = {
+				trade_goods = grain
+				trade_goods = livestock
+			}
+			OR = {
+				NOT = { development = 20 }
+				NOT = { has_manufactory_trigger = yes }
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_sunny_day_complete_trigger_tt
+				has_country_flag = R86_sunny_day_complete
+			}
+			num_of_owned_provinces_with = {
+				value = 15
+				OR = {
+					trade_goods = grain
+					trade_goods = livestock
+				}
+				development = 20
+				has_manufactory_trigger = yes
+			}
+		}
+
+		effect = {
+			custom_tooltip = R86_fading_is_the_harvest_moon_finished_mission_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = grain
+							trade_goods = livestock
+						}
+					}
+					add_province_modifier = { name = R86_land_redistribution duration = -1 }
+					add_province_modifier = {
+						name = R86_fading_is_the_harvest_moon_mod
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+R86_second_row = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = R86
+	}
+	has_country_shield = yes
+	
+	R86_securing_of_riches = {
+		position = 2
+		icon = mission_subjugate_the_merchants
+		required_missions = { R86_conclave_of_maidens }
+		
+		provinces_to_highlight = {
+			owned_by = ROOT
+			trade_goods = paper
+			has_terrain = city_terrain
+			NOT = { base_production = 15 }
+		}
+		
+		trigger = {
+			has_institution = printing_press
+			any_owned_province = {
+				trade_goods = paper
+				has_terrain = city_terrain
+				base_production = 15
+			}
+			NOT = {
+				num_of_estate_privileges = {
+					estate = estate_burghers
+					value = 1
+				}
+			}
+			NOT = {
+				estate_influence = {
+					estate = estate_burghers
+					influence = 30
+				}
+			}
+			NOT = {
+				estate_loyalty = {
+					estate = estate_burghers
+					loyalty = 30
+				}
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.5
+			}
+		}
+	}
+
+	R86_light_is_cherry_blossom = {
+		position = 4
+		icon = mission_market_place_with_asian_traders
+		required_missions = { R86_securing_of_riches }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4859
+				province_id = 4868
+				province_id = 4871
+			}
+			NOT = { num_of_times_improved_by_owner = 10 }
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_light_is_cherry_blossom_trigger_tt
+				has_country_flag = R86_wealth_of_huszien_complete
+			}
+			4859 = {
+				num_of_times_improved_by_owner = 10
+			}
+			4868 = {
+				num_of_times_improved_by_owner = 10
+			}
+			4871 = {
+				num_of_times_improved_by_owner = 10
+			}
+		}
+		
+		effect = {
+			#custom_tooltip = R86_light_is_cherry_blossom_tt
+			set_estate_privilege = estate_burghers_peasant_traders
+		}
+	}
+}
+
+R86_third_row = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = R86
+	}
+	has_country_shield = yes
+
+	R86_conclave_of_maidens = {
+		position = 1
+		icon = mission_shady_encounter
+		required_missions = { }
+		
+		provinces_to_highlight = {
+
+		}
+		
+		trigger = {
+			estate_influence = {
+				estate = estate_church
+				influence = 100
+			}
+			has_estate_privilege = estate_church_independent_inquisition
+			has_estate_privilege = estate_church_religious_state
+			has_estate_privilege = estate_church_clerical_oversight
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.1
+			}
+		}
+	}
+	
+	R86_endeavour_for_security = {
+		position = 2
+		icon = mission_chinese_general_riding
+		required_missions = { R86_conclave_of_maidens }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			mil_power = 200
+			OR = {
+				has_mil_advisor_3 = yes
+				advisor = army_reformer
+			}
+			OR = {
+				has_dip_advisor_3 = yes
+				advisor = spymaster
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.8
+			}
+		}
+	}
+	
+	R86_red_runs_the_yanhe = {
+		position = 4
+		icon = mission_burning_separation
+		required_missions = { R86_endeavour_for_security }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_gumiho_in_power_tt
+				has_ruler_flag = is_sado
+			}
+			num_of_generals = 7
+			custom_trigger_tooltip = {
+				tooltip = R86_red_runs_the_yanhe_trigger_tt
+				has_country_flag = R86_purge_complete
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = R86_faithful_military
+				duration = -1
+			}
+		}
+	}
+	
+	R86_onwards_lingyuk = {
+		position = 5
+		icon = mission_haless_map
+		required_missions = { R86_fading_is_the_harvest_moon R86_light_is_cherry_blossom R86_red_runs_the_yanhe R86_wise_is_the_maiden R86_martial_masters }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_onwards_lingyuk_trigger_tt
+				calc_true_if = {
+					amount = 6
+					has_country_flag =  marutha_appeased
+					has_country_flag =  dhenbasana_appeased
+					has_country_flag =  kharunyana_appeased
+					has_country_flag =  tughayasa_appeased
+					has_country_flag =  hengdu_bowu_appeased
+					has_country_flag =  hukai_telebei_appeased
+					has_country_flag =  phokhao_appeased
+					has_country_flag =  gehet_ketine_appeased
+					has_country_flag =  lupulan_appeased
+					has_country_flag =  cinulau_appeased 
+					has_country_flag =  yanhe_appeased 
+					has_country_flag =  hokuma_appeased
+					has_country_flag =  huszien_appeased
+				}
+			}
+		}
+		
+		effect = {
+			custom_tooltip = R86_onwards_lingyuk_tt
+		}
+	}
+	
+	R86_shi_quan_shi_mei = {
+		position = 6
+		icon = mission_lotus_flower
+		required_missions = { R86_onwards_lingyuk }
+		
+		provinces_to_highlight = {
+			OR = {
+				superregion = vimdatrong_superregion
+				superregion = rahen_superregion
+				superregion = yanshen_superregion
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_shi_quan_shi_mei_trigger_1_tt
+				has_country_flag =  marutha_appeased
+				has_country_flag =  dhenbasana_appeased
+				has_country_flag =  kharunyana_appeased
+				has_country_flag =  tughayasa_appeased
+				has_country_flag =  hengdu_bowu_appeased
+				has_country_flag =  hukai_telebei_appeased
+				has_country_flag =  phokhao_appeased
+				has_country_flag =  gehet_ketine_appeased
+				has_country_flag =  lupulan_appeased
+				has_country_flag =  cinulau_appeased 
+				has_country_flag =  yanhe_appeased
+				has_country_flag =  hokuma_appeased
+				has_country_flag =  huszien_appeased
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_shi_quan_shi_mei_trigger_2_tt
+				vimdatrong_superregion = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				rahen_superregion = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				yanshen_superregion = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.15
+			}
+		}
+	}
+}
+
+R86_fourth_row = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = R86
+	}
+	has_country_shield = yes
+	
+	
+	R86_enabling_of_truth = {
+		position = 2
+		icon = mission_whisper
+		required_missions = { R86_conclave_of_maidens }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			government_reform_progress = 250
+			has_adm_advisor_3 = yes
+			OR = {
+				spymaster = 3
+				has_dip_advisor_5 = yes
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_sunny_day_complete_trigger_tt
+				has_country_flag = R86_sunny_day_complete
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_light_is_cherry_blossom_trigger_tt
+				has_country_flag = R86_wealth_of_huszien_complete
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_red_runs_the_yanhe_trigger_tt
+				has_country_flag = R86_purge_complete
+			}
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.11
+			}
+		}
+	}
+
+	R86_wise_is_the_maiden = {
+		position = 4
+		icon = mission_writing_book
+		required_missions = { R86_enabling_of_truth }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = R86_huli_jing_in_power_tt
+				has_ruler_flag = is_holi
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_dissimination_of_truth_tt
+				has_country_flag = R86_truth_complete
+			}
+		}
+		
+		effect = {
+			if = {
+				limit = {
+					has_country_flag = R86_power_to_the_hand_maiden
+				}
+				remove_country_modifier = R86_distracted_state_mod
+				add_country_modifier = {
+					name = R86_all_power_to_the_hand_maiden
+					duration = -1
+				}
+			}
+			else_if = {
+				limit = {
+					has_country_flag = R86_trust_bueracracy
+				}
+				remove_country_modifier = R86_distracted_state_mod
+				add_country_modifier = {
+					name = R86_trust_in_the_bueracracy
+					duration = -1
+				}
+			}
+			else = {
+				tooltip = {
+					remove_country_modifier = R86_distracted_state_mod
+				}
+				custom_tooltip = R86_wise_is_the_maiden_TT
+			}
+		}
+	}
+}
+
+R86_fifth_row = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = R86
+	}
+	has_country_shield = yes
+	
+	R86_a_knife_in_the_dark = {
+		position = 2
+		icon = mission_three_death
+		required_missions = { R86_conclave_of_maidens }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			if = {
+				limit = {
+					has_saved_global_event_target = Y26_xia_alliance
+					event_target:Y26_xia_alliance = {
+						exists = no
+					}
+					event_target:Y26_xia_alliance_capital = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					}
+				}
+				event_target:Y26_xia_alliance_capital = {
+					owner = {
+						if = {
+							limit = { ROOT = { spymaster = 5 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 50
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 4 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 60
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 3 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 70
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 2 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 80
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 1 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 90
+							}
+						}
+						else_if = {
+							limit = { ROOT = { NOT = { spymaster = 1 } } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 90
+							}
+						}
+						ROOT = { has_spawned_supported_rebels = PREV }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_global_event_target = Y26_xia_alliance
+					event_target:Y26_xia_alliance = {
+						exists = yes
+						NOT = { is_subject_of = ROOT }
+					}
+				}
+				event_target:Y26_xia_alliance = {
+					if = {
+						limit = { ROOT = { spymaster = 5 } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 50
+						}
+					}
+					else_if = {
+						limit = { ROOT = { spymaster = 4 } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 60
+						}
+					}
+					else_if = {
+						limit = { ROOT = { spymaster = 3 } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 70
+						}
+					}
+					else_if = {
+						limit = { ROOT = { spymaster = 2 } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 80
+						}
+					}
+					else_if = {
+						limit = { ROOT = { spymaster = 1 } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 90
+						}
+					}
+					else_if = {
+						limit = { ROOT = { NOT = { spymaster = 1 } } }
+						has_spy_network_from = {
+							who = ROOT
+							value = 90
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_saved_global_event_target = Y26_xia_alliance }
+					NOT = { owns_or_non_sovereign_subject_of = 4559 }
+				}
+				4559 = {
+					owner = {
+						if = {
+							limit = { ROOT = { spymaster = 5 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 50
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 4 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 60
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 3 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 70
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 2 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 80
+							}
+						}
+						else_if = {
+							limit = { ROOT = { spymaster = 1 } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 90
+							}
+						}
+						else_if = {
+							limit = { ROOT = { NOT = { spymaster = 1 } } }
+							has_spy_network_from = {
+								who = ROOT
+								value = 90
+							}
+						}
+						ROOT = { has_spawned_supported_rebels = PREV }
+					}
+				}
+			}
+			else = {
+			}
+			custom_trigger_tooltip = {
+				tooltip = R86_huli_jing_in_power_tt
+				has_ruler_flag = is_holi
+			}
+			has_patron_trigger = { patron = huli_jing }
+		}
+		
+		effect = { #I hate.
+			if = {
+				limit = {
+					has_saved_global_event_target = Y26_xia_alliance
+					event_target:Y26_xia_alliance = {
+						exists = yes
+						ai = yes
+					}
+				}
+				create_subject = {
+					subject_type = vassal
+					subject = event_target:Y26_xia_alliance
+				}
+				event_target:Y26_xia_alliance = { change_religion = mystic_accord }
+			}
+			else_if = {
+				limit = {
+					has_saved_global_event_target = Y26_xia_alliance
+					event_target:Y26_xia_alliance = {
+						exists = no
+					}
+					event_target:Y26_xia_alliance_capital = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				add_stability_or_adm_power = yes #consolation prize
+			}
+			else_if = {
+				limit = {
+					has_saved_global_event_target = Y26_xia_alliance
+					event_target:Y26_xia_alliance = {
+						exists = no
+					}
+				}
+				if = {
+					limit = {
+						xianjie_region = {
+							is_core = event_target:Y26_xia_alliance
+						}
+					}
+					random_province = {
+						limit = {
+							region = xianjie_region
+							is_core = event_target:Y26_xia_alliance
+						}
+						owner = {
+							every_owned_province = {
+								limit = {
+									region = xianjie_region
+									is_core = event_target:Y26_xia_alliance
+								}
+								cede_province = event_target:Y26_xia_alliance
+							}
+						}
+					}
+				}
+				else = {
+					event_target:Y26_xia_alliance_capital = {
+						add_core = event_target:Y26_xia_alliance
+						cede_province = event_target:Y26_xia_alliance
+					}
+				}
+				vassalize = event_target:Y26_xia_alliance
+				event_target:Y26_xia_alliance = { change_religion = mystic_accord }
+			}
+			else_if = {
+				limit = {
+					4559 = {
+						NOT = {
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+					NOT = { Y28 = { is_subject_of = ROOT } }
+				}
+				4559 = {
+					add_core = Y28
+					cede_province = Y28
+				}
+				vassalize = Y28
+				Y28 = { change_religion = mystic_accord }
+			}
+			else = {
+				add_stability_or_adm_power = yes #consolation prize
+			}
+		}
+	}
+	
+	R86_the_dakini = {
+		position = 3
+		icon = mission_empowerment
+		required_missions = { R86_a_knife_in_the_dark }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			has_mil_advisor_5 = yes
+			# OR = {
+				# has_won_war_against = {
+				# 	who = PREV
+				# 	max_years_since = 100
+				# }
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 30
+					region = xianjie_region
+				}
+			# }
+		}
+		
+		effect = {
+			country_event = {
+				id = flavour_lingyuk.14
+			}
+		}
+	}
+	
+	R86_martial_masters = {
+		position = 4
+		icon = mission_japanese_samurai
+		required_missions = { R86_the_dakini }
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			has_patron_trigger = { patron = bladedancer }
+			custom_trigger_tooltip = {
+				tooltip = R86_martial_masters_trigger_tt
+
+				check_variable = {
+					which = PatronApproval
+					value = 5
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = R86_martial_masters_mod
+				duration = 18250 #50 years
+			}
+			custom_tooltip = R86_martial_masters_tt
+			hidden_effect = {
+				every_owned_province = {
+					change_religion = mystic_accord
+				}
+				every_subject_country = {
+					change_religion = mystic_accord
+					every_owned_province = {
+						change_religion = mystic_accord
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,22 @@
+
+# No previous file for Hama
+culture = epednar
+religion = drozma_tur
+capital = ""
+
+hre = no
+
+tribal_owner = U84
+owner = U84
+controller = U84
+add_core = U84
+
+base_tax = 2
+base_production = 1
+base_manpower = 1
+
+trade_goods = unknown
+
+native_size = 15
+native_ferocity = 9
+native_hostileness = 10

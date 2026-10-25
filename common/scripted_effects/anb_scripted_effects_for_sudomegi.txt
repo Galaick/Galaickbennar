@@ -1,0 +1,642 @@
+sudomegi_remove_adm_reflection = {
+	remove_church_aspect = sudomegi_government
+	remove_church_aspect = sudomegi_council
+	remove_church_aspect = sudomegi_work
+	remove_church_aspect = sudomegi_faith
+	remove_church_aspect = sudomegi_home
+	remove_church_aspect = sudomegi_mind
+	clr_country_flag = sudomegi_tier_one_admin
+	clr_country_flag = sudomegi_tier_two_admin
+	clr_country_flag = sudomegi_tier_three_admin
+}
+
+sudomegi_remove_dip_reflection = {
+	remove_church_aspect = sudomegi_community
+	remove_church_aspect = sudomegi_others
+	remove_church_aspect = sudomegi_travel
+	remove_church_aspect = sudomegi_progress
+	remove_church_aspect = sudomegi_peace
+	remove_church_aspect = sudomegi_body
+	clr_country_flag = sudomegi_tier_one_dip
+	clr_country_flag = sudomegi_tier_two_dip
+	clr_country_flag = sudomegi_tier_three_dip
+}
+
+sudomegi_remove_mil_reflection = {
+	remove_church_aspect = sudomegi_expedience
+	remove_church_aspect = sudomegi_sustenance
+	remove_church_aspect = sudomegi_duty
+	remove_church_aspect = sudomegi_action
+	remove_church_aspect = sudomegi_war
+	remove_church_aspect = sudomegi_spirit
+	clr_country_flag = sudomegi_tier_one_mil
+	clr_country_flag = sudomegi_tier_two_mil
+	clr_country_flag = sudomegi_tier_three_mil
+}
+
+sudomegi_add_holy_order_variable = {
+	change_variable = {
+		which = sudomegi_total
+		value = $amount$
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 150
+			}
+		}
+		sudomegi_upgrade_ancestor_modifiers_to_level_three = yes
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_5
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_5
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_6
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 125
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_4
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_4
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_5
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 100
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_3
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_3
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_4
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 75
+			}
+		}
+		sudomegi_upgrade_ancestor_modifiers_to_level_two = yes
+		if = {
+		limit = {
+			has_country_modifier = sudomegi_strength_of_faith_2
+		}
+		remove_country_modifier = sudomegi_strength_of_faith_2
+		add_country_modifier = {
+			name = sudomegi_strength_of_faith_3
+			duration = -1
+		}
+	}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 50
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith
+			}
+			remove_country_modifier = sudomegi_strength_of_faith
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_2
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = sudomegi_total
+				value = 25
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_modifier = sudomegi_strength_of_faith }
+			}
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith
+				duration = -1
+			}
+		}
+	}
+}
+
+sudomegi_remove_holy_order_variable = {
+	subtract_variable = {
+		which = sudomegi_total
+		value = $amount$
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 150
+				}
+			}
+		}
+		sudomegi_downgrade_ancestor_modifiers_to_level_two = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 125
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_5
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_5
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_4
+				duration = -1
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 100
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_4
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_4
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith_3
+				duration = -1
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 75
+				}
+			}
+		}
+		sudomegi_downgrade_ancestor_modifiers_to_level_one = yes
+		if = {
+		limit = {
+			has_country_modifier = sudomegi_strength_of_faith_3
+		}
+		remove_country_modifier = sudomegi_strength_of_faith_3
+		add_country_modifier = {
+			name = sudomegi_strength_of_faith_2
+			duration = -1
+		}
+	}
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 50
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith_2
+			}
+			remove_country_modifier = sudomegi_strength_of_faith_2
+			add_country_modifier = {
+				name = sudomegi_strength_of_faith
+				duration = -1
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = sudomegi_total
+					value = 25
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = sudomegi_strength_of_faith
+			}
+			remove_country_modifier = sudomegi_strength_of_faith
+		}
+	}
+}
+
+sudomegi_grant_ancestor_modifier = {
+	if = {
+        limit = {
+            check_variable = {
+                which = sudomegi_total
+                value = 150
+            }
+        }
+        add_country_modifier = {
+            name = sudomegi_$modifier$_3
+            duration = -1
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                which = sudomegi_total
+                value = 75
+            }
+        }
+        add_country_modifier = {
+            name = sudomegi_$modifier$_2
+            duration = -1
+        }
+    }
+    else = {
+        add_country_modifier = {
+            name = sudomegi_$modifier$
+            duration = -1
+        }
+    }
+	set_country_flag = hall_of_ancestors_$modifier$
+}
+
+sudomegi_upgrade_ancestor_modifiers_to_level_three = {
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_ironwraith_production_2
+		}
+		remove_country_modifier = sudomegi_ironwraith_production_2
+		add_country_modifier = {
+			name = sudomegi_ironwraith_production_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_establish_office_2
+		}
+		remove_country_modifier = sudomegi_establish_office_2
+		add_country_modifier = {
+			name = sudomegi_establish_office_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_improve_integration_2
+		}
+		remove_country_modifier = sudomegi_improve_integration_2
+		add_country_modifier = {
+			name = sudomegi_improve_integration_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_lawkeepers_2
+		}
+		remove_country_modifier = sudomegi_lawkeepers_2
+		add_country_modifier = {
+			name = sudomegi_lawkeepers_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_perpetual_stew_2
+		}
+		remove_country_modifier = sudomegi_perpetual_stew_2
+		add_country_modifier = {
+			name = sudomegi_perpetual_stew_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_sage_council_2
+		}
+		remove_country_modifier = sudomegi_sage_council_2
+		add_country_modifier = {
+			name = sudomegi_sage_council_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_smith_council_2
+		}
+		remove_country_modifier = sudomegi_smith_council_2
+		add_country_modifier = {
+			name = sudomegi_smith_council_3
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_warchief_council_2
+		}
+		remove_country_modifier = sudomegi_warchief_council_2
+		add_country_modifier = {
+			name = sudomegi_warchief_council_3
+			duration = -1
+		}
+	}
+}
+
+sudomegi_upgrade_ancestor_modifiers_to_level_two = {
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_ironwraith_production
+		}
+		remove_country_modifier = sudomegi_ironwraith_production
+		add_country_modifier = {
+			name = sudomegi_ironwraith_production_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_establish_office
+		}
+		remove_country_modifier = sudomegi_establish_office
+		add_country_modifier = {
+			name = sudomegi_establish_office_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_improve_integration
+		}
+		remove_country_modifier = sudomegi_improve_integration
+		add_country_modifier = {
+			name = sudomegi_improve_integration_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_lawkeepers
+		}
+		remove_country_modifier = sudomegi_lawkeepers
+		add_country_modifier = {
+			name = sudomegi_lawkeepers_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_perpetual_stew
+		}
+		remove_country_modifier = sudomegi_perpetual_stew
+		add_country_modifier = {
+			name = sudomegi_perpetual_stew_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_sage_council
+		}
+		remove_country_modifier = sudomegi_sage_council
+		add_country_modifier = {
+			name = sudomegi_sage_council_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_smith_council
+		}
+		remove_country_modifier = sudomegi_smith_council
+		add_country_modifier = {
+			name = sudomegi_smith_council_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_warchief_council
+		}
+		remove_country_modifier = sudomegi_warchief_council
+		add_country_modifier = {
+			name = sudomegi_warchief_council_2
+			duration = -1
+		}
+	}
+}
+
+sudomegi_downgrade_ancestor_modifiers_to_level_two = {
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_ironwraith_production_3
+		}
+		remove_country_modifier = sudomegi_ironwraith_production_3
+		add_country_modifier = {
+			name = sudomegi_ironwraith_production_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_establish_office_3
+		}
+		remove_country_modifier = sudomegi_establish_office_3
+		add_country_modifier = {
+			name = sudomegi_establish_office_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_improve_integration_3
+		}
+		remove_country_modifier = sudomegi_improve_integration_3
+		add_country_modifier = {
+			name = sudomegi_improve_integration_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_lawkeepers_3
+		}
+		remove_country_modifier = sudomegi_lawkeepers_3
+		add_country_modifier = {
+			name = sudomegi_lawkeepers_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_perpetual_stew_3
+		}
+		remove_country_modifier = sudomegi_perpetual_stew_3
+		add_country_modifier = {
+			name = sudomegi_perpetual_stew_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_sage_council_3
+		}
+		remove_country_modifier = sudomegi_sage_council_3
+		add_country_modifier = {
+			name = sudomegi_sage_council_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_smith_council_3
+		}
+		remove_country_modifier = sudomegi_smith_council_3
+		add_country_modifier = {
+			name = sudomegi_smith_council_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_warchief_council_3
+		}
+		remove_country_modifier = sudomegi_warchief_council_3
+		add_country_modifier = {
+			name = sudomegi_warchief_council_2
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_strength_of_faith_6
+		}
+		remove_country_modifier = sudomegi_strength_of_faith_6
+		add_country_modifier = {
+			name = sudomegi_strength_of_faith_5
+			duration = -1
+		}
+	}
+}
+
+sudomegi_downgrade_ancestor_modifiers_to_level_one = {
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_ironwraith_production_2
+		}
+		remove_country_modifier = sudomegi_ironwraith_production_2
+		add_country_modifier = {
+			name = sudomegi_ironwraith_production
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_establish_office_2
+		}
+		remove_country_modifier = sudomegi_establish_office_2
+		add_country_modifier = {
+			name = sudomegi_establish_office
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_improve_integration_2
+		}
+		remove_country_modifier = sudomegi_improve_integration_2
+		add_country_modifier = {
+			name = sudomegi_improve_integration
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_lawkeepers_2
+		}
+		remove_country_modifier = sudomegi_lawkeepers_2
+		add_country_modifier = {
+			name = sudomegi_lawkeepers
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_perpetual_stew_2
+		}
+		remove_country_modifier = sudomegi_perpetual_stew_2
+		add_country_modifier = {
+			name = sudomegi_perpetual_stew
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_sage_council_2
+		}
+		remove_country_modifier = sudomegi_sage_council_2
+		add_country_modifier = {
+			name = sudomegi_sage_council
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_smith_council_2
+		}
+		remove_country_modifier = sudomegi_smith_council_2
+		add_country_modifier = {
+			name = sudomegi_smith_council
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			has_country_modifier = sudomegi_warchief_council_2
+		}
+		remove_country_modifier = sudomegi_warchief_council_2
+		add_country_modifier = {
+			name = sudomegi_warchief_council
+			duration = -1
+		}
+	}
+}

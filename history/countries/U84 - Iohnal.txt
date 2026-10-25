@@ -1,0 +1,21 @@
+
+setup_vision_north_aelantir = yes
+government = native
+add_government_reform = epednar_custodian_of_the_expanse_tier1_reform
+government_rank = 1
+primary_culture = epednar
+religion = drozma_tur
+technology_group = tech_harafic
+capital = 1849
+
+1000.1.1 = {
+	rzenta_region = {
+		discover_country = ROOT
+	}
+	# Resets prestige from being the first in the tech group to discover a province
+	add_prestige = -200
+	add_prestige = 100
+}
+
+initialise_custom_spell_list = { group = bardic }
+set_country_flag = bardic_magic_spell_3_unlocked

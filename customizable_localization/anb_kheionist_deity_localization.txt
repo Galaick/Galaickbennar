@@ -1,0 +1,1167 @@
+defined_text = {
+	name = kheionist_defined_deity_text
+	random = no
+	
+	#Maederitic Rule
+	text = {
+		localisation_key = maederitic_rule_deity_level_1_desc
+		trigger = {
+			has_personal_deity = maederitic_rule_deity_level_1
+		}
+	}
+	
+	text = {
+		localisation_key = maederitic_rule_deity_level_2_desc
+		trigger = {
+			has_personal_deity = maederitic_rule_deity_level_2
+		}
+	}
+	
+	text = {
+		localisation_key = maederitic_rule_deity_level_3_desc
+		trigger = {
+			has_personal_deity = maederitic_rule_deity_level_3
+		}
+	}
+
+	#Schaal Onitheia
+	text = {
+		localisation_key = schaal_onitheia_deity_level_1_desc
+		trigger = {
+			has_personal_deity = schaal_onitheia_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = schaal_onitheia_deity_level_2_desc
+		trigger = {
+			has_personal_deity = schaal_onitheia_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = schaal_onitheia_deity_level_3_desc
+		trigger = {
+			has_personal_deity = schaal_onitheia_deity_level_3
+		}
+	}
+
+	#Teaching of Varamelas
+	text = {
+		localisation_key = teachings_of_varamelas_deity_level_1_desc
+		trigger = {
+			has_personal_deity = teachings_of_varamelas_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = teachings_of_varamelas_deity_level_2_desc
+		trigger = {
+			has_personal_deity = teachings_of_varamelas_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = teachings_of_varamelas_deity_level_3_desc
+		trigger = {
+			has_personal_deity = teachings_of_varamelas_deity_level_3
+		}
+	}
+
+	#Dictats of Isparokaeus
+	text = {
+		localisation_key = dictats_of_isparokaeus_deity_level_1_desc
+		trigger = {
+			has_personal_deity = dictats_of_isparokaeus_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = dictats_of_isparokaeus_deity_level_2_desc
+		trigger = {
+			has_personal_deity = dictats_of_isparokaeus_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = dictats_of_isparokaeus_deity_level_3_desc
+		trigger = {
+			has_personal_deity = dictats_of_isparokaeus_deity_level_3
+		}
+	}
+
+	#Archatiradist Doctrine
+	text = {
+		localisation_key = archatiradist_doctrine_deity_level_1_desc
+		trigger = {
+			has_personal_deity = archatiradist_doctrine_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = archatiradist_doctrine_deity_level_2_desc
+		trigger = {
+			has_personal_deity = archatiradist_doctrine_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = archatiradist_doctrine_deity_level_3_desc
+		trigger = {
+			has_personal_deity = archatiradist_doctrine_deity_level_3
+		}
+	}
+
+	#Anagbheism
+	text = {
+		localisation_key = anagbheism_deity_level_1_desc
+		trigger = {
+			has_personal_deity = anagbheism_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = anagbheism_deity_level_2_desc
+		trigger = {
+			has_personal_deity = anagbheism_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = anagbheism_deity_level_3_desc
+		trigger = {
+			has_personal_deity = anagbheism_deity_level_3
+		}
+	}
+
+	#Axierophonic Mandate
+	text = {
+		localisation_key = axierophonic_mandate_deity_level_1_desc
+		trigger = {
+			has_personal_deity = axierophonic_mandate_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = axierophonic_mandate_deity_level_2_desc
+		trigger = {
+			has_personal_deity = axierophonic_mandate_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = axierophonic_mandate_deity_level_3_desc
+		trigger = {
+			has_personal_deity = axierophonic_mandate_deity_level_3
+		}
+	}
+
+	#Drivos Rochos
+	text = {
+		localisation_key = drivos_rochos_deity_level_1_desc
+		trigger = {
+			has_personal_deity = drivos_rochos_deity_level_1
+		}
+	}
+
+	text = {
+		localisation_key = drivos_rochos_deity_level_2_desc
+		trigger = {
+			has_personal_deity = drivos_rochos_deity_level_2
+		}
+	}
+
+	text = {
+		localisation_key = drivos_rochos_deity_level_3_desc
+		trigger = {
+			has_personal_deity = drivos_rochos_deity_level_3
+		}
+	}
+
+	#Laskaris Creed
+	text = {
+		localisation_key = laskaris_creed_deity_level_1_desc
+		trigger = {
+			has_personal_deity = laskaris_creed_deity_level_1
+		}
+	}
+	
+	text = {
+		localisation_key = laskaris_creed_deity_level_2_desc
+		trigger = {
+			has_personal_deity = laskaris_creed_deity_level_2
+		}
+	}
+	
+	text = {
+		localisation_key = laskaris_creed_deity_level_3_desc
+		trigger = {
+			has_personal_deity = laskaris_creed_deity_level_3
+		}
+	}
+}
+
+defined_text = {
+    name = CogekeioMonthLoc
+	random = no
+
+    text = {
+        localisation_key = December
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 11 } }
+    }
+
+    text = {
+        localisation_key = November
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 10 } }
+    }
+
+    text = {
+        localisation_key = October
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 9 } }
+    }
+
+    text = {
+        localisation_key = September
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 8 } }
+    }
+
+    text = {
+        localisation_key = August
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 7 } }
+    }
+
+    text = {
+        localisation_key = July
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 6 } }
+    }
+
+    text = {
+        localisation_key = June
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 5 } }
+    }
+
+    text = {
+        localisation_key = May
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 4 } }
+    }
+
+    text = {
+        localisation_key = April
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 3 } }
+    }
+
+    text = {
+        localisation_key = March
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 2 } }
+    }
+
+    text = {
+        localisation_key = February
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 1 } }
+    }
+
+    text = {
+        localisation_key = January
+		trigger = { is_variable_equal = { which = CogekeioMonthVar value = 0 } }
+    }
+}
+
+defined_text = {
+    name = CegekeioDegarikes
+	random = no
+
+    text = {
+        localisation_key = degaries
+		trigger = { has_country_modifier = kheionai_cogekeio }
+    }
+
+    text = { localisation_key = cogekeio }
+}
+
+defined_text = {
+    name = CegekeioDegarikesDesc
+	random = no
+
+    text = {
+        localisation_key = cogekeioDesc
+		trigger = { has_country_modifier = kheionai_cogekeio }
+    }
+
+    text = { localisation_key = degariesDesc }
+}
+
+#Besolaki
+defined_text = {
+    name = BesolakiMagicOpinionCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			any_known_country = {
+				OR = {
+					tag = A85 #Magisterium
+					has_reform = magocracy_reform
+					ruler_is_powerful_mage = yes
+				}
+				has_opinion = {
+					who = ROOT
+					value = 50
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = BesolakiMagicDamestearCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			any_known_country = {
+				NOT = { culture_group = kheionai_ruinborn_elf }
+				damestear = 1
+				OR = {
+					has_opinion = {
+						who = ROOT
+						value = 200
+					}
+					AND = {
+						ROOT = { faction_in_power = beso_nautabhen }
+						has_opinion = {
+							who = ROOT
+							value = 175
+						}
+					}
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = BesolakiKheionaiOpinionCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			G49 = { #Lokemeion
+				has_opinion = {
+					who = ROOT
+					value = 100
+				}
+			}
+			G55 = { #Eneion
+				has_opinion = {
+					who = ROOT
+					value = 100
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = BesolakiKheionaiOpinion2Check
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			OR = {
+				G49 = { #Lokemeion
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+				G55 = { #Eneion
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = NautabhenPowerCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = { faction_in_power = beso_nautabhen }
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = SkighubhenPowerCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = { faction_in_power = beso_skighubhen }
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = EneionBuildCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			2674 = { #Eneion
+				NOT = { devastation = 1 }
+				has_trade_building_trigger = yes
+				has_tax_building_trigger = yes
+				has_production_building_trigger = yes
+				grown_by_development = 6
+				if = {
+					limit = { NOT = { owned_by = ROOT } }
+					owner = {
+						is_subject_of = ROOT
+						NOT = { liberty_desire = 50 }
+					}
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = KeyolionBuildCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			2669 = { #Keyolion
+				NOT = { devastation = 1 }
+				has_trade_building_trigger = yes
+				has_tax_building_trigger = yes
+				has_production_building_trigger = yes
+				grown_by_development = 6
+				if = {
+					limit = { NOT = { owned_by = ROOT } }
+					owner = {
+						is_subject_of = ROOT
+						NOT = { liberty_desire = 50 }
+					}
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+defined_text = {
+    name = EmpkeiosBuildCheck
+	random = no
+
+    text = {
+        localisation_key = yes_mark
+		trigger = {
+			2595 = { #Empkeios
+				NOT = { devastation = 1 }
+				has_trade_building_trigger = yes
+				has_tax_building_trigger = yes
+				has_production_building_trigger = yes
+				grown_by_development = 6
+				if = {
+					limit = { NOT = { owned_by = ROOT } }
+					owner = {
+						is_subject_of = ROOT
+						NOT = { liberty_desire = 50 }
+					}
+				}
+			}
+		}
+    }
+
+    text = { localisation_key = no_mark }
+}
+
+#Deathwinds
+
+defined_text = { #So I only need to add the description once instead of 10 times
+    name = windward_modifier_desc
+	random = no
+
+    text = { localisation_key = desc_windward_level }
+}
+
+
+defined_text = { #So I only need to add the description once instead of 10 times
+    name = deathwind_modifier_desc
+	random = no
+
+    text = { localisation_key = desc_deathwind_level }
+}
+
+defined_text = {
+    name = GetWindwardValue
+	random = no
+
+    text = {
+        localisation_key = value_1
+		trigger = { has_province_modifier = windward_level_1 }
+    }
+
+    text = {
+        localisation_key = value_2
+		trigger = { has_province_modifier = windward_level_2 }
+    }
+
+    text = {
+        localisation_key = value_3
+		trigger = { has_province_modifier = windward_level_3 }
+    }
+
+    text = {
+        localisation_key = value_4
+		trigger = { has_province_modifier = windward_level_4 }
+    }
+
+    text = {
+        localisation_key = value_5
+		trigger = { has_province_modifier = windward_level_5 }
+    }
+
+    text = {
+        localisation_key = value_6
+		trigger = { has_province_modifier = windward_level_6 }
+    }
+
+    text = {
+        localisation_key = value_7
+		trigger = { has_province_modifier = windward_level_7 }
+    }
+
+    text = {
+        localisation_key = value_8
+		trigger = { has_province_modifier = windward_level_8 }
+    }
+
+    text = {
+        localisation_key = value_9
+		trigger = { has_province_modifier = windward_level_9 }
+    }
+
+    text = {
+        localisation_key = value_10
+		trigger = { has_province_modifier = windward_level_10 }
+    }
+
+    text = { localisation_key = value_0 }
+}
+
+defined_text = {
+    name = GetWindwardModifiers
+	random = no
+
+    text = {
+        localisation_key = windward_1_modifiers
+		trigger = { has_province_modifier = windward_level_1 }
+    }
+
+    text = {
+        localisation_key = windward_2_modifiers
+		trigger = { has_province_modifier = windward_level_2 }
+    }
+
+    text = {
+        localisation_key = windward_3_modifiers
+		trigger = { has_province_modifier = windward_level_3 }
+    }
+
+    text = {
+        localisation_key = windward_4_modifiers
+		trigger = { has_province_modifier = windward_level_4 }
+    }
+
+    text = {
+        localisation_key = windward_5_modifiers
+		trigger = { has_province_modifier = windward_level_5 }
+    }
+
+    text = {
+        localisation_key = windward_6_modifiers
+		trigger = { has_province_modifier = windward_level_6 }
+    }
+
+    text = {
+        localisation_key = windward_7_modifiers
+		trigger = { has_province_modifier = windward_level_7 }
+    }
+
+    text = {
+        localisation_key = windward_8_modifiers
+		trigger = { has_province_modifier = windward_level_8 }
+    }
+
+    text = {
+        localisation_key = windward_9_modifiers
+		trigger = { has_province_modifier = windward_level_9 }
+    }
+
+    text = {
+        localisation_key = windward_10_modifiers
+		trigger = { has_province_modifier = windward_level_10 }
+    }
+
+    text = { localisation_key = windward_0_modifiers }
+}
+
+defined_text = {
+    name = GetDeathwindsValue
+	random = no
+
+    text = {
+        localisation_key = deathwinds_active
+		trigger = { check_variable = { deathwinds_warded_var = 0 } }
+    }
+	
+	text = { localisation_key = deathwinds_not_active }
+}
+
+defined_text = {
+    name = GetDeathwindModifiers
+	random = no
+
+    text = {
+        localisation_key = deathwind_1_modifiers
+		trigger = { has_province_modifier = deathwind_level_1 }
+    }
+
+    text = {
+        localisation_key = deathwind_2_modifiers
+		trigger = { has_province_modifier = deathwind_level_2 }
+    }
+
+    text = {
+        localisation_key = deathwind_3_modifiers
+		trigger = { has_province_modifier = deathwind_level_3 }
+    }
+
+    text = {
+        localisation_key = deathwind_4_modifiers
+		trigger = { has_province_modifier = deathwind_level_4 }
+    }
+
+    text = {
+        localisation_key = deathwind_5_modifiers
+		trigger = { has_province_modifier = deathwind_level_5 }
+    }
+
+    text = {
+        localisation_key = deathwind_6_modifiers
+		trigger = { has_province_modifier = deathwind_level_6 }
+    }
+
+    text = {
+        localisation_key = deathwind_7_modifiers
+		trigger = { has_province_modifier = deathwind_level_7 }
+    }
+
+    text = {
+        localisation_key = deathwind_8_modifiers
+		trigger = { has_province_modifier = deathwind_level_8 }
+    }
+
+    text = {
+        localisation_key = deathwind_9_modifiers
+		trigger = { has_province_modifier = deathwind_level_9 }
+    }
+
+    text = {
+        localisation_key = deathwind_10_modifiers
+		trigger = { has_province_modifier = deathwind_level_10 }
+    }
+
+    text = { localisation_key = deathwind_0_modifiers }
+}
+
+defined_text = {
+    name = OriginalDeathwindsValue
+	random = no
+
+    text = {
+        localisation_key = og_deathwinds_tt
+		trigger = { check_variable = { deathwinds_var = 0 } }
+    }
+}
+
+#Area Text Highlight if the province is in that area
+defined_text = {
+    name = DWKheionHLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deirosi_capital_provinces }
+    }
+}
+
+defined_text = {
+    name = DWP3HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_plus3_group }
+    }
+}
+
+defined_text = {
+    name = DWP1HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_plus1_group }
+    }
+}
+
+defined_text = {
+    name = DWP0HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_plus0_group }
+    }
+}
+
+defined_text = {
+    name = DWR1HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_minus1_group }
+    }
+}
+
+defined_text = {
+    name = DWR2HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_minus2_group }
+    }
+}
+
+defined_text = {
+    name = DWR3HLf
+	random = no
+
+    text = {
+        localisation_key = mult_zero
+		trigger = { province_group = deathwinds_minus3_group }
+    }
+}
+
+defined_text = {
+    name = DWKheionHLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deirosi_capital_provinces }
+    }
+}
+
+defined_text = {
+    name = DWP3HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_plus3_group }
+    }
+}
+
+defined_text = {
+    name = DWP1HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_plus1_group }
+    }
+}
+
+defined_text = {
+    name = DWP0HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_plus0_group }
+    }
+}
+
+defined_text = {
+    name = DWR1HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_minus1_group }
+    }
+}
+
+defined_text = {
+    name = DWR2HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_minus2_group }
+    }
+}
+
+defined_text = {
+    name = DWR3HLb
+	random = no
+
+    text = {
+        localisation_key = lake_fed_color_end
+		trigger = { province_group = deathwinds_minus3_group }
+    }
+}
+
+defined_text = {
+    name = DestroyWindwardMonthLoc
+	random = no
+
+    text = {
+        localisation_key = December
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 11 } }
+    }
+
+    text = {
+        localisation_key = November
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 10 } }
+    }
+
+    text = {
+        localisation_key = October
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 9 } }
+    }
+
+    text = {
+        localisation_key = September
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 8 } }
+    }
+
+    text = {
+        localisation_key = August
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 7 } }
+    }
+
+    text = {
+        localisation_key = July
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 6 } }
+    }
+
+    text = {
+        localisation_key = June
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 5 } }
+    }
+
+    text = {
+        localisation_key = May
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 4 } }
+    }
+
+    text = {
+        localisation_key = April
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 3 } }
+    }
+
+    text = {
+        localisation_key = March
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 2 } }
+    }
+
+    text = {
+        localisation_key = February
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 1 } }
+    }
+
+    text = {
+        localisation_key = January
+		trigger = { is_variable_equal = { which = DestroyWindwardMonthVar value = 0 } }
+    }
+}
+
+defined_text = {
+	name = GetOverallAbjurationLevelNumber
+	random = no
+	text = { localisation_key = value_3 trigger = { is_overall_abjuration_level_3 = yes } }
+	text = { localisation_key = value_2 trigger = { is_overall_abjuration_level_2 = yes } }
+	text = { localisation_key = value_1 trigger = { is_overall_abjuration_level_1 = yes } }
+	text = { localisation_key = value_0 }
+}
+
+defined_text = {
+	name = getDeathwindsBarActivity
+	random = no
+
+	text = {
+		localisation_key = deathwinds_bar_active_timer_tt
+		trigger = {
+			check_variable = {
+				which = deathwinds_active_months_var
+				value = 0
+			}
+		}
+	}
+
+	text = { localisation_key = deathwinds_bar_inactive_timer_tt }
+}
+
+#Displays the name of each province in the area for the bottom Deathwinds box
+defined_text = {
+    name = GetDeirosAreaProv1
+	random = no
+
+    text = { localisation_key = "[2751.GetName]:" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2752.GetName]:" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2745.GetName]:" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2738.GetName]:" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2773.GetName]:" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2785.GetName]:" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2736.GetName]:" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2732.GetName]:" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2731.GetName]:" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2756.GetName]:" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2728.GetName]:" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2735.GetName]:" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2764.GetName]:" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProv2
+	random = no
+
+    text = { localisation_key = "[2748.GetName]:" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2753.GetName]:" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2746.GetName]:" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2739.GetName]:" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2772.GetName]:" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2786.GetName]:" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2771.GetName]:" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2733.GetName]:" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2730.GetName]:" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2758.GetName]:" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2761.GetName]:" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2725.GetName]:" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2765.GetName]:" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProv3
+	random = no
+
+    text = { localisation_key = "[2779.GetName]:" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2782.GetName]:" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2743.GetName]:" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2775.GetName]:" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2776.GetName]:" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2754.GetName]:" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2770.GetName]:" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2734.GetName]:" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2762.GetName]:" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2755.GetName]:" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2759.GetName]:" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2724.GetName]:" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2767.GetName]:" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProv4
+	random = no
+
+    text = { localisation_key = "[2780.GetName]:" trigger = { area = geneltik_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2744.GetName]:" trigger = { area = lokemeion_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2777.GetName]:" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2766.GetName]:" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2769.GetName]:" trigger = { area = degakheion_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2763.GetName]:" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2760.GetName]:" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2727.GetName]:" trigger = { area = arpedifer_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2768.GetName]:" trigger = { area = kheinos_area } }
+    text = { localisation_key = blank }
+}
+
+defined_text = {
+    name = GetDeirosAreaProv5
+	random = no
+
+    # text = { localisation_key = "[.GetName]:" trigger = { area = geneltik_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2778.GetName]:" trigger = { area = lokemeion_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = ormam_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = kherka_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2737.GetName]:" trigger = { area = degakheion_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = kimanis_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = oktikheion_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2726.GetName]:" trigger = { area = arpedifer_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = arpenisi_area } }
+    # text = { localisation_key = "[.GetName]:" trigger = { area = kheinos_area } }
+    text = { localisation_key = blank }
+}
+
+#Displays the windward level of each province in the area for the bottom Deathwinds box
+defined_text = {
+    name = GetDeirosAreaProvWard1
+	random = no
+
+    text = { localisation_key = "[2751.GetWindwardValue]" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2752.GetWindwardValue]" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2745.GetWindwardValue]" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2738.GetWindwardValue]" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2773.GetWindwardValue]" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2785.GetWindwardValue]" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2736.GetWindwardValue]" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2732.GetWindwardValue]" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2731.GetWindwardValue]" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2756.GetWindwardValue]" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2728.GetWindwardValue]" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2735.GetWindwardValue]" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2764.GetWindwardValue]" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProvWard2
+	random = no
+
+    text = { localisation_key = "[2748.GetWindwardValue]" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2753.GetWindwardValue]" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2746.GetWindwardValue]" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2739.GetWindwardValue]" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2772.GetWindwardValue]" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2786.GetWindwardValue]" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2771.GetWindwardValue]" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2733.GetWindwardValue]" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2730.GetWindwardValue]" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2758.GetWindwardValue]" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2761.GetWindwardValue]" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2725.GetWindwardValue]" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2765.GetWindwardValue]" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProvWard3
+	random = no
+
+    text = { localisation_key = "[2779.GetWindwardValue]" trigger = { area = geneltik_area } }
+    text = { localisation_key = "[2782.GetWindwardValue]" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2743.GetWindwardValue]" trigger = { area = lokemeion_area } }
+    text = { localisation_key = "[2775.GetWindwardValue]" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2776.GetWindwardValue]" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2754.GetWindwardValue]" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2770.GetWindwardValue]" trigger = { area = degakheion_area } }
+    text = { localisation_key = "[2734.GetWindwardValue]" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2762.GetWindwardValue]" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2755.GetWindwardValue]" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2759.GetWindwardValue]" trigger = { area = arpedifer_area } }
+    text = { localisation_key = "[2724.GetWindwardValue]" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2767.GetWindwardValue]" trigger = { area = kheinos_area } }
+}
+
+defined_text = {
+    name = GetDeirosAreaProvWard4
+	random = no
+
+    text = { localisation_key = "[2780.GetWindwardValue]" trigger = { area = geneltik_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2744.GetWindwardValue]" trigger = { area = lokemeion_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = ormam_area } }
+    text = { localisation_key = "[2777.GetWindwardValue]" trigger = { area = kherka_area } }
+    text = { localisation_key = "[2766.GetWindwardValue]" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2769.GetWindwardValue]" trigger = { area = degakheion_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = kimanis_area } }
+    text = { localisation_key = "[2763.GetWindwardValue]" trigger = { area = oktikheion_area } }
+    text = { localisation_key = "[2760.GetWindwardValue]" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2727.GetWindwardValue]" trigger = { area = arpedifer_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = arpenisi_area } }
+    text = { localisation_key = "[2768.GetWindwardValue]" trigger = { area = kheinos_area } }
+    text = { localisation_key = blank }
+}
+
+defined_text = {
+    name = GetDeirosAreaProvWard5
+	random = no
+
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = geneltik_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = lokegentia_area } }
+    text = { localisation_key = "[2778.GetWindwardValue]" trigger = { area = lokemeion_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = ormam_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = kherka_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = eltikan_area } }
+    text = { localisation_key = "[2737.GetWindwardValue]" trigger = { area = degakheion_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = kimanis_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = oktikheion_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = mtelian_area } }
+    text = { localisation_key = "[2726.GetWindwardValue]" trigger = { area = arpedifer_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = arpenisi_area } }
+    # text = { localisation_key = "[.GetWindwardValue]" trigger = { area = kheinos_area } }
+    text = { localisation_key = blank }
+}
+
+defined_text = {
+    name = GetDeathwindsProjectHint
+	random = no
+
+    text = {
+        localisation_key = deathwinds_project_hint_tt
+        trigger = { owner = { has_full_deathwinds_system = yes } }
+    }
+}
+
+defined_text = {
+    name = GetDeathwindsProjectLevel
+	random = no
+
+    text = {
+        localisation_key = "[This.deathwinds_kheion_and_kaydhano_level.GetValue]"
+        trigger = {
+            check_variable = {
+                which = deathwinds_kheion_and_kaydhano_level
+                value = 1
+            }
+        }
+    }
+    text = { localisation_key = ZERO }
+}

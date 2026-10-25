@@ -1,0 +1,2086 @@
+#Designed by: Texan and Susurrus, coded by: Pivert08, written by: Eskadelade and Pivert08
+
+kooras_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { 
+		OR = {
+			tag = G44
+			tag = U29
+			tag = G03
+			tag = U28
+		}
+	}
+
+	kooras_tag_specific_mission_2 = {
+		icon = mission_well_of_majesty
+		position = 2
+		required_missions = {
+			kooras_tag_specific_mission_1
+		}
+
+		trigger = {
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				OR = {
+					advisor = court_mage
+					adm_power = 50
+				}
+				treasury = 50
+				G44 = {
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				OR = {
+					advisor = court_mage
+					mil_power = 50
+				}
+				stability = 1
+				mil_tech = 2
+				adm_tech = 2
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				OR = {
+					advisor = court_mage
+					dip_power = 50
+				}
+				navy_size = 5
+				prestige = 10
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				country_event = {
+					id = kooras_events.23
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				country_event = {
+					id = kooras_events.24
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				country_event = {
+					id = kooras_events.25
+				}
+			}
+		}
+	}
+
+	kooras_upon_the_ruins = {
+		icon = mission_mayapan
+		position = 5
+		required_missions = {
+			kooras_unite_the_tribes
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				has_building = native_three_sisters_field
+			}
+		}
+
+		trigger = {
+			native_three_sisters_field = 1
+			tribal_development = 6
+			manpower = 10
+		}
+
+		effect = {
+			country_event = {
+				id = kooras_events.1
+			}
+			custom_tooltip = kooras_lowered_tland_tt
+		}
+	}
+
+	kooras_settling_the_interior = {
+		icon = mission_pue_irrigation_cannals
+		position = 6
+		required_missions = {
+			kooras_upon_the_ruins
+		}
+
+		trigger = {
+			tribal_development = 9
+			native_irrigation = 3
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				has_building = native_irrigation
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					NOT = { native_irrigation = 4 }
+				}
+				add_country_modifier = {
+					name = kooras_populating_the_land
+					duration = 1095
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { native_irrigation = 5 }
+				}
+				add_country_modifier = {
+					name = kooras_populating_the_land
+					duration = 1460
+				}
+			}
+			else = {
+				add_country_modifier = {
+					name = kooras_populating_the_land
+					duration = 1825
+				}
+			}			
+			custom_tooltip = kooras_irrigation_extends_modifier_tt
+			custom_tooltip = kooras_t4_reform_tt
+		}
+	}
+}
+
+kooras_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { 
+		OR = {
+			tag = G44
+			tag = U29
+			tag = G03
+			tag = U28
+		}
+	}
+
+	kooras_tag_specific_mission_1 = {
+		icon = mission_gain_mana
+		position = 1
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					culture = silent_watchers
+					region = haraf_region					
+					NOT = {
+						tribal_land_of = ROOT
+						owned_by = ROOT
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = G03
+						}
+						NOT = {
+							haraf_region = {
+								type = any
+								OR = {
+									tribal_land_of = ROOT
+									owned_by = ROOT
+								}
+								culture = silent_watchers
+							}
+						}
+					}
+				}
+				AND = {
+					is_capital_of = ROOT
+					ROOT = {
+						is_or_was_tag = {
+							tag = U29
+						}
+					}
+				}
+				AND = {
+					province_id = 2079
+					ROOT = {
+						is_or_was_tag = {
+							tag = G44
+						}
+						NOT = {
+							2079 = {
+								num_of_units_in_province = {
+									who = ROOT
+									amount = 5
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				prestige = 10
+				is_in_deficit = no
+				haraf_region = {
+					type = any
+					OR = {
+						tribal_land_of = ROOT
+						owned_by = ROOT
+					}
+					culture = silent_watchers
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				treasury = 50
+				mil_power = 50
+				capital_scope = {
+					NOT = {
+						tribal_land_of = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				2079 = {
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 5
+					}
+				}
+				manpower_percentage = 0.9
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				country_event = {
+					id = kooras_events.16
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				add_treasury = -50
+				add_mil_power = -50
+				capital_scope = {
+					change_trade_goods = livestock
+					add_permanent_province_modifier = {
+						name = kooras_great_herd
+						duration = 7300
+					}
+				}
+				every_neighbor_province = {
+					limit = {
+						NOT = {
+							tribal_land_of = G44
+							tribal_land_of = G03
+						}
+					}
+					change_tribal_land = ROOT
+				}
+				define_advisor = {
+   					type = court_mage
+    				skill = 1
+					cost_multiplier = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				country_event = {
+					id = kooras_events.17
+				}
+			}
+		}
+	}
+
+	kooras_tag_specific_mission_3 = {
+		icon = mission_aztec_religious_classes
+		position = 2
+		required_missions = {
+			kooras_tag_specific_mission_1
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						AND = {
+							ROOT = {
+								NOT = {
+									capital_scope = {
+										area = gommiochand_area
+									}
+								}
+							}
+							area = gommiochand_area
+						}
+						AND = {
+							ROOT = {
+								capital_scope = {
+									area = gommiochand_area
+								} 
+							}
+							province_id = 2088
+							NOT = {
+								num_of_units_in_province = {
+									who = ROOT
+									amount = 6
+								}
+							}
+						}
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = G03
+						}
+					}
+				}
+				AND = {
+					is_capital_of = G43
+					ROOT = {
+						is_or_was_tag = {
+							tag = U29
+						}
+						NOT = {
+							G43 = {
+								has_opinion = {
+	                       	 		who = ROOT
+	                        		value = 100
+                        		}
+							}
+							G43 = {
+								has_90_opinion_improved_relation =  { target = ROOT }
+							}
+						}
+					}
+				}
+				AND = {
+					area = pontuzex_area
+					NOT = {
+						tribal_land_of = ROOT
+						owned_by = ROOT
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = G44
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				capital_scope = {
+					area = gommiochand_area
+				}
+				2088 = {
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 6
+					}
+				}
+				dip_power = 50
+				mil_power = 50
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				prestige = 10
+				OR = {
+					G43 = {
+						has_opinion = {
+	                        who = ROOT
+	                        value = 100
+                        }
+					}
+					G43 = {
+						has_90_opinion_improved_relation =  { target = ROOT }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				if = {
+    				limit = { is_subject = yes }
+    				is_subject = no
+				}
+				pontuzex_area = {
+					type = all
+					tribal_land_of = ROOT
+				}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				2149 = {
+					change_trade_goods = precursor_relics
+				}
+				add_dip_power = -50
+				add_mil_power = -50
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				country_event = {
+					id = kooras_events.18
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				mikidaxepi_area = {
+					change_tribal_land = ROOT
+				}
+				2079 = {
+					add_base_production = 2
+				}
+				capital_scope = {
+					change_trade_goods = gems
+				}
+			}
+		}
+	}
+
+	kooras_tag_specific_mission_4 = {
+		icon = mission_empowerment
+		position = 3
+		required_missions = {
+			kooras_tag_specific_mission_2
+			kooras_tag_specific_mission_3
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 2149
+					NOT = {
+						has_building = native_ceremonial_fire_pit
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = G03
+						}
+					}
+				}
+				AND = {
+					region = haraf_region
+					has_terrain = jungle
+					NOT = {
+						tribal_land_of = ROOT
+						owned_by = ROOT
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = U29
+						}
+						NOT = {
+							calc_true_if = {
+								haraf_region = {
+									type = all
+									OR = {
+										tribal_land_of = ROOT
+										owned_by = ROOT
+									}
+									has_terrain = jungle
+								}
+								amount = 6
+							}
+						}
+					}
+				}
+				AND = {
+					province_id = 1560
+					NOT = {
+						transports_in_province = 10
+					}
+					ROOT = {
+						is_or_was_tag = {
+							tag = G44
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				2149 = {
+					has_building = native_ceremonial_fire_pit
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				native_great_trail = 1
+				calc_true_if = {
+					haraf_region = {
+						type = all
+						OR = {
+							tribal_land_of = ROOT
+							owned_by = ROOT
+						}
+						has_terrain = jungle
+					}
+					amount = 6
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				check_variable = {
+					which = koorasAmountOfBloodDives
+					value = 2
+				}
+				num_of_admirals = 1
+				1560 = {
+					transports_in_province = 10
+				}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G03
+					}
+				}
+				country_event = {
+					id = kooras_events.19
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				custom_tooltip = kooras_kaiinpi_trade_good_change_tt
+				hidden_effect = {
+					random_province = {
+						limit = {
+							tribal_land_of = ROOT
+							has_terrain = jungle
+							NOT = {
+								has_province_flag = kooras_plant_trade_good_already_checked
+								trade_goods = cocoa
+								trade_goods = sugar
+								trade_goods = coffee
+							}
+						}
+						province_event = {
+							id = kooras_events.22
+						}
+						set_province_flag = kooras_plant_trade_good_already_check
+					}
+					random_province = {
+						limit = {
+							tribal_land_of = ROOT
+							has_terrain = jungle
+							NOT = {
+								has_province_flag = kooras_plant_trade_good_already_checked
+								trade_goods = cocoa
+								trade_goods = sugar
+								trade_goods = coffee
+							}
+						}
+						province_event = {
+							id = kooras_events.22
+						}
+						set_province_flag = kooras_plant_trade_good_already_check
+					}
+					random_province = {
+						limit = {
+							tribal_land_of = ROOT
+							has_terrain = jungle
+							NOT = {
+								has_province_flag = kooras_plant_trade_good_already_checked
+								trade_goods = cocoa
+								trade_goods = sugar
+								trade_goods = coffee
+							}
+						}
+						province_event = {
+							id = kooras_events.22
+						}
+						set_province_flag = kooras_plant_trade_good_already_check
+					}
+					random_province = {
+						limit = {
+							tribal_land_of = ROOT
+							has_terrain = jungle
+							NOT = {
+								has_province_flag = kooras_plant_trade_good_already_checked
+								trade_goods = cocoa
+								trade_goods = sugar
+								trade_goods = coffee
+							}
+						}
+						province_event = {
+							id = kooras_events.22
+						}
+						set_province_flag = kooras_plant_trade_good_already_check
+					}
+				}
+				add_casus_belli = {
+					target = G03
+					type = cb_vassalize_mission
+					months = 240
+				}
+				add_casus_belli = {
+					target = G44
+					type = cb_vassalize_mission
+					months = 240
+				}
+			}
+			else_if = {
+				limit = {
+					is_or_was_tag = {
+						tag = G44
+					}
+				}
+				country_event = {
+					id = kooras_events.21
+				}
+			}
+		}
+	}
+
+	kooras_our_former_brothers = {
+		icon = mission_nah_holy_people
+		position = 7
+		required_missions = {
+			kooras_settling_the_interior
+			kooras_proclaim_the_federation
+		}
+
+		trigger = {
+			army_size = G43
+			total_development = G43
+			OR = {
+				G43 = {
+					has_been_insulted_by_root = yes
+				}
+				G43 = {
+					alliance_with = ROOT
+				}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					G43 = {
+						has_been_insulted_by_root = yes
+					}
+				}
+				country_event = {
+					id = kooras_events.2
+				}
+			}
+			else = {
+				country_event = {
+					id = kooras_events.3
+				}
+			}
+		}
+	}
+
+	kooras_largest_in_haraf = {
+		icon = mission_nah_dinetah
+		position = 8
+		required_missions = {
+			kooras_our_former_brothers
+		}
+
+		provinces_to_highlight = {
+			OR = {
+        		AND = {
+        		    is_capital_of = G43
+        		    ROOT = {
+        		        NOT = { historical_rival_with = G43 }
+        		    }
+        		}
+        		AND = {
+        		    region = haraf_region
+        			OR = {
+                		area = tilsikabahn_area
+                		area = manguchtec_area
+            		}
+            		NOT = {
+            		    tribal_land_of = ROOT
+            		    owned_by = ROOT
+            		}
+            		ROOT = {
+                		historical_rival_with = G43
+        		    }
+        		}
+    		}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = kooras_largest_in_haraf_trigger_tt
+				if = {
+                	limit = { historical_rival_with = G43 }
+                	manguchtec_area = {
+                	    type = all
+                	    OR = {
+                        	tribal_land_of = ROOT
+                        	owned_by = ROOT
+                    	}
+                	}
+                	tilsikabahn_area = {
+                    	type = all
+                    	OR = {
+                        	tribal_land_of = ROOT
+                        	owned_by = ROOT
+                    	}
+                	}
+                	has_won_war_against = {
+                    	who = G43
+                    	max_years_since = 50
+                	}
+            	}
+            	else = {
+                	G43 = {
+                    	alliance_with = ROOT
+                    	has_opinion = {
+                        	who = ROOT
+                        	value = 150
+                    	}
+                		trust = {
+                    		who = ROOT
+                		    value = 75
+						}
+                	}
+                	treasury = 500
+            	}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					historical_rival_with = G43
+				}
+				country_event = {
+					id = kooras_events.4
+				}
+			}
+			else = {
+				country_event = {
+					id = kooras_events.5
+				}
+			}
+		}
+	}
+
+	kooras_what_they_call_artifice = {
+		icon = mission_gnome_tinkering
+		position = 10
+		required_missions = {
+			kooras_the_arrival
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				fast_has_pop_of_race = { race = gnomish }
+        		fast_has_pop_of_race = { race = goblin }
+        		fast_has_pop_of_race = { race = kobold }
+			}
+			owned_by = ROOT
+			NOT = {
+				development = 20
+				num_of_buildings_in_province = 5
+			}
+		}
+
+		trigger = {
+			is_lacking_institutions = no
+			num_of_owned_provinces_with = {
+				development = 20
+				num_of_buildings_in_province = 5
+				OR = {
+					fast_has_pop_of_race = { race = gnomish }
+        			fast_has_pop_of_race = { race = goblin }
+        			fast_has_pop_of_race = { race = kobold }
+				}
+				value = 5
+			}
+			check_variable = {
+				which = koorasAmountOfBloodDives
+				value = 25
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = kooras_events.6
+			}
+		}
+	}
+}
+
+kooras_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { 
+		OR = {
+			tag = G44
+			tag = U29
+			tag = G03
+			tag = U28
+		}
+	}
+
+	kooras_unite_the_tribes = {
+		icon = mission_iroquois_the_five_nations
+		position = 4
+		required_missions = {
+			kooras_tag_specific_mission_4
+			kooras_gather_the_tribe
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = kooras_all_kooras_tags_allies_or_subjects_tt
+				all_known_country = {
+					OR = {
+						NOT = {
+							primary_culture = kooras
+						}
+						AND = {
+							alliance_with = ROOT
+							has_opinion = {
+								who = ROOT
+								value = 150
+							}
+						}
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+
+		effect = { 
+			every_ally = {
+				limit = {
+					primary_culture = kooras
+					has_opinion = {
+						who = ROOT
+						value = 150
+					}
+				}
+				ROOT = {
+					vassalize = PREV
+				}
+			}
+			add_country_modifier_for_age = {
+				name = kooras_federation_member
+				age = age_of_discovery
+			}
+			every_known_country = {
+				limit = {
+					primary_culture = kooras
+				}
+				add_country_modifier_for_age = {
+					name = kooras_federation_member
+					age = age_of_discovery
+				}
+			}
+		}
+	}
+
+	kooras_making_amends = {
+		icon = mission_aztec_city_alliance
+		position = 5
+		required_missions = {
+			kooras_unite_the_tribes
+		}
+
+		trigger = {
+			all_subject_country = {
+				NOT = {
+					liberty_desire = 50
+				}
+				has_100_opinion_improved_relation = { target = ROOT }
+			}
+			diplomatic_reputation = 2
+		}
+
+		effect = { 
+			every_subject_country = {
+				limit = {
+					primary_culture = kooras
+				}
+				add_historical_friend = ROOT
+				ROOT = {
+					add_historical_friend = PREV
+				}
+			}
+			add_country_modifier = {
+				name = kooras_favor_bonus
+				duration = 7300
+			}
+		}
+	}
+
+	kooras_proclaim_the_federation = {
+		icon = mission_mesoamerican_tributes
+		position = 6
+		required_missions = {
+			kooras_upon_the_ruins
+			kooras_making_amends
+		}
+
+		provinces_to_highlight = {
+			OR = {
+                AND = {
+                    is_capital = yes
+                    owner = {
+                        primary_culture = kooras
+                        NOT = {
+                            trust = {
+                                who = ROOT
+                                value = 50
+                            }
+							AND = {
+								has_50_opinion_improved_relation = { target = ROOT }
+								has_any_opinion_sent_gift = { target = ROOT }
+							}
+                        }
+                    }
+                }
+                AND = {
+                    owned_by = ROOT
+                    unrest = 1
+                }
+            }
+		}
+
+		trigger = {
+			OR = {
+				AND = {
+					reform_level = 3
+					government_reform_progress = 100
+				}
+				reform_level = 4
+			}
+			adm_tech = 3
+			custom_trigger_tooltip = {
+				tooltip = kooras_all_kooras_tags_trust_tt
+				all_known_country = {
+					OR = {
+						NOT = {
+							primary_culture = kooras
+						}
+						trust = {
+							who = ROOT
+							value = 50
+						}
+						AND = {
+							has_50_opinion_improved_relation = { target = ROOT }
+							has_any_opinion_sent_gift = { target = ROOT }
+						}
+					}
+				}
+			}
+			all_owned_province = {
+				OR = {
+					NOT = { culture = kooras }
+					NOT = { unrest = 1 }
+				}
+			}
+		}
+
+		effect = { 
+			country_event = {
+				id = kooras_events.10
+			}
+			custom_tooltip = kooras_will_release_tt
+			add_country_modifier_for_age = {
+				name = kooras_integration_bonus
+				age = age_of_discovery
+			}
+		}
+	}
+
+	kooras_singers_of_the_grass = {
+		icon = mission_lit_harness_steppes
+		position = 7
+		required_missions = {
+			kooras_proclaim_the_federation
+		}
+
+		provinces_to_highlight = {
+			has_terrain = grasslands
+			country_or_subject_holds = ROOT
+			NOT = {
+				has_building = native_great_trail
+				base_manpower = 3
+			}
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 8
+				has_terrain = grasslands
+			}
+			if = {
+				limit = { is_native_tribe = yes }
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 4 
+					has_terrain = grasslands
+					has_building = native_great_trail
+					base_manpower = 3
+				}
+			}
+			else = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 4 
+					has_terrain = grasslands
+					base_manpower = 5
+				}
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+				random_owned_or_subject_province = {
+					limit = {
+						has_terrain = grasslands
+						NOT = { trade_goods = livestock }
+					}
+					change_trade_goods = livestock
+				}
+			}
+			custom_tooltip = kooras_livestock_tt
+			if = {
+				limit = {
+					is_or_was_tag = {
+						tag = U29
+					}
+				}
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							has_terrain = grasslands
+							culture = kooras
+						}
+						add_province_modifier = {
+							name = kooras_kaiinpi_pastoralism_U29
+							duration = -1
+						}
+					}
+					set_country_flag = kooras_kaiinpi_pastoralism_flag_U29
+				}
+				custom_tooltip = kooras_kaiinpi_pastoralism_U29_tt
+			}
+			else = {
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							has_terrain = grasslands
+							culture = kooras
+						}
+						add_province_modifier = {
+							name = kooras_kaiinpi_pastoralism_other
+							duration = -1
+						}
+					}
+					set_country_flag = kooras_kaiinpi_pastoralism_flag_other
+				}
+				custom_tooltip = kooras_kaiinpi_pastoralism_other_tt
+			}
+		}
+	}
+
+	kooras_army_of_all_kooras = {
+		icon = mission_obsidian_blades
+		position = 8
+		required_missions = {
+			kooras_singers_of_the_grass
+			kooras_city_of_brothers
+			kooras_in_honor_of_kseldos
+		}
+
+		trigger = {
+			if = {
+				limit = { is_native_tribe = yes }
+				native_fortified_house = 1
+			}
+			else = { num_of_generals = 2 }
+			army_size = 20
+			OR = {
+				army_professionalism = 0.1
+				AND = {
+					employed_advisor = {
+						category = MIL
+					}
+					is_in_deficit = no
+				}
+			}
+		}
+
+		effect = { 
+			add_country_modifier = {
+				name = kooras_army_of_all_kooras_modifier
+				duration = -1
+			}
+		}
+	}
+
+	kooras_the_arrival = {
+		icon = mission_caribbean_cn
+		position = 9
+		required_missions = {
+			kooras_largest_in_haraf
+			kooras_army_of_all_kooras
+			kooras_the_water_arts
+		}
+
+		trigger = {
+			NOT = {
+				government = native
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = kooras_triarchy_adventurers_spawned_tt
+					has_global_flag = triarchy_adventurers_spawned
+				}
+				AND = {
+					current_age = age_of_reformation
+					haraf_region = {
+						type = all
+						OR = {
+							has_port = no
+							is_empty = no
+						}
+					}
+				}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					has_global_flag = triarchy_adventurers_spawned
+				}
+				country_event = {
+					id = kooras_events.26
+				}
+			}
+			else = {
+				country_event = {
+					id = kooras_events.27
+				}
+			}
+		}
+	}
+
+	kooras_sister_cities = {
+		icon = mission_guilds_of_barcelona
+		position = 10
+		required_missions = {
+			kooras_the_arrival
+			kooras_blood_to_afar
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = kooras_sister_cities_trigger_tt
+				OR = {
+					AND = {
+                        H30 = {
+                            OR = {
+                                exists = no
+                                AND = {
+                                    NOT = { liberty_desire = 50 }
+                                    is_subject_of = ROOT
+                                }
+                            }
+                        }
+                        H31 = {
+                            OR = {
+                                exists = no
+                                AND = {
+                                    NOT = { liberty_desire = 50 }
+                                    is_subject_of = ROOT
+                                }
+                            }
+                        }
+                        H32 = {
+                            OR = {
+                                exists = no
+                                AND = {
+                                    NOT = { liberty_desire = 50 }
+                                    is_subject_of = ROOT
+                                }
+                            }
+                        }
+                    }
+					all_known_country = {
+						OR = {
+							NOT = {
+								tag = H30
+								tag = H31
+								tag = H32
+							}
+							AND = {
+								alliance_with = ROOT
+								has_opinion = {
+	           	    	 			who = ROOT
+	          		      			value = 200
+              		  			}
+								trust = {
+									who = ROOT
+									value = 65
+								}
+								NOT = {
+									army_size = ROOT
+								}
+							}
+						}
+					}
+					all_known_country = {
+						NOT = {
+							tag = H30
+							tag = H31
+							tag = H32
+						}
+					}
+				}
+			}
+			diplomatic_reputation = 3
+			OR = {
+				medium_tolerance_gnomish_race_trigger = yes
+				high_tolerance_gnomish_race_trigger = yes
+			}
+			OR = {
+				medium_tolerance_kobold_race_trigger = yes
+				high_tolerance_kobold_race_trigger = yes
+			}
+			OR = {
+				medium_tolerance_goblin_race_trigger = yes
+				high_tolerance_goblin_race_trigger = yes
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					all_known_country = {
+						OR = {
+							NOT = {
+								tag = H30
+								tag = H31
+								tag = H32
+							}
+							AND = {
+								NOT = {
+									liberty_desire = 50
+								}
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				country_event = {
+					id = kooras_events.28
+				}
+			}
+			else_if = {
+				limit = {
+					all_known_country = {
+						OR = {
+							NOT = {
+								tag = H30
+								tag = H31
+								tag = H32
+							}
+							AND = {
+								alliance_with = ROOT
+								has_opinion = {
+	               		 			who = ROOT
+	                				value = 200
+                				}
+								trust = {
+									who = ROOT
+									value = 65
+								}
+								NOT = {
+									army_size = ROOT
+								}
+							}
+						}
+					}
+				}
+				country_event = {
+					id = kooras_events.29
+				}
+			}
+			else = {
+				country_event = {
+					id = kooras_events.28
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						accepted_culture = cliff_gnome
+						accepted_culture = tinker_gnome
+					}
+				}
+				if = {
+					limit = {
+						haraf_region = {
+							type = any
+							culture = tinker_gnome
+						}
+					}
+					add_accepted_culture = tinker_gnome
+				}
+				else = {
+					add_accepted_culture = cliff_gnome
+				}
+			}
+			else = {
+				add_dip_power = 100
+			}
+			if = {
+				limit = {
+					NOT = {
+						accepted_culture = bluescale_kobold
+						accepted_culture = steelscale_kobold
+					}
+				}
+				if = {
+					limit = {
+						haraf_region = {
+							type = any
+							culture = steelscale_kobold
+						}
+					}
+					add_accepted_culture = steelscale_kobold
+				}
+				else = {
+					add_accepted_culture = bluescale_kobold
+				}
+			}
+			else = {
+				add_dip_power = 100
+			}
+			if = {
+				limit = {
+					NOT = {
+						accepted_culture = city_goblin
+						accepted_culture = soot_goblin
+					}
+				}
+				if = {
+					limit = {
+						haraf_region = {
+							type = any
+							culture = soot_goblin
+						}
+					}
+					add_accepted_culture = soot_goblin
+				}
+				else = {
+					add_accepted_culture = city_goblin
+				}
+			}
+			else = {
+				add_dip_power = 100
+			}
+			2088 = {
+				change_province_name = "Yomo Kyin"
+			}
+			2083 = {
+				change_province_name = "Mestli Kyin"
+			}
+			2078 = {
+				change_province_name = "Sutsumek Kyin"
+			}	
+		}
+	}
+
+	kooras_age_of_jaakaiin = {
+		icon = mission_look_west
+		position = 11
+		required_missions = {
+			kooras_what_they_call_artifice
+			kooras_sister_cities
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+    		owner = {
+        		ROOT = {
+        	    	tech_difference = -2
+        		}
+   		 	}	
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = kooras_2_deity_upgrades_tt
+				calc_true_if = {
+					has_country_flag = jaakaiin_river_upgraded
+					has_country_flag = jaakaiin_rain_upgraded
+					has_country_flag = jaakaiin_blood_upgraded
+					has_country_flag = jaakaiin_sea_upgraded
+					amount = 2
+				}
+			}
+			high_tolerance_gnomish_race_trigger = yes
+			high_tolerance_kobold_race_trigger = yes
+			high_tolerance_goblin_race_trigger = yes
+			tag = U28
+			all_known_country = {
+				NOT = {
+					tech_difference = 2
+				}
+			}
+			total_development = 500
+		}
+
+		effect = { 
+			country_event = {
+				id = kooras_events.30
+			}
+		}
+	}
+}
+
+kooras_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { 
+		OR = {
+			tag = G44
+			tag = U29
+			tag = G03
+			tag = U28
+		}
+	}
+
+	kooras_blood_wars = {
+		icon = mission_aztecs_flower_wars
+		position = 1
+
+		trigger = {
+			OR = {
+				any_rival_country = {
+					primary_culture = kooras
+					humiliated_by = ROOT
+				}
+				all_known_country = {
+					OR = {
+						NOT = {
+							primary_culture = kooras
+						}
+						has_been_eclipsed_by = ROOT
+					}
+				}
+			}
+		}
+
+		effect = { 
+			add_prestige = 20
+			add_tribal_development_scaling = { key = 2 }
+		}
+	}
+
+	kooras_gather_the_tribe = {
+		icon = mission_calpulli_household
+		position = 3
+		required_missions = {
+			kooras_blood_wars
+		}
+
+		trigger = {
+			capital_scope = {
+				has_building = native_longhouse
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = kooras_assembling_the_tribes
+				duration = 7300
+			}
+			capital_scope = {
+				kill_units = {
+					who = owner
+					type = infantry
+					amount = 4
+				}
+				add_building = native_palisade
+			}
+		}
+	}
+
+	kooras_city_of_brothers = {
+		icon = mission_lake_texcoco
+		position = 7
+		required_missions = {
+			kooras_proclaim_the_federation
+		}
+
+		provinces_to_highlight = {
+			province_id = 2149
+			NOT = {
+				AND = {
+					num_of_buildings_in_province = 3
+					development = 20
+					owned_by = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			2149 = {
+				owned_by = ROOT
+				num_of_buildings_in_province = 3
+				development = 20
+			}
+		}
+
+		effect = { 
+			set_capital = 2149
+			koonbepa_area = {
+				add_province_modifier = {
+					name = kooras_city_along_the_rivers
+					duration = -1
+				}
+			}
+		}
+	}
+
+	kooras_the_water_arts = {
+		icon = mission_chapultepec_aqueduct
+		position = 8
+		required_missions = {
+			kooras_city_of_brothers
+			kooras_in_honor_of_kseldos
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2149
+				province_id = 2079
+			}
+			num_free_building_slots = 1
+		}
+
+		trigger = {
+			2149 = {
+				NOT = {
+					num_free_building_slots = 1
+				}
+			}
+			2079 = {
+				NOT = {
+					num_free_building_slots = 1
+				}
+			}
+			OR = {
+				native_irrigation = 6
+				workshop = 6
+			}
+			adm_tech = 6
+			dip_tech = 6
+			mil_tech = 6
+			OR = {
+				adm_power = 100
+				advisor = artist
+			}
+		}
+
+		effect = {
+			if = {
+				limit = { has_institution = renaissance }
+				add_splendor = 200
+			}
+			else = {
+				2149 = {
+					add_province_modifier = {
+						name = kooras_water_arts
+						duration = 1825
+					}
+				}
+				2079 = {
+					add_province_modifier = {
+						name = kooras_water_arts
+						duration = 1825
+					}
+				}
+				custom_tooltip = kooras_the_water_arts_tt
+			}
+			if = {
+				limit = {
+					NOT = {
+						advisor = artist
+					}
+				}
+				add_adm_power = -100
+			}			
+		}
+	}
+
+	kooras_blood_to_afar = {
+		icon = mission_sio_european_trade
+		position = 9
+		required_missions = {
+			kooras_the_water_arts
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+            OR = {
+                superregion = eordand_superregion
+                superregion = kheionai_superregion
+            }
+            owner = {
+                NOT = {
+                    has_opinion = {
+                        who = ROOT
+                        value = 80
+                    }
+                }
+            }
+		}
+
+		trigger = {
+			any_known_country = {
+				capital_scope = {
+					superregion = eordand_superregion
+				}
+				has_opinion = {
+	                who = ROOT
+	                value = 80
+                }
+			}
+			any_known_country = {
+				capital_scope = {
+					superregion = kheionai_superregion
+				}
+				has_opinion = {
+	                who = ROOT
+	                value = 80
+                }
+			}
+		}
+
+		effect = { 
+			country_event = {
+				id = kooras_events.7
+			}
+		}
+	}
+}
+
+kooras_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { 
+		OR = {
+			tag = G44
+			tag = U29
+			tag = G03
+			tag = U28
+		}
+	}
+
+	kooras_across_the_waterworld = {
+		icon = mission_arabian_ports
+		position = 5
+		required_missions = {
+			kooras_unite_the_tribes
+		}
+
+		provinces_to_highlight = {
+			has_port = yes
+			owned_by = ROOT
+			NOT = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+		}
+
+		trigger = {
+			any_owned_province = {
+				has_port = yes
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+		}
+
+		effect = { 
+			random_owned_province = {
+				limit = {
+					has_port = yes
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 4
+					}
+				}
+				kill_units = {
+					who = owner
+					type = infantry
+					amount = 4
+				} 
+				spawn_units_for = { type = barque who = ROOT amount = 4 }
+				custom_tooltip = kooras_barque_spawn_tt
+				add_building = dock
+			}
+			set_country_flag = kooras_recruit_explorer_unlock
+			custom_tooltip = kooras_recruit_explorer_unlock_tt
+			set_country_flag = kooras_light_ship_on_blood_dive
+			if = {
+				limit = { is_or_was_tag = { tag = G44 } }
+				custom_tooltip = kooras_light_ship_on_blood_dive_tt
+			}
+		}
+	}
+
+	kooras_the_torn_land = {
+		icon = mission_invade_island
+		position = 6
+		required_missions = {
+			kooras_across_the_waterworld
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = guardian_islands_area
+					NOT = {
+						tribal_land_of = ROOT
+						owned_by = ROOT
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 2158
+						province_id = 2157
+						province_id = 2156
+					}
+					NOT = {
+						num_of_units_in_province = {
+							who = ROOT
+							amount = 4
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			guardian_islands_area = {
+				type = all
+				OR = {
+					tribal_land_of = ROOT
+					owned_by = ROOT
+				}
+			}
+			navy_size = 10
+			2158 = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+			2157 = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+			2156 = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 4
+				}
+			}
+			treasury = 75
+			dip_power = 75
+			adm_power = 75
+		}
+
+		effect = { 
+			2158 = {
+				change_tribal_land = ROOT
+			}
+			2157 = {
+				change_tribal_land = ROOT
+			}
+			2156 = {
+				change_tribal_land = ROOT
+			}
+			add_treasury = -75
+			add_dip_power = -75
+			add_adm_power = -75
+			set_country_flag = kooras_settle_across_the_waterworld_unlock
+			custom_tooltip = kooras_settle_across_the_waterworld_tt
+			if = {
+				limit = {
+					NOT = {
+						is_or_was_tag = {
+							tag = G44
+						}
+					}
+				}
+				set_country_flag = kooras_unlock_blood_dive
+				custom_tooltip = kooras_unlock_blood_dive_tt
+				custom_tooltip = kooras_light_ship_on_blood_dive_tt
+				hidden_effect = {
+					set_variable = {
+						which = koorasAmountOfBloodDives
+						value = 0
+					}
+				}
+			}
+			else = {
+				set_country_flag = kooras_leptone_half_cost_blood_dive
+				custom_tooltip = kooras_leptone_half_cost_blood_dive_tt
+			}
+		}
+	}
+
+	kooras_in_honor_of_kseldos = {
+		icon = mission_crystal_cave
+		position = 7
+		required_missions = {
+			kooras_proclaim_the_federation
+			kooras_the_torn_land
+		}
+
+		provinces_to_highlight = {
+			province_id = 2079
+            NOT = {
+                AND = {
+                    owned_by = ROOT
+                    num_of_buildings_in_province = 2
+                    OR = {
+                        num_of_units_in_province = {
+                            who = ROOT
+                            amount = 10
+                        }
+                        owner = {
+                            treasury = 100
+                        }
+                    }
+                }
+            }
+		}
+
+		trigger = {
+			2079 = {
+				owned_by = ROOT
+				num_of_buildings_in_province = 2
+				OR = {
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 10
+					}
+					owner = {
+						treasury = 100
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_or_was_tag = {
+							tag = G44
+						}
+					}
+				}
+				check_variable = {
+					which = koorasAmountOfBloodDives
+					value = 4
+				}
+			}
+			else = {
+				check_variable = {
+					which = koorasAmountOfBloodDives
+					value = 8
+				}
+			}
+		}
+
+		effect = { 
+			if = {
+				limit = {
+					2079 = {
+						num_of_units_in_province = {
+                            who = ROOT
+                            amount = 10
+                        }
+					}
+				}
+				2079 = {
+					kill_units = {
+						who = ROOT
+						amount = 10
+					}
+				}
+			}
+			else = { add_treasury = -100 }
+			2079 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				add_province_modifier = {
+					name = kooras_monument_of_kseldos
+					duration = -1
+				}
+			}
+		}
+	}
+}

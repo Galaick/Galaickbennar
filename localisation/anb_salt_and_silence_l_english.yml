@@ -1,0 +1,86 @@
+﻿l_english:
+
+incident_salt_and_silence:0 "Salt and Silence"
+incident_salt_and_silence_member_alert:0 "The Borders have always been a chaotic region; one that has been darkening in recent years. From whispers of monsters in the night to increasingly arrogant imperial princes and bold foreign adversaries, there is little imperial authority visible in the salt rich region and her mines. Since the end of the Lilac Wars and the new precedent of might makes right, a rising power in The Borders seeks to capitalize on the path that Emperor Lothane fought into existence.\n\nImperial princes have been ignoring the summons of [Emperor.Monarch.GetName]. They instead seek audiences with this new growing authority, whether out of fear or opportunity. The Imperial Parliament sees this as unacceptable and has convened a session to reign in the belligerent region. Some advocate to show them the Empire’s strength, others regard this as a delicate diplomatic chess game to be played.\n\nSilence falls along The Borders. Will the Emperor unleash discord?"
+incident_salt_and_silence_emperor_alert:0 "The Borders have always been a chaotic region; one that has been darkening in recent years. From whispers of monsters in the night to increasingly arrogant imperial princes and bold foreign adversaries, there is little imperial authority visible in the salt rich region and her mines. Since the end of the Lilac Wars and the new precedent of might makes right, a rising power in The Borders seeks to capitalize on the path that Emperor Lothane fought into existence.\n\nImperial princes have been ignoring the summons of [Emperor.Monarch.GetName]. They instead seek audiences with this new growing authority, whether out of fear or opportunity. The Imperial Parliament sees this as unacceptable and has convened a session to reign in the belligerent region. Some advocate to show them the Empire’s strength, others regard this as a delicate diplomatic chess game to be played.\n\nSilence falls along The Borders. Will the Emperor unleash discord?"
+
+flavor_salt_silence_incident.1.t:0 "Lines in the Salt"
+flavor_salt_silence_incident.1.d:0 "The brightness of the Imperial Crown dims as our ascendancy continues undiminished. They call The Borders a backwater, a place where storybook monsters like vampires go bump in the night and disloyal vassals disappear into lavish castles. Let them stay ignorant; our challenge to them will come swift and unrelenting.\n\nIn a few years, the Emperor and Empire must face the song we sing. If they do not allow us to sing solo or join us in a duet, we will create a discord and ring out louder than any other.\n\nThe ancestors of The Borders were Kings of Salt and Darkness. Let us remind them who we descended from."
+flavor_salt_silence_incident.1.a:0 "We are Kings of Salt and Darkness."
+flavor_salt_silence_incident.1.a_tt:0 "In §Y15§! years, tensions between us and the §YEmperor§! will come to a head, resulting in an §YImperial Incident§!.\nAny countries with their capitals in §YThe Borders§! or §YDostanor§! regions will partake directly in this incident. Anyone we have §Yan alliance§! with is §Gguaranteed to take our side§! in the upcoming incident.\nIt would be prudent to §Yimprove relations§! with tags beyond §YThe Borders§! as well, if we wish to avoid war, to pressure the Emperor into accepting our demands."
+
+
+flavor_salt_silence_incident.2.t:0 "Salt and Silence"
+flavor_salt_silence_incident.2.d:0 "Our armies stand tall and shining outside our capital. Diplomats arrive every day from neighboring princes seeking alliances and discussing the oncoming maelstrom. While the Empire sleeps at the stroke of midnight, spurred by our lullabies, we prepare to sing another type of song:\n\nOne of confrontation, of dominance, of boldness. We have sent a messenger to the Imperial Court, demanding privileges to become King of Salt and establish our superiority of The Borders. When they wake up, they will choose the melody they wish us to sing.\n\nOne of harmonic triumph, or one of strident war."
+flavor_salt_silence_incident.2.a:0 "Ready the war bards"
+
+flavor_salt_silence_incident.3.t:0 "Salt and Silence"
+flavor_salt_silence_incident.3.d:0 "§YThe Empire is presented with a dissonant melody.§!\nDepending on the Parliament’s choices, all Imperial princes of §YThe Borders§! may §Rsecede§! and the §YEmperor§! will have to achieve §Ydiplomatic superiority§! or §Ymilitary success§! over their powerful rival to regain them.\n\n§TPath of Salt:§! The §YEmperor§! must have either §Y150+ opinion§!, a §Yroyal marriage§!, or an §Yalliance§! with an imperial prince in §YThe Borders§! to keep them on the §YEmperor's§! side.\n\n§VPath of Silence:§! The §YEmperor§! and their electors will fight a §Rwar§! against §Y[salt_and_silence_giant.GetName]§! and force all princes to §Ychoose sides in the conflict§!.\n\n§GVictory§! results in a §Ytotal Imperial reclamation§!, §Rdefeat§! results in the loss of §YThe Borders§!."
+flavor_salt_silence_incident.3.a:0 "Call for Obedience"
+flavor_salt_silence_incident.3.b:0 "Crown of Salt"
+flavor_salt_silence_incident.3.c:0 "Cry for War"
+
+path_of_silence_tt:0 "This choice follows the §VPath of Silence§!\n\nThe Insolence of the Imperial Princes of §YThe Borders§! will not be tolerated, they will renege their titles or be forced to do so.\n\n§Y[salt_and_silence_giant.GetName]§! will either be dismantled or a §Rwar§! encompassing the whole of the Borders will erupt.\n"
+path_of_salt_tt:0 "This choice follows the §TPath of Salt§!\n\nThe Imperial Princes of §YThe Borders§! will be called to once more swear fealty to the Emperor. All Imperial Princes of §YThe Borders§! with §Y150 or more opinion§!, §Yan alliance§! or a §YRoyal Marriage§! with the §YEmperor§! will be guaranteed to do so. Anyone else will join the §Rwould-be King of The Borders§!.\nIf the §Rwould-be King§! acts alone, there is a high probability they will stand down, otherwise §Rwar§! will be the only option."
+path_of_nothing_tt:0 "The ruler of [salt_and_silence_giant.GetName] will be sent a crown and given the title of "§YSalt King of The Borders§!", as well as becoming the eighth §Yelector§!. If there are already eight electors, they will take the place of the §Ylowest development elector§!."
+war_of_salt_time_limit_ten:0 "You have §R10 Years§! to §Ywin a war§! against §Y[salt_and_silence_giant.GetName]§! and re-establish your authority."
+war_of_salt_time_limit_ten_snsgiant:0 "You will §Rantagonise the Emperor§!, very likely leading to a §Rwar§!! If this war is declared, you must either §Ydefeat§! §Y[salt_and_silence_emperor.GetName]§! or survive for §Y10§! years to establish your rightful position."
+war_of_salt_back_down:0 "You will §Yrelease§! any territory of §YThe Borders§! to its original owners and if you are §Ynot§! a part of the Empire of Anbennar, any §Ypersonal union§! you have with an Empire of Anbennar prince will §Ybreak§!!"
+
+flavor_salt_silence_incident.4.t:0 "Echo of Authority"
+flavor_salt_silence_incident.4.d:0 "A silence like the quiet that meets a hunter in the forest falls across The Borders. Neighboring imperial princes meekly make way for [salt_and_silence_giant.GetName]’s surging rise as onlookers outside of the Empire take note of our growing strength.\n\n[salt_and_silence_giant.Monarch.GetTitle] [salt_and_silence_giant.Monarch.GetName] summits a large hill beneath the region’s cloudy skies. The wind is still and the downpours lull, as even the elements bow to [salt_and_silence_giant.GetName]’s strength. Today the [salt_and_silence_giant.Monarch.GetTitle] has called a council amongst the powerbrokers of the realm to consider the next steps in our endless ambition.\n\nAs noble, clergy, and merchants bicker around the well furnished and well attended outdoor table, a crack of lightning snaps everyone’s attention to the western horizon. A pale blur speeds toward them. Footmen scramble for their sheaths and archers ready their bows as the [salt_and_silence_giant.Monarch.GetTitle] steps forward to meet this being, but they stop ten yards before [salt_and_silence_giant.Monarch.GetHerHim].\n\nBefore the crowd stands a witch of the Magisterium, adorned in silver robes and insignias denoting them as a representative of the Empire. Her green eyes hardened and skin weather beaten, an accomplished war mage stands before [salt_and_silence_giant.Monarch.GetName]\n\nThe mage snarls: ‘Bend the knee, [salt_and_silence_giant.Monarch.GetTitle]. Or the Emperor will let loose the dogs of war.’\n\nThe [salt_and_silence_giant.Monarch.GetTitle] grimaces as they consider their options."
+flavor_salt_silence_incident.4.a:0 "Fortune Favors the Bold"
+flavor_salt_silence_incident.4.b:0 "We want peace"
+
+flavor_salt_silence_incident.5.t:0 "Crown of Salt"
+flavor_salt_silence_incident.5.d:0 "A fully armored Aldresian retinue crests the horizon, a sight that normally instills fear in those unfortunate enough to see it. These knights, in their signature blue-steel armor, have shattered forces that outnumber them ten-fold in the name of their liege, the Emperor. Now, they march to deliver a missive from him. The answer to the would-be King's ambitions.\n\nThe retinue, a thousand strong, stops short of the city's gate. At the head is an older man, gunblade at his waist, a dark blue plume adorning his helm. He stirs his horse, galloping forward, alone. He stops, just shy of the [salt_and_silence_giant.Monarch.GetTitle] and holds out a missive, bearing the dove-adorned seal of the Emperor.\n\n"You have been formally recognized by the Emperor," he says, his eyes bearing the disdain conferred by his liege, "as the true and rightful King of Salt, Elector and Ruler of all The Borders. A show of gratitude is expected."
+flavor_salt_silence_incident.5.a:0 "We are Kings of Salt and Stone!"
+flavor_salt_silence_incident.5.b:0 "Must I remind you that I am your Emperor now?"
+flavor_salt_silence_incident.5.c:0 "We're good, actually."
+
+flavor_salt_silence_incident.6.t:0 "A Rising Overture"
+flavor_salt_silence_incident.6.d:0 "It is dawn when the servants screams echo throughout the hall. Even [salt_and_silence_giant.Monarch.GetTitle] [salt_and_silence_giant.Monarch.GetName] is stirred awake as courtiers and soldiers alike storm downstairs to confront the commotion.\n\nA wave of gasps follow as [salt_and_silence_giant.Monarch.GetName] pushes open the door to the balcony of the courtyard. On the crimson stained pavement below are the headless bodies of a dozen of our diplomats, arranged in the shape of an imperial dove.\n\nKnights push past our [salt_and_silence_giant.Monarch.GetTitle], desperately rushing to secure the grounds as [salt_and_silence_giant.Monarch.GetName] contemplates a decision."
+flavor_salt_silence_incident.6.a:0 "Back Down"
+flavor_salt_silence_incident.6.b:0 "War it is"
+flavor_salt_silence_incident.6.b_tt:0 "The Emperor will not take kindly to this, §Rwar§! will come to us."
+
+
+
+flavor_salt_silence_incident.7.t:0 "A Symphony of War"
+flavor_salt_silence_incident.7.d:0 "For the first time in decades, Imperial Armies march east toward the darkening skies of The Borders. The Electors rally to us, their armies joining ours while our war bards sing songs of battle in our wake. [salt_and_silence_giant.Monarch.GetTitle] [salt_and_silence_giant.Monarch.GetName] claims to be the King of Salt and Darkness and their lands fell silent in submission to their rise.\n\nThey are nothing more than an upstart ruler who wishes to challenge Imperial authority. It is time we correct them on a few matters. They mistake our indifference for weakness."
+flavor_salt_silence_incident.7.a:0 "A King of Peasants and Cowards"
+flavor_salt_silence_incident.7.b:0 "I don't really have time for a war, just let them be."
+
+flavor_salt_silence_incident.8.t:0 "Cry Havok"
+flavor_salt_silence_incident.8.d:0 "A dove and a crow, each with royal missives, arrive at our court. One bears the seal of the Empire of Anbennar, proud and decadent. The other bears the seal of [salt_and_silence_giant.GetName], confident and simple.\n\nThe crow chirps that a new epoch is beginning. One led not by monarchs in Anbenncost but by powers closer to home. The dove warns against the crow, claiming it is a trick to sow discord and spread chaos.\n\nAnd our advisors? They growl of opportunity. A side must be picked. How will we be remembered in history?"
+flavor_salt_silence_incident.8.a:0 "Grow the Discord"
+flavor_salt_silence_incident.8.b:0 "Silence the Chaos"
+
+flavor_salt_silence_incident.9.t:0 "War of Salt and Silence"
+flavor_salt_silence_incident.9.d:0 "The Imperial Banner marches proudly along the quiet meadow. Only the sound of hoofbeats, soldiers marching along the road, and the errant clattering of steel from tired arms permeate the soundscape.\n\nThe Emperor leads the army, [Emperor.Monarch.GetHerHis] armor spotless. No traitorous imperial prince or upstart king comes to greet the gallant host. A bee buzzes up toward the imperial army, bobbing up and down lazily as it passes by a horse and heads off to find an open flower.\n\n‘Well, my liege?’ A tired captain asks the Emperor who raises a hand, halting the column abruptly.\n\nThe Emperor gazes across the green meadow and exhales."
+flavor_salt_silence_incident.9.a:0 "Peacefully quiet, at last."
+
+flavor_salt_silence_incident.10.t:0 "The Empire and The Borders"
+flavor_salt_silence_incident.10.d:0 "Dissent stirs in The Borders. The children of the Salt Lion, the Arannese, and the Wexonards respond to the Emperor's summons with naught but silence. In Dostanor, the Corvurians scheme and make their moves in the shadows. It falls upon you, the Emperor, to reign in these wayward subjects before an irrevocable incident occurs. Your diplomats stand at the ready, and behind them, so too do your generals. If diplomacy fails, the people of The Borders may force your hand to violence."
+flavor_salt_silence_incident.10.a:0 "The struggle for the future of The Borders will soon come to a head."
+flavor_salt_silence_incident.10.a_tt:0 "In §Y15§! years, tensions between §YThe Borders§!, §YDostanor§!, and the §YEmperor§! will come to a head.\nAny §YPrince§! with whom you have greater than §Y150 opinion§! will be §Gmore likely to side with you§!; §Y150 opinion§! and an §Yalliance§! §Gguarantees they will take your side§! in the upcoming incident.\nAll other countries with their capital in §YThe Borders§! or §YDostanor§! will side with the largest country among them, who will demand §RElectorship§! or §RSecession from the Empire of Anbennar§!!\n\n"
+
+
+
+flavor_salt_silence_incident.11.t:0 "War of Salt and Silence"
+flavor_salt_silence_incident.11.d:0 "Dark skies cover the once pale blue horizon of The Borders. A troop of soldiers hailing from [salt_and_silence_giant.GetName] rest at a nearby lake, making camp as the winds of war die down. To their left is a field scattered with the remains of a slain Imperial Army. To their right are silent forests judging every step.\n\n‘Sarjen’, Didya hear iv we cot the Emporuh?’ The footman prepping the beef stew asked as his companions set up tents for the night.\n\n‘[Emperor.Monarch.GetHerHisCap] Imperial Majesty escaped back to Anbenncost. Good riddance, my ears nearly bled from his impotent shouting.’ The Sarjent responded, stepping toward the tranquil lake.\n\nThe Sarjent winced in pain as he met the water’s edge, his right arm in a sling after barely surviving an Aldresian Knight’s blade. But discomfort subsided just as quickly as it came.\n\n‘The silence, its… soothing.’\n\n‘Whar?’\n\n‘Just, enjoy the fucking moment will you?’"
+flavor_salt_silence_incident.11.a:0 "Peacefully quiet, at last."
+flavor_salt_silence_incident.11.b:0 "Finally, we are at our proper place."
+sns_giant_win_tt:0 "This will remove us and all nations with their capital in The Borders from the Empire of Anbennar."
+
+flavor_salt_silence_incident.12.t:0 "The Arrogation of The Borders"
+flavor_salt_silence_incident.12.d:0 "A delegate from The Borders has arrived, bearing their response to our demand of fealty. Curiously, our messenger doesn't seem to be accompanying them. The group now stands before the Dove Throne, but they show no sign of bending the knee.\n\n"[Emperor.Monarch.GetName], the [salt_and_silence_giant.Monarch.GetTitle] has thought over your proposal, and has elected to… decline your insulting offer. The Salt Crown of The Borders shall be [salt_and_silence_giant.Monarch.GetHerHis]." As the delegate says this, he tosses a bag onto the floor, and from within it rolls out the head of the messenger."
+flavor_salt_silence_incident.12.a:0 "Guards, seize them!"
+flavor_salt_slience_incident.12.b:0 "Just give them the Crown."
+
+iiss_the_bold:0 "The Bold"
+iiss_the_brash:0 "The Brash"
+iiss_the_arrogant:0 "The Arrogant"
+iiss_the_peaceful:0 "The Peaceful"
+iiss_the_regal:0 "The Regal"
+iiss_weak_emperor:0 "Weak Emperor"

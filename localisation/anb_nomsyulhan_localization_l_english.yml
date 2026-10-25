@@ -1,0 +1,34 @@
+﻿l_english:
+ #Events
+ nomsyulhan_gateway.10.t: "Across the Desert"
+ nomsyulhan_gateway.10.d: "For many years we have heard the story of the great Gateway, an ancient structure build by a civilization long gone, yet now we find ourselves in a position to claim it for our own. How should we procede?"
+ nomsyulhan_gateway.10.a: "Hire adventurers"
+ nomsyulhan_gateway.10.b: "Send in the army"
+ nomsyulhan_gateway.10.c: "Use spirits as guides"
+ nomsyulhan_gateway.10.e: "Summon the shamans"
+ nomsyulhan_gateway.10.f: "Perhaps in another moment"
+
+ nomsyulhan_gateway.11.t: "The Rift Taken"
+ nomsyulhan_gateway.11.d: "We have secured a stable route towards the Rift Bearer allowing us to finally control it."
+ nomsyulhan_gateway.11.a: "This is only the beginning"
+
+
+
+#Decisions
+ take_the_rift_bearer_decision_title: "Take Control of the Rift Bearer"
+ take_the_rift_bearer_decision_desc: "Deep in the deserts of Nomsyulhan the ruins of the Pillar of Heaven lay dormant, awaiting the return of their ancient masters. The journey there has historically been brutal, with the wildlife and its environment challenging even the greatest explorers, and among those few who reach the pillar, fewer make it back. If we are to claim the Rift Bearer for ourselves we must ensure we are able to send a capable expedition into the desert, and establish a functional route for future use."
+
+
+#Modifiers
+ nomsyulhan_incomplete_gateway: "Incomplete Gateway"
+ nomsyulhan_unpowered_gateway: "Unpowered Gateway"
+ nomsyulhan_active_gateway: "Active Gateway"
+ nomsyulhan_permanent_gateway: "Permanent Gateway"
+ numsyulhan_adventur_to_the_rift: "Adventurers take to the Rift: $VAL|Y$"
+ nomsyulhan_alterated_spirits: "Alterated Spirits"
+
+
+#Country Titles
+ WARDENSHIP: "Wardenship"
+ GREAT_WARDENSHIP: "Great Wardenship"
+ WARDEN: "Warden"

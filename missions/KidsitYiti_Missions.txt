@@ -1,0 +1,1415 @@
+kidsit_yiti_one = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { tag = L67 } 
+
+	L67_the_warlords_wealth = {
+		icon = mission_african_gold
+		position = 2
+		required_missions = { L67_mezhi_of_the_eastern_citadel } 
+		provinces_to_highlight = {
+			region = bamaliwuni_region
+			NOT = { country_or_subject_holds = ROOT } 
+			OR = {
+				trade_goods = gold
+				trade_goods = copper
+				trade_goods = gems
+			}
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 1
+				region = bamaliwuni_region
+				trade_goods = gold
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 1
+				region = bamaliwuni_region
+				trade_goods = copper
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 1
+				region = bamaliwuni_region
+				trade_goods = gems
+			}
+			has_estate_privilege = estate_nobles_monopoly_of_metals
+		}
+
+		effect = {
+			custom_tooltip = L67_upgraded_metals_monopoly_tooltip
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_upgraded_gems_monopoly_tooltip
+			custom_tooltip = empty_line_tt
+			bamaliwuni_region = {
+				limit = { NOT = { country_or_subject_holds = ROOT }  } 
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	L67_enforce_peace_and_piety = {
+		icon = mission_priest_church
+		position = 4
+		required_missions = { L67_make_them_forget } 
+		provinces_to_highlight = {
+			OR = {
+				region = ishyamtumu_region
+				region = bamaliwuni_region
+				has_province_modifier = shifter_lodge_active
+				has_province_modifier = shifter_lodge_inactive
+			}
+			NOT = { province_is_on_an_island = yes } 
+			NOT = {
+				AND = {
+					country_or_subject_holds = ROOT
+					owner = { religion = ROOT } 
+				}
+			}
+		}
+
+		trigger = {
+			ishyamtumu_region = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			bamaliwuni_region = {
+				type = all
+				OR = {
+					country_or_subject_holds = ROOT
+					province_is_on_an_island = yes
+				}
+			}
+			all_subject_country = {
+				religion = ROOT
+				NOT = { liberty_desire = 50 } 
+			}
+			has_estate_privilege = estate_church_one_faith_one_culture
+			east_sarhal_superregion = {
+				type = all
+				OR = {
+					NOT = {
+						has_province_modifier = shifter_lodge_active
+						has_province_modifier = shifter_lodge_inactive
+					}
+					country_or_subject_holds = ROOT
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_replace_lodges_tt
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_newfound_purpose"
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				every_owned_or_subject_province = {
+					limit = {
+						OR = {
+							has_province_modifier = shifter_lodge_active
+							has_province_modifier = shifter_lodge_inactive
+						}
+					}
+					remove_province_modifier = shifter_lodge_active
+					remove_province_modifier = shifter_lodge_inactive
+					add_province_modifier = {
+						name = "L67_newfound_purpose"
+						duration = -1
+					}
+				}
+			}
+			6648 = {
+				destroy_great_project = { type = bustebe_dajadera }
+				set_province_flag = bustebe_dajadera_destroyed_flag
+				add_building = cathedral
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_king_of_the_wilds_sell_title_tt
+		}
+	}
+
+	L67_unassailable = {
+		icon = mission_sinister_castle
+		position = 6
+		required_missions = {
+			L67_enforce_peace_and_piety
+			L67_the_way_to_dakmender
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 5585
+					NOT = {
+						has_great_project = {
+							type = kuvunika_citadel
+							tier = 2
+						}
+					}
+				}
+				AND = {
+					province_id = 5631
+					NOT = { has_fort_building_trigger = yes } 
+				}
+				AND = {
+					OR = {
+						region = bamaliwuni_region
+						region = ishyamtumu_region
+					}
+					NOT = { has_influencing_fort = yes } 
+					all_neighbor_province = { NOT = { has_influencing_fort = yes }  } 
+				}
+			}
+		}
+
+		trigger = {
+			5585 = {
+				has_great_project = {
+					type = kuvunika_citadel
+					tier = 2
+				}
+			}
+			5631 = { has_fort_building_trigger = yes } 
+			OR = {
+				is_allied_to_merfolk = yes
+				is_neutral_with_merfolk = yes
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 35
+				OR = {
+					region = bamaliwuni_region
+					region = ishyamtumu_region
+				}
+				OR = {
+					has_influencing_fort = yes
+					any_neighbor_province = { has_influencing_fort = yes } 
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_blackstone_city_bypass_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_expand_fortifications_upgrade_tt
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_massive_garrison"
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { has_estate_privilege = estate_nobles_development_of_castles } 
+					every_owned_province = {
+						limit = {
+							has_fort_building_trigger = yes
+							has_building = soldier_households
+						}
+						add_province_modifier = {
+							name = "L67_massive_garrison"
+							duration = -1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+kidsit_yiti_two = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { tag = L67 } 
+
+	L67_mezhi_of_the_eastern_citadel = {
+		icon = mission_mountain_castle
+		position = 1
+		provinces_to_highlight = {
+			area = iburengampakad_area
+			NOT = { owned_by = ROOT } 
+		}
+
+		trigger = {
+			iburengampakad_area = {
+				type = all
+				owned_by = ROOT
+			}
+			OR = {
+				fortification_expert = 1
+				has_mil_advisor_2 = yes
+				mil_power = 100
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = { fortification_expert = 1 } 
+					NOT = { has_mil_advisor_2 = yes } 
+				}
+				add_mil_power = -100
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_move_fort_tt
+			if = {
+				limit = { 5611 = { has_fort_building_trigger = yes }  } 
+				hidden_effect = {
+					5611 = { remove_fortifications = yes } 
+					5585 = { add_building = fort_15th } 
+				}
+				5585 = {
+					add_permanent_province_modifier = {
+						name = "L67_a_citadel_reborn"
+						duration = -1
+					}
+				}
+			}
+			custom_tooltip = empty_line_tt
+			6640 = {
+				add_core = ROOT
+				remove_core = S68
+			}
+			hidden_effect = {
+				ishyamtumu_region = {
+					limit = {
+						NOT = { country_or_subject_holds = ROOT } 
+						any_neighbor_province = { country_or_subject_holds = ROOT } 
+					}
+					add_permanent_claim = ROOT
+				}
+				bamaliwuni_region = {
+					limit = {
+						NOT = { country_or_subject_holds = ROOT } 
+						any_neighbor_province = { country_or_subject_holds = ROOT } 
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_unlock_king_of_castles_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_border_area_claims_tt
+		}
+	}
+
+	L67_defang_the_borders = {
+		icon = mission_colonise_brazil
+		position = 2
+		required_missions = { L67_mezhi_of_the_eastern_citadel } 
+		provinces_to_highlight = {
+			OR = {
+				area = rindukubunza_area
+				area = gakeigiti_area
+				area = guinyaswa_area
+			}
+			NOT = { country_or_subject_holds = ROOT } 
+		}
+
+		trigger = {
+			has_estate_privilege = estate_nobles_development_of_castles
+			OR = {
+				has_country_modifier = racial_pop_lizardfolk_purge
+				has_country_modifier = racial_pop_lizardfolk_expulsion
+			}
+			rindukubunza_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			gakeigiti_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			guinyaswa_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_subject_inherits_ishyamtumu_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						any_subject_country = {
+							capital_scope = { region = ishyamtumu_region } 
+							religion = ROOT
+						}
+					}
+					random_subject_country = {
+						limit = {
+							capital_scope = { region = ishyamtumu_region } 
+							religion = ROOT
+						}
+						save_event_target_as = L67_tanizu_subject
+					}
+					every_owned_or_subject_province = {
+						limit = { region = ishyamtumu_region } 
+						if = {
+							limit = {
+								any_core_country = {
+									OR = {
+										tag = ROOT
+										is_subject_of = ROOT
+									}
+								}
+							}
+							add_core = event_target:L67_tanizu_subject
+						}
+						cede_province = event_target:L67_tanizu_subject
+					}
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_conversion_yields_crowns_tt
+			custom_tooltip = empty_line_tt
+			ishyamtumu_region = {
+				limit = { NOT = { country_or_subject_holds = ROOT }  } 
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	L67_make_them_forget = {
+		icon = mission_spread_the_reformation
+		position = 3
+		required_missions = {
+			L67_the_final_kingdom
+			L67_defang_the_borders
+			L67_the_warlords_wealth
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						region = ishyamtumu_region
+						region = bamaliwuni_region
+					}
+					NOT = {
+						AND = {
+							country_or_subject_holds = ROOT
+							owner = { religion = ROOT } 
+						}
+					}
+				}
+				AND = {
+					is_capital = yes
+					owner = { is_subject_of = ROOT } 
+					NOT = {
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+						marriage_with = ROOT
+					}
+				}
+			}
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 30
+				OR = {
+					region = ishyamtumu_region
+					region = bamaliwuni_region
+				}
+				owner = { religion = ROOT } 
+			}
+			all_subject_country = {
+				OR = {
+					has_opinion = {
+						who = ROOT
+						value = 190
+					}
+					marriage_with = ROOT
+				}
+			}
+			has_estate_privilege = estate_church_donation_right
+		}
+
+		effect = { country_event = { id = kidsit.5 }  } 
+	}
+
+	L67_contain_the_evil = {
+		icon = mission_magnificent_castle
+		position = 4
+		required_missions = {
+			L67_make_them_forget
+			L67_pilgrims_rest
+		}
+		provinces_to_highlight = {
+			AND = {
+				OR = {
+					area = muukombi_area
+					area = rindukubunza_area
+					area = yezelshaff_area
+					area = tsudhagis_area
+					area = kvathagis_area
+				}
+				OR = {
+					NOT = { country_or_subject_holds = ROOT } 
+					NOT = {
+						AND = {
+							has_manpower_building_trigger = yes
+							has_fort_building_trigger = yes
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			east_sarhal_superregion = {
+				type = all
+				OR = {
+					NOT = {
+						area = muukombi_area
+						area = rindukubunza_area
+						area = yezelshaff_area
+						area = tsudhagis_area
+						area = kvathagis_area
+					}
+					country_or_subject_holds = ROOT
+				}
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 9
+				OR = {
+					area = muukombi_area
+					area = rindukubunza_area
+					area = yezelshaff_area
+					area = tsudhagis_area
+					area = kvathagis_area
+				}
+				OR = {
+					has_manpower_building_trigger = yes
+					has_fort_building_trigger = yes
+				}
+			}
+			has_estate_privilege = estate_nobles_officer_corp
+		}
+
+		effect = {
+			custom_tooltip = L67_dug_in_tt
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_dug_in"
+					duration = 183
+				}
+			}
+			custom_tooltip = L67_upgraded_officer_corps_tt
+			custom_tooltip = empty_line_tt
+			denibari_region = {
+				limit = { NOT = { country_or_subject_holds = ROOT }  } 
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	L67_the_way_to_dakmender = {
+		icon = mission_forest_pilgrim
+		position = 5
+		required_missions = { L67_contain_the_evil } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 5689
+						province_id = 5594
+					}
+					NOT = { has_fort_building_trigger = yes } 
+				}
+				AND = {
+					OR = {
+						province_id = 5603
+						province_id = 5607
+						province_id = 5596
+						province_id = 5594
+						province_id = 5593
+					}
+					NOT = { has_tax_building_trigger = yes } 
+				}
+				AND = {
+					region = denibari_region
+					NOT = { country_or_subject_holds = ROOT } 
+				}
+			}
+		}
+
+		trigger = {
+			denibari_region = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			5689 = { has_fort_building_trigger = yes } 
+			5594 = { has_fort_building_trigger = yes } 
+			5603 = { has_tax_building_trigger = yes } 
+			5607 = { has_tax_building_trigger = yes } 
+			5596 = { has_tax_building_trigger = yes } 
+			5594 = { has_tax_building_trigger = yes } 
+			5593 = { has_tax_building_trigger = yes } 
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 5
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				madriamilak_keygas_river_provinces = {
+					limit = { NOT = { country_or_subject_holds = ROOT }  } 
+					add_permanent_claim = ROOT
+				}
+			}
+			5603 = {
+				add_permanent_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5607 = {
+				add_permanent_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5596 = {
+				add_permanent_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5594 = {
+				add_permanent_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5593 = {
+				add_permanent_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			custom_tooltip = L67_keygas_claims_tt
+		}
+	}
+
+	L67_at_rivers_end = {
+		icon = mission_seren_cathedral
+		position = 6
+		required_missions = { L67_the_way_to_dakmender } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 5505
+						province_id = 5529
+					}
+					NOT = {
+						AND = {
+							country_or_subject_holds = ROOT
+							has_tax_building_trigger = yes
+							development = 20
+						}
+					}
+				}
+				AND = {
+					OR = {
+						province_group = madriamilak_keygas_river_provinces
+						province_group = madriamilak_yet_river_provinces
+					}
+					NOT = {
+						AND = {
+							has_tax_building_trigger = yes
+							country_or_subject_holds = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			5505 = {
+				country_or_subject_holds = ROOT
+				has_tax_building_trigger = yes
+				development = 20
+			}
+			5529 = {
+				country_or_subject_holds = ROOT
+				has_tax_building_trigger = yes
+				development = 20
+			}
+			custom_trigger_tooltip = {
+				tooltip = L67_river_temples_tt
+				AND = {
+					madriamilak_keygas_river_provinces = {
+						type = all
+						country_or_subject_holds = ROOT
+						has_tax_building_trigger = yes
+					}
+					madriamilak_yet_river_provinces = {
+						type = all
+						country_or_subject_holds = ROOT
+						has_tax_building_trigger = yes
+					}
+				}
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 7
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_amphibious_temples_tt
+			hidden_effect = {
+				every_owned_or_subject_province = {
+					limit = {
+						OR = {
+							province_group = madriamilak_keygas_river_provinces
+							province_group = madriamilak_yet_river_provinces
+						}
+					}
+					add_province_modifier = {
+						name = "L67_amphibious_temple"
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5505 = {
+				hidden_effect = { remove_province_modifier = L67_amphibious_temple } 
+				add_building = cathedral
+				add_permanent_province_modifier = {
+					name = "L67_brackish_temple"
+					duration = -1
+				}
+			}
+			5529 = {
+				hidden_effect = { remove_province_modifier = L67_amphibious_temple } 
+				add_building = cathedral
+				add_permanent_province_modifier = {
+					name = "L67_brackish_temple"
+					duration = -1
+				}
+			}
+		}
+	}
+}
+kidsit_yiti_three = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { tag = L67 } 
+
+	L67_the_final_kingdom = {
+		icon = mission_unite_home_region
+		position = 2
+		required_missions = {
+			L67_mezhi_of_the_eastern_citadel
+			L67_the_northern_lakeshores
+		}
+		provinces_to_highlight = {
+			culture = sitewosi
+			NOT = { owned_by = ROOT } 
+		}
+
+		trigger = {
+			east_sarhal_superregion = {
+				type = all
+				OR = {
+					NOT = { culture = sitewosi } 
+					owned_by = ROOT
+				}
+			}
+			calc_true_if = {
+				amount = 2
+				employed_advisor = {
+					category = ADM
+					culture = sitewosi
+				}
+				employed_advisor = {
+					category = DIP
+					culture = sitewosi
+				}
+				employed_advisor = {
+					category = MIL
+					culture = sitewosi
+				}
+			}
+			has_estate_privilege = estate_nobles_royal_court_tasks
+		}
+
+		effect = {
+			custom_tooltip = L67_sitewosi_separatism_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = { culture = sitewosi } 
+					add_nationalism = -30
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_upgrade_royal_court_tasks_tt
+		}
+	}
+
+	L67_the_ties_that_bind = {
+		icon = mission_marriage
+		position = 5
+		required_missions = {
+			L67_contain_the_evil
+			L67_our_bowl_runneth_over
+		}
+		provinces_to_highlight = {  } 
+
+		trigger = {
+			num_of_royal_marriages = 4
+			all_subject_country = { NOT = { liberty_desire = 50 }  } 
+			has_estate_privilege = estate_nobles_better_integration
+			has_cast_enchanting_envoy_embassy = yes
+		}
+
+		effect = {
+			custom_tooltip = L67_land_dowry_tt
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_land_dowry"
+					duration = -1
+				}
+			}
+			custom_tooltip = L67_royal_marriage_trust_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_rice_export_liberty_desire_tt
+		}
+	}
+
+	L67_shoulder_to_shoulder = {
+		icon = mission_feast
+		position = 7
+		required_missions = {
+			L67_unassailable
+			L67_at_rivers_end
+			L67_born_to_the_vanguard
+			L67_harvest_power_from_the_fields
+		}
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				culture_group = mengi
+				NOT = { tag = ROOT }
+				NOT = {
+					AND = {
+						religion = ROOT
+						is_subject_of = ROOT
+						OR = {
+							marriage_with = ROOT
+							NOT = { liberty_desire = 1 } 
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = L67_mengi_subjects_tt
+				all_known_country = {
+					OR = {
+						NOT = { culture_group = mengi }
+						AND = {
+							is_subject_of = ROOT
+							religion = ROOT
+							OR = {
+								marriage_with = ROOT
+								NOT = { liberty_desire = 1 }
+							}
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = L67_exporting_rice_to_subject_tt
+				any_subject_country = { has_country_modifier = L67_food_abundance } 
+			}
+			is_defender_of_faith = yes
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 90
+			}
+			estate_influence = {
+				estate = estate_nobles
+				influence = 90
+			}
+			estate_loyalty = {
+				estate = estate_church
+				loyalty = 60
+			}
+			estate_influence = {
+				estate = estate_church
+				influence = 60
+			}
+		}
+
+		effect = { country_event = { id = kidsit.6 }  } 
+	}
+}
+kidsit_yiti_four = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { tag = L67 } 
+
+	L67_the_northern_lakeshores = {
+		icon = mission_lake_texcoco
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					is_core = S62
+					NOT = { owned_by = ROOT } 
+				}
+				AND = {
+					owned_by = ROOT
+					devastation = 1
+					has_terrain = marsh
+				}
+			}
+		}
+
+		trigger = {
+			S62 = { all_core_province = { owned_by = ROOT }  } 
+			all_owned_province = {
+				OR = {
+					NOT = { has_terrain = marsh } 
+					NOT = { devastation = 1 } 
+				}
+			}
+			crown_land_share = 30
+			has_estate_privilege = estate_nobles_force_conscription
+		}
+
+		effect = {
+			hidden_effect = {
+				east_sarhal_superregion = {
+					limit = {
+						culture = sitewosi
+						NOT = { country_or_subject_holds = ROOT } 
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			custom_tooltip = L67_upgrade_force_conscription_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_sitewosi_claims_tt
+		}
+	}
+
+	L67_the_submerged = {
+		icon = mission_se_along_the_river
+		position = 2
+		required_missions = { L67_the_northern_lakeshores } 
+		provinces_to_highlight = {
+			region = denibari_region
+			has_terrain = marsh
+			NOT = {
+				AND = {
+					has_tax_building_trigger = yes
+					owned_by = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 3
+				region = denibari_region
+				has_terrain = marsh
+				has_building = temple
+			}
+			has_estate_privilege = estate_church_development_of_temples
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 1
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					num_of_estate_agendas_completed = {
+						estate = estate_church
+						value = 3
+					}
+				}
+				define_advisor = {
+					type = theologian
+					skill = 2
+					cost_multiplier = 0.25
+					religion = ROOT
+				}
+			}
+			else_if = {
+				limit = {
+					num_of_estate_agendas_completed = {
+						estate = estate_church
+						value = 2
+					}
+				}
+				define_advisor = {
+					type = theologian
+					skill = 2
+					cost_multiplier = 0.5
+					religion = ROOT
+				}
+			}
+			else = {
+				define_advisor = {
+					type = theologian
+					skill = 2
+					cost_multiplier = 0.75
+					religion = ROOT
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_submerged_advisor_discount_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_unlock_submerged_kairomancer_tt
+			hidden_effect = { set_country_flag = L67_submerged_kairomancer_charged } 
+		}
+	}
+
+	L67_pilgrims_rest = {
+		icon = mission_forest_shrine
+		position = 3
+		required_missions = {
+			L67_the_submerged
+			L67_the_final_kingdom
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 5607
+						province_id = 6639
+						province_id = 5621
+						province_id = 5602
+						province_id = 5591
+					}
+					NOT = { has_tax_building_trigger = yes }
+				}
+				AND = {
+					province_id = 5600
+					NOT = {
+						ROOT = {
+							OR = {
+								trading_policy_in_node = {
+									node = 5600
+									policy = improve_inland_routes
+								}
+								has_cast_longstrider = yes
+							}						
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			5607 = { has_tax_building_trigger = yes } 
+			6639 = { has_tax_building_trigger = yes } 
+			5621 = { has_tax_building_trigger = yes } 
+			5602 = { has_tax_building_trigger = yes } 
+			5591 = { has_tax_building_trigger = yes } 
+			OR = {
+				trading_policy_in_node = {
+					node = 5600
+					policy = improve_inland_routes
+				}
+				has_cast_longstrider = yes
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 3
+			}
+		}
+
+		effect = {
+			5607 = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			6639 = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5621 = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5602 = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			5591 = {
+				add_province_modifier = {
+					name = "L67_amphibious_temple"
+					duration = -1
+				}
+			}
+			custom_tooltip = L67_yetefesefi_yet_claims_tt
+			hidden_effect = {
+				madriamilak_yet_river_provinces = {
+					limit = {
+						NOT = { country_or_subject_holds = ROOT } 
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+
+	L67_born_to_the_vanguard = {
+		icon = the_russian_campaign
+		position = 6
+		required_missions = {
+			L67_the_ties_that_bind
+			L67_surplus_land
+		}
+		provinces_to_highlight = {
+			trade_goods = livestock
+			superregion = east_sarhal_superregion
+			OR = {
+				NOT = { country_or_subject_holds = ROOT } 
+				NOT = { has_manpower_building_trigger = yes } 
+			}
+		}
+
+		trigger = {
+			OR = {
+				army_professionalism = 0.2
+				army_tradition = 60
+				mil_power = 200
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 10
+				trade_goods = livestock
+				has_manpower_building_trigger = yes
+			}
+			has_estate_privilege = estate_nobles_monopoly_of_livestock
+			has_estate_privilege = estate_nobles_noble_officer_right
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						army_professionalism = 0.2
+						army_tradition = 60
+					}
+				}
+				add_mil_power = -200
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_upgrade_livestock_monopoly_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_upgrade_noble_officer_right_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_rice_exports_truce_tt
+		}
+	}
+}
+kidsit_yiti_five = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = { tag = L67 } 
+
+	L67_what_kings_crave = {
+		icon = mission_rice_farming
+		position = 2
+		required_missions = { L67_the_northern_lakeshores } 
+		provinces_to_highlight = {
+			province_id = 5600
+			NOT = { has_trade_building_trigger = yes } 
+		}
+
+		trigger = {
+			5600 = { has_building = marketplace } 
+			crown_land_share = 35
+			OR = {
+				has_cast_plant_growth = yes
+				custom_trigger_tooltip = {
+					tooltip = S50_guide_the_rains_cooldown_tt
+					has_country_modifier = mengi_aspect_guide_the_rains_wait
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_denibari_rice_marshes_tt
+			hidden_effect = {
+				denibari_region = {
+					limit = { has_terrain = marsh } 
+					change_trade_goods = grain
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_rains_plant_growth_production_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_unlock_king_of_the_farms_tt
+		}
+	}
+
+	L67_our_bowl_runneth_over = {
+		icon = mission_rice_field
+		position = 4
+		required_missions = {
+			L67_what_kings_crave
+			L67_pilgrims_rest
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 5600
+					NOT = { province_has_center_of_trade_of_level = 2 } 
+				}
+				AND = {
+					region = denibari_region
+					has_terrain = marsh
+					trade_goods = grain
+					owned_by = ROOT
+					NOT = {
+						has_building = farm_estate
+						has_building = mage_tower
+					}
+				}
+			}
+		}
+
+		trigger = {
+			5600 = { province_has_center_of_trade_of_level = 2 } 
+			any_owned_province = {
+				region = denibari_region
+				has_terrain = marsh
+				trade_goods = grain
+				has_building = farm_estate
+			}
+			any_owned_province = {
+				region = denibari_region
+				has_terrain = marsh
+				trade_goods = grain
+				has_building = mage_tower
+			}
+			OR = {
+				court_mage = 1
+				theologian = 1
+				has_adm_advisor_2 = yes
+			}
+		}
+
+		effect = {
+			custom_tooltip = L67_unlock_rice_exports_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_transmutated_soil_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						region = denibari_region
+						has_terrain = marsh
+						trade_goods = grain
+						has_building = mage_tower
+					}
+					add_permanent_province_modifier = {
+						name = "L67_transmuted_soil"
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_transmuted_soil"
+					duration = -1
+				}
+			}
+		}
+	}
+
+	L67_surplus_land = {
+		icon = mission_a_million_rice_fields
+		position = 5
+		required_missions = { L67_our_bowl_runneth_over } 
+		provinces_to_highlight = {
+			region = denibari_region
+			has_terrain = marsh
+			trade_goods = grain
+			NOT = {
+				AND = {
+					has_building = farm_estate
+					if = {
+						limit = { has_dlc = "Leviathan" } 
+						num_of_times_expanded_infrastructure = 1
+					}
+					else = { development = 15 } 
+				}
+			}
+		}
+
+		trigger = {
+			num_ships_protecting_trade = 10
+			num_of_owned_provinces_with = {
+				value = 4
+				region = denibari_region
+				has_terrain = marsh
+				trade_goods = grain
+				has_building = farm_estate
+				if = {
+					limit = { has_dlc = "Leviathan" } 
+					num_of_times_expanded_infrastructure = 1
+				}
+				else = { development = 15 } 
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				east_sarhal_superregion = {
+					limit = { 
+						trade_goods = grain
+						NOT = { country_or_subject_holds = ROOT }
+					} 
+					add_permanent_claim = ROOT
+				}
+			}
+			custom_tooltip = L67_grain_flipping_tt
+			hidden_effect = {
+				every_owned_or_subject_province = {
+					limit = {
+						trade_goods = grain
+						NOT = {
+							AND = {
+								has_terrain = marsh
+								region = denibari_region
+							}
+						}
+						superregion = east_sarhal_superregion
+					}
+					L67_grain_flip_effect = yes
+				}
+			}
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_double_crowns_tt
+			custom_tooltip = empty_line_tt
+			custom_tooltip = L67_grain_claims_tt
+		}
+	}
+
+	L67_harvest_power_from_the_fields = {
+		icon = mission_green_village
+		position = 6
+		required_missions = { L67_surplus_land } 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					superregion = east_sarhal_superregion
+					OR = {
+						trade_goods = wine
+						trade_goods = coffee
+					}
+					NOT = { 
+						AND = {
+							has_production_building_trigger = yes 
+							country_or_subject_holds = ROOT
+						}
+
+					} 
+				}
+				AND = {
+					OR = {
+						province_id = 1343
+						province_id = 1347
+						province_id = 1339
+						province_id = 5600
+					}
+					NOT = { is_strongest_trade_power = ROOT } 
+				}
+			}
+		}
+
+		trigger = {
+			OR = {
+				trade_goods_produced_amount = {
+					trade_goods = grain
+					amount = 30
+				}
+				production_leader = { trade_goods = grain } 
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 7
+				trade_goods = coffee
+				has_production_building_trigger = yes
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 7
+				trade_goods = wine
+				has_production_building_trigger = yes
+			}
+			1343 = { is_strongest_trade_power = ROOT } 
+			1347 = { is_strongest_trade_power = ROOT } 
+			1339 = { is_strongest_trade_power = ROOT } 
+			5600 = { is_strongest_trade_power = ROOT } 
+		}
+
+		effect = {
+			custom_tooltip = L67_luxurious_blends_and_vintages_tt
+			hidden_effect = {
+				every_owned_or_subject_province = {
+					limit = {
+						superregion = east_sarhal_superregion
+						OR = {
+							trade_goods = wine
+							trade_goods = coffee
+						}
+					}
+					add_province_modifier = {
+						name = "L67_luxurious_blends_and_vintages"
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_province_modifier = {
+					name = "L67_luxurious_blends_and_vintages"
+					duration = -1
+				}
+			}
+			custom_tooltip = L67_food_embargo_tt
+			tooltip = {
+				add_country_modifier = {
+					name = "L67_food_shortages"
+					duration = 1825
+				}
+			}
+		}
+	}
+}

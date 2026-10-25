@@ -1,0 +1,671 @@
+defined_text = {
+    name = strangle_the_gulf_custom_loc
+    random = no
+    text = {
+        localisation_key = strangle_the_gulf_custom_loc_after
+        trigger = {
+            has_country_flag = L63_change_loc_flag
+        }
+    }
+    text = {
+        localisation_key = strangle_the_gulf_custom_loc_before
+    }
+}
+
+defined_text = {
+    name = end_the_squabbling_custom_loc
+    random = no
+    text = {
+        localisation_key = end_the_squabbling_custom_loc_after
+        trigger = {
+            has_country_flag = L63_change_loc_flag
+        }
+    }
+    text = {
+        localisation_key = end_the_squabbling_custom_loc_before
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = burnt_beans_custom_loc
+    random = no
+    text = {
+        localisation_key = burnt_beans_custom_loc_after
+        trigger = {
+            has_country_flag = L63_change_loc_flag
+        }
+    }
+    text = {
+        localisation_key = burnt_beans_custom_loc_before
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = sanddollar_star_custom_loc
+    random = no
+    text = {
+        localisation_key = sanddollar_star_custom_loc_after
+        trigger = {
+            has_country_flag = L63_change_loc_flag
+        }
+    }
+    text = {
+        localisation_key = sanddollar_star_custom_loc_before
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = ecu_kiyaga_custom_loc
+    random = no
+    text = {
+        localisation_key = ecu_kiyaga_custom_loc_after
+        trigger = {
+            has_country_flag = L63_change_loc_flag
+        }
+    }
+    text = {
+        localisation_key = ecu_kiyaga_custom_loc_before
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = generate_admin_candidate_custom_loc
+    random = no
+    text = {
+        localisation_key = kot_family_adm_custom_loc
+        trigger = {
+            has_country_flag = kot_family_adm
+        }
+    }
+    text = {
+        localisation_key = lee_family_adm_custom_loc
+        trigger = {
+            has_country_flag = lee_family_adm
+            NOT = {
+                has_country_flag = L63_silver_tooth_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = silver_tooth_family_adm_custom_loc
+        trigger = {
+            has_country_flag = lee_family_adm
+            has_country_flag = L63_silver_tooth_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = mbabazi_family_adm_custom_loc
+        trigger = {
+            has_country_flag = mbabazi_family_adm
+        }
+    }
+    text = {
+        localisation_key = zong_family_adm_custom_loc
+        trigger = {
+            has_country_flag = zong_family_adm
+        }
+    }
+    text = {
+        localisation_key = yi_family_adm_custom_loc
+        trigger = {
+            has_country_flag = yi_family_adm
+        }
+    }
+    text = {
+        localisation_key = mou_family_adm_custom_loc
+        trigger = {
+            has_country_flag = mou_family_adm
+            NOT = {
+                has_country_flag = L63_pearl_moon_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = pearl_moon_family_adm_custom_loc
+        trigger = {
+            has_country_flag = mou_family_adm
+            has_country_flag = L63_pearl_moon_ascendant
+        }
+    }
+    text = {
+        localisation_key = umulisa_family_adm_custom_loc
+        trigger = {
+            has_country_flag = umulisa_family_adm
+        }
+    }
+    text = {
+        localisation_key = cin_family_adm_custom_loc
+        trigger = {
+            has_country_flag = cin_family_adm
+            NOT = {
+                has_country_flag = moyo_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = moyo_family_adm_custom_loc
+        trigger = {
+            has_country_flag = cin_family_adm
+            has_country_flag = moyo_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = sa_sinwauk_family_adm_custom_loc
+        trigger = {
+            has_country_flag = sa_sinwauk_family_adm
+        }
+    }
+    text = {
+        localisation_key = kagona_family_adm_custom_loc
+        trigger = {
+            has_country_flag = kagona_family_adm
+        }
+    }
+    text = {
+        localisation_key = tembo_family_adm_custom_loc
+        trigger = {
+            has_country_flag = tembo_family_adm
+        }
+    }
+    text = {
+        localisation_key = han_neip_family_adm_custom_loc
+        trigger = {
+            has_country_flag = han_neip_family_adm
+        }
+    }
+    text = {
+        localisation_key = rukundo_family_adm_custom_loc
+        trigger = {
+            has_country_flag = rukundo_family_adm
+        }
+    }
+    text = {
+        localisation_key = gunam_neip_family_adm_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_adm
+            NOT = {
+                has_country_flag = L63_beetlebiter_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = beetlebiter_family_adm_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_adm
+            has_country_flag = L63_beetlebiter_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = urunekozi_family_adm_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_adm
+            NOT = {
+                has_country_flag = L63_mugisha_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = mugisha_family_adm_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_adm
+            has_country_flag = L63_mugisha_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = goeng_family_adm_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_adm
+            NOT = {
+                has_country_flag = L63_gaa_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = gaa_family_adm_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_adm
+            has_country_flag = L63_gaa_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = nkurunziza_family_adm_custom_loc
+        trigger = {
+            has_country_flag = nkurunziza_family_adm
+        }
+    }
+    text = {
+        localisation_key = generate_admin_candidate_custom_loc_fucky_wucky
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+
+defined_text = {
+    name = generate_dip_candidate_custom_loc
+    random = no
+    text = {
+        localisation_key = kot_family_dip_custom_loc
+        trigger = {
+            has_country_flag = kot_family_dip
+        }
+    }
+    text = {
+        localisation_key = lee_family_dip_custom_loc
+        trigger = {
+            has_country_flag = lee_family_dip
+            NOT = {
+                has_country_flag = L63_silver_tooth_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = silver_tooth_family_dip_custom_loc
+        trigger = {
+            has_country_flag = lee_family_dip
+            has_country_flag = L63_silver_tooth_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = mbabazi_family_dip_custom_loc
+        trigger = {
+            has_country_flag = mbabazi_family_dip
+        }
+    }
+    text = {
+        localisation_key = zong_family_dip_custom_loc
+        trigger = {
+            has_country_flag = zong_family_dip
+        }
+    }
+    text = {
+        localisation_key = yi_family_dip_custom_loc
+        trigger = {
+            has_country_flag = yi_family_dip
+        }
+    }
+    text = {
+        localisation_key = mou_family_dip_custom_loc
+        trigger = {
+            has_country_flag = mou_family_dip
+            NOT = {
+                has_country_flag = L63_pearl_moon_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = pearl_moon_family_dip_custom_loc
+        trigger = {
+            has_country_flag = mou_family_dip
+            has_country_flag = L63_pearl_moon_ascendant
+        }
+    }
+    text = {
+        localisation_key = umulisa_family_dip_custom_loc
+        trigger = {
+            has_country_flag = umulisa_family_dip
+        }
+    }
+    text = {
+        localisation_key = cin_family_dip_custom_loc
+        trigger = {
+            has_country_flag = cin_family_dip
+            NOT = {
+                has_country_flag = moyo_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = moyo_family_dip_custom_loc
+        trigger = {
+            has_country_flag = cin_family_dip
+            has_country_flag = moyo_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = sa_sinwauk_family_dip_custom_loc
+        trigger = {
+            has_country_flag = sa_sinwauk_family_dip
+        }
+    }
+    text = {
+        localisation_key = kagona_family_dip_custom_loc
+        trigger = {
+            has_country_flag = kagona_family_dip
+        }
+    }
+    text = {
+        localisation_key = tembo_family_dip_custom_loc
+        trigger = {
+            has_country_flag = tembo_family_dip
+        }
+    }
+    text = {
+        localisation_key = han_neip_family_dip_custom_loc
+        trigger = {
+            has_country_flag = han_neip_family_dip
+        }
+    }
+    text = {
+        localisation_key = rukundo_family_dip_custom_loc
+        trigger = {
+            has_country_flag = rukundo_family_dip
+        }
+    }
+    text = {
+        localisation_key = gunam_neip_family_dip_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_dip
+            NOT = {
+                has_country_flag = L63_beetlebiter_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = beetlebiter_family_dip_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_dip
+            has_country_flag = L63_beetlebiter_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = urunekozi_family_dip_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_dip
+            NOT = {
+                has_country_flag = L63_mugisha_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = mugisha_family_dip_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_dip
+            has_country_flag = L63_mugisha_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = goeng_family_dip_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_dip
+            NOT = {
+                has_country_flag = L63_gaa_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = gaa_family_dip_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_dip
+            has_country_flag = L63_gaa_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = nkurunziza_family_dip_custom_loc
+        trigger = {
+            has_country_flag = nkurunziza_family_dip
+        }
+    }
+    text = {
+        localisation_key = generate_dip_candidate_custom_loc_fucky_wucky
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = generate_mil_candidate_custom_loc
+    random = no
+    text = {
+        localisation_key = kot_family_mil_custom_loc
+        trigger = {
+            has_country_flag = kot_family_mil
+        }
+    }
+    text = {
+        localisation_key = lee_family_mil_custom_loc
+        trigger = {
+            has_country_flag = lee_family_mil
+            NOT = {
+                has_country_flag = L63_silver_tooth_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = silver_tooth_family_mil_custom_loc
+        trigger = {
+            has_country_flag = lee_family_mil
+            has_country_flag = L63_silver_tooth_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = mbabazi_family_mil_custom_loc
+        trigger = {
+            has_country_flag = mbabazi_family_mil
+        }
+    }
+    text = {
+        localisation_key = zong_family_mil_custom_loc
+        trigger = {
+            has_country_flag = zong_family_mil
+        }
+    }
+    text = {
+        localisation_key = yi_family_mil_custom_loc
+        trigger = {
+            has_country_flag = yi_family_mil
+        }
+    }
+    text = {
+        localisation_key = mou_family_mil_custom_loc
+        trigger = {
+            has_country_flag = mou_family_mil
+            NOT = {
+                has_country_flag = L63_pearl_moon_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = pearl_moon_family_mil_custom_loc
+        trigger = {
+            has_country_flag = mou_family_mil
+            has_country_flag = L63_pearl_moon_ascendant
+        }
+    }
+    text = {
+        localisation_key = umulisa_family_mil_custom_loc
+        trigger = {
+            has_country_flag = umulisa_family_mil
+        }
+    }
+    text = {
+        localisation_key = cin_family_mil_custom_loc
+        trigger = {
+            has_country_flag = cin_family_mil
+            NOT = {
+                has_country_flag = moyo_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = moyo_family_mil_custom_loc
+        trigger = {
+            has_country_flag = cin_family_mil
+            has_country_flag = moyo_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = sa_sinwauk_family_mil_custom_loc
+        trigger = {
+            has_country_flag = sa_sinwauk_family_mil
+        }
+    }
+    text = {
+        localisation_key = kagona_family_mil_custom_loc
+        trigger = {
+            has_country_flag = kagona_family_mil
+        }
+    }
+    text = {
+        localisation_key = tembo_family_mil_custom_loc
+        trigger = {
+            has_country_flag = tembo_family_mil
+        }
+    }
+    text = {
+        localisation_key = han_neip_family_mil_custom_loc
+        trigger = {
+            has_country_flag = han_neip_family_mil
+        }
+    }
+    text = {
+        localisation_key = rukundo_family_mil_custom_loc
+        trigger = {
+            has_country_flag = rukundo_family_mil
+        }
+    }
+    text = {
+        localisation_key = gunam_neip_family_mil_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_mil
+            NOT = {
+                has_country_flag = L63_beetlebiter_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = beetlebiter_family_mil_custom_loc
+        trigger = {
+            has_country_flag = gunam_neip_family_mil
+            has_country_flag = L63_beetlebiter_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = urunekozi_family_mil_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_mil
+            NOT = {
+                has_country_flag = L63_mugisha_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = mugisha_family_mil_custom_loc
+        trigger = {
+            has_country_flag = urunekozi_family_mil
+            has_country_flag = L63_mugisha_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = goeng_family_mil_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_mil
+            NOT = {
+                has_country_flag = L63_gaa_family_ascendant
+            }
+        }
+    }
+    text = {
+        localisation_key = gaa_family_mil_custom_loc
+        trigger = {
+            has_country_flag = goeng_family_mil
+            has_country_flag = L63_gaa_family_ascendant
+        }
+    }
+    text = {
+        localisation_key = nkurunziza_family_mil_custom_loc
+        trigger = {
+            has_country_flag = nkurunziza_family_mil
+        }
+    }
+    text = {
+        localisation_key = generate_mil_candidate_custom_loc_fucky_wucky
+        trigger = {
+            always = yes
+        }
+    }
+}
+
+defined_text = {
+    name = cover_of_night_event_loc
+    random = no
+    text = {
+        localisation_key = cover_of_night_custom_loc_evocation
+        trigger = {
+            is_overall_evocation_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_necromancy
+        trigger = {
+            is_overall_necromancy_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_conjuration
+        trigger = {
+            is_overall_conjuration_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_enchantment
+        trigger = {
+            is_overall_enchantment_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_illusion
+        trigger = {
+            is_overall_illusion_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_abjuration
+        trigger = {
+            is_overall_abjuration_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_transmutation
+        trigger = {
+            is_overall_transmutation_level_3 = yes
+        }
+    }
+    text = {
+        localisation_key = cover_of_night_custom_loc_divination
+        trigger = {
+            is_overall_divination_level_3 = yes
+        }
+    }
+}
+
+defined_text = {
+    name = chi_well_inactive_loc
+    random = no
+    text = {
+        localisation_key = default_chi_well_inactive_loc
+        trigger = {
+            NOT = { is_or_was_tag = { tag = L63 } }
+        }
+    }
+    text = {
+        localisation_key = butuguzi_chi_well_inactive_loc
+        trigger = {
+            is_or_was_tag = { tag = L63 }
+        }
+    }
+}

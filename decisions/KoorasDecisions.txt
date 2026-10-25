@@ -1,0 +1,210 @@
+country_decisions = {
+
+    kooras_settle_across_the_waterworld = {
+        potential = {
+            has_country_flag = kooras_settle_across_the_waterworld_unlock
+            government = native
+        }
+
+        provinces_to_highlight = {
+            province_is_on_an_island = yes
+            is_empty = yes
+			OR = {
+				superregion = torn_gates_superregion
+                superregion = effelai_superregion
+                superregion = eordand_superregion
+                superregion = ruin_proper_superregion
+			}
+            province_is_on_an_island = yes
+			NOT = { 
+                tribal_land_of = ROOT
+                num_of_units_in_province = {
+                    who = ROOT
+                    amount = 4
+                }
+            }
+		}
+
+        allow = {
+            hidden_trigger = {
+                has_country_flag = kooras_settle_across_the_waterworld_unlock
+            }
+            treasury = 25
+            adm_power = 25
+            dip_power = 25
+            custom_trigger_tooltip = {
+                tooltip = kooras_settle_across_the_waterworld_trigger_tt
+                OR = {
+                    torn_gates_superregion = {
+                        province_is_on_an_island = yes
+                        is_empty = yes
+                        NOT = { tribal_land_of = ROOT }
+                        num_of_units_in_province = {
+                            who = ROOT 
+                            amount = 4
+							type = infantry
+                        }
+                    }
+                    effelai_superregion = {
+                        province_is_on_an_island = yes
+                        is_empty = yes
+                        NOT = { tribal_land_of = ROOT }
+                        num_of_units_in_province = {
+                            who = ROOT 
+                            amount = 4
+							type = infantry
+                        }
+                    }
+                    eordand_superregion = {
+                        province_is_on_an_island = yes
+                        is_empty = yes
+                        NOT = { tribal_land_of = ROOT }
+                        num_of_units_in_province = {
+                            who = ROOT 
+                            amount = 4
+							type = infantry
+                        }
+                    }
+                    ruin_proper_superregion = {
+                        province_is_on_an_island = yes
+                        is_empty = yes
+                        NOT = { tribal_land_of = ROOT }
+                        num_of_units_in_province = {
+                            who = ROOT 
+                            amount = 4
+							type = infantry
+                        }
+                    }
+                }
+            }
+        }
+
+        effect = {
+            add_treasury = -33
+            add_dip_power = -33
+            add_adm_power = -33
+            hidden_effect = {
+                random_province = {
+                    limit = {
+                        OR = {
+                            superregion = torn_gates_superregion
+                            superregion = ruin_proper_superregion
+                            superregion = eordand_superregion
+                            superregion = effelai_superregion
+                        }
+                        province_is_on_an_island = yes
+                        is_empty = yes
+                        NOT = { tribal_land_of = ROOT }
+                        num_of_units_in_province = {
+                            who = ROOT
+							type = infantry
+                            amount = 4
+                        }
+                    }
+                    change_tribal_land = ROOT
+                    kill_units = {
+                        who = ROOT
+                        type = infantry
+				    	amount = 4
+                    }
+				}
+            }
+            custom_tooltip = kooras_settle_across_the_waterworld_effect_tt
+        }
+    }
+
+    kooras_recruit_explorer = {
+        potential = {
+            has_country_flag = kooras_recruit_explorer_unlock
+            government = native
+        }
+        allow = {
+            hidden_trigger = {
+                has_country_flag = kooras_recruit_explorer_unlock
+            }
+            NOT = {
+                has_country_modifier = kooras_recruit_explorer_cooldown
+            }
+        }
+        
+        effect = {
+            create_explorer = {
+			    tradition = 60
+		    }
+            add_country_modifier = {
+                name = kooras_recruit_explorer_cooldown
+                duration = 3650
+            }
+        }
+    }
+
+    BUILD_MAGICAL_LONGHOUSE = {
+		color = { 195 160 20 }
+		potential = {
+			has_enabled_estate_action = {
+				estate_action = BUILD_MAGICAL_LONGHOUSE
+			}
+			has_estate = estate_artificers
+		}
+
+        provinces_to_highlight = {
+            OR = {
+                area = gommiochand_area
+                area = koonbepa_area
+                area = taldoud_kaysa_area
+                area = mestikardu_area
+                area = the_tokal_area
+                area = zurzumexia_area
+                area = pontuzex_area
+                area = mikidaxepi_area
+            }
+            area_for_scope_province = {
+                type = all
+                NOT = { has_building = mage_tower }
+            }            
+        }
+
+		allow = {
+			hidden_trigger = {
+                has_enabled_estate_action = {
+                    estate_action = BUILD_MAGICAL_LONGHOUSE
+                }
+            }
+            has_not_any_estate_disaster_active = yes
+			estate_loyalty = {
+				estate = estate_artificers
+				loyalty = 30
+			}
+			if = {
+				limit = { ai = no }
+				estate_influence = {
+					estate = estate_artificers
+					influence = 40
+				}
+			}
+			estate_action_off_shared_cooldown = {
+				estate_action = BUILD_MAGICAL_LONGHOUSE
+				days = 3650
+			}
+            treasury = 500
+            any_owned_province = {
+                possible_buildings = 1
+                NOT = {
+                    has_construction = building
+                    has_building = mage_tower
+                }
+            }
+		}
+		effect = {
+			set_estate_action_cooldown = {
+				estate_action = BUILD_MAGICAL_LONGHOUSE
+			}
+			estate_action = {
+				estate_action = BUILD_MAGICAL_LONGHOUSE
+			}
+		}
+		ai_will_do = {
+			factor = 400
+		}
+	}
+}

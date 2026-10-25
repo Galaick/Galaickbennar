@@ -1,0 +1,24 @@
+
+setup_vision_south_aelantir = yes
+government = native
+add_government_reform = native_chiefdom_reform
+government_rank = 1
+mercantilism = 5
+primary_culture = quruwei
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2456
+
+1392.1.1 = {
+	monarch = { #Dynasty name means "shield wind". Terrible ruler, but he's so old that he'll be dying soon anyway
+		name = "Télanco"
+		dynasty = "Dacunefuen"
+		birth_date = 1377.1.1
+		adm = 3
+		dip = 3
+		mil = 0
+	}
+	add_ruler_personality = midas_touched_personality
+	add_ruler_personality = careful_personality
+	add_ruler_personality = craven_personality
+}

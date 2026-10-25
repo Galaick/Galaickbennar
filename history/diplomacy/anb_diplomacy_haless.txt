@@ -1,0 +1,320 @@
+#### Diplomacy File for Haless ####
+#	alliance = {
+#		first = X       					# One side of the alliance - The "Giver" or "Overlord" depending the type
+#		second = X     						# The other side of the alliance - The "Receiver" or "Subject" depending the type
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# Types: alliance - royal_marriage - vassal - march
+	# dependency as seen bellow can also be used but requires the addition of "subject_type"
+
+#	dependency = { 
+#		subject_type = tributary_state_anb	# The type of subject for the relationship
+#		first = X      						# The overlord, if the relation is a overlord-subject relation
+#		second = X    						# The subject, if the relation is a overlord-subject relation
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# NOTE: "vassal" and "march" type relations are created in the same way as alliances
+
+# Important Note: The Raj Diplomacy can be found on its own file "anb_diplomacy_raj.txt"
+
+# Important Note: The Xia Diplomacy can be found on its own file "anb_diplomacy_xia.txt"
+
+#### Rahen ####
+
+### Sarisunganal vassals ###
+ #Sarisunganal - Kethur
+march = {
+	first = R21
+	second = R37
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarisunganal - Nundujisbid
+march = {
+	first = R21
+	second = R15
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarisunganal - Sarkhani
+march = {
+	first = R21
+	second = R60
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarisunganal - Khappur
+march = {
+	first = R21
+	second = R59
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+### River Kingdom relations ###
+ #Rajnadghada - Khadisrapur
+alliance = {
+	first = R07
+	second = R11
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarnavan - Tilathi
+vassal = {
+	first = R10
+	second = R12
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarnavan - Kamapar
+vassal = {
+	first = R10
+	second = R34
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+ #Sarnavan - Parraj
+alliance = {
+	first = R10
+	second = R09
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#Sarkhashabid - Maqet
+alliance = {
+	first = R02
+	second = F56
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#########################
+### Hobgoblin Command ###
+#########################
+
+#Thunderfist Clan
+dependency = {
+	subject_type = "slave_state"
+	first = R62
+	second = R63
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+# Bloodsong Clan
+dependency = {
+	subject_type = "slave_state"
+	first = R62
+	second = R64
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+# Blackstep Clan
+dependency = {
+	subject_type = "slave_state"
+	first = R62
+	second = R65
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+# Stolen Gem clan
+dependency = {
+	subject_type = "slave_state"
+	first = R62
+	second = R66
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+
+
+#### Yanshen ####
+
+dependency = {	#Oni and small tributary town
+	subject_type = tributary_state_anb	
+	first = Y01
+	second = Y89
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {	#Oni and Hakuukulga
+	subject_type = tributary_state_anb	
+	first = Y01
+	second = V04
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+alliance = {
+	first = Y09
+	second = Y21
+	start_date = 1430.1.1
+	end_date = 1581.1.1
+}
+
+ #Bianfang - Semifire
+vassal = {
+	first = Y09
+	second = R83
+	start_date = 1433.12.12
+	end_date = 1821.1.1
+}
+
+alliance = {
+	first = Y20
+	second = Y24
+	start_date = 1430.1.1
+	end_date = 1581.1.1
+}
+
+alliance = {
+	first = Y26
+	second = Y27
+	start_date = 1430.1.1
+	end_date = 1581.1.1
+}
+
+vassal = {	#Jinqiu and Tsukqiao
+	first = Y02
+	second = Z60
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+ ### the Yanszin League ###
+alliance = {
+	first = Y08
+	second = Y06
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y08
+	second = Y07
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y08
+	second = Y04
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y08
+	second = Y10
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y06
+	second = Y07
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y06
+	second = Y04
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y06
+	second = Y10
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y07
+	second = Y04
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y07
+	second = Y10
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+alliance = {
+	first = Y04
+	second = Y10
+	start_date = 276.1.1
+	end_date = 1520.1.1
+}
+
+#### Vimdatrong ####
+
+vassal = {	#Mountain King and Friends
+	first = Y63
+	second = Y88
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+vassal = {	#Mountain King and Friends
+	first = Y63
+	second = Y87
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+vassal = {	#Mountain King and Friends
+	first = Y63
+	second = Y56
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+alliance = { #Risbek-Rongbek alliance
+	first = Y54
+	second = Y61
+	start_date = 1420.6.7
+	end_date = 1581.1.1
+}
+
+alliance = { #Balrijin-Lanjinhui alliance
+	first = Y85
+	second = Y05
+	start_date = 1440.1.1
+	end_date = 1600.1.1
+}
+
+ #Sikai relations
+alliance = {
+	first = Y62
+	second = Y60
+	start_date = 1441.1.1
+	end_date = 1478.1.1
+}
+
+ #Zyujyut - Kudet Kai Royal Marraige
+royal_marriage = {
+	first = Y23
+	second = Y71
+	start_date = 1440.11.10
+	end_date = 1480.1.10 # Pulatan of the Great Fang passes away
+}
+
+ #Baihon Xinh - Phaetmen Di
+dependency = {
+	subject_type = tributary_state_anb
+	first = Y97
+	second = Y57
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+
+
+#### Gozengun ####
+
+ #Hobgoblin - Harpy vassal
+dependency = {
+	subject_type = vassal
+	first = V12
+	second = V20
+	start_date = 1430.1.1
+	end_date = 1909.1.1
+}

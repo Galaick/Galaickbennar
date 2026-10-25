@@ -1,0 +1,2088 @@
+#Dev: Satang
+#Writers: Nerflightborn
+
+severed_ear_1_missions = {
+	slot = 1
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = B26
+	}
+
+	B26_just_a_little_goblin = {
+		icon = mission_globlin
+		position = 3
+		required_missions = {
+			B26_forceful_settlements
+		}
+
+		provinces_to_highlight = {
+		}
+
+		trigger = {
+			has_country_modifier = racial_focus_goblin
+			fast_owns_num_pops_of_race = { race = goblin amount = 1 }
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = B26_goblinlover
+				duration = -1
+			}
+			largest_increase_of_goblin_tolerance_effect = yes
+			define_advisor = {
+				type = treasurer
+				cost_multiplier = 0.25
+				skill = 2
+				culture = common_goblin
+			}
+		}
+	}
+	B26_with_some_little_eyes = {
+		icon = mission_whisper
+		position = 5
+		required_missions = {
+			B26_just_a_little_goblin
+			B26_the_draconian_throne
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			fast_has_pop_of_race = { race = goblin }
+			has_orcish_majority_trigger = yes
+			NOT = {
+				num_of_times_improved = 1
+			}
+		}
+
+		trigger = {
+			treasury = 200
+			OR = {
+				medium_tolerance_goblin_race_trigger = yes
+				high_tolerance_goblin_race_trigger = yes
+			}
+			num_of_owned_provinces_with = {
+				fast_has_pop_of_race = { race = goblin }
+				has_orcish_majority_trigger = yes
+				num_of_times_improved = 1
+				value = 5
+			}
+		}
+
+		effect = {
+			add_treasury = -200
+			define_advisor = {
+				type = spymaster
+				cost_multiplier = 0.25
+				culture = common_goblin
+				skill = 2
+			}
+			##effect too big for scripted effect so doing it this way
+			if = {
+				limit = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+				custom_tooltip = garmian_reign_bonus_effect_3_tt
+				custom_tooltip = B26_orcish_goblin_minority_1_tt
+				tooltip = {
+					add_province_modifier = {
+						name = B26_eyes_in_the_trees
+						duration = 9125
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_country_modifier = B26_draconian_3_1
+						has_country_modifier = B26_draconian_4_1
+					}
+				}
+				add_legitimacy = -10
+				hidden_effect = {
+					for = {
+						amount = 5
+						effect = "
+								random_owned_province = {
+								limit = {
+									has_orcish_majority_trigger = yes
+									has_goblin_minority_trigger = yes
+									num_of_times_improved = 1
+									NOT = {
+										has_province_modifier = B26_eyes_in_the_trees
+									}
+								}
+								add_province_modifier = {
+									name = B26_eyes_in_the_trees
+									duration = 9125
+								}
+							}
+						"
+					}
+				}
+			}
+			garmian_reign_bonus_effect_4 = {
+				effect = "
+					add_country_modifier = {
+						name = B26_eyes_in_the_walls
+						duration = 9125
+					}
+				"
+			}
+		}
+	}
+	B26_in_a_little_house = {
+		icon = mission_eastern_european_city
+		position = 6
+		required_missions = {
+			B26_with_some_little_eyes
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			fast_has_pop_of_race = { race = goblin }
+			NOT = {
+				development = 10
+			}
+		}
+
+		trigger = {
+			accepted_culture = common_goblin
+			num_of_owned_provinces_with = {
+				fast_has_pop_of_race = { race = goblin }
+				development = 10
+				value = 5
+			}
+			
+		}
+
+		effect = {
+			custom_tooltip = B26_orcish_goblin_majority_tt
+				hidden_effect = {
+					for = {
+						amount = 5
+						effect = "
+							random_owned_province = {
+								limit = {
+									development = 10
+									has_goblin_majority_trigger = yes
+									NOT = {
+										has_large_orcish_minority_trigger = yes
+									}
+								}
+								add_orcish_minority_size_effect = yes
+								}
+						"
+					}
+				}
+			##effect too big for scripted effect so doing it this way
+			if = {
+				limit = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+				custom_tooltip = garmian_reign_bonus_effect_3_tt
+				custom_tooltip = B26_orcish_goblin_minority_2_tt
+				if = {
+					limit = {
+						OR = {
+							has_country_modifier = B26_draconian_3_1
+							has_country_modifier = B26_draconian_4_1
+						}
+					}
+					add_legitimacy = -10
+					hidden_effect = {
+						for = {
+							amount = 10
+							effect = "
+								random_owned_province = {
+									limit = {
+										has_orcish_majority_trigger = yes
+										NOT = {
+											has_large_goblin_minority_trigger = yes
+										}
+									}
+									add_goblin_minority_size_effect = yes
+								}
+							"
+						}
+					}
+				}
+			}
+		}
+	}
+	B26_thinking_big = {
+		icon = mission_science
+		position = 7
+		required_missions = {
+			B26_in_a_little_house
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				OR = {
+					has_tax_building_trigger = yes
+					has_building = native_longhouse
+				}
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				OR = {
+					has_tax_building_trigger = yes
+					has_building = native_longhouse
+				}
+				value = 5
+			}
+			custom_trigger_tooltip = {
+				tooltip = employed_advisor_tooltip_number_25583544
+				calc_true_if = {
+					employed_advisor = {
+						category = ADM
+						skill = 2
+					}
+					employed_advisor = {
+						category = MIL
+						skill = 2
+					}
+					employed_advisor = {
+						category = DIP
+						skill = 2
+					}
+					amount = 2
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = B26_big_brain_thinking
+				duration = -1
+			}
+			garmian_reign_bonus_effect_3 = {
+				effect = "
+					change_government_reform_progress = 100
+				"
+			}
+			
+			garmian_reign_bonus_effect_4 = {
+				effect = "
+					if = {
+						limit = {
+							capital_scope = {
+								current_institution = 100
+							}
+						}
+						add_mil_power = 50
+						add_adm_power = 50
+						add_dip_power = 50
+					}
+					else = {
+						capital_scope = {
+							add_next_institution_embracement = 50
+						}
+					}
+				"
+			}
+		}
+	}
+}
+
+severed_ear_2_missions = {
+	slot = 2
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = B26
+	}
+
+	B26_forceful_settlements = {
+		icon = mission_ghost_town
+		position = 2
+		required_missions = {
+			B26_you_own_nothing
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				has_province_flag = anb_has_been_exploited_flag
+			}
+		}
+
+		trigger = {
+			 num_of_owned_provinces_with = {
+				anb_has_been_exploited = yes
+				value = 5
+			}
+		}
+
+		effect = {
+			lower_nath_area = {
+				add_permanent_claim = ROOT
+			}
+			castonath_area = {
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = B26_zargom_settlers
+				duration = 3650
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_modifier = B26_cracking_whips
+					}
+				}
+				add_province_modifier = {
+					name = B26_cracking_whips
+					duration = 9125
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_modifier = B26_cracking_whips
+					}
+				}
+				add_province_modifier = {
+					name = B26_cracking_whips
+					duration = 9125
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_modifier = B26_cracking_whips
+					}
+				}
+				add_province_modifier = {
+					name = B26_cracking_whips
+					duration = 9125
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_modifier = B26_cracking_whips
+					}
+				}
+				add_province_modifier = {
+					name = B26_cracking_whips
+					duration = 9125
+				}
+			}
+			random_owned_province = {
+				limit = {
+					NOT = {
+						has_province_modifier = B26_cracking_whips
+					}
+				}
+				add_province_modifier = {
+					name = B26_cracking_whips
+					duration = 9125
+				}
+			}
+		}
+	}
+	B26_rise_of_the_dargom = {
+		icon = mission_guarded_market
+		position = 3
+		required_missions = {
+			B26_forceful_settlements
+		}
+
+		provinces_to_highlight = {
+			area = castonath_area
+			NOT = {
+				AND = {
+					num_of_buildings_in_province = 1
+					owned_by = ROOT
+					is_core = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			castonath_area = {
+				type = all
+				num_of_buildings_in_province = 1
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			castonath_area = {
+				change_culture = ROOT
+				change_religion = ROOT
+			}
+			hidden_effect = {
+				set_country_flag = B26_build_reform
+			}
+			custom_tooltip = B26_build_reform_tt
+		}
+	}
+	B26_willing_guards = {
+		icon = mission_viking
+		position = 5
+		required_missions = {
+			B26_the_draconian_throne
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				OR = {
+					has_manpower_building_trigger = yes
+					has_building = native_fortified_house
+				}
+			}
+		}
+
+		trigger = {
+			any_owned_province = {
+				OR = {
+					has_manpower_building_trigger = yes
+					has_building = native_fortified_house
+				}
+			}
+			army_tradition = 50
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = B26_expanded_bazuhgan_guard
+				duration = -1
+			}
+			##Too big
+			if = {
+				limit = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+				custom_tooltip = garmian_reign_bonus_effect_4_tt
+				custom_tooltip = B26_base_manpower_tt
+				tooltip = {
+					add_legitimacy = -20
+				}
+			}
+			if = {
+				limit = {
+					has_country_modifier = B26_draconian_4_1
+				}
+				hidden_effect = {
+					add_legitimacy = -20
+					for = {
+						amount = 10
+						effect = "
+							random_owned_province = {
+								limit = {
+									NOT = {
+										has_province_flag = B26_manpower
+									}
+								}
+								set_province_flag = B26_manpower
+								add_base_manpower = 1
+							}
+						"
+					}
+					every_owned_province = {
+						clr_province_flag = B26_manpower
+					}
+				}
+			}
+		}
+	}
+	B26_rule_by_strengths = {
+		icon = mission_frost_troll
+		position = 8
+		required_missions = {
+			B26_thinking_big
+			B26_willing_guards
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				AND = {
+					has_goblin_majority_trigger = yes
+					has_orcish_minority_trigger = yes
+				}
+				AND = {
+					has_orcish_majority_trigger = yes
+					has_goblin_minority_trigger = yes
+				}
+			}
+			NOT = {
+				AND = {
+					num_of_times_improved = 1
+					OR = {
+						has_manpower_building_trigger = yes
+						has_building = native_great_trail
+					}
+				}
+					
+			}
+		}
+
+		trigger = {
+			high_tolerance_goblin_race_trigger = yes
+			num_of_owned_provinces_with = {
+				has_goblin_majority_trigger = yes
+				has_orcish_minority_trigger = yes
+				num_of_times_improved = 1
+				OR = {
+					has_manpower_building_trigger = yes
+					has_building = native_great_trail
+				}
+				value = 5
+			}
+			num_of_owned_provinces_with = {
+				has_orcish_majority_trigger = yes
+				has_goblin_minority_trigger = yes
+				num_of_times_improved = 1
+				OR = {
+					has_manpower_building_trigger = yes
+					has_building = native_great_trail
+				}
+				value = 5
+			}
+		}
+
+		effect = {
+			country_event = {
+				id =  flavour_severed_ear.2
+			}
+		}
+	}
+	B26_march_to_the_citadel = {
+		icon = mission_constantinople
+		position = 10
+		required_missions = {
+			B26_rule_by_strengths
+			B26_me_not_that_kind_of_orc
+		}
+
+		provinces_to_highlight = {
+			province_id = 754
+		}
+
+		trigger = {
+			OR = {
+				has_country_modifier = B26_draconian_4_1
+				NOT = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+			}
+			is_tribal = no
+			has_institution = renaissance
+			any_hired_mercenary_company = {
+				template = merc_bazuhgan
+				location = { is_capital_of = ROOT }
+			}
+			NOT = {
+				num_of_rebel_armies = 1
+			}
+			NOT = {
+				average_unrest = 0
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					has_country_modifier = B26_draconian_4_1
+				}
+				country_event = {
+					id =  flavour_severed_ear.3
+				}
+			}
+			else = {
+				country_event = {
+					id =  flavour_severed_ear.4
+				}
+			}
+		}
+	}
+}
+
+severed_ear_3_missions = {
+	slot = 3
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = B26
+	}
+
+	B26_you_own_nothing = {
+		icon = mission_beheading
+		position = 1
+		trigger = {
+			NOT = {
+				num_of_rebel_armies = 1
+			}
+			army_size_percentage = 1
+		}
+
+		effect = {
+			country_event = { id = flavour_severed_ear.1 }
+		}
+	}
+	B26_taking_responsibility = {
+		icon = mission_captured
+		position = 3
+		required_missions = {
+			B26_forceful_settlements
+			B26_suppressive_strength 
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				culture = green_orc
+				ROOT = {
+					NOT = { has_pillaged_capital_against = PREV }
+				}
+				NOT = {
+					tag = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			calc_true_if = {
+				all_known_country = {
+					culture = green_orc
+					ROOT = {
+						has_pillaged_capital_against = PREV
+					}
+				}
+				amount = 3
+			}
+			num_of_owned_provinces_with = {
+				OR = {
+					has_building = native_great_trail
+					has_manpower_building_trigger = yes
+				}
+				value = 3
+			}
+		}
+
+		effect = {
+			random_known_country = {
+				limit = {
+					culture = green_orc
+					ROOT = {
+						has_pillaged_capital_against = PREV
+					}
+					NOT = {
+						has_country_flag = B26_wrecked_capital
+					}
+				}
+				set_country_flag = B26_wrecked_capital
+				capital_scope = {
+					if = {
+						limit = {
+							base_manpower = 2
+						}
+						add_base_manpower = -1
+					}
+					if = {
+						limit = {
+							base_tax = 2
+						}
+						add_base_tax = -1
+					}
+					if = {
+						limit = {
+							base_production = 2
+						}
+						add_base_production = -1
+					}
+				}
+			}
+			random_known_country = {
+				limit = {
+					culture = green_orc
+					ROOT = {
+						has_pillaged_capital_against = PREV
+					}
+					NOT = {
+						has_country_flag = B26_wrecked_capital
+					}
+				}
+				set_country_flag = B26_wrecked_capital
+				capital_scope = {
+					if = {
+						limit = {
+							base_manpower = 2
+						}
+						add_base_manpower = -1
+					}
+					if = {
+						limit = {
+							base_tax = 2
+						}
+						add_base_tax = -1
+					}
+					if = {
+						limit = {
+							base_production = 2
+						}
+						add_base_production = -1
+					}
+				}
+			}
+			random_known_country = {
+				limit = {
+					culture = green_orc
+					ROOT = {
+						has_pillaged_capital_against = PREV
+					}
+					NOT = {
+						has_country_flag = B26_wrecked_capital
+					}
+				}
+				set_country_flag = B26_wrecked_capital
+				capital_scope = {
+					if = {
+						limit = {
+							base_manpower = 2
+						}
+						add_base_manpower = -1
+					}
+					if = {
+						limit = {
+							base_tax = 2
+						}
+						add_base_tax = -1
+					}
+					if = {
+						limit = {
+							base_production = 2
+						}
+						add_base_production = -1
+					}
+				}
+			}
+			capital_scope = {
+				add_base_tax = 6
+			}
+			custom_tooltip = B26_pillage_tt
+			hidden_effect = {
+				set_country_flag = B26_pillage
+			}
+		}
+	}
+	B26_the_draconian_throne = {
+		icon = mission_the_ascension
+		position = 4
+		required_missions = {
+			B26_hired_hunts
+			B26_more_than_ears
+			B26_rise_of_the_dargom
+			B26_taking_responsibility
+		}
+
+		provinces_to_highlight = {
+		}
+
+		trigger = {
+			prestige = 25
+			stability = 1
+			employed_advisor = {
+				category = ADM
+			}
+			employed_advisor = {
+				category = MIL
+			}
+			reform_level = 2
+		}
+
+		effect = {
+			country_event = {
+				id = flavour_severed_ear.5
+			}
+		}
+	}
+	B26_you_are_being_saved = {
+		icon = spa_spanish_road
+		position = 6
+		required_missions = {
+			B26_willing_guards
+			B26_sponsor_raids
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				culture_group = orcish
+				capital_scope = {
+					superregion = escann_superregion
+				}
+				NOT = {
+					AND = {
+						has_50_opinion_improved_relation = { target = ROOT }
+						has_spy_network_from = {
+							who = ROOT
+							value = 20
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			OR = {
+				all_known_country = {
+					OR = {
+						NOT = {
+							AND = {
+								culture = green_orc
+								capital_scope = {
+									superregion = escann_superregion
+								}
+							}
+						}
+						NOT = {
+							army_size = ROOT
+						}
+					}
+				}
+				army_size = 45
+			}
+			OR = {
+				calc_true_if = {
+					amount = 3
+					all_known_country = {
+						custom_trigger_tooltip = {
+							tooltip = B26_3_orc
+							culture_group = orcish
+							capital_scope = {
+								superregion = escann_superregion
+							}
+							has_50_opinion_improved_relation = { target = ROOT }
+							has_spy_network_from = {
+								who = ROOT
+								value = 20
+							}
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = B26_all_orc
+					NOT = {
+						any_known_country = {
+							culture_group = orcish
+							capital_scope = {
+								superregion = escann_superregion
+							}
+							NOT = {
+								AND = {
+									has_50_opinion_improved_relation = { target = ROOT }
+									has_spy_network_from = {
+										who = ROOT
+										value = 20
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				set_country_flag = B26_trib
+			}
+			every_known_country = {
+				limit = {
+					has_spy_network_from = {
+						who = ROOT
+						value = 20
+					}
+					culture_group = orcish
+					capital_scope = {
+						superregion = escann_superregion
+					}
+					has_50_opinion_improved_relation = { target = ROOT  }
+				}
+				add_spy_network_from = {
+					who = ROOT
+					value = -20
+				}
+				country_event = {
+					id = flavour_severed_ear.6
+				}
+			}
+			garmian_reign_bonus_effect_4 = {
+				effect = "
+				add_country_modifier = {
+					name = B26_in_the_fine_print
+					duration = 18250
+				}
+				"
+			}
+			
+		}
+	}
+	B26_milk_them_dry = {
+		icon = mission_serfdom
+		position = 7
+		required_missions = {
+			B26_you_are_being_saved
+			B26_get_a_real_job
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				is_subject_of = ROOT
+				has_country_modifier = orcish_administration
+				is_subject_of_type = tributary_state_anb
+				NOT = {
+					has_spy_network_from = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+		}
+
+		trigger = {
+			any_subject_country  = {
+				has_country_modifier = orcish_administration
+				is_subject_of_type = tributary_state_anb
+			}
+			all_subject_country = { 
+				OR = {
+					NOT = {
+						has_country_modifier = orcish_administration
+						is_subject_of_type = tributary_state_anb
+					}
+					has_spy_network_from = {
+						who = ROOT
+						value = 40
+					}
+				}
+			}
+			any_known_country = {
+				custom_trigger_tooltip = {
+					has_country_flag = B26_is_chained_adventurer
+					tooltip = B26_is_chained_adventurer_tt
+				}
+				has_opinion_modifier = {
+					who = ROOT
+					modifier = sent_gift
+				}
+				NOT = {
+					liberty_desire = 50
+				}
+			}
+			custom_trigger_tooltip = {
+				employed_advisor = {
+						category = DIP
+						skill = 3
+					}
+				tooltip = hired_dip_advisor_of_level_3_tt
+			}
+		}
+
+		effect = {
+			every_subject_country = {
+				limit = {
+					is_subject_of_type = tributary_state_anb
+					has_country_modifier = orcish_administration
+				}
+				add_spy_network_from = {
+					who = ROOT
+					value = -40
+				}
+				add_country_modifier = {
+					name = B26_adventurer_raids
+					duration = 3650
+				}
+			}
+			custom_tooltip = B26_adventurer_raids_tt
+			garmian_reign_bonus_effect_3 = {
+				effect = "
+					custom_tooltip = B26_loot_everyone_tt
+					hidden_effect = {
+						every_subject_country = {
+							limit = { is_subject_of_type = tributary_state_anb has_country_modifier = orcish_administration}
+							every_owned_province = {
+								remove_loot = {
+									who = B26
+									amount = 500
+								}
+							}
+						}
+					}
+				"
+			}
+		}
+	}
+	B26_a_fairer_share = {
+		icon = mission_war_chest
+		position = 8
+		required_missions = {
+			B26_the_white_demense
+			B26_milk_them_dry
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				AND = {
+					development = 15
+					NOT = {
+						has_fort_building_trigger = yes
+					}
+				}
+				AND = {
+					NOT = { development = 15 }
+					has_fort_building_trigger = yes
+				}
+			}
+
+		}
+
+		trigger = {
+			splendor = 400
+			prestige = 75
+			num_of_owned_provinces_with = {
+				has_fort_building_trigger = yes
+				development = 15
+				value = 4
+			}
+			#Condition is to fufill age objectives so i'm copy pasting the triggers
+			OR = {
+				custom_trigger_tooltip = {
+					calc_true_if = {
+						OR = {
+							north_america = { has_discovered = ROOT }
+							south_america = { has_discovered = ROOT }
+							new_world = { has_discovered = ROOT }
+						}
+						OR = {
+							num_of_owned_provinces_with = {
+								value = 5
+								hidden_trigger = { continent = europe }
+								OR = {
+									region = west_castanor_region
+									region = south_castanor_region
+									region = inner_castanor_region
+									area = cursewood_area
+									area = whistlevale_area
+								}
+								NOT = { culture_group = orcish }
+								NOT = { culture_group = goblin }
+							}
+						}
+						OR = {
+							calc_true_if = {
+								all_owned_province = {
+									OR = {
+										province_has_center_of_trade_of_level = 2
+										province_has_center_of_trade_of_level = 3
+									}
+									controlled_by = owner
+									is_core = ROOT
+								}
+								amount = 5
+							}
+						}
+						OR = {
+							AND = {
+								has_institution = renaissance
+								all_state_province = {
+									renaissance = 100
+								}
+							}
+						}
+						OR = { num_of_subjects = 5 }
+						has_country_flag = humiliated_rival
+						amount = 2
+					}
+					tooltip = has_2_age_monster_obj
+				}
+				in_golden_age = yes
+			}
+		}
+
+		effect = {
+			add_splendor = 400
+			if = {
+				limit = {
+					current_age = age_of_discovery
+				}
+				custom_tooltip = B26_unlock_monstrous_rule
+				hidden_effect = {
+					set_country_flag = age_ability_monstrous_rule_special_unlock
+				}
+			}
+			garmian_reign_bonus_effect_4 = {
+				effect = "
+					custom_tooltip = B26_linger_monstrous_rule
+					if = {
+						limit = {
+							current_age = age_of_discovery
+						}
+						hidden_effect = {
+							set_country_flag = B26_linger_monstrous_rule
+						}
+					}
+					else = {
+						add_country_modifier = {
+							name = B26_linger_hidden
+							duration = 9125
+							hidden = yes
+						}
+					}
+				"
+			}
+			if = {
+				limit = {
+					OR = {
+						has_reform = peasants_republic
+						has_reform = stateless_society
+					}
+				}
+				country_event = {
+					id = flavour_severed_ear.7
+					days = 30
+				}
+			}
+		}
+	}
+}
+
+severed_ear_4_missions = {
+	slot = 4
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = B26
+	}
+
+	B26_suppressive_strength = {
+		icon = mission_greentide
+		position = 2
+
+		required_missions = {
+			B26_you_own_nothing
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 754
+				province_id = 860
+			}
+		}
+
+		trigger = {
+			manpower = 20
+			army_tradition = 40
+			754 = {
+				owned_by = ROOT
+			}
+			OR = {
+				860 = {
+					owned_by = ROOT
+				}
+				B25 = {
+					is_subject_of = ROOT
+				}
+				B25 = {
+					alliance_with = ROOT
+				}
+			}
+		}
+
+		effect = {
+			add_manpower = -20
+			add_country_modifier = {
+				name = B26_bazuhgan_dependency
+				duration = -1
+			}
+			hidden_effect = {
+				set_country_flag = B26_merc	
+			}
+			custom_tooltip = B26_merc_tt
+		}
+	}
+	B26_more_than_ears = {
+		icon = mission_burning_man
+		position = 3
+		required_missions = {
+			B26_closing_the_gate
+			B26_suppressive_strength 
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			NOT = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 1
+				}
+			}
+		}
+
+		trigger = {
+			check_variable = {
+				which = DestroyedRebs
+				value = 5
+			}
+			num_of_owned_provinces_with = {
+				num_of_units_in_province = {
+					who = ROOT
+					amount = 1
+				}
+				value = 5
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavour_severed_ear.8
+			}
+		}
+	}
+	B26_sponsor_raids = {
+		icon = mission_dual_diplomacy
+		position = 5
+		required_missions = {
+			B26_the_draconian_throne
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				is_adventurer = yes
+				is_vassal = no
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = sent_gift
+					}
+				}
+			}
+		}
+
+		trigger = {
+			calc_true_if = {
+				all_known_country = {
+					is_adventurer = yes
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = sent_gift
+					}
+					is_vassal = no
+				}
+				amount = 5
+			}
+			employed_advisor = {
+				category = DIP
+			}
+			OR = {
+				NOT = {
+					any_known_country = {
+						OR = {
+							is_adventurer = yes
+							has_reform = adventurer_kingdom_reform
+							has_reform = adventurer_republic_reform
+						}
+						army_size = ROOT
+					}
+				}
+				army_size = 25
+			}
+		}
+
+		effect = {
+			custom_tooltip = B26_adventurer_raid_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						is_adventurer = yes
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = sent_gift
+						}
+					}
+					if = {
+						limit = {
+							any_owned_province = {
+								has_orcish_majority_trigger = yes
+								development = 4
+							}
+						}
+						random_owned_province = {
+							limit = {
+								has_orcish_majority_trigger = yes
+								development = 4
+							}
+							move_dev_to_least_developed_all = yes
+						}
+					}
+					else = {
+						random_province = {
+							limit = {
+								superregion = escann_superregion
+								is_city = no
+								NOT = {
+									tribal_land_of = ROOT
+								}
+								has_orcish_majority_trigger = yes
+								development = 4
+							}
+							move_dev_to_least_developed_all = yes
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+				custom_tooltip = garmian_reign_bonus_effect_4_tt
+				custom_tooltip = B26_adventurer_raid_1_tt
+				tooltip = {
+					add_legitimacy = -20
+				}
+				hidden_effect = {
+					if = {
+						limit = {
+							has_country_modifier = B26_draconian_4_1
+						}
+						add_legitimacy = -20
+						hidden_effect = {
+							every_country = {
+								limit = {
+									is_adventurer = yes
+									has_opinion_modifier = {
+										who = ROOT
+										modifier = sent_gift
+									}
+								}
+								if = {
+									limit = {
+										any_owned_province = {
+											has_orcish_majority_trigger = yes
+											development = 4
+										}
+									}
+									
+									random_owned_province = {
+										limit = {
+											has_orcish_majority_trigger = yes
+											development = 4
+										}
+										move_dev_to_least_developed_all = yes
+									}
+								}
+								else = {
+									random_province = {
+										limit = {
+											superregion = escann_superregion
+											has_orcish_majority_trigger = yes
+											development = 4
+										}
+										move_dev_to_least_developed_all = yes
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	B26_get_a_real_job = {
+		icon = mission_assassination
+		position = 6
+		required_missions = {
+			B26_sponsor_raids
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				has_country_modifier = B26_chained_adventurer
+				OR = {
+					liberty_desire = 50
+					NOT = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = sent_gift
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			all_known_country = {
+				OR = {
+					NOT = { has_country_modifier = B26_chained_adventurer }
+					AND = {
+						NOT = { liberty_desire = 50 }
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = sent_gift
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavour_severed_ear.9
+			}
+		}
+	}
+	B26_the_white_demense = {
+		icon = mission_white_tower
+		position = 7
+		required_missions = {
+			B26_get_a_real_job
+			B26_away_from_the_dregs
+		}
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				unrest = 5
+				local_autonomy = 25
+			}
+			is_in_white_walls = yes
+		}
+
+		trigger = {
+			has_institution = feudalism
+			num_of_owned_provinces_with = {
+				OR = {
+					has_fort_building_trigger = yes
+					has_building = native_palisade
+				}
+				is_in_white_walls = yes
+				value = 5
+			}
+			NOT = {
+				any_owned_province = {
+					OR = {
+						unrest = 5
+						local_autonomy = 25
+					}
+					is_in_white_walls = yes
+				}
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_in_white_walls = yes
+						has_building = native_palisade
+					}
+					add_base_manpower = 2
+					add_base_tax = 1
+				}
+			}
+			756 = {
+				add_permanent_claim = ROOT
+			}
+			nortmere_area = {
+				add_permanent_claim = ROOT
+			}
+			trialmount_area = {
+				add_permanent_claim = ROOT
+			}
+			northyl_area = {
+				add_permanent_claim = ROOT
+			}
+			upper_nath_area = {
+				add_permanent_claim = ROOT
+			}
+			bradescker_area = {
+				add_permanent_claim = ROOT
+			}
+			oldhaven_area = {
+				add_permanent_claim = ROOT
+			}
+			ardent_glade_area = {
+				add_permanent_claim = ROOT
+			}
+			serpentsmarck_area = {
+				add_permanent_claim = ROOT
+			}
+			steelhyl_area = {
+				add_permanent_claim = ROOT
+			}
+			custom_tooltip = B26_negate_native_dev_tt
+			
+			if = {
+				limit = {
+					has_reform = greentide_horde
+				}
+				hidden_effect = {
+					set_country_flag = B26_negate_native_dev_flag
+					every_owned_province = {
+						limit = {
+							is_in_white_walls = yes
+						}
+						add_province_modifier = {
+							name = B26_negate_native_dev
+							duration = -1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_reform = stateless_society
+						has_reform = peasants_republic
+					}
+				}
+				country_event = {
+					id = flavour_severed_ear.10
+				}
+			}
+			garmian_reign_bonus_effect_3 = {
+				effect = "
+					every_owned_province = {
+					amount = 6
+					type = random
+						limit = {
+							is_in_white_walls = yes
+							has_fort_building_trigger = yes
+							NOT = {
+								has_province_modifier = B26_tower_of_terror
+							}
+						}
+						add_province_modifier = {
+							name = B26_tower_of_terror
+							duration = -1
+						}
+					}
+				"
+			}
+		}
+	}
+	B26_the_more_the_merrier = {
+		icon = mission_underground_cave
+		position = 8
+		required_missions = {
+			B26_the_white_demense
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2863
+				province_id = 849
+				AND = {
+					is_capital = yes
+					owner = {
+						has_country_flag = B26_is_chained_adventurer
+						NOT = {
+							has_100_opinion_improved_relation = { target = ROOT }
+							has_opinion = {
+								who = ROOT
+								value = -100
+							}
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			any_subject_country = {
+				custom_trigger_tooltip = {
+					has_country_flag = B26_is_chained_adventurer
+					tooltip = B26_is_chained_adventurer_tt
+				}
+				OR = {
+					has_100_opinion_improved_relation = { target = ROOT }
+					has_opinion = {
+						who = ROOT
+						value = -100
+					}
+				}
+			}
+			849 = {
+				is_core = ROOT
+				OR = {
+					has_trade_building_trigger = yes
+					has_building = native_great_trail
+				}
+			}
+			2863 = {
+				owner = {
+					OR = {
+						tag = ROOT
+						has_opinion = {
+							who = ROOT
+							value = 50
+						}
+						gives_military_access_to = ROOT
+					}
+				}
+			}
+		}
+
+		effect = {
+			random_known_country = {
+				limit = {
+					has_country_flag = B26_is_chained_adventurer
+				}
+				add_manpower = -10
+				add_treasury = -100
+			}
+			custom_tooltip = B26_black_orc_tt
+			
+			hidden_effect = {
+				set_variable = {
+					which = while_variable
+					value = 0
+				}
+				while = {
+					limit = {
+						NOT = {
+							check_variable = {
+								which = while_variable
+								value = 10
+							}
+						}
+					}
+					if = {
+						limit = {
+							any_owned_province = {
+								has_orcish_majority_trigger = no
+								has_goblin_majority_trigger = no
+								NOT = {
+									development = 15
+								}
+							}
+						}
+						random_owned_province = {
+							limit = {
+								has_orcish_majority_trigger = no
+								has_goblin_majority_trigger = no
+								NOT = {
+									development = 15
+								}
+							}
+							change_culture = black_orc
+							change_religion = old_dookan
+							add_base_tax = 1
+						}
+						
+					}
+					else = {
+						 random_owned_province = {
+							add_orcish_minority_size_effect = yes
+							add_base_tax = 1
+						}
+					}
+					change_variable = {
+						which = while_variable
+						value = 1
+					}
+				}
+			}
+			garmian_reign_bonus_effect_4 = {
+				effect = "
+					849 = {
+						center_of_trade = 1
+					}
+				"
+			}
+		}
+	}
+	B26_me_not_that_kind_of_orc = {
+		icon = develop_our_capital
+		position = 9
+		required_missions = {
+			B26_a_fairer_share
+			B26_the_more_the_merrier
+			B26_safe_and_secured
+		}
+
+		provinces_to_highlight = {
+			is_in_white_walls = yes
+			NOT = {
+				AND = {
+					development = 15
+					owned_by = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			756 = {
+				owned_by = ROOT
+			}
+			stability = 3
+			num_of_owned_provinces_with = {
+				is_in_white_walls = yes
+				development = 15
+				value = 20
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavour_severed_ear.11
+			}
+		}
+	}
+	
+}
+severed_ear_5_missions = {
+	slot = 5
+	generic = no
+	ai = yes
+	has_country_shield = yes
+	potential = {
+		tag = B26
+	}
+
+	B26_closing_the_gate = {
+		icon = mission_serfdom
+		position = 2
+
+		required_missions = {
+			B26_you_own_nothing
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 754
+				province_id = 746
+				province_id = 850
+				province_id = 755
+			}
+		}
+
+		trigger = {
+			754 = {
+				owned_by = ROOT
+				has_building = native_palisade
+			}
+			746 = {
+				tribal_land_of = ROOT
+				OR = {
+					is_city = no
+					owned_by = ROOT
+				}
+			}
+			850 = {
+				tribal_land_of = ROOT
+				OR = {
+					is_city = no
+					owned_by = ROOT
+				}
+			}
+			755 = {
+				tribal_land_of = ROOT
+				OR = {
+					is_city = no
+					owned_by = ROOT
+				}
+			}
+			adm_power = 50
+			dip_power = 50
+			mil_power = 50
+			treasury = 50
+		}
+
+		effect = {
+			add_mil_power = -50
+			add_dip_power = -50
+			add_adm_power = -50
+			add_treasury = -50
+			754 = { add_base_manpower = 2 }
+			755 = {
+				if = {
+					limit = {
+						is_city = no
+					}
+					settle_province = ROOT
+				}
+				else = {
+					add_base_tax = 1
+				}
+			}
+			850 = {
+				if = {
+					limit = {
+						is_city = no
+					}
+					settle_province = ROOT
+				}
+				else = {
+					add_base_tax = 1
+				}
+			}
+			746 = {
+				if = {
+					limit = {
+						is_city = no
+					}
+					settle_province = ROOT
+				}
+				else = {
+					add_base_tax = 1
+				}
+			}
+		}
+	}
+	B26_hired_hunts = {
+		icon = mission_armor_choice
+		position = 3
+		required_missions = {
+			B26_closing_the_gate
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				is_adventurer = yes
+				NOT = {
+					is_subject_of = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			any_subject_country = {
+				is_adventurer = yes
+			}
+			power_projection = 50
+		}
+
+		effect = {
+			every_subject_country = {
+				limit = {
+					is_adventurer = yes
+				}
+				add_country_modifier = {
+					name = B26_chained_adventurer
+					duration = -1
+				}
+				hidden_effect = {
+					set_country_flag = B26_is_chained_adventurer
+				}
+			}
+			custom_tooltip = B26_has_chained_adventurer_tt
+		}
+	}
+	B26_apparent_strength = {
+		icon = mission_the_russian_tsardom
+		position = 5
+		required_missions = {
+			B26_the_draconian_throne
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				is_rival = ROOT
+				NOT = {
+					humiliated_by = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			stability = 1
+			OR = {
+				any_known_country = {
+					humiliated_by = ROOT
+				}
+				NOT = {
+					any_known_country = {
+						NOT = { has_been_eclipsed_by = ROOT }
+						NOT = { has_eclipsed = ROOT }
+					}
+				}
+			}
+			legitimacy = 75
+			check_variable = {
+				which = ruler_battles_won 
+				value = 10
+			}
+		}
+
+		effect = {
+			custom_tooltip = B26_disable_oz
+			hidden_effect = {
+				set_country_flag = B26_disable_oz_flag
+			}
+			capital_scope = {
+				if = {
+					limit = {
+						NOT = {
+							feudalism = 100
+						}
+					}
+					
+					add_institution_embracement = {
+						which = feudalism
+						value = 50
+					}
+				}
+				else = {
+					add_base_tax = 3
+				}
+			}
+		}
+	}
+	B26_away_from_the_dregs = {
+		icon = mission_sinister_castle
+		position = 6
+		required_missions = {
+			B26_apparent_strength
+		}
+
+		provinces_to_highlight = {
+			province_id = 840
+		}
+
+		trigger = {
+			is_at_war = no
+			OR = {
+				AND = {
+					adm_power = 100
+					840 = {
+						has_province_modifier = castanorian_citadel
+						OR = {
+							has_building = native_palisade
+							has_fort_building_trigger = yes
+						}
+						owned_by = ROOT
+					}
+				}
+				NOT = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					has_reform = B26_garmian_reign_monarchy
+				}
+				add_adm_power = -100
+				set_capital = 840
+				840 = {
+					change_province_name = "Urugarm"
+					rename_capital = "Citadel of Garm"
+					add_province_modifier = {
+						name = B26_urugarm
+						duration = -1
+					}
+				}
+				custom_tooltip = B26_bypass_monument
+				hidden_effect = {
+					set_country_flag = B26_bypass_monument_flag
+				}
+				garmian_reign_bonus_effect_4 = {
+					effect = "
+						change_government_reform_progress = 100
+					"
+				}
+			}
+		}
+	}
+	B26_safe_and_secured = {
+		icon = mission_hanged_tree
+		position = 8
+		required_missions = {
+			B26_the_white_demense
+		}
+
+		provinces_to_highlight = {
+			is_in_white_walls = yes
+			OR = {
+				AND = {
+					country_or_subject_holds = ROOT
+					OR = {
+						AND = {
+							local_autonomy = 20
+							NOT = { has_province_modifier = autonomy_decreased }
+							owned_by = ROOT
+						}
+						unrest = 5
+					}
+				}
+				NOT = {
+					country_or_subject_holds = ROOT
+				}
+			}
+		}
+
+		trigger = {
+			legitimacy = 80
+			NOT = { num_of_rebel_controlled_provinces = 1 }
+			756 = {
+				OR = {
+					NOT = {
+						local_autonomy = 20
+					}
+					has_province_modifier = autonomy_decreased
+					NOT = {
+						owned_by = ROOT
+					}
+				}
+				country_or_subject_holds = ROOT
+				NOT = { unrest = 5 }
+			}
+			inner_castanor_region = {
+				type = all
+				OR = {
+					area = clouded_wood_area
+					area = esshyl_area
+					area = nortessord_area
+					area = sarwood_area
+					province_id = 743
+					province_id = 861
+					AND = {
+						country_or_subject_holds = ROOT
+						OR = {
+							NOT = {
+								local_autonomy = 20
+							}
+							has_province_modifier = autonomy_decreased
+							NOT = {
+								owned_by = ROOT
+							}
+						}
+						NOT = { unrest = 5 }
+					}
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = B26_everything_in_its_place2
+				duration = -1
+			}
+			custom_tooltip = B26_everything_in_its_place2_desc
+
+		}
+	}
+}

@@ -1,0 +1,23 @@
+
+setup_vision_south_aelantir = yes
+government = native
+add_government_reform = native_chiefdom_reform
+government_rank = 1
+mercantilism = 0
+primary_culture = chamullach
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2397
+
+1440.1.1 = {
+	monarch = { #Name means "hidden jaguar". Young, bold new leader of the tribe, much better person than Falchiquél
+		name = "Nahuar"
+		dynasty = "Falanca"
+		birth_date = 1420.1.1
+		adm = 1
+		dip = 3
+		mil = 5
+	}
+	add_ruler_personality = bold_fighter_personality
+	add_ruler_personality = righteous_personality
+}

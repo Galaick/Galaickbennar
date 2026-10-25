@@ -1,0 +1,1095 @@
+#Designed and coded by: Pivert08
+
+namespace = kooras_events
+
+country_event = {
+	id = kooras_events.1 #Resettling Ancestral Homes
+	title = kooras_events.1.t
+	desc = kooras_events.1.d
+	picture = AZTEC_PYRAMID_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.1.a
+		add_country_modifier = {
+			name = kooras_resettling_ancestral_homes
+			duration = 10950
+		}
+		every_subject_country = {
+			add_country_modifier = {
+				name = kooras_resettling_ancestral_homes
+				duration = 10950
+			}
+		}
+		custom_tooltip = kooras_settling_buff_tt
+		hidden_effect = {
+			set_country_flag = kooras_settling_buff
+		}
+		add_country_modifier = {
+			name = kooras_tribal_dev_remove
+			duration = 3650
+		}
+		custom_tooltip = kooras_tribal_dev_remove_tt
+		add_manpower = -10
+	}
+}
+
+country_event = {
+	id = kooras_events.2 #Forever Our Rival
+	title = kooras_events.2.t
+	desc = kooras_events.2.d
+	picture = northamericagfx_LAND_MILITARY_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.2.a
+		add_historical_rival = G43
+		G43 = {
+			add_historical_rival = ROOT
+		}
+		add_country_modifier = {
+			name = kooras_jungle_warfare
+			duration = 3650
+		}
+		manguchtec_area = {
+			add_permanent_claim = ROOT
+		}
+		eekinahi_area = {
+			add_permanent_claim = ROOT
+		}
+		tilsikabahn_area = {
+			add_permanent_claim = ROOT
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.3 #A Seat Around the Bonfire
+	title = kooras_events.3.t
+	desc = kooras_events.3.d
+	picture = northamericagfx_DEBATE_REPUBLICAN_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.3.a
+		add_prestige = 10
+		add_country_modifier = {
+			name = kooras_harafic_trade
+			duration = 7300
+		}
+		G43 = {
+			add_trust = {
+				who = ROOT
+				value = 20
+			}
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.4 #Expanding the League
+	title = kooras_events.4.t
+	desc = kooras_events.4.d
+	picture = southamericagfx_COURT_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.4.a
+		add_casus_belli = {
+			target = G43
+			type = cb_vassalize_mission
+			months = 300
+		}
+		every_owned_province = {
+			limit = {
+				is_core = G43
+			}
+			remove_core = G43
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.5 #Kinah or Tsahl?
+	title = kooras_events.5.t
+	desc = kooras_events.5.d
+	picture = northamericagfx_CONQUEST_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.5.a
+		manguchtec_area = {
+			change_tribal_land = ROOT
+		}
+		eekinahi_area = {
+			change_tribal_land = ROOT
+			remove_claim = G43
+		}
+		tilsikabahn_area = {
+			change_tribal_land = ROOT
+			remove_claim = G43
+		}
+		add_treasury = -500
+	}
+}
+
+country_event = {
+	id = kooras_events.6 #Learning From the Smallfolk
+	title = kooras_events.6.t
+	desc = kooras_events.6.d
+	picture = ARTIFICE_GEAR_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.6.a
+		set_country_flag = unlocked_artifice_invention_prefabricated_city_constructors
+		set_country_flag = unlocked_artifice_invention_soarwing_grafts
+		set_country_flag = unlocked_artifice_invention_scrap_mechs
+		set_country_flag = kooras_unlock_racial_inventions
+		custom_tooltip = kooras_unlock_racial_inventions_tt
+	}
+}
+
+country_event = {
+	id = kooras_events.7 #A Wavecrossed Meeting
+	title = kooras_events.7.t
+	desc = kooras_events.7.d
+	picture = northamericagfx_MERCHANTS_TALKING_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.7.a
+		add_adm_power = 100
+		add_dip_power = 100
+		add_mil_power = 100
+		capital_scope = {
+			add_province_modifier = {
+				name = kooras_blood_trade
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.10 #The Council of Tli'yam Kyin
+	title = kooras_events.10.t
+	desc = kooras_events.10.d
+	picture = SOUTH_AMERICAN_FESTIVAL_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = { 
+		hidden_effect = {
+			G03 = {
+				capital_scope = { 
+					save_event_target_as = G03_old_capital 
+				}
+				set_country_flag = kooras_unlock_kooras_federation_reform
+			}
+			G44 = {
+				capital_scope = { 
+					save_event_target_as = G44_old_capital 
+				}
+				set_country_flag = kooras_unlock_kooras_federation_reform
+			}
+			U29 = {
+				capital_scope = { 
+					save_event_target_as = U29_old_capital 
+				}
+				set_country_flag = kooras_unlock_kooras_federation_reform
+			}
+		}
+	}
+
+	option = {
+		name = kooras_events.10.a
+		custom_tooltip = kooras_settling_in_provinces_tt
+		hidden_effect = {
+			G03 = {
+				if = {
+					limit = {
+						NOT = {
+							capital_scope = {
+								province_id = 2149
+							}
+						}
+					}
+					2149 = { 
+						cede_province = G03 
+						add_core = G03 
+						prev_move_capital_effect = yes 
+					}
+					event_target:G03_old_capital = { 
+						decolonize = yes 
+						change_tribal_land = PREV
+					}
+				}
+				if = {
+					limit = {
+						NOT = { is_subject = yes tag = ROOT }
+					}
+					ROOT = { vassalize = PREV }
+				}
+			}
+			G44 = {
+				if = {
+					limit = {
+						NOT = {
+							capital_scope = {
+								province_id = 2079
+							}
+						}
+					}
+					2079 = { 
+						cede_province = G44 
+						add_core = G44 
+						prev_move_capital_effect = yes 
+					}
+					event_target:G44_old_capital = { 
+						decolonize = yes 
+						change_tribal_land = PREV
+					}
+				}
+				if = {
+					limit = {
+						NOT = { is_subject = yes tag = ROOT }
+					}
+					ROOT = { vassalize = PREV }
+				}
+			}
+			U29 = {
+				if = {
+					limit = {
+						NOT = {
+							capital_scope = {
+								province_id = 2082
+							}
+						}
+					}
+					2082 = { 
+						cede_province = U29 
+						add_core = U29 
+						prev_move_capital_effect = yes 
+					}					
+				}
+				else = {
+					2144 = {
+						cede_province = U29 
+						add_core = U29
+						prev_move_capital_effect = yes 
+					}
+				}
+				event_target:U29_old_capital = { 
+					decolonize = yes 
+					change_tribal_land = PREV
+				}
+				if = {
+					limit = {
+						NOT = { is_subject = yes tag = ROOT }
+					}
+					ROOT = { vassalize = PREV }
+				}
+			}
+		}
+		hidden_effect = {
+			G03 = {
+				add_government_reform = kooras_federation
+			}
+			G44 = {
+				add_government_reform = kooras_federation
+			}
+			U29 = {
+				add_government_reform = kooras_federation
+			}
+		}
+		custom_tooltip = kooras_federation_tt
+		hidden_effect = {
+			2144 = {
+				cede_province = U29 
+				add_core = U29 
+			}
+			2123 = {
+				cede_province = U29 
+				add_core = U29 
+			}
+			2081 = {
+				cede_province = U29 
+				add_core = U29 
+			}
+		}
+		hidden_effect = {
+			2149 = {
+				add_province_modifier = {
+					name = kooras_capital
+					duration = -1
+				}
+			}
+			2079 = {
+				add_province_modifier = {
+					name = kooras_capital
+					duration = -1
+				}
+			}
+		}
+		custom_tooltip = kooras_great_kyin_tt
+		set_country_flag = kooras_feudalism_on_settling
+		custom_tooltip = kooras_feudalism_on_settling_tt
+	}
+}
+
+country_event = {
+	id = kooras_events.16 #Our Gilded Prison
+	title = kooras_events.16.t
+	desc = kooras_events.16.d
+	picture = northamericagfx_GREAT_BUILDING_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.16.a
+		define_advisor = {
+   			type = court_mage
+    		skill = 1
+			cost_multiplier = 0.5
+		}
+		define_ruler = {
+			name = "Tiilachi"
+			dynasty = "Tslakiirpaal"
+			adm = 3
+			dip = 5
+			mil = 4
+			age = 25
+		}
+		add_ruler_personality = scholar_personality
+	}
+}
+
+country_event = {
+	id = kooras_events.17 #Coming of Age
+	title = kooras_events.17.t
+	desc = kooras_events.17.d
+	picture = indiangfx_RELIGIOUS_CONVERSION_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.17.a
+		2079 = {
+			change_trade_goods = damestear
+		}
+		add_manpower = -0.5
+		add_treasury = 100
+		define_advisor = {
+   			type = court_mage
+    		skill = 1
+			cost_multiplier = 0.5
+		}
+		set_country_flag = kooras_unlock_blood_dive
+		custom_tooltip = kooras_unlock_blood_dive_tt
+		set_variable = {
+			which = koorasAmountOfBloodDives
+			value = 0
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.18 #Sheperding Harmony
+	title = kooras_events.18.t
+	desc = kooras_events.18.d
+	picture = northamericagfx_EXPLORERS_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.18.a
+		force_remove_rival = G43
+		add_historical_friend = G43
+		create_alliance = G43
+		set_country_flag = kooras_share_reformprogress_U29
+		G43 = {
+			set_country_flag = kooras_share_reformprogress_G43
+		}
+		custom_tooltip = kooras_share_reformprogress_tt
+	}
+}
+
+country_event = {
+	id = kooras_events.19 #Eyes Closed, All-Seeing
+	title = kooras_events.19.t
+	desc = kooras_events.19.d
+	picture = END_OF_TIME_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.19.a
+		change_government_reform_progress = 50
+		add_casus_belli = {
+			target = G44
+			type = cb_vassalize_mission
+			months = 240
+		}
+		add_casus_belli = {
+			target = U29
+			type = cb_vassalize_mission
+			months = 240
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.21 #Our Prismatic Guardian
+	title = kooras_events.21.t
+	desc = kooras_events.21.d
+	picture = FOUNTAIN_OF_YOUTH_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.21.a
+		add_casus_belli = {
+			target = G03
+			type = cb_vassalize_mission
+			months = 240
+		}
+		add_casus_belli = {
+			target = U29
+			type = cb_vassalize_mission
+			months = 240
+		}
+		set_country_flag = kooras_leptone_get_reformprogress_on_blood_dive
+		custom_tooltip = kooras_leptone_get_reformprogress_on_blood_dive_tt
+	}
+}
+
+province_event = {
+	id = kooras_events.22 #Kaiinpi trade goods randomization
+	title = kooras_events.22.t
+	desc = kooras_events.22.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = kooras_events.8.a
+		ai_chance = {
+			factor = 40
+		}
+		change_trade_goods = cocoa
+	}
+
+	option = {
+		name = kooras_events.8.b
+		ai_chance = { 
+			factor = 30
+		}
+		change_trade_goods = sugar
+	}
+
+	option = {
+		name = kooras_events.8.b
+		ai_chance = { 
+			factor = 30
+		}
+		change_trade_goods = coffee
+	}
+}
+
+country_event = {
+	id = kooras_events.23 #Curing the Knowledge-Sickness
+	title = kooras_events.23.t
+	desc = kooras_events.23.d
+	picture = MYSTIC_IN_PRAYER_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.23.a
+		set_country_flag = kooras_court_mage_upgrade_1
+		custom_tooltip = kooras_court_mage_upgrade_1_tt
+		add_treasury = -50
+		if = {
+			limit = {
+				NOT = {
+					advisor = court_mage
+				}
+			}
+			add_adm_power = -50
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.24 #Voices of the Ancestors
+	title = kooras_events.24.t
+	desc = kooras_events.24.d
+	picture = INCAN_GODS_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.24.a
+		set_country_flag = kooras_court_mage_upgrade_1
+		custom_tooltip = kooras_court_mage_upgrade_1_tt
+		add_country_modifier = {
+			name = kooras_kaiinpi_buff
+			duration = 7300
+		}
+		if = {
+			limit = {
+				NOT = {
+					advisor = court_mage
+				}
+			}
+			add_mil_power = -50
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.25 #Raptures of the Deep
+	title = kooras_events.25.t
+	desc = kooras_events.25.d
+	picture = LAKE_TREASURE_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.25.a
+		set_country_flag = kooras_court_mage_upgrade_1
+		custom_tooltip = kooras_court_mage_upgrade_1_tt
+		add_prestige = -10
+		if = {
+			limit = {
+				NOT = {
+					advisor = court_mage
+				}
+			}
+			add_dip_power = -50
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.26 #The Foreign Cities
+	title = kooras_events.26.t
+	desc = kooras_events.26.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.26.a
+		add_casus_belli = {
+			target = H30
+			type = cb_vassalize_mission
+			months = 240
+		}
+		add_casus_belli = {
+			target = H31
+			type = cb_vassalize_mission
+			months = 240
+		}
+		add_casus_belli = {
+			target = H32
+			type = cb_vassalize_mission
+			months = 240
+		}
+		set_country_flag = kooras_spread_minorities_by_pulse
+		custom_tooltip = kooras_spread_minorities_by_pulse_tt
+		add_country_modifier = {
+			name = kooras_accept_newcomers
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = kooras_events.26.b
+		force_remove_rival = H30
+		force_remove_rival = H31
+		force_remove_rival = H32
+		reverse_add_opinion = {
+			who = H30
+			modifier = kooras_happy_smallfolk
+		}
+		reverse_add_opinion = {
+			who = H31
+			modifier = kooras_happy_smallfolk
+		}
+		reverse_add_opinion = {
+			who = H32
+			modifier = kooras_happy_smallfolk
+		}
+		add_favors = {
+			who = H30
+			amount = 50
+		}
+		add_favors = {
+			who = H31
+			amount = 50
+		}
+		add_favors = {
+			who = H32
+			amount = 50
+		}
+		set_country_flag = kooras_spread_minorities_by_pulse
+		custom_tooltip = kooras_spread_minorities_by_pulse_tt
+		add_country_modifier = {
+			name = kooras_accept_newcomers
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.27 #The Arrival of the Small
+	title = kooras_events.27.t
+	desc = kooras_events.27.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.27.a
+		2088 = {
+    		change_culture = cliff_gnome
+		}
+		2083 = {
+    		change_culture = city_goblin
+		}
+		2078 = {
+    		change_culture = bluescale_kobold
+		}
+		set_country_flag = kooras_spread_minorities_by_pulse
+		custom_tooltip = kooras_spread_minorities_by_pulse_tt
+		add_country_modifier = {
+			name = kooras_accept_newcomers
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = kooras_events.28 #Our New Partners
+	title = kooras_events.28.t
+	desc = kooras_events.28.d
+	picture = northamericagfx_REFORM_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.28.a
+		zurzumexia_area = {
+			add_kobold_minority_size_effect = yes
+		}
+		gommiochand_area = {
+			add_gnomish_minority_size_effect = yes
+		}
+		mestikardu_area = {
+			add_goblin_minority_size_effect = yes
+		}
+		add_accepted_culture_or_dip_power = { culture = cliff_gnome }
+		add_accepted_culture_or_dip_power = { culture = city_goblin }
+		add_accepted_culture_or_dip_power = { culture = bluescale_kobold }
+	}
+}
+
+country_event = {
+	id = kooras_events.29 #The New Federation
+	title = kooras_events.29.t
+	desc = kooras_events.29.d
+	picture = northamericagfx_REFORM_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.29.a
+		add_historical_friend = H30
+		vassalize = H30
+		add_historical_friend = H31
+		vassalize = H31
+		add_historical_friend = H32
+		vassalize = H32
+	}
+}
+
+country_event = {
+	id = kooras_events.30 #Union of Magic and Artificery
+	title = kooras_events.30.t
+	desc = kooras_events.30.d
+	picture = DAMESTEAR_CORE_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = kooras_events.30.a
+		if = {
+			limit = {
+				H30 = {
+					is_subject_of = ROOT
+				}
+			}
+			inherit = H30
+		}
+		if = {
+			limit = {
+				H31 = {
+					is_subject_of = ROOT
+				}
+			}
+			inherit = H31
+		}
+		if = {
+			limit = {
+				H32 = {
+					is_subject_of = ROOT
+				}
+			}
+			inherit = H32
+		}
+		clr_country_flag = kooras_court_mage_upgrade_1
+		set_country_flag = kooras_court_mage_upgrade_2
+		custom_tooltip = kooras_court_mage_upgrade_2_tt
+		set_estate_privilege = estate_artificers_kooras_riftbridgers
+		define_advisor = { type = court_mage skill = 1 cost_multiplier = 0.5 }
+	}
+}
+
+province_event = {
+	id = kooras_events.31 #Blood dive effects
+	title = kooras_events.31.t
+	desc = kooras_events.31.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		owner = {
+			export_to_variable = {
+				which = koorasDevelopmentCheck
+				value = trigger_value:development
+				who = PREV
+			}
+			multiply_variable = {            
+    			which = koorasDevelopmentCheck
+   				value = 2
+			}
+			change_variable = {
+				which = koorasAmountOfBloodDives
+				value = 1
+			}
+		}
+	}
+
+	option = {
+		name = kooras_events.31.c
+		ai_chance = {
+			factor = 60
+		}
+		owner = {
+			while = {
+				limit = {
+					check_variable = {
+						which = koorasDevelopmentCheck
+						value = 1
+					}
+				}
+				add_treasury = 1
+				subtract_variable = {
+					which = koorasDevelopmentCheck
+					value = 1
+				}
+			}
+		}
+	}
+
+	option = {
+		name = kooras_events.31.a
+		trigger = {
+			NOT = {
+				owner = {
+					num_of_owned_provinces_with = {
+						value = 5
+						has_province_flag = kooras_blood_dive_trade_good_check
+					}
+				}
+				trade_goods = damestear
+				trade_goods = precursor_relics
+			}
+		}			
+		ai_chance = {
+			factor = 10
+		}
+		save_trade_goods = yes
+		change_trade_goods = precursor_relics
+		set_province_flag = kooras_blood_dive_trade_good_check
+		hidden_effect = {
+			province_event = {
+				id = kooras_events.32
+				days = 2555
+				random = 2920
+			}
+		}
+	}
+
+	option = {
+		name = kooras_events.31.b
+		trigger = {
+			NOT = {
+				owner = {
+					num_of_owned_provinces_with = {
+						value = 5
+						has_province_flag = kooras_blood_dive_trade_good_check
+					}
+				}
+				trade_goods = damestear
+				trade_goods = precursor_relics
+			}
+		}
+		ai_chance = {
+			factor = 30
+		}
+		save_trade_goods = yes
+		change_trade_goods = damestear
+		set_province_flag = kooras_blood_dive_trade_good_check
+		hidden_effect = {
+			province_event = {
+				id = kooras_events.32
+				days = 2555
+				random = 2920
+			}
+		}
+	}
+}
+
+province_event = {
+	id = kooras_events.32 #Blood dive trade good end
+	title = kooras_events.32.t	#made unhidden: need loc
+	desc = kooras_events.32.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = kooras_events.32.a
+		clr_province_flag = kooras_blood_dive_trade_good_check
+		set_from_saved_trade_goods = yes
+	}
+}
+
+country_event = {
+	id = kooras_events.33 #Spread racial minorities on pulse
+	title = kooras_events.33.t
+	desc = kooras_events.33.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	trigger = {
+		has_country_flag = kooras_spread_minorities_by_pulse
+	}
+
+	option = {
+		name = kooras_events.33.a
+		if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_gnomish_minority_trigger = yes
+						has_gnomish_majority_trigger = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_gnomish_minority_trigger = yes
+						has_gnomish_majority_trigger = yes
+					}
+				}
+				add_gnomish_minority_size_effect = yes
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					has_building = workshop
+				}
+				NOT = {
+					has_large_gnomish_minority_trigger = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					has_building = workshop
+					NOT = {
+						has_large_gnomish_minority_trigger = yes
+						has_gnomish_majority_trigger = yes
+					}
+				}
+				add_gnomish_minority_size_effect = yes
+			}
+		}
+		else = {
+			random_owned_province = {
+				random = {
+					chance = 50
+					add_gnomish_minority_size_effect = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_kobold_minority_trigger = yes
+						has_kobold_majority_trigger = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_kobold_minority_trigger = yes
+						has_kobold_majority_trigger = yes
+					}
+				}
+				add_kobold_minority_size_effect = yes
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					has_building = workshop
+				}
+				NOT = {
+					has_large_kobold_minority_trigger = yes
+					has_kobold_majority_trigger = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					has_building = workshop
+					NOT = {
+						has_large_kobold_minority_trigger = yes
+						has_kobold_majority_trigger = yes
+					}
+				}
+				add_kobold_minority_size_effect = yes
+			}
+		}
+		else = {
+			random_owned_province = {
+				random = {
+					chance = 50
+					add_kobold_minority_size_effect = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_province = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_goblin_minority_trigger = yes
+						has_goblin_majority_trigger = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = damestear
+						trade_goods = precursor_relics
+					}
+					NOT = {
+						has_large_goblin_minority_trigger = yes
+						has_goblin_majority_trigger = yes
+					}
+				}
+				add_goblin_minority_size_effect = yes
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					has_building = workshop
+				}
+				NOT = {
+					has_large_goblin_minority_trigger = yes
+					has_goblin_majority_trigger = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					has_building = workshop
+					NOT = {
+						has_large_goblin_minority_trigger = yes
+						has_goblin_majority_trigger = yes
+					}
+				}
+				add_goblin_minority_size_effect = yes
+			}
+		}
+		else = {
+			random_owned_province = {
+				random = {
+					chance = 50
+					add_goblin_minority_size_effect = yes
+				}
+			}
+		}
+	}
+}

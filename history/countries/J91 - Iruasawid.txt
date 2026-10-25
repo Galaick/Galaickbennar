@@ -1,0 +1,41 @@
+
+setup_vision_south_aelantir = yes
+government = tribal
+add_government_reform = tribal_despotism
+government_rank = 1
+mercantilism = 5
+primary_culture = quchamar
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2361
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+1405.1.1 = {
+	monarch = { #Dynasty name means "Fire Guard"
+		name = "Vachúen IV"
+		dynasty = "Téuringar"
+		birth_date = 1399.1.1
+		adm = 2
+		dip = 2
+		mil = 3
+	}
+	add_ruler_personality = kind_hearted_personality
+	add_ruler_personality = infertile_personality
+	add_ruler_personality = lawgiver_personality
+}
+
+1425.1.1 = {
+	heir = { #Beloved only-child of Vachúen, whose wife died. He keeps her in the succession because he can't bring himself to choose another wife.
+		name = "Machéna"
+		dynasty = "Téuringar"
+		birth_date = 1425.1.1
+		death_date = 1450.1.1
+		adm = 4
+		dip = 3
+		mil = 5
+		female = yes
+		claim = 100
+	}
+	add_heir_personality = reformist_personality
+}

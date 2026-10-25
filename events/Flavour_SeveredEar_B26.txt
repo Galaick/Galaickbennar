@@ -1,0 +1,920 @@
+namespace = flavour_severed_ear
+#The Spiteful Chain
+country_event = {
+	id = flavour_severed_ear.0
+	title = flavour_severed_ear.0.t
+	desc = flavour_severed_ear.0.d
+	picture = southamericagfx_ANGRY_MOB_eventPicture
+
+	trigger = {
+		tag = B26
+	}
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				which = DestroyedReb
+				value = 0
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.0.a
+		add_ruler_modifier = {
+			name = B26_hellkite_reign
+		}
+		hidden_effect = {
+			set_variable = {
+				which = B26_balance
+				value = 4
+			}
+		}
+		842 = {
+			spawn_rebels = {
+				type = leadered_peasant_rebels
+				size = 1
+			}
+		}
+	}
+}
+#And You'll Be Happy
+country_event = {
+	id = flavour_severed_ear.1
+	title = flavour_severed_ear.1.t
+	desc = flavour_severed_ear.1.d
+	picture = GUARDED_TREASURE_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.1.a
+		custom_tooltip = B26_loot_tt
+		hidden_effect = {
+			every_owned_province = {
+				add_devastation = 10
+					ROOT = {
+						add_treasury = 7
+					}
+					remove_loot = {
+						who = B26
+						amount = 500
+					}
+			}
+		}
+		add_country_modifier = {
+			name = B26_rallied_taskmasters
+			duration = 18250
+		}
+	}
+}
+#Children of Orcs and Goblins
+country_event = {
+	id = flavour_severed_ear.2
+	title = flavour_severed_ear.2.t
+	desc = flavour_severed_ear.2.d
+	picture = ORC_WITH_AXE_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			has_reform = B26_garmian_reign_monarchy
+		}
+		name = flavour_severed_ear.2.a
+		custom_tooltip = B26_convert_great_trail
+		hidden_effect = {
+			for = {
+				amount = 10
+				effect = "
+					random_owned_province = {
+						limit = {
+							has_building = native_great_trail
+							NOT = { has_province_modifier = B26_exbarracks }
+						}
+						add_province_modifier = {
+							name = B26_exbarracks
+							duration = -1
+						}
+					}
+				"
+			}
+		}
+		add_country_modifier = {
+			name = B26_bolutunn_regalguards
+			duration = -1
+		}
+		custom_tooltip = B26_king_power
+		hidden_effect = {
+			change_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		garmian_reign_bonus_effect_4 = {
+			effect = "
+				increase_ruler_mil_effect = yes
+				increase_heir_mil_effect = yes
+			"
+		}
+	}
+	option = {
+		name = flavour_severed_ear.2.b
+		custom_tooltip = B26_convert_great_trail
+		hidden_effect = {
+			for = {
+				amount = 10
+				effect = "
+				random_owned_province = {
+						limit = {
+							has_building = native_great_trail
+							NOT = { has_province_modifier = B26_exbarracks }
+						}
+						add_province_modifier = {
+							name = B26_exbarracks
+							duration = -1
+						}
+					}
+				"
+			}
+		}
+		add_country_modifier = {
+			name = B26_bolutunn_highguards
+			duration = -1
+		}
+		custom_tooltip = B26_guard_power
+		hidden_effect = {
+			subtract_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		garmian_reign_bonus_effect_4 = {
+			effect = "
+				create_general = { tradition = 100 }
+			"
+		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				has_reform = B26_garmian_reign_monarchy
+			}
+		}
+		name = flavour_severed_ear.2.c
+		custom_tooltip = B26_convert_great_trail
+		tooltip = {
+			add_province_modifier = {
+					name = B26_exbarracks
+					duration = -1
+				}
+		}
+		hidden_effect = {
+			for = {
+				amount = 10
+				effect = "
+					random_owned_province = {
+						limit = {
+							has_building = native_great_trail
+							NOT = { has_province_modifier = B26_exbarracks }
+						}
+						add_province_modifier = {
+							name = B26_exbarracks
+							duration = -1
+						}
+					}
+				"
+			}
+		}
+		add_country_modifier = {
+			name = B26_bolutunn_vanguards
+			duration = -1
+		}
+	}
+}
+#Crux of Destiny
+country_event = {
+	id = flavour_severed_ear.3
+	title = flavour_severed_ear.3.t
+    desc = {
+        trigger = {
+			check_variable = {
+				which = B26_balance 
+				value = 5
+			}
+		}
+        desc = flavour_severed_ear.3.d1
+    }
+	desc = {
+        trigger = { 
+			NOT = {
+				check_variable = {
+					which = B26_balance 
+					value = 4
+				}
+			}
+		}
+        desc = flavour_severed_ear.3.d2
+    }
+    desc = flavour_severed_ear.3.d3
+	picture = OPRICHINA_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			check_variable = {
+				which = B26_balance 
+				value = 5
+			}
+		}
+		name = flavour_severed_ear.3.a
+		custom_tooltip = orc_path_to_civil_tt
+		hidden_effect = { set_country_flag = orc_path_to_civil }
+		custom_tooltip = B26_stronger_garm_tt
+		set_country_flag = B26_garmian_reign_2
+		hidden_effect = {
+			change_government = monarchy
+			add_government_reform = B26_garmian_reign_monarchy
+		}
+	}
+	option = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = B26_balance 
+					value = 4
+				}
+			}
+		}
+		name = flavour_severed_ear.3.b
+		custom_tooltip = orc_path_to_civil_tt
+		hidden_effect = { set_country_flag = orc_path_to_civil }
+		change_government = republic
+		add_government_reform = stratocracy_reform
+		add_country_modifier = {
+			name = B26_bolutunn_high_overseers
+			duration = -1
+		}
+		custom_tooltip = B26_guard_modifier_tt
+		override_country_name = B26_TYRANTSMASHER
+	}
+	option = {
+		trigger = {
+			NOT = {
+				check_variable = {
+					which = B26_balance 
+					value = 5
+				}
+			}
+			check_variable = {
+				which = B26_balance 
+				value = 4
+			}
+		}
+		name = flavour_severed_ear.3.c
+		add_stability = -1
+		kill_heir = {
+			allow_new_heir = no
+		}
+		kill_consort = yes
+		kill_ruler = yes
+		override_country_name = B26_CHAINBREAKER
+		change_government = republic
+		add_government_reform = peasants_republic
+		hidden_effect = {
+			set_country_flag = B26_abolisher
+		}
+		country_event = {
+			id = flavour_severed_ear.4
+		}
+	}
+}
+#Rise of Chainbreaker
+country_event = {
+	id = flavour_severed_ear.4
+	title = flavour_severed_ear.4.t
+	desc = {
+		trigger = {
+			has_country_flag = B26_abolisher
+		}
+		desc = flavour_severed_ear.4.d1
+	}
+	desc = {
+		trigger = {
+			NOT = { has_country_flag = B26_abolisher }
+		}
+		desc = flavour_severed_ear.4.d2
+	}
+	desc = flavour_severed_ear.4.d
+	picture = MARCHING_PEASANTS_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		highlight = yes
+		name = flavour_severed_ear.4.a
+		trigger = {
+			NOT = { has_country_flag = B26_abolisher }
+		}
+		custom_tooltip = orc_path_to_civil_tt
+		hidden_effect = { set_country_flag = orc_path_to_civil }
+		if = {
+			limit = {
+				has_country_modifier = B26_bolutunn_highguards
+			}
+			remove_country_modifier = B26_bolutunn_highguards
+			add_country_modifier = {
+				name = B26_bolutunn_vanguards
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = B26_bolutunn_regalguards
+			}
+			remove_country_modifier = B26_bolutunn_regalguards
+			add_country_modifier = {
+				name = B26_bolutunn_vanguards
+				duration = -1
+			}
+		}
+		add_country_modifier = {
+			name = B26_the_unchained_clan
+			duration = -1
+		}
+	}
+	option = {
+		highlight = yes
+		trigger = {
+			has_country_flag = B26_abolisher
+		}
+		name = flavour_severed_ear.4.b
+		custom_tooltip = orc_path_to_civil_tt
+		hidden_effect = { set_country_flag = orc_path_to_civil }
+		if = {
+			limit = {
+				has_country_modifier = B26_bolutunn_highguards
+			}
+			remove_country_modifier = B26_bolutunn_highguards
+			add_country_modifier = {
+				name = B26_bolutunn_vanguards
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = B26_bolutunn_regalguards
+			}
+			remove_country_modifier = B26_bolutunn_regalguards
+			add_country_modifier = {
+				name = B26_bolutunn_vanguards
+				duration = -1
+			}
+		}
+		add_country_modifier = {
+			name = B26_the_abolisher_clan
+			duration = -1
+		}
+	}
+
+}
+#TYranny Forever More
+country_event = {
+	id = flavour_severed_ear.5
+	title = flavour_severed_ear.5.t
+	desc = {
+		trigger = {
+			has_country_modifier = B26_hellkite_reign
+		}
+		desc = flavour_severed_ear.5.d1
+	}
+	desc = {
+		trigger = {
+			NOT = { has_country_modifier = B26_hellkite_reign }
+		}
+		desc = flavour_severed_ear.5.d2
+	}
+	picture = EMPEROR_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			has_country_modifier = B26_hellkite_reign
+		}
+		name = flavour_severed_ear.5.a
+		hidden_effect = {
+			set_country_flag = B26_garmian_reign_monarchy_flag
+			add_legitimacy = 100
+			add_legitimacy = -50
+		}
+		add_government_reform = B26_garmian_reign_monarchy
+	}
+	option = {
+		trigger = {
+			NOT = { has_country_modifier = B26_hellkite_reign }
+		}
+		name = flavour_severed_ear.5.b
+		hidden_effect = {
+			add_legitimacy = 100
+			add_legitimacy = -50
+			set_country_flag = B26_garmian_reign_monarchy_flag
+		}
+		add_government_reform = B26_garmian_reign_monarchy
+	}
+}
+#Protection Subjugation
+country_event = {
+	id = flavour_severed_ear.6
+	title = flavour_severed_ear.6.t
+	desc = flavour_severed_ear.6.d
+	picture = ORC_WITH_AXE_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.6.a
+		FROM = {
+			create_subject = {
+				subject_type = tributary_state_anb
+				subject = ROOT
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 9
+				FROM = {
+					military_strength = {
+						who = ROOT
+						value = 2.0
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.6.b
+		FROM = {
+			add_casus_belli = {
+				target = ROOT
+				type = cb_force_tributary_mission
+				months = 240
+			}
+		}
+		hidden_effect = {
+			set_country_flag = B26_trib_target
+		}
+		ai_chance = {
+			factor = 1
+			
+		}
+	}
+}
+#The Mutual Contribution
+country_event = {
+	id = flavour_severed_ear.7
+	title = flavour_severed_ear.7.t
+	desc = flavour_severed_ear.7.d
+	picture = ECONOMICALLY_TALLANTED_RULER_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.7.a
+		every_owned_province = {
+			add_prosperity = 10
+			add_unrest = -5
+		}
+	}
+	option = {
+		name = flavour_severed_ear.7.b
+		add_corruption = 1
+		add_years_of_income = 3
+	}
+}
+#Of DisHonour
+country_event = {
+	id = flavour_severed_ear.8
+	title = flavour_severed_ear.8.t
+	desc = flavour_severed_ear.8.d
+	picture = SWORD_OF_OSMAN_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.8.a
+		add_country_modifier = {
+			name = B26_punisher_king
+			duration = 9125
+		}
+		custom_tooltip = B26_king_power
+		hidden_effect = {
+			change_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.8.b
+		add_country_modifier = {
+			name = B26_punisher_guard
+			duration = 9125
+		}
+		custom_tooltip = B26_guard_power
+		hidden_effect = {
+			subtract_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+	}
+}
+#Backroom Dealings
+country_event = {
+	id = flavour_severed_ear.9
+	title = flavour_severed_ear.9.t
+	desc = flavour_severed_ear.9.d
+	picture = not_disciplined_soldiers
+
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			has_reform = B26_garmian_reign_monarchy
+		}
+		name = flavour_severed_ear.9.a
+		custom_tooltip = B26_adventurer_1_tt
+		hidden_effect = {
+			set_country_flag = monstrous_can_use_adventurers 
+			set_country_flag = B26_adventurer_1
+		}
+		custom_tooltip = B26_king_power
+		hidden_effect = {
+			change_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		garmian_reign_bonus_effect_3 = {
+			effect = "
+				custom_tooltip = B26_loot_everything_tt
+				hidden_effect = {
+					every_owned_province = {
+						ROOT = {
+							add_treasury = 10
+						}
+						remove_loot = {
+							who = ROOT
+							amount = 500
+						}
+					}
+				}
+			"
+		}
+		garmian_reign_bonus_effect_4 = {
+			effect = "
+				every_known_country = {
+					limit = {
+						has_country_flag = B26_is_chained_adventurer
+					}
+					add_country_modifier = {
+						name = B26_bountiful_looters
+						duration = 18250
+					}
+				}
+			"
+		}
+	}
+	option = {
+		name = flavour_severed_ear.9.b
+		custom_tooltip = B26_adventurer_2_tt
+		hidden_effect = {
+			set_country_flag = monstrous_can_use_adventurers 
+			set_country_flag = B26_adventurer_2
+		}
+		custom_tooltip = B26_guard_power
+		hidden_effect = {
+			subtract_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		garmian_reign_bonus_effect_3 = {
+			effect = "
+				tooltip = B26_autonomy_tt
+				hidden_effect = {
+					every_owned_province = {
+						add_local_autonomy = -20
+					}
+				}
+			"
+		}
+		garmian_reign_bonus_effect_4 = {
+			effect = "
+				every_known_country = {
+					limit = {
+						has_country_flag = B26_is_chained_adventurer
+					}
+					add_country_modifier = {
+						name = B26_heartless_enforcers
+						duration = 18250
+					}
+				}
+			"
+		}
+
+	}
+	option = {
+		highlight = yes
+		trigger = {
+			NOT = {
+				has_reform = B26_garmian_reign_monarchy
+			}
+		}
+		name = flavour_severed_ear.9.c
+		custom_tooltip = B26_adventurer_3_tt
+		hidden_effect = {
+			set_country_flag = monstrous_can_use_adventurers 
+			set_country_flag = B26_adventurer_3
+		}
+		every_known_country = {
+			limit = {
+				has_country_flag = B26_is_chained_adventurer
+			}
+			add_country_modifier = {
+				name = B26_the_fight_for_right
+				duration = 18250
+			}
+		}
+	}
+}
+#The Mutual Cause
+country_event = {
+	id = flavour_severed_ear.10
+	title = flavour_severed_ear.10.t
+	desc = flavour_severed_ear.10.d
+	picture = PURITANS_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.10.a
+		add_country_modifier = {
+			name = B26_breaking_chains
+			duration = 9125
+		}
+	}
+	option = {
+		name = flavour_severed_ear.10.b
+		add_country_modifier = {
+			name = B26_communal_drive
+			duration = 9125
+		}
+	}
+}
+#Crucible of A New Orcish Civilization
+country_event = {
+	id = flavour_severed_ear.11
+	title = flavour_severed_ear.11.t
+	desc = flavour_severed_ear.11.d
+	picture = ORC_WITH_AXE_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		trigger = {
+			has_reform = B26_garmian_reign_monarchy
+		}
+		name = flavour_severed_ear.11.a
+		custom_tooltip = B26_king_power
+		hidden_effect = {
+			change_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		custom_tooltip = B26_every_15_tt
+		tooltip = {
+			add_province_modifier = {
+				name = B26_tax_tax
+				duration = 18250
+			}
+		}
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					development = 15
+				}
+				add_province_modifier = {
+					name = B26_tax_tax
+					duration = 18250
+				}	
+			}
+		}
+		custom_tooltip = garmian_reign_bonus_effect_4_tt
+		custom_tooltip = B26_change_goods_monarchy_tt
+		tooltip = {
+			add_legitimacy = -20
+		}
+		if = {
+			limit = {
+				has_country_modifier = B26_draconian_4_1
+			}
+			hidden_effect = {
+				add_legitimacy = -20
+				for = {
+					amount = 10
+					effect = "
+					random_owned_province = {
+						limit = {
+							OR = { trade_goods = livestock trade_goods = grain trade_goods = naval_supplies trade_goods = fish trade_goods = wool } NOT = { has_province_flag = B26_reroll }
+							development = 15
+						}
+						add_province_triggered_modifier  = B26_reroll_1
+						set_province_flag = B26_reroll
+					}"
+				}
+				every_owned_province = {
+					clr_province_flag = B26_reroll
+				}
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.11.b
+		custom_tooltip = B26_guard_power
+		hidden_effect = {
+			subtract_variable = {
+				which = B26_balance
+				value = 1
+			}
+		}
+		custom_tooltip = B26_every_15_tt
+		tooltip = {
+			add_province_modifier = {
+				name = B26_fight_fight
+				duration = 18250
+			}
+		}
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					development = 15
+				}
+				add_province_modifier = {
+					name = B26_fight_fight
+					duration = 18250
+				}	
+			}
+		}
+		custom_tooltip = garmian_reign_bonus_effect_4_tt
+		custom_tooltip = B26_change_goods_guard_tt
+		tooltip = {
+			add_legitimacy = -20
+		}
+		if = {
+			limit = {
+				has_country_modifier = B26_draconian_4_1
+			}
+			hidden_effect = {
+				add_legitimacy = -20
+				for = {
+					amount = 10
+					effect = "
+					random_owned_province = {
+						limit = {
+							OR = { trade_goods = livestock trade_goods = grain trade_goods = naval_supplies trade_goods = fish trade_goods = wool} NOT = { has_province_flag = B26_reroll }
+							development = 15
+						}
+						add_province_triggered_modifier  = B26_reroll_2
+						set_province_flag = B26_reroll
+					}"
+				}
+				every_owned_province = {
+					clr_province_flag = B26_reroll
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			NOT = { has_reform = B26_garmian_reign_monarchy }
+		}
+		name = flavour_severed_ear.11.c
+		custom_tooltip = B26_every_15_tt
+		tooltip = {
+			add_province_modifier = {
+				name = B26_work_work
+				duration = 18250
+			}
+			
+			owner = {
+				add_adm_power = 10
+				add_dip_power = 10
+				add_mil_power = 10
+			}
+		}
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					development = 15
+				}
+				add_province_modifier = {
+					name = B26_work_work
+					duration = 18250
+				}
+				
+				owner = {
+					add_adm_power = 10
+					add_dip_power = 10
+					add_mil_power = 10
+				}
+			}
+		}
+	}
+}
+province_event = {
+	id = flavour_severed_ear.12
+	title = flavour_severed_ear.12.t
+	desc = flavour_severed_ear.12.d
+	picture = ORC_WITH_AXE_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		random_list = {
+			30 = {
+				change_trade_goods = fur
+			}
+			15 = {
+				change_trade_goods = wine
+			}
+			15 = {
+				change_trade_goods = cloth
+			}
+			15 = {
+				change_trade_goods = tobacco
+			}
+			10 = {
+				change_trade_goods = paper
+			}
+			10 = {
+				change_trade_goods = glass
+			}
+			5 = {
+				change_trade_goods = dyes
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.12.a
+	}
+}
+province_event = {
+	id = flavour_severed_ear.13
+	title = flavour_severed_ear.13.t
+	desc = flavour_severed_ear.13.d
+	picture = ORC_WITH_AXE_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+	immediate = {
+		random_list = {
+			15 = {
+				change_trade_goods = iron
+			}
+			15 = {
+				change_trade_goods = copper
+			}
+		}
+	}
+	option = {
+		name = flavour_severed_ear.13.a
+	}
+}
+#Plowshares to Axes
+country_event = {
+	id = flavour_severed_ear.1000
+	title = flavour_severed_ear.1000.t
+	desc = flavour_severed_ear.1000.d
+	picture = southamericagfx_ANGRY_MOB_eventPicture
+
+	is_triggered_only = yes
+	option = {
+		name = flavour_severed_ear.1000.a
+		kill_consort = yes
+		kill_heir = {
+			allow_new_heir = yes
+		}
+		kill_ruler = yes
+		add_stability = -2
+		override_country_name = B26_CHAINBREAKER
+		if = {
+			limit = {
+				is_tribal = yes
+			}
+			add_government_reform = stateless_society
+			add_country_modifier = {
+				name = B26_anarchic_unity
+				duration = -1
+			}
+			remove_government_reform = B26_garmian_reign_monarchy
+		}
+		else = {
+			change_government = republic
+			add_government_reform = peasants_republic
+		}
+	}
+}

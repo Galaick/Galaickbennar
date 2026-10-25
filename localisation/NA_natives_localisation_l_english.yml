@@ -1,0 +1,107 @@
+﻿l_english:
+
+#Events
+ ynn_events.601.t: "The God Within"
+ ynn_events.601.d: "Those born of the Ekyunimoy are many. This land of Eslu has seen many walk across it and fight to survive its harsh form of parenting. There are those among us who believe themselves one with the land, those who believe themselves one with Eslu.\nBut a few among our kin are those who are truly one with someone else.\nTo watch the hair grow on your body, your fingers give way to claws, and your face deform until you are no longer you. To become a beast.\nTo become a Decuvie, a Werecoyote, is to become one with the trickster god.\n\nAs [Root.Monarch.GetName] takes the reins of our nation today [Root.Monarch.GetSheHe] does not hide [Root.Monarch.GetHerHis] nature.\nFor [Root.Monarch.GetSheHe] is one with the Great Coyote."
+ ynn_events.601.a: "And this is a form I do not deny"
+
+ ynn_events.602.t: "In the Form of the First Hunter"
+ ynn_events.602.d: "When Eslu cast his will upon the shapeless land, the world he created was one chained by his desire; he sought to create a cycle condemned to his rules and make creation subservient to him alone.\nThe treacherous Coyote, first among us to rise higher, connived to put an end to the fabric of his world. The trickster Coyote, first among us to hunt, played Eslu for a fool and entrapped him in the void between. Ever since then, the world of the living has been broken from his chains, forever marked by the Coyotes' will to be free.\nAmong our people there are those most connected by the Coyote, those who many would see as traitors to Eslu. They seek to see them rot, to see the US wither, as they believe us monsters.\n\nBut not here - ours is a clan of the exiled, the ones left behind and the ones who saw through the lies of the tyrant god Eslu. Here in this land we seek to become more like him, and truly become his children in life.\nOur tribe has gone through much. Once, we struggled much; as a small clan we had to fight not just the land but those who inhabited it and saw fit to end us. But those days are long gone. Now we are the ones that rise above and claim freedom for ourselves!"
+ ynn_events.602.a: "And by the Coyotes will be shall march on"
+
+#Modifiers
+ shifter_sub_type_werecoyote: "Shifter Subtype - Were-coyote"
+ ruler_is_werecoyote_shifter: "Ruler is a Were-coyote"
+ ruler_is_werecoyote_shifter_desc: "Blessed in form by the Great Coyote, he may never return to being a mere Chiunife."
+ U81_banned_shifters: "Purge of the Traitor-Kin"
+ U81_banned_shifters_desc: "The currepted kin of the trickster coyote are not welcome among our people."
+
+ taming_the_ekyunimoy_mountain: "Taming the Ekyunimoy"
+ taming_the_ekyunimoy_highlands: "Taming the Ekyunimoy"
+ taming_the_ekyunimoy_drylands: "Taming the Ekyunimoy"
+
+ epednar_took_care_of_birds: "Took Care of the Thunderbirds"
+
+ epednar_the_final_stand: "§OThe Final Stand§!"
+
+ epednar_is_vassal_modifier: "Favor Lost From Being a Vassal"
+
+#Tooltips
+ epednar_cling_not_to_the_past_effect_tt: "\n§YGovernment Mechanic:§!\nWhen unlocking a new §YTechnology§!, gain §G100§! §YRuler Power§! of its respective time up to §YTechnology Level 7§!."
+ epednar_trust_not_false_brothers_effect_tt: "\n§YGovernment Mechanic:§!\n´§YRansack Invaders§!´ peace option is now available against tribal and native enemies."
+ epednar_effect_tt: "\n§YEffect:§!"
+ epednar_subjugate_epednar_tt: "Gain a §YSubjugation Casus Belli§! against every §YEpednar Nation§!."
+ epednar_subjugate_drozma_tur_tt: "Gain a §YSubjugation Casus Belli§! against every §YDrozma Tur Nation§!."
+ epednar_enable_host_formation_tt: "\n§YEffect:§!\nAllows the formation of the §YGreat Epednar Host§!."
+ epednar_disable_host_formation_tt: "\n§YEffect:§!\nDisables the formation of the §YGreat Epednar Host§!."
+ epednar_ally_ruinborn_only_tt: "§RWe shall not make treaties with the invaders.§!"
+ mechanic_cannot_ally_non_ruinborn_yes: "Cannot ally §Ynon-Ruinborn§!."
+ epednar_thunderbird_fervor_effect_tt: "\n§YGovernment Mechanic:§!\nCompleting §YThunderpriests§! Estate Agendas gain §G+2§! §YFervor Growth§! for 1 year."
+
+
+
+#Reforms
+ U83_decuvie_shaman_rule_reform: "Decuvie Shamanic Rule"
+ U83_decuvie_shaman_rule_reform_desc: "Formed from children exiled by their families, this tribe is ruled by a council of Decuvie, also known as were-coyotes, and among them the most connected to the Great Coyote is chosen as ruler when the one before moves on.\nEvery family within the clan stays vigilant of the signs of the Coyote in their children, and when one presents themselves as his incarnate they put much effort and pride in making sure they train in his ways and become more an embodiment of him. Families who lack a Decuvie child may adopt exiled ones from other tribes."
+
+ epednar_custodian_of_the_expanse_tier1_reform: "Custodian of the Expanse"
+ epednar_custodian_of_the_expanse_tier1_reform_desc: "A union of Epednar tribes under one ruler."
+ epednar_cling_not_to_the_past_tier3_reform: "Cling Not to the Past"
+ epednar_cling_not_to_the_past_tier3_reform_desc: "In a world everchanging we should not keep to our memory of what once was rather what will soon be."
+ epednar_trust_not_false_brothers_tier3_reform: "Trust Not Your False Brothers"
+ epednar_trust_not_false_brothers_tier3_reform_desc: "They bear your face yet share not your words."
+ epednar_rise_above_all_tier4_reform: "Rise Above All"
+ epednar_rise_above_all_tier4_reform_desc: "To save our kind from what is to come."
+ epednar_prepare_before_the_storm_tier4_reform: "Prepare Before the Storm"
+ epednar_prepare_before_the_storm_tier4_reform_desc: "We shall not meet change unready."
+ epednar_let_the_storm_call_your_name_tier5_reform: "Let the Storm Call Your Name"
+ epednar_let_the_storm_call_your_name_tier5_reform_desc: "Become the unstoppable will of this land and reject what destiny has prepared for you."
+ epednar_to_claim_the_dragon_host_tier5_reform: "To Claim the Dragon Host"
+ epednar_to_claim_the_dragon_host_tier5_reform_desc: "Loyal to Varlengeilt we remain, and shall our people be reborn so we may guide the Thunder to become in his image."
+
+ epednar_confederation_of_thunder_tier1_reform: "Confederation of Thunder"
+ epednar_confederation_of_thunder_tier1_reform_desc: "A grandiose union of all Epednar under one banner that may stand against all who threaten it."
+ epednar_thunderbird_caretaking_religious_reform: "Thunderbird Caretaking"
+ epednar_thunderbird_caretaking_religious_reform_desc: "The Great Thunderbirds of the Epednar Expanse are of great importance to our people are religion, we must strive to take better care of them and learn from them."
+ epednar_let_not_the_rot_survive_tier5_reform: "Let Not the Rot Survive"
+ epednar_let_not_the_rot_survive_tier5_reform_desc: "Aelantir is ill, a Rot has come from across the seas to destroy it entirely. We shall not allow such illness to destroy our home once more."
+ epednar_the_skies_shines_all_the_same_tier5_reform: "The Skies Shines All the Same"
+ epednar_the_skies_shines_all_the_same_tier5_reform_desc: "Ruin has come once more to Aelantir, we cannot allow our home to fall to it."
+ epednar_a_people_born_anew_tier6_reform: "A People Born Anew"
+ epednar_a_people_born_anew_tier6_reform_desc: "Our quest to rid ourselves of the invaders has left us with much to think about, and in that many ideas have come forth about the future of our kin. Our ways are much different from what they once were."
+
+
+
+#Estates
+ estate_U83_rename_decuvie: "The Decuvie"
+ estate_thunderpriests: "Thunderpriests"
+
+ estate_burghers_taming_the_ekyunimoy: "Taming the Ekyunimoy"
+ estate_burghers_taming_the_ekyunimoy_desc: "The land of Ekyunimoy is a treacherous one, but it is the only home we know, and we have made many efforts to stake our claim to this land. We are no longer content with just inhabiting it now, we must truly make it ours by building within it something we can call our own. By expanding our already existing technique of burrowing within the mountains we can strive to create something much greater."
+ tame_ekyunimoy_region_tt: "Ekyunimoy Region:\nEvery owned §YMountain§! terrain province gains §G-30%§! §YLocal Development Cost§!.\nEvery owned §YHighland§! terrain province gains §G-20%§! §YLocal Development Cost§!.\nEvery owned §YDryland§! terrain province gains §G-10%§! §YLocal Development Cost§!."
+ revoke_tame_ekyunimoy_region_tt: "Every owned province will lose the '§YTaming the Ekyunimoy§!' modifier."
+
+
+#Storm Favor
+ ability_storm_favor_mechanic: "§YStorm Favor§!"
+ monthly_storm_favor_power: "Monthly Storm Favor"
+ storm_favor_mechanic: "Storm Favor"
+ storm_favor_power: "Storm Favor"
+ storm_favor_power_desc: "Times are changing, this much we know. If we are to survive what is to come we must be united, and if we are to be united one must achieve the favor of the storm.\n\n-Passive Monthly Increase: §G+0.02§!\n-From Winning a War: §G+2§!\n-From Using '§YRansack Invader§!' Peace Deal: §G+3§!\n-From Constructing Buildings: §G+3§!\n-From New Technologies: §G+5§!\n\n-Passive Monthly Decrease from Being a Subject: §R-0.5§!\n-From Losing a War: §R-2§!\n\nOnce we reach §Y100§! §TStorm Favor§! we will be able to proclaim the §OGreat Epednar Host§!.\n\n"
+
+#Misc
+ DECUVIE_SHAMAN_COUNCIL: "Decuvie Shamanic Council"
+ DECUVIE_MAGES_ORDER: "Decuvie Magocratic Order"
+ DECUVIE_MAGOCRATIC_EMPIRE: "Decuvie Magocratic Empire"
+ CHOSEN_OF_THE_COYOTE: "Chosen of the Coyote"
+
+
+ PEACE_po_ransack_invader: "§YRansack Invaders§!"
+ po_ransack_invader_desc: "Ransack the Enemy, gaining §G100§! §YGold§![Root.GetHasStormFavorCB]."
+ GetHasStormFavorCB_yes: " and §G3§! §TStorm Favor§!"
+ GetHasStormFavorCB_no: ""
+
+ THUNDER_FEDERATION: "Thunder Federation"
+ GRAND_THUNDER_FEDERATION: "Grand Thunder Federation"
+
+ 

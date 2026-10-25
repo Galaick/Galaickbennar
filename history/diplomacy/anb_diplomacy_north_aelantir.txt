@@ -1,0 +1,158 @@
+#### Diplomacy File for North Aelantir ####
+#	alliance = {
+#		first = X       					# One side of the alliance - The "Giver" or "Overlord" depending the type
+#		second = X     						# The other side of the alliance - The "Receiver" or "Subject" depending the type
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# Types: alliance - royal_marriage - vassal - march
+	# dependency as seen bellow can also be used but requires the addition of "subject_type"
+
+#	dependency = { 
+#		subject_type = tributary_state_anb	# The type of subject for the relationship
+#		first = X      						# The overlord, if the relation is a overlord-subject relation
+#		second = X    						# The subject, if the relation is a overlord-subject relation
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# NOTE: "vassal" and "march" type relations are created in the same way as alliances
+
+#### The Ynn ####
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G26
+	second = G31
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G21
+	second = G22
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "vassal"
+	first = G32
+	second = G25
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G35
+	second = G85
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G23
+	second = U26
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G34
+	second = U25
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G36
+	second = U24
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "ynnic_iosahar"
+	first = G39
+	second = U23
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+#Vels Bacar allies
+alliance = {
+	first = G84
+	second = G33
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = G84
+	second = H25
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#Chiunife - Epednar Alliance
+alliance = {
+	first = U82
+	second = U85
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#### Eordand ####
+
+ # Pelomar - Sidpar
+royal_marriage = {
+    first = H08
+    second = H06
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+alliance = {
+	first = H08
+	second = H06
+	start_date = 1444.1.1
+	end_date = 1600.1.1
+}
+
+ # Raithtall - Gelcolle
+royal_marriage = {
+    first = H12
+    second = H18
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+alliance = {
+	first = H12
+	second = H18
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+
+
+#### Ruin Proper ####
+
+# The Cheshoshi
+dependency = {
+	subject_type = autonomous_vassal
+	first = G06       # Cheshoshoanta
+	second = G08     # Shofa
+	start_date = 1432.1.1 # Date they're sent out
+	end_date = 1543.1.1   # Sacked Citadel (ish)
+}
+
+dependency = {
+	subject_type = autonomous_vassal
+	first = G06       # Cheshoshoanta
+	second = G07     # Dokants
+	start_date = 1432.1.1 # Date they're sent out
+	end_date = 1610.1.1   # Fully-annexed (ish)
+}

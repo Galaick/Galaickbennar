@@ -1,0 +1,1313 @@
+#Rotcleaver (B23) MT - Design by ame, writing by Reti, code by Bromar
+
+rotcleaver_slot_01 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = B23
+	}
+	has_country_shield = yes
+
+	B23_looking_to_the_future = {
+		icon = mission_stormy_seas
+		position = 1
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				has_country_modifier = orcish_administration
+				alliance_with = ROOT
+			}
+		}
+
+		trigger = {
+			army_size_percentage = 0.9
+			employed_advisor = {
+				category = ADM
+			}
+			all_ally = {
+				NOT = { has_country_modifier = orcish_administration }
+			}
+		}
+
+		effect = {
+			add_country_modifier = { #+10k Manpower, +5 Force Limit
+				name = B23_sons_of_ugol
+				duration = 9125
+			}
+		}
+	}
+
+	B23_raid_the_slave_pens = {
+		icon = mission_stormy_seas
+		position = 2
+		required_missions = {
+			B23_looking_to_the_future
+			B23_making_amends
+		}
+
+		provinces_to_highlight = {
+			exists = B22 #Venomtooth
+			is_capital_of = B22
+		}
+
+		trigger = {
+			OR = {
+				NOT = { exists = B22 }
+				has_won_war_against = {
+					who = B22
+					max_years_since = -1
+				}
+				AND = {
+					is_in_war = {
+						participants = B22
+					}
+					war_score_against = {
+						who = B22
+						value = 90
+					}
+					232 = { #Venomfen
+						units_in_province = ROOT
+					}
+				}
+			}
+		}
+
+		effect = {
+			add_prestige = 25
+			add_tribal_development_scaling = { key = 1 }
+			custom_tooltip = B23_raid_the_slave_pens_opinion_tt
+			hidden_effect = {
+				every_ally = {
+					limit = { has_country_modifier = goblin_administration }
+					add_opinion = {
+						who = ROOT
+						modifier = B23_raided_slave_pens_opinion
+						years = 50
+						multiplier = 2
+					}
+					reverse_add_opinion = {
+						who = ROOT
+						modifier = B23_raided_slave_pens_opinion
+						years = 50
+						multiplier = 2
+					}
+					add_trust = {
+						who = ROOT
+						value = 10
+					}
+					ROOT = {
+						add_trust = {
+							who = PREV
+							value = 10
+						}
+					}
+				}
+				every_known_country = {
+					limit = {
+						NOT = {
+							has_country_modifier = goblin_administration
+							has_country_modifier = orcish_administration
+						}
+						capital_scope = {
+							region = west_castanor_region
+						}
+					}
+					add_opinion = {
+						who = ROOT
+						modifier = B23_raided_slave_pens_opinion
+						years = 25
+					}
+					reverse_add_opinion = {
+						who = ROOT
+						modifier = B23_raided_slave_pens_opinion
+						years = 25
+					}
+				}
+			}
+			complex_dynamic_effect = {
+				first_custom_tooltip = B23_raid_the_slave_pens_venom_effect_tt
+				first_limit = "
+					exists = B22
+					is_in_war = {
+						participants = B22
+					}
+					war_score_against = { who = B22 value = 90 }
+					232 = { #Venomfen
+						units_in_province = ROOT
+					}
+				"
+				first_effect = "
+					add_power_projection_mission = { amount = 25 }
+					B22 = {
+						kill_ruler = yes
+						capital_scope = {
+							add_base_manpower = -1
+						}
+					}
+				"
+			}
+		}
+	}
+}
+
+rotcleaver_slot_02 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = B23
+	}
+	has_country_shield = yes
+
+	B23_protector_of_the_weak = {
+		icon = mission_stormy_seas
+		position = 3
+		required_missions = {
+			B23_raid_the_slave_pens
+			B23_peace_and_reparations
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = { #Flying Hound
+					exists = B43
+					is_capital_of = B43
+				}
+				AND = { #Grasshopper Muncher
+					exists = B46
+					is_capital_of = B46
+				}
+				AND = { #Earworm
+					exists = B41
+					is_capital_of = B41
+				}
+			}			
+		}
+
+		trigger = {
+			if = {
+				limit = { ai = no }
+				custom_trigger_tooltip = {
+					tooltip = B23_dealt_with_opportunists_tt
+					has_country_flag = B23_opportunists_have_struck
+					NOT = { has_country_modifier = B23_absolute_defense_of_the_wronged }
+				}				
+			}
+			B43 = { trust = { who = ROOT value = 90 } }
+			B46 = { trust = { who = ROOT value = 90 } }
+			B41 = { trust = { who = ROOT value = 90 } }
+			native_sweat_lodge = 1
+		}
+
+		effect = {
+			west_castanor_region = {
+				add_permanent_claim = ROOT
+			}
+			vassalize = B43
+			vassalize = B46
+			vassalize = B41
+			hidden_effect = {
+				B43 = { every_tribal_land_province = { change_tribal_land = ROOT } }
+				B41 = { every_tribal_land_province = { change_tribal_land = ROOT } }
+				B46 = { every_tribal_land_province = { change_tribal_land = ROOT } }
+				reverse_remove_opinion = {
+					who = B43
+					modifier = sitting_in_my_tribal_land_opinion
+				}
+				reverse_remove_opinion = {
+					who = B41
+					modifier = sitting_in_my_tribal_land_opinion
+				}
+				reverse_remove_opinion = {
+					who = B46
+					modifier = sitting_in_my_tribal_land_opinion
+				}
+			}
+			custom_tooltip = B23_protector_of_the_weak_tribal_land_reward
+			custom_tooltip = B23_protector_of_weak_scutage_reward_tt
+			tooltip = {
+				add_country_modifier = {
+					name = B23_protecting_the_vulnerable
+					duration = -1
+				}
+			}
+			country_event = { #The First Lesson
+				id = flavour_rotcleaver.5
+			}
+		}
+	}
+
+	B23_learning_teaching_doing = {
+		icon = mission_stormy_seas
+		position = 5
+		required_missions = {
+			B23_protector_of_the_weak
+			B23_hakhud_mission
+		}
+
+		trigger = {
+			check_variable = {
+				which = B23_hakhud_completed
+				value = 1
+			}
+			exists = B43
+			OR = {
+				high_tolerance_goblin_race_trigger = yes
+				AND = {
+					dip_power = 50
+					has_country_modifier = racial_focus_goblin
+				}
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = { high_tolerance_goblin_race_trigger = yes }
+				}
+				add_dip_power = -50
+			}
+			country_event = { #To Be Better
+				id = flavour_rotcleaver.24
+			}
+		}
+	}
+
+	B23_crush_the_humans = {
+		icon = mission_stormy_seas
+		position = 7
+		required_missions = {
+			B23_inheritance
+		}
+
+		provinces_to_highlight = {
+			B23_crush_humans_trigger = no
+			OR = {
+				area = silvervord_area
+				area = adenica_area
+				area = rohibon_area
+				area = valefort_area
+				area = taran_plains_area
+				area = verteben_area
+				area = nortmerewood_area
+				area = upcreek_area
+				area = merescker_area
+				area = catelsvord_area
+				area = oudeben_area
+				area = vernham_area
+				area = clovenwood_area
+				area = banesfork_area
+				area = beastgrave_area
+				area = dostans_way_area
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = B23_crush_humans_tooltip
+				silvervord_area = {
+					type = all
+					B23_crush_humans_trigger = yes
+				}
+				adenica_area = {
+					type = all
+					B23_crush_humans_trigger = yes
+				}
+				rohibon_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				valefort_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				taran_plains_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				verteben_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				nortmerewood_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				upcreek_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				merescker_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				catelsvord_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				oudeben_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				vernham_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				clovenwood_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				banesfork_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				beastgrave_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+				dostans_way_area = {
+					type = all 
+					B23_crush_humans_trigger = yes
+				}
+			}
+		}
+
+		effect = {
+			add_power_projection_mission = { amount = 10 }
+			add_ruler_modifier = {
+				name = B23_backsliding_reputation
+				duration = -1
+			}
+			if = {
+				limit = { has_country_flag = removing_monstrous }
+				increase_monstrous_5 = yes
+			}
+			else = {
+				custom_tooltip = B23_crush_humans_opinion_tt
+				hidden_effect = {
+					every_neighbor_country = {
+						add_opinion = {
+							who = ROOT
+							modifier = B23_monstrous_backsliding
+						}
+						reverse_add_opinion = {
+							who = ROOT
+							modifier = B23_monstrous_backsliding
+						}
+					}
+				}
+			}
+		}
+	}
+
+	B23_to_the_bladeskeep = {
+		icon = mission_stormy_seas
+		position = 9
+		required_missions = {
+			B23_inheritance_too
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = blademarch_area
+					NOT = { is_state_core = ROOT }
+				}
+				AND = {
+					province_id = 817
+					NOT = { development = 12 }
+					NOT = {	has_building = native_great_trail }					
+				}
+			}
+		}
+
+		trigger = {
+			blademarch_area = {
+				type = all
+				is_state_core = ROOT
+			}
+			NOT = { exists = B33 } #Blademarches
+			817 = {
+				has_building = native_great_trail
+				development = 12
+			}
+		}
+
+		effect = {
+			country_event = { #Stewardship of the [blade]
+				id = flavour_rotcleaver.34
+			}
+		}
+	}
+}
+
+rotcleaver_slot_03 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = B23
+	}
+	has_country_shield = yes
+
+	B23_making_amends = {
+		icon = mission_stormy_seas
+		position = 1
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					exists = B22
+					is_capital_of = B22
+				}
+				AND = {
+					exists = B43
+					is_capital_of = B43
+				}
+				AND = {
+					exists = B46
+					is_capital_of = B46
+				}
+				AND = {
+					exists = B41
+					is_capital_of = B41
+				}
+			}
+		}
+
+		trigger = {
+			B22 = { #Venomtooth
+				OR = {
+					exists = no
+					if = {
+						limit = { has_dlc = "Dharma" }
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = scornfully_insulted
+						}					
+					}
+					else = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = insulted
+						}											
+					}				
+				}
+			}
+			B43 = { #Flying Hound
+				B23_making_amends_trigger = yes
+			}
+			B46 = { #Grasshopper Muncher
+				B23_making_amends_trigger = yes
+			}
+			B41 = { #Earworm
+				B23_making_amends_trigger = yes
+			}
+		}
+
+		effect = {
+			add_tribal_development_scaling = { key = 1 }
+			custom_tooltip = B23_making_amends_allied_tt
+			custom_tooltip = B23_making_amends_nonallied_tt
+			B43 = {
+				force_remove_rival = B46
+				force_remove_rival = B41
+				B23_making_amends_effect = yes
+			}
+			B46 = {
+				force_remove_rival = B43
+				force_remove_rival = B41
+				B23_making_amends_effect = yes
+				reverse_add_opinion = {
+					who = ROOT
+					modifier = B23_redemption_opinion
+					years = 50
+				}
+			}
+			B41 = {
+				force_remove_rival = B46
+				force_remove_rival = B43
+				B23_making_amends_effect = yes
+			}
+		}
+	}
+
+	B23_peace_and_reparations = {
+		icon = mission_stormy_seas
+		position = 2
+		required_missions = {
+			B23_making_amends
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = { #Flying Hound
+					exists = B43
+					is_capital_of = B43
+				}
+				AND = { #Grasshopper Muncher
+					exists = B46
+					is_capital_of = B46
+				}
+				AND = { #Earworm
+					exists = B41
+					is_capital_of = B41
+				}
+			}
+		}
+
+		trigger = {
+			is_at_war = no
+			OR = {
+				diplomat = 1
+				statesman = 1
+				has_adm_advisor_2 = yes
+			}
+			B43 = { #Flying Hound
+				B23_peace_and_reparations_trigger = yes
+			}
+			B46 = { #Grasshopper Muncher
+				B23_peace_and_reparations_trigger = yes
+			}
+			B41 = { #Earworm
+				B23_peace_and_reparations_trigger = yes
+			}
+		}
+
+		effect = {
+			B43 = {
+				B23_peace_and_reparations_effect = yes
+			}
+			B46 = { #Grasshopper Muncher
+				B23_peace_and_reparations_effect = yes
+			}
+			B41 = { #Earworm
+				B23_peace_and_reparations_effect = yes
+			}
+			country_event_with_insight = { #Opportunists
+				id = flavour_rotcleaver.2
+				insight_tooltip = flavour_rotcleaver.2.i
+			}
+		}
+	}
+
+	B23_hakhud_mission = {
+		icon = mission_stormy_seas
+		position = 4
+		required_missions = {
+			B23_protector_of_the_weak
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = silvervord_area
+					NOT = { has_building = native_three_sisters_field }
+				}
+				AND = {
+					is_capital = yes
+					owner = { 
+						has_reform = greentide_horde
+						NOT = { trade_embargo_by = ROOT }
+					}
+				}
+			}
+		}
+
+		trigger = {
+			diplomatic_reputation = 1
+			silvervord_area = {
+				type = all
+				has_building = native_three_sisters_field
+				is_state_core = ROOT
+			}
+			if = { #If there are 3 or more greentide hordes around
+				limit = {
+					calc_true_if = {
+						amount = 3
+						all_known_country = {
+							has_reform = greentide_horde
+						}
+					}
+				}
+				calc_true_if = {
+					amount = 3
+					all_known_country = {
+						has_reform = greentide_horde
+						trade_embargo_by = ROOT						
+					}
+				}
+			}
+			else = { #If not enough hordes, either embargoing all or none exist
+				all_known_country = {
+					OR = {
+						AND = {
+							has_reform = greentide_horde
+							trade_embargo_by = ROOT
+						}
+						NOT = { has_reform = greentide_horde }
+					}
+				}
+			}
+		}
+
+		effect = {
+			silvervord_area = {
+				remove_building = native_three_sisters_field
+				add_building = local_exchange
+			}
+			country_event = { #Da first Hakhud
+				id = flavour_rotcleaver.6
+				days = 365
+			}
+		}
+	}
+
+	B23_inheritance = {
+		icon = mission_stormy_seas
+		position = 6
+		required_missions = {
+			B23_learning_teaching_doing
+			B23_hakhud_mission
+			B23_hakhud_kabir_mission
+			B23_songs_of_a_better_future
+		}
+
+		provinces_to_highlight = {
+			province_id = 795
+		}
+
+		trigger = {
+			795 = {
+				num_of_units_in_province = {
+					amount = 10
+					who = ROOT
+					type = infantry
+				}
+			}
+			NOT = { has_advisor = yes }
+			OR = {
+				NOT = { has_ruler = "Ugol" }
+				AND = {
+					NOT = { adm = 2 }
+					NOT = { dip = 2 }
+					NOT = { mil = 2 }
+				}
+			}
+		}
+		
+		effect = {
+			country_event = { #Inheritance
+				id = flavour_rotcleaver.25
+			}
+		}
+	}
+
+	B23_inheritance_too = {
+		icon = mission_stormy_seas
+		position = 8
+		required_missions = {
+			B23_crush_the_humans
+			B23_cutting_teeth
+			B23_errant_daughter
+		}
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				NOT = { has_country_modifier = monstrous_nation }
+				NOT = { 
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = improved_relation
+						value = 90
+					}
+					has_opinion = {
+						who = ROOT
+						value = 50
+					}					
+				}
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = B23_etrega_finished_hakhud_tt
+				has_country_flag = B23_etrega_finished_hakhud_flag
+			}
+			OR = {
+				is_semi_monstrous = yes
+				NOT = { has_country_modifier = monstrous_nation }
+			}
+			OR = {
+				theologian = 2
+				has_adm_advisor_3 = yes 
+			}
+			calc_true_if = {
+				amount = 2
+				all_known_country = {
+					NOT = { has_country_modifier = monstrous_nation }
+					OR = {
+						has_90_opinion_improved_relation = { target = ROOT }
+						has_opinion = {
+							who = ROOT
+							value = 50
+						}
+					}	
+				}
+			}
+		}
+
+		effect = {
+			country_event = { #The Final Ozarm'Chadash
+				id = flavour_rotcleaver.32
+			}
+			complex_dynamic_effect = {
+				first_custom_tooltip = B23_inheritance_too_squire_state_tt
+				first_limit = "
+					B43 = { 
+						is_subject_of_type_with_overlord = {
+							who = ROOT
+							type = march
+						}
+					}
+				"
+				first_effect = "
+					country_event = {
+						id = flavour_rotcleaver.33
+						days = 365
+					}
+				"
+			}
+		}
+	}
+
+	B23_song_of_our_people = {
+		icon = mission_stormy_seas
+		position = 10
+		required_missions = {
+			B23_to_the_bladeskeep
+			B23_the_sceptre_of_evil
+		}
+
+		provinces_to_highlight = {
+			province_id = 795
+		}
+
+		trigger = {
+			if = {
+				limit = {
+					check_variable = {
+						which = B23_hakhud_completed
+						value = 8
+					}
+				}
+				has_church_aspect = bulgu_songs_of_the_first_knight_two
+			}
+			else = { has_church_aspect = bulgu_songs_of_the_first_knight_one }
+			795 = {	has_ruler_leader_from = ROOT }
+			has_mil_advisor_3 = yes
+			OR = {
+				army_professionalism = 0.2
+				army_tradition = 80
+				mil_power = 200
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						army_professionalism = 0.2
+						army_tradition = 80
+					}
+				}
+				add_mil_power = -200
+			}
+			country_event = { #End of the Hakhud Kabir
+				id = flavour_rotcleaver.35
+			}
+		}
+	}
+}
+
+rotcleaver_slot_04 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = B23
+	}
+	has_country_shield = yes
+
+	B23_hakhud_kabir_mission = {
+		icon = mission_stormy_seas
+		position = 5
+		required_missions = {
+			B23_hakhud_mission
+		}
+
+		provinces_to_highlight = {
+			province_id = 795
+			OR = {
+				NOT = { num_of_buildings_in_province = 2 }
+				NOT = { development = 10 }
+			}
+		}
+
+		trigger = {
+			check_variable = {
+				which = B23_hakhud_completed
+				value = 1
+			}
+			795 = { 
+				num_of_buildings_in_province = 2
+				development = 10 
+			} #Acenthan
+			num_of_mercenaries = 15
+		}
+
+		effect = {
+			set_capital = 795 #Acenthan
+			add_country_modifier = {
+				name = B23_hakhud_kabir_one_modifier
+				duration = -1
+			}
+		}
+	}
+
+	B23_cutting_teeth = {
+		icon = mission_stormy_seas
+		position = 7
+		required_missions = {
+			B23_inheritance
+		}
+
+		provinces_to_highlight = {
+			NOT = { is_state_core = ROOT }
+			OR = {
+				AND = {
+					exists = B29 #Deadfang
+					is_capital_of = B29 #Deadfang
+				}
+				AND = {
+					NOT = { exists = B29 }
+					area = beastgrave_area
+				}
+			}
+		}
+
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { exists = B29 }
+					beastgrave_area = {
+						type = all
+						is_state_core = ROOT
+					}
+				}
+				AND = {
+					OR = {
+						is_in_war = {
+							participants = B29
+							casus_belli = cb_civ_vs_monster
+						}
+						is_in_war = {
+							participants = B29
+							casus_belli = cb_monster_vs_civ
+						}
+					}
+					war_score_against = {
+						who = B29
+						value = 100
+					}
+				}
+			}
+		}
+
+		effect = {
+			simple_dynamic_effect = {
+				first_custom_tooltip = B23_cutting_teeth_alive_deadfang_effect_tt
+				first_limit = "
+					exists = B29
+				"
+				first_effect = "
+					country_event = {
+						id = flavour_rotcleaver.26
+					}
+				"
+				second_custom_tooltip = B23_cutting_teeth_dead_deadfang_effect_tt
+				second_limit = "
+					NOT = { exists = B29 }
+				"
+				second_effect = "
+					add_prestige = 20
+					812 = {
+						add_base_tax = -3
+						add_base_production = -3
+						add_base_manpower = -3
+					}
+					795 = {
+						add_base_tax = 1
+						add_base_production = 1
+						add_base_manpower = 1					
+					}
+				"
+			}
+		}
+	}
+
+	B23_the_sceptre_of_evil = {
+		position = 9
+		icon = mission_stormy_seas
+		required_missions = {
+			B23_inheritance_too
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				exists = B20 #Iron Scepter
+				exists = B54 #Esthil
+			}
+			OR = {
+				is_capital_of = B20
+				is_capital_of = B54
+			}
+		}
+
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { exists = B20 }
+					NOT = { exists = B54 }
+				}
+				if = { #For the sake of tooltip readability
+					limit = { exists = B20 }
+					AND = {
+						OR = {
+							is_in_war = {
+								participants = B20
+								casus_belli = cb_B23_evil_ruler
+							}
+							is_in_war = {
+								participants = B20
+								casus_belli = cb_evil_ruler
+							}
+						}
+						war_score_against = {
+							who = B20
+							value = 90
+						}
+						B20 = {
+							capital_scope = { has_ruler_leader_from = ROOT }
+						}
+					}
+				}
+				else_if = {
+					limit = { exists = B54 }
+					AND = {
+						OR = {
+							is_in_war = {
+								participants = B54
+								casus_belli = cb_B23_evil_ruler
+							}
+							is_in_war = {
+								participants = B54
+								casus_belli = cb_evil_ruler
+							}
+						}
+						war_score_against = {
+							who = B54
+							value = 90
+						}
+						B54 = {
+							capital_scope = { has_ruler_leader_from = ROOT }
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = orc_path_to_civil_tt
+			set_country_flag = orc_path_to_civil
+			custom_tooltip = B23_war_vs_evil_expansion_tt
+			simple_dynamic_effect = {
+				first_custom_tooltip = B23_sceptre_of_evil_dead_tt
+				first_limit = "
+					NOT = { exists = B20 }
+					NOT = { exists = B54 }
+				"
+				first_effect = "
+					add_splendor = 200
+				"
+				second_limit = "
+					OR = {
+						any_war_enemy_country = { tag = B20 }
+						any_war_enemy_country = { tag = B54 }
+					}
+				"
+				second_effect = "
+					if = {
+						limit = { exists = B54 }
+						white_peace = B54
+						B54 = { kill_ruler = yes }
+					}
+					else_if = {
+						limit = { exists = B20 }
+						white_peace = B20
+						B20 = { kill_ruler = yes }
+					}
+					blademarch_area = {
+						limit = {
+							OR = {
+								owned_by = B20
+								owned_by = B54
+							}
+						}
+						cede_province = ROOT
+					}						
+					add_power_projection = { 
+						type = 10_permanent_power_projection
+						amount = 10 
+					}
+				"
+			}
+		}
+	}
+}
+
+rotcleaver_slot_05 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = B23
+	}
+	has_country_shield = yes
+
+	B23_led_astray = {
+		icon = mission_stormy_seas
+		position = 1
+
+		provinces_to_highlight = {
+			exists = B30
+			is_capital_of = B30 #Bloodgorger
+		}
+
+		trigger = {
+			B30 = { #Bloodgorger
+				OR = {
+					exists = no
+					if = {
+						limit = { has_dlc = "Dharma" }
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = scornfully_insulted
+						}					
+					}
+					else = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = insulted
+						}											
+					}
+				}
+			}
+			OR = {
+				theologian = 1
+				has_adm_advisor_2 = yes
+				is_year = 1449
+			}
+		}
+
+		effect = {
+			change_religion = old_dookan
+			set_ruler_religion = old_dookan
+			add_country_modifier = { #-20% Missionary Maintenance, +10% Missionary Str vs Heretics
+				name = B23_led_astray
+				duration = 9125
+			}
+			add_prestige = 50
+			custom_tooltip = B23_led_astray_opinion_tt
+			hidden_effect = {
+				every_known_country = {
+					limit = { religion = great_dookan }
+					add_opinion = {
+						who = ROOT
+						modifier = B23_denounced_korgus_opinion
+						years = 50
+					}
+					reverse_add_opinion = {
+						who = ROOT
+						modifier = B23_denounced_korgus_opinion
+						years = 50
+					}
+				}
+			}
+		}
+	}
+
+	B23_songs_of_a_better_future = {
+		icon = mission_stormy_seas
+		position = 5
+		required_missions = {
+			B23_led_astray
+			B23_hakhud_mission
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					owned_by = ROOT
+					religion = great_dookan
+					NOT = {
+						has_province_modifier = religious_zeal_at_conv
+						has_province_modifier = domain_of_spouses_family
+					}
+				}
+				AND = {
+					exists = I40 #Cursed Howl
+					is_capital_of = I40
+					owner = { NOT = { has_opinion = { who = ROOT value = 100 } } }
+				}
+				AND = {
+					NOT = { exists = I40 }
+					is_capital = yes
+					superregion = deepwoods_superregion
+					owner = { has_country_modifier = orcish_administration }
+				}
+				AND = {
+					is_capital = yes
+					owner = { 
+						religion = great_dookan 
+						NOT = { 
+							humiliated_by = ROOT
+							has_been_eclipsed_by = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			all_owned_province = {
+				OR = {
+					NOT = { religion = great_dookan }
+					has_province_modifier = religious_zeal_at_conv
+					has_province_modifier = domain_of_spouses_family
+				}
+			}
+			OR = {
+				any_known_country = {
+					religion = great_dookan
+					humiliated_by = ROOT
+				}
+				all_known_country = {
+					OR = {
+						NOT = { religion = great_dookan }
+						has_been_eclipsed_by = ROOT
+					}
+				}
+			}
+			if = {
+				limit = { exists = I40 }
+				I40 = {	has_opinion = { who = ROOT value = 100 } }
+			}
+			else = {
+				OR = {
+					any_known_country = {
+						has_country_modifier = orcish_administration
+						capital_scope = { superregion = deepwoods_superregion }
+						has_opinion = { who = ROOT value = 100 }
+					}
+					all_known_country = {
+						NOT = {
+							has_country_modifier = orcish_administration
+							capital_scope = { superregion = deepwoods_superregion }
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				every_owned_or_subject_province = {
+					limit = { religion = old_dookan }
+					change_religion = bulgu_orazan
+				}
+			}
+			custom_tooltip = B23_songs_tt
+			tooltip = {
+				5690 = { change_religion = bulgu_orazan	}
+			}
+			change_religion = bulgu_orazan
+			set_ruler_religion = bulgu_orazan
+			set_heir_religion = bulgu_orazan
+		}
+	}
+
+	B23_something_new = {
+		icon = mission_stormy_seas
+		position = 6
+		required_missions = {
+			B23_songs_of_a_better_future
+			B23_hakhud_kabir_mission
+		}
+
+		trigger = {
+			check_variable = {
+				which = B23_hakhud_completed
+				value = 2
+			}
+			NOT = { has_ruler = "Ugol" }
+		}
+
+		effect = {
+			decrease_monstrous_5 = yes
+			remove_country_modifier = B23_hakhud_kabir_one_modifier
+			add_country_modifier = {
+				name = B23_hakhud_kabir_two_modifier
+				duration = -1
+			}
+			forlorn_vale_region = { discover_country = ROOT	}
+			arbaran_area = { discover_country = ROOT }
+			dostanor_region = { discover_country = ROOT }
+		}
+	}
+
+	B23_errant_daughter = {
+		icon = mission_stormy_seas
+		position = 7
+		required_missions = {
+			B23_something_new
+		}
+
+		trigger = {
+			check_variable = {
+				which = B23_hakhud_completed
+				value = 3
+			}
+			NOT = { has_country_modifier = B23_recent_hakhud }
+			native_longhouse = 4
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = B23_recent_hakhud
+				duration = 1825
+			}
+			remove_country_modifier = B23_hakhud_kabir_two_modifier
+			add_country_modifier = {
+				name = B23_hakhud_kabir_three_modifier
+				duration = -1
+			}
+			country_event = { #Her Hakhud
+				id = flavour_rotcleaver.27
+			}
+		}
+	}
+}

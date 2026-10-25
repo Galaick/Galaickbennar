@@ -1,0 +1,678 @@
+namespace = flavour_zyujyut
+
+##############################################################
+# Legend for IDs:
+# 000-099 = save for whenever someone makes a mission for them
+# 100-199 = Naamjyut random flavours
+# 200-299 = Naamjyut clan related stuff
+# 900-999 = No idea. The event "Integrating the Bokai" (added in 2023 and last edited in 2024) was the only event in here added before I wrote this legend and idk why they gave it the id of 900
+##############################################################
+
+##########################
+# Zyujyut Mission Events #
+##########################
+
+# There are no missions for Zyujyut, just future proofing for whoever wants to make it
+
+############################
+# Naamjyut random flavours #
+############################
+
+# Women wearing pants in rice field
+country_event = {
+    id = flavour_zyujyut.100
+    title = flavour_zyujyut.100.t
+    desc = flavour_zyujyut.100.d
+    picture = NOBLE_ESTATE_DEMANDS_eventPicture
+    fire_only_once = yes
+    
+    trigger = {
+		primary_culture = naamjyut
+		has_estate = estate_nobles
+		any_owned_province = { culture = naamjyut }
+    }
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { culture = naamjyut }
+				save_event_target_as = women_wearing_pants_target
+			}
+		}
+	}
+    
+    # Skirts in the rice field? You crazy
+    option = {
+        name = flavour_zyujyut.100.a
+		highlight = yes
+		trigger = {
+			NOT = { ruler_has_personality = zealot_personality }
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = -10
+		}
+    }
+    
+	#eww girls should not wear pants
+    option = {
+        name = flavour_zyujyut.100.b
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = 5
+		}
+		event_target:women_wearing_pants_target = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier  = {
+					name = naamjyut_women_forbidden_wear_pants_in_rice_fields
+					duration = 3650
+				}
+			}
+		}
+    }
+    
+    # Lets try to find understanding between the parties
+    option = {
+        name = flavour_zyujyut.100.c
+		highlight = yes
+		trigger = {
+			NOT = { ruler_has_personality = zealot_personality }
+			OR = {
+				ruler_has_personality = charismatic_negotiator_personality
+				ruler_has_personality = naive_personality
+				ruler_has_personality = silver_tongue_personality
+			}
+		}
+		add_dip_power = -10
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = -5
+		}
+		event_target:women_wearing_pants_target = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier  = {
+					name = naamjyut_appeased_clans_and_local_women
+					duration = 3650
+				}
+			}
+		}
+    }
+    
+    # The women shall obey our tradition and they shall do so obediently
+    option = {
+        name = flavour_zyujyut.100.e
+		highlight = yes
+		trigger = {
+			NOT = {
+				ruler_has_personality = kind_hearted_personality
+				ruler_has_personality = benevolent_personality
+			}
+			OR = {
+				ruler_has_personality = zealot_personality
+				ruler_has_personality = malevolent_personality
+				ruler_has_personality = strict_personality
+				ruler_has_personality = cruel_personality
+			}
+		}
+		add_mil_power = -10
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = 10
+		}
+		event_target:women_wearing_pants_target = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier  = {
+					name = naamjyut_women_dress_code_enforcement
+					duration = 5475
+				}
+			}
+		}
+    }
+    
+    # This tradition is backwards, lets encourage abandoning it.
+    option = {
+        name = flavour_zyujyut.100.f
+		highlight = yes
+		trigger = {
+			OR = {
+				ruler_has_personality = benevolent_personality
+				ruler_has_personality = reformist_personality
+				ruler_has_personality = free_thinker_personality
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = -15
+		}
+		event_target:women_wearing_pants_target = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier  = {
+					name = naamjyut_dress_code_reforms
+					duration = 3650
+				}
+			}
+		}
+    }
+    
+    # They can wear what they want for a price
+    option = {
+        name = flavour_zyujyut.100.g
+		highlight = yes
+		trigger = {
+			NOT = { ruler_has_personality = just_personality }
+			OR = {
+				ruler_has_personality = embezzler_personality
+				corruption = 1.5
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles    #Or whatever the clans estate is
+			loyalty = -10
+		}
+		event_target:women_wearing_pants_target = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier  = {
+					name = naamjyut_pants_tax
+					duration = 3650
+				}
+			}
+		}
+    }
+}
+
+# Cha Wing Ying and the Blademaidens of Ginjyu
+country_event = {
+    id = flavour_zyujyut.101
+    title = flavour_zyujyut.101.t
+    desc = flavour_zyujyut.101.d
+    picture = THE_HEROINE_eventPicture
+    fire_only_once = yes
+    is_triggered_only = yes
+    
+    trigger = {
+		is_year = 1475
+        owns = 4837 #Ginjyu
+		4837 = { religion_group = halessi }
+    }
+    
+    # Impressive! Invite her to court to teach our men how to fight
+    option = {
+        name = flavour_zyujyut.101.a
+		define_advisor = {
+			type = commandant
+			name = "Cha Wing Ying"
+			skill = 3
+			culture = naamjyut
+			religion = ROOT
+			location = 4837 #Ginjyu
+			age = 22
+			discount = yes
+			female = yes
+		}
+    }
+    
+    # Her skills will serve us well in the field
+    option = {
+        name = flavour_zyujyut.101.b
+		define_general = {
+			name = "Cha Wing Ying"
+			shock = 6
+			fire = 4
+			manuever = 3
+			siege = 1
+			female = yes
+			trait = strict_drillmaster_personality
+		}
+    }
+}
+
+###############################
+# Naamjyut clan related stuff #
+###############################
+
+# Feuding between local clans
+country_event = {
+    id = flavour_zyujyut.200
+    title = flavour_zyujyut.200.t
+	desc = {
+	   trigger = { primary_culture = naamjyut }
+	   desc = "flavour_zyujyut.200.d"
+	}
+	desc = {
+	   trigger = { NOT = { primary_culture = naamjyut } }
+	   desc = "flavour_zyujyut.200.e"
+	}
+    picture = AFRICAN_KING_MEDIATING_eventPicture
+    is_triggered_only = yes
+    
+    trigger = {
+		capital_scope = { superregion = yanshen_superregion }
+		NOT = {
+			has_country_modifier = naamjyut_clan_feud_countdown
+			AND = {
+				primary_culture = naamjyut
+				is_at_war = yes
+			}
+		}
+		any_owned_province = {
+			superregion = yanshen_superregion
+			OR = {
+				owner = { primary_culture = naamjyut }
+				local_autonomy = 30
+			}
+			OR = {
+				culture = naamjyut
+				culture = bokai
+				AND = {
+					owner = { primary_culture = naamjyut }
+					culture_group = yan
+					OR = {
+						area = xiyun_area
+						area = gungi_area
+						area = bianyuan_area
+						area = bianfang_area
+						area = jiangszun_area
+						area = tianszi_area
+						area = aoshan_area
+						area = luoyip_area
+					}
+				}
+			}
+		}
+    }
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { primary_culture = naamjyut }
+				add_country_modifier  = {
+					name = naamjyut_clan_feud_countdown
+					duration = 7300
+					hidden = yes
+				}
+			}
+			else = {
+				add_country_modifier  = {
+					name = naamjyut_clan_feud_countdown
+					duration = 18250
+					hidden = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					superregion = yanshen_superregion
+					OR = {
+						owner = { primary_culture = naamjyut }
+						local_autonomy = 30
+					}
+					OR = {
+						culture = naamjyut
+						culture = bokai
+						AND = {
+							owner = { primary_culture = naamjyut }
+							culture_group = yan
+							OR = {
+								area = xiyun_area
+								area = gungi_area
+								area = bianyuan_area
+								area = bianfang_area
+								area = jiangszun_area
+								area = tianszi_area
+								area = aoshan_area
+								area = luoyip_area
+							}
+						}
+					}
+				}
+				save_event_target_as = clan_war_target
+			}
+		}
+	}
+    
+    # As the big guy it is my duty to mediate peace
+    option = {
+        name = flavour_zyujyut.200.a
+		trigger = { primary_culture = naamjyut }
+		add_dip_power = -25
+		hidden_effect = {
+			set_country_flag = clan_war_naamjyut_dip_mediation
+			event_target:clan_war_target = {
+				random = { 
+					chance = 33
+					province_event = { 
+						id = flavour_zyujyut.201
+						days = 7
+					}
+				}
+			}
+		}
+    }
+    
+    # As the big guy I shall send troops in to keep the peace
+    option = {
+        name = flavour_zyujyut.200.b
+		trigger = { primary_culture = naamjyut }
+		add_mil_power = -25
+		hidden_effect = {
+			set_country_flag = clan_war_naamjyut_mil_mediation
+			event_target:clan_war_target = {
+				random = { 
+					chance = 33
+					province_event = { 
+						id = flavour_zyujyut.201
+						days = 7
+					}
+				}
+			}
+		}
+    }
+    
+    # Try talk some sense to them
+    option = {
+        name = flavour_zyujyut.200.c
+		trigger = { NOT = { primary_culture = naamjyut } }
+		add_dip_power = -75
+		hidden_effect = {
+			set_country_flag = clan_war_foreign_dip_mediation
+			event_target:clan_war_target = {
+				random = { 
+					chance = 50
+					province_event = { 
+						id = flavour_zyujyut.201
+						days = 7
+					}
+				}
+			}
+		}
+    }
+    
+    # Enforce the peace by force
+    option = {
+        name = flavour_zyujyut.200.f
+		trigger = { NOT = { primary_culture = naamjyut } }
+		add_mil_power = -75
+		hidden_effect = {
+			set_country_flag = clan_war_foreign_mil_mediation
+			event_target:clan_war_target = {
+				random_list = {
+					50 = {
+						province_event = { 
+							id = flavour_zyujyut.201
+							days = 7
+						}
+					}
+					5 = {
+						province_event = { 
+							id = flavour_zyujyut.202
+							days = 7
+						}
+					}
+				}
+			}
+		}
+    }
+    
+    # We have nothing to gain here, I don’t care
+    option = {
+        name = flavour_zyujyut.200.g
+		event_target:clan_war_target = {
+			add_devastation = 20
+			add_province_modifier  = {
+				name = local_naamjyut_clan_war
+				duration = 730
+			}
+		}
+    }
+}
+
+# Clans defies our decision
+province_event = {
+    id = flavour_zyujyut.201
+    title = flavour_zyujyut.201.t
+	desc = {
+	   trigger = { owner = { has_country_flag = clan_war_naamjyut_dip_mediation } }
+	   desc = "flavour_zyujyut.201.d"
+	}
+	desc = {
+	   trigger = { owner = { has_country_flag = clan_war_foreign_dip_mediation } }
+	   desc = "flavour_zyujyut.201.e"
+	}
+	desc = {
+	   trigger = { owner = { has_country_flag = clan_war_naamjyut_mil_mediation } }
+	   desc = "flavour_zyujyut.201.f"
+	}
+	desc = {
+	   trigger = { owner = { has_country_flag = clan_war_foreign_mil_mediation } }
+	   desc = "flavour_zyujyut.201.g"
+	}
+    picture = SENGOKU_eventPicture
+    is_triggered_only = yes
+	
+	
+    trigger = {
+		owner = {
+			OR = {
+				has_country_flag = clan_war_naamjyut_dip_mediation
+				has_country_flag = clan_war_foreign_dip_mediation
+				has_country_flag = clan_war_naamjyut_mil_mediation
+				has_country_flag = clan_war_foreign_mil_mediation
+			}
+		}
+	}
+    
+    # Enough with the diplomacy, crack down on their conflict
+    option = {
+        name = flavour_zyujyut.201.a
+		trigger = { owner = { has_country_flag = clan_war_naamjyut_dip_mediation } }
+		owner = {
+			add_mil_power = -75
+			reduce_estate_nobles_loyalty_effect = yes
+		}
+		add_province_modifier  = {
+			name = naamjyut_clan_war_crackdown
+			duration = 3650
+		}
+		random = { 
+			chance = 33
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
+			}
+		}
+    }
+    
+    # How dare they claim this to be not my business! This is my realm!
+    option = {
+        name = flavour_zyujyut.201.b
+		trigger = { owner = { has_country_flag = clan_war_foreign_dip_mediation } }
+		owner = {
+			add_mil_power = -75
+			reduce_estate_nobles_loyalty_effect = yes
+		}
+		add_province_modifier  = {
+			name = naamjyut_clan_war_crackdown
+			duration = 3650
+		}
+		random = { 
+			chance = 33
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
+			}
+		}
+    }
+    
+    # As the [Root.GetTitle], they shall not attack my men and defy my ruling!
+    option = {
+        name = flavour_zyujyut.201.c
+		trigger = { owner = { has_country_flag = clan_war_naamjyut_mil_mediation } }
+		owner = {
+			add_mil_power = -25
+			reduce_estate_nobles_loyalty_effect = yes
+		}
+		add_province_modifier  = {
+			name = naamjyut_clan_war_crackdown
+			duration = 3650
+		}
+		random = { 
+			chance = 33
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
+			}
+		}
+    }
+    
+    # I am their sovereign! How dare they insult my right to rule!
+    option = {
+        name = flavour_zyujyut.201.h
+		trigger = { owner = { has_country_flag = clan_war_foreign_mil_mediation } }
+		owner = {
+			add_mil_power = -25
+			reduce_estate_nobles_loyalty_effect = yes
+		}
+		add_province_modifier  = {
+			name = naamjyut_clan_war_crackdown
+			duration = 3650
+		}
+		random = { 
+			chance = 33
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
+			}
+		}
+    }
+    
+    # We tried, can’t do anything more than this
+    option = {
+        name = flavour_zyujyut.201.i
+		add_devastation = 20
+		add_province_modifier  = {
+			name = local_naamjyut_clan_war
+			duration = 730
+		}
+    }
+	
+	after = {
+		owner = {
+			clr_country_flag = clan_war_naamjyut_dip_mediation
+			clr_country_flag = clan_war_foreign_dip_mediation
+			clr_country_flag = clan_war_naamjyut_mil_mediation
+			clr_country_flag = clan_war_foreign_mil_mediation
+		}
+	}
+}
+
+# Clans attacks our forces
+province_event = {
+    id = flavour_zyujyut.202
+    title = flavour_zyujyut.202.t
+    desc = flavour_zyujyut.202.d
+	picture = {
+		trigger = { has_dlc = "Emperor" }
+		picture = FAILED_REVOLUTION_eventPicture
+	}
+	picture = {
+		trigger = { NOT = { has_dlc = "Emperor" } }
+		picture = BATTLE_eventPicture
+	}
+    is_triggered_only = yes
+	
+    trigger = {
+		owner = { has_country_flag = clan_war_foreign_mil_mediation }
+	}
+    
+    # Its treason then!
+    option = {
+        name = flavour_zyujyut.201.a
+		if = {
+			limit = {
+				owner = { has_estate = estate_nobles }
+			}
+			owner = {
+				add_estate_loyalty = {
+					estate = estate_nobles
+					loyalty = -20
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = { has_estate = estate_uppercastes }
+			}
+			owner = {
+				add_estate_loyalty = {
+					estate = estate_uppercastes
+					loyalty = -20
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				owner = { has_estate = estate_ajgriijarul }
+			}
+			owner = {
+				add_estate_loyalty = {
+					estate = estate_ajgriijarul
+					loyalty = -20
+				}
+			}
+		}
+		#Can't be eunnachs, just no
+		spawn_rebels = {
+			type = noble_rebels
+			size = 2
+		}
+    }
+    
+    # Fine! Ill leave those childish savages to fight one another!
+    option = {
+        name = flavour_zyujyut.201.b
+		add_devastation = 20
+		add_province_modifier  = {
+			name = local_naamjyut_clan_war
+			duration = 730
+		}
+		if = {
+			limit = {
+				OR = {
+					current_age = age_of_absolutism
+					current_age = age_of_revolutions
+				}
+			}
+			owner = { add_absolutism = -5 }
+		}
+		owner = { add_legitimacy_equivalent = { amount = -10 republican_tradition = -5 } }
+    }
+	
+	after = {
+		owner = { clr_country_flag = clan_war_foreign_mil_mediation }
+	}
+}
+
+###############
+# Other stuff #
+###############
+
+province_event = {
+	id = flavour_zyujyut.900
+	title = flavour_zyujyut.900.t
+	desc = flavour_zyujyut.900.d
+	picture = DIPLOMACY_eventPicture
+	goto = ROOT
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_zyujyut.900.a
+		ai_chance = { factor = 100 }
+
+		change_culture = naamjyut
+	}
+}

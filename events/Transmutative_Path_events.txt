@@ -1,0 +1,668 @@
+
+namespace = transmutative_path
+
+country_event = { #Clearing invalid saved church aspects
+	id = transmutative_path.0
+	title = none
+	desc = none
+	picture = none
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { has_country_flag = transmutative_path_saved_slot_0 }
+			transmutative_path_clear_aspect_slot = { slot = 0 }
+		}
+		if = {
+			limit = { has_country_flag = transmutative_path_saved_slot_1 }
+			transmutative_path_clear_aspect_slot = { slot = 1 }
+		}
+		if = {
+			limit = { has_country_flag = transmutative_path_saved_slot_2 }
+			transmutative_path_clear_aspect_slot = { slot = 2 }
+		}
+	}
+
+	option = {
+		name = none
+	}
+}
+
+country_event = {
+	id = transmutative_path.1
+	title = transmutative_path.1.T
+	desc = transmutative_path.1.D
+	picture = MALAYAN_PORT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = transmutative_path.1.a1
+		trigger = {
+			has_church_aspect = transmutative_path_acts_of_hermitage
+			NOT = { has_country_modifier = transmutative_path_acts_of_hermitage_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_acts_of_hermitage
+		
+		add_country_modifier = {
+			name = transmutative_path_acts_of_hermitage_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a2
+		trigger = {
+			has_church_aspect = transmutative_path_rememberance_festival
+			NOT = { has_country_modifier = transmutative_path_rememberance_festival_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_rememberance_festival
+		
+		add_country_modifier = {
+			name = transmutative_path_rememberance_festival_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a3
+		trigger = {
+			has_church_aspect = transmutative_path_sponsor_travelling_libraries
+			NOT = { has_country_modifier = transmutative_path_sponsor_travelling_libraries_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_sponsor_travelling_libraries
+		
+		add_country_modifier = {
+			name = transmutative_path_sponsor_travelling_libraries_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a4
+		trigger = {
+			has_church_aspect = transmutative_path_meditation_through_labour
+			NOT = { has_country_modifier = transmutative_path_meditation_through_labour_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_meditation_through_labour
+		
+		add_country_modifier = {
+			name = transmutative_path_meditation_through_labour_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a5
+		trigger = {
+			has_church_aspect = transmutative_path_fill_the_begging_bowls
+			NOT = { has_country_modifier = transmutative_path_fill_the_begging_bowls_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_fill_the_begging_bowls
+		
+		add_country_modifier = {
+			name = transmutative_path_fill_the_begging_bowls_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a6
+		trigger = {
+			has_church_aspect = transmutative_path_relive_past_lives
+			NOT = { has_country_modifier = transmutative_path_relive_past_lives_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_relive_past_lives
+		
+		add_country_modifier = {
+			name = transmutative_path_relive_past_lives_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a7
+		trigger = {
+			has_church_aspect = transmutative_path_universal_martial_education
+			NOT = { has_country_modifier = transmutative_path_universal_martial_education_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_universal_martial_education
+		
+		add_country_modifier = {
+			name = transmutative_path_universal_martial_education_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a8
+		trigger = {
+			has_church_aspect = transmutative_path_leadership_of_hero_monks
+			NOT = { has_country_modifier = transmutative_path_leadership_of_hero_monks_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_leadership_of_hero_monks
+		
+		add_country_modifier = {
+			name = transmutative_path_leadership_of_hero_monks_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a9
+		trigger = {
+			has_church_aspect = transmutative_path_hire_sellsword_monks
+			NOT = { has_country_modifier = transmutative_path_hire_sellsword_monks_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_hire_sellsword_monks
+		
+		add_country_modifier = {
+			name = transmutative_path_hire_sellsword_monks_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a10
+		trigger = {
+			has_church_aspect = transmutative_path_everything_under_heaven
+			NOT = { has_country_modifier = transmutative_path_everything_under_heaven_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_everything_under_heaven
+		
+		add_country_modifier = {
+			name = transmutative_path_everything_under_heaven_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a11
+		trigger = {
+			has_church_aspect = transmutative_path_through_inaction_action
+			NOT = { has_country_modifier = transmutative_path_through_inaction_action_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_through_inaction_action
+		
+		add_country_modifier = {
+			name = transmutative_path_through_inaction_action_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a12
+		trigger = {
+			has_church_aspect = transmutative_path_we_all_lift_together
+			NOT = { has_country_modifier = transmutative_path_we_all_lift_together_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_we_all_lift_together
+		
+		add_country_modifier = {
+			name = transmutative_path_we_all_lift_together_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a13
+		trigger = {
+			has_church_aspect = transmutative_path_the_second_ascension
+			NOT = { has_country_modifier = transmutative_path_the_second_ascension_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_the_second_ascension
+		
+		add_country_modifier = {
+			name = transmutative_path_the_second_ascension_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a14
+		trigger = {
+			has_church_aspect = transmutative_path_tea_ceremonies
+			NOT = { has_country_modifier = transmutative_path_tea_ceremonies_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_tea_ceremonies
+		
+		add_country_modifier = {
+			name = transmutative_path_tea_ceremonies_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a15
+		trigger = {
+			has_church_aspect = transmutative_path_from_strings_to_silk
+			NOT = { has_country_modifier = transmutative_path_from_strings_to_silk_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_from_strings_to_silk
+		
+		add_country_modifier = {
+			name = transmutative_path_from_strings_to_silk_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a16
+		trigger = {
+			has_church_aspect = transmutative_path_dowsing_for_metals
+			NOT = { has_country_modifier = transmutative_path_dowsing_for_metals_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_dowsing_for_metals
+		
+		add_country_modifier = {
+			name = transmutative_path_dowsing_for_metals_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a17
+		trigger = {
+			has_church_aspect = transmutative_path_muzzle_the_ox
+			NOT = { has_country_modifier = transmutative_path_muzzle_the_ox_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_muzzle_the_ox
+		
+		add_country_modifier = {
+			name = transmutative_path_muzzle_the_ox_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a18
+		trigger = {
+			has_church_aspect = transmutative_path_strip_the_scales
+			NOT = { has_country_modifier = transmutative_path_strip_the_scales_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_strip_the_scales
+		
+		add_country_modifier = {
+			name = transmutative_path_strip_the_scales_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a19
+		trigger = {
+			has_church_aspect = transmutative_path_convert_pasture_lands
+			NOT = { has_country_modifier = transmutative_path_convert_pasture_lands_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_convert_pasture_lands
+		
+		add_country_modifier = {
+			name = transmutative_path_convert_pasture_lands_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a20
+		trigger = {
+			has_church_aspect = transmutative_path_sages_of_the_misty_mountains
+			NOT = { has_country_modifier = transmutative_path_sages_of_the_misty_mountains_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_sages_of_the_misty_mountains
+		
+		add_country_modifier = {
+			name = transmutative_path_sages_of_the_misty_mountains_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a21
+		trigger = {
+			has_church_aspect = transmutative_path_weaving_weal
+			NOT = { has_country_modifier = transmutative_path_weaving_weal_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_weaving_weal
+		
+		add_country_modifier = {
+			name = transmutative_path_weaving_weal_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a22
+		trigger = {
+			has_church_aspect = transmutative_path_dessicate_landscape
+			NOT = { has_country_modifier = transmutative_path_dessicate_landscape_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_dessicate_landscape
+		
+		add_country_modifier = {
+			name = transmutative_path_dessicate_landscape_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a23
+		trigger = {
+			has_church_aspect = transmutative_path_dredge_the_flats
+			NOT = { has_country_modifier = transmutative_path_dredge_the_flats_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_dredge_the_flats
+		
+		add_country_modifier = {
+			name = transmutative_path_dredge_the_flats_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a24
+		trigger = {
+			has_church_aspect = transmutative_path_treadeth_the_corn
+			NOT = { has_country_modifier = transmutative_path_treadeth_the_corn_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_treadeth_the_corn
+		
+		add_country_modifier = {
+			name = transmutative_path_treadeth_the_corn_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a25
+		trigger = {
+			has_church_aspect = transmutative_path_irrigate_jungle_plantations
+			NOT = { has_country_modifier = transmutative_path_irrigate_jungle_plantations_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_irrigate_jungle_plantations
+		
+		add_country_modifier = {
+			name = transmutative_path_irrigate_jungle_plantations_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a26
+		trigger = {
+			has_church_aspect = transmutative_path_hon_sai_ghost_emperor
+			NOT = { has_country_modifier = transmutative_path_hon_sai_ghost_emperor_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_hon_sai_ghost_emperor
+		
+		add_country_modifier = {
+			name = transmutative_path_hon_sai_ghost_emperor_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a27
+		trigger = {
+			has_church_aspect = transmutative_path_temples_for_warriors
+			NOT = { has_country_modifier = transmutative_path_temples_for_warriors_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_temples_for_warriors
+		
+		add_country_modifier = {
+			name = transmutative_path_temples_for_warriors_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+
+	option = {
+		name = transmutative_path.1.a28
+		trigger = {
+			has_church_aspect = transmutative_path_flavor_of_life
+			NOT = { has_country_modifier = transmutative_path_flavor_of_life_modifier }
+		}
+		consolidate_our_chi_remove_modifier_scripted_effect = yes
+		add_church_power = -200
+		remove_church_aspect = transmutative_path_flavor_of_life
+		
+		add_country_modifier = {
+			name = transmutative_path_flavor_of_life_modifier
+			duration = -1
+		}
+		set_country_flag = consolidate_our_chi_cooldown_flag
+		hidden_effect = {
+			country_event = {
+				id = transmutative_path.0
+			}
+		}
+	}
+	option = {
+		name = transmutative_path.1.b
+	}
+	after = {
+		if = {
+			limit = {
+				NOT = {
+					has_reform = cultivation_of_chi_transmutative_path
+				}
+			}
+			consolidate_our_chi_remove_modifier_scripted_effect = yes		
+		}
+	}
+}
+

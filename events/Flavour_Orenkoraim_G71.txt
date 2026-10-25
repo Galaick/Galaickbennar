@@ -1,0 +1,640 @@
+
+
+namespace = flavour_G71
+
+country_event = {
+	id = flavour_G71.1
+	title = flavour_G71.1.t
+	desc = flavour_G71.1.d
+	picture = KING_ASSASSINATION_eventPicture
+		
+	is_triggered_only = yes
+	trigger = {
+		tag = G71
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				which = g71ExploitedDevelopment
+				value = 0
+			}
+		}
+	}
+	
+	option = {		
+		name = flavour_G71.1.a
+		katelperai_area = { add_permanent_claim = ROOT }
+		6559 = {
+			add_province_modifier = {
+				name = G71_nayak_cowardice_4
+				duration = -1
+			}
+		}
+		custom_tooltip = flavour_G71_1_a_ct
+	}
+}
+
+country_event = {
+	id = flavour_G71.2
+	title = flavour_G71.2.t
+	desc = flavour_G71.2.d
+	picture = AZTEC_PYRAMID_eventPicture
+		
+	is_triggered_only = yes
+	
+	option = {		
+		name = flavour_G71.2.a
+		orenkoraim_area = {
+			add_institution_embracement = {
+				which = feudalism
+				value = 75
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.3
+	title = flavour_G71.3.t
+	desc = flavour_G71.3.d
+	picture = COASTLINE_MAP_eventPicture
+		
+	is_triggered_only = yes
+	
+	option = {		
+		name = flavour_G71.4.a
+		add_navy_tradition = 30
+		add_mercantilism = 5
+		country_event = {
+			id = flavour_G71.4
+			days = 60
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.4
+	title = flavour_G71.4.t
+	desc = flavour_G71.4.d
+	picture = LOADING_SHIP_eventPicture
+		
+	is_triggered_only = yes
+	
+	option = {		
+		name = flavour_G71.4.a
+		custom_tooltip = flavour_G71_4_a_ct
+		6559 = { add_human_minority_size_effect = yes }
+		large_increase_of_human_tolerance_effect = yes
+		hidden_effect = {
+			random_country = {
+				limit = {
+					capital_scope = { continent = europe }
+					turtleback_isle_region = { has_discovered = PREV }
+				}
+				6559 = { discover_country = PREV }
+				capital_scope = { discover_country = ROOT }
+			}
+			random_country = {
+				limit = {
+					capital_scope = { continent = europe }
+					has_idea_group = exploration_ideas
+				}
+				6559 = { discover_country = PREV }
+				capital_scope = { discover_country = ROOT }
+			}
+			random_country = {
+				limit = {
+					capital_scope = { continent = europe }
+					has_idea_group = exploration_ideas
+				}
+				6559 = { discover_country = PREV }
+				capital_scope = { discover_country = ROOT }
+			}
+			234 = {
+				owner = {
+					6559 = { discover_country = PREV }
+				}
+				discover_country = ROOT
+			}
+		}
+		country_event = {
+			id = flavour_G71.5
+			days = 1095
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.5
+	title = flavour_G71.5.t
+	desc = flavour_G71.5.d
+	picture = CONQUISTADORS_eventPicture
+		
+	is_triggered_only = yes
+	
+	option = {		
+		name = flavour_G71.5.a
+		custom_tooltip = flavour_G71_5_a_ct
+		hidden_effect = {
+			set_country_flag = G71_cannorian_merchants
+			swap_non_generic_missions = yes
+			country_event = {
+				id = flavour_G71.10
+				days = 1095
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.6
+	title = flavour_G71.6.t
+	desc = flavour_G71.6.d
+	picture = southamericagfx_RELIGIOUS_CONVERSION_eventPicture
+		
+	is_triggered_only = yes
+
+	immediate = { #Set up conversion options
+		hidden_effect = {
+			random_known_country = { #Select Regent Court
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = regent_court
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_regent_court_ally
+			}
+			random_known_country = { #Select Corinite
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = corinite
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_corinite_ally
+			}
+			random_known_country = { #Select Cult of Uelos
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = uelos_cult
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_uelos_cult_ally
+			}
+			random_known_country = { #Select Infernal Cult
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = infernal_court
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_infernal_court_ally
+			}
+			random_known_country = { #Select Dalcabba
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = dalcabba
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_dalcabba_ally
+			}
+			random_known_country = { #Select Ravelian
+				limit = { 
+					capital_scope = { continent = europe }
+					religion = ravelian
+					has_90_opinion_improved_relation = { target = ROOT }
+				}
+				save_event_target_as = g71_ravelian_ally
+			}
+		}
+	}
+
+	option = { #Regent Court
+		trigger = { has_saved_event_target = g71_regent_court_ally }
+		name = flavour_G71.6.a
+		change_religion = event_target:g71_regent_court_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+
+	option = { #Corinite
+		trigger = { has_saved_event_target = g71_corinite_ally }
+		name = flavour_G71.6.b
+		change_religion = event_target:g71_corinite_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+
+	option = { #Cult of Uelos
+		trigger = { has_saved_event_target = g71_uelos_cult_ally }
+		name = flavour_G71.6.c
+		change_religion = event_target:g71_uelos_cult_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+
+	option = { #Infernal Cult
+		trigger = { has_saved_event_target = g71_infernal_court_ally }
+		name = flavour_G71.6.e
+		change_religion = event_target:g71_infernal_court_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+
+	option = { #Dalcabba
+		trigger = { has_saved_event_target = g71_dalcabba_ally }
+		name = flavour_G71.6.f
+		change_religion = event_target:g71_dalcabba_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+
+	option = { #Ravelian
+		trigger = { has_saved_event_target = g71_ravelian_ally }
+		name = flavour_G71.6.g
+		change_religion = event_target:g71_ravelian_ally
+		set_estate_privilege = estate_church_validaunean_syncretism
+	}
+}
+
+country_event = {
+	id = flavour_G71.7
+	title = flavour_G71.7.t
+	desc = flavour_G71.7.d
+	picture = southamericagfx_ADVISOR_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {		
+		name = flavour_G71.7.a
+		custom_tooltip = flavour_G71_7_a_ct
+		add_country_modifier = {
+			name = G71_cowards_glory
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.10
+	title = flavour_G71.10.t
+	desc = flavour_G71.10.d
+	picture = MERCHANTS_ARGUING_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {		
+		name = flavour_G71.10.a
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -100
+		}
+		add_country_modifier = {
+			name = G71_cannorian_discontent
+			duration = -1
+		}
+		custom_tooltip = flavour_G71_10_a_ct
+		hidden_effect = {
+			country_event = {
+				id = flavour_G71.20
+				days = 170
+				random = 30
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.11
+	title = flavour_G71.11.t
+	desc = flavour_G71.11.d
+	picture = PORTUGUESE_MERCHANTS_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = G71
+		NOT = { has_country_flag = G71_what_they_truly_want_happened }
+	}
+
+	immediate = { set_country_flag = G71_what_they_truly_want_happened }
+
+	option = {		
+		name = flavour_G71.11.a
+		add_years_of_income = 1
+		G71_favour_cannorians = yes
+	}
+
+	option = {		
+		name = flavour_G71.11.b
+		add_years_of_income = -1
+		G71_favour_taychendi = yes
+	}
+}
+
+country_event = {
+	id = flavour_G71.12
+	title = flavour_G71.12.t
+	desc = flavour_G71.12.d
+	picture = southamericagfx_CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = G71
+		NOT = { has_country_flag = G71_glory_not_gold_happened }
+	}
+
+	immediate = { set_country_flag = G71_glory_not_gold_happened }
+
+	option = {		
+		name = flavour_G71.12.a
+		add_yearly_manpower = -1
+		G71_favour_cannorians = yes
+	}
+
+	option = {		
+		name = flavour_G71.12.b
+		add_yearly_manpower = 1
+		G71_favour_taychendi = yes
+	}
+}
+
+country_event = {
+	id = flavour_G71.13
+	title = flavour_G71.13.t
+	desc = flavour_G71.13.d
+	picture = southamericagfx_MILITARY_CAMP_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = G71
+		NOT = { has_country_flag = G71_warlords_doubt_ruler_happened }
+	}
+
+	immediate = { set_country_flag = G71_warlords_doubt_ruler_happened }
+
+	option = {		
+		name = flavour_G71.13.a
+		custom_tooltip = flavour_G71_13_a_ct
+		hidden_effect = { every_subject_country = { add_liberty_desire = 25 } }
+		G71_favour_cannorians = yes
+	}
+
+	option = {		
+		name = flavour_G71.13.b
+		add_mil_power = -100
+		G71_favour_taychendi = yes
+	}
+}
+
+country_event = {
+	id = flavour_G71.14
+	title = flavour_G71.14.t
+	desc = flavour_G71.14.d
+	picture = TOLLS_SHIP_CARGO_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = G71
+		NOT = { has_country_flag = G71_cutthroats_ravage_ships_happened }
+	}
+
+	immediate = { set_country_flag = G71_cutthroats_ravage_ships_happened }
+
+	option = {		
+		name = flavour_G71.14.a
+		add_dip_power = -100
+		G71_favour_cannorians = yes
+	}
+
+	option = {		
+		name = flavour_G71.14.b
+		custom_tooltip = flavour_G71_14_b_ct
+		hidden_effect = {
+			trigger_switch = {
+				on_trigger = navy_size
+				20 = { add_treasury = -400 }
+				19 = { add_treasury = -380 }
+				18 = { add_treasury = -360 }
+				17 = { add_treasury = -340 }
+				16 = { add_treasury = -320 }
+				15 = { add_treasury = -300 }
+				14 = { add_treasury = -280 }
+				13 = { add_treasury = -260 }
+				12 = { add_treasury = -240 }
+				11 = { add_treasury = -220 }
+				10 = { add_treasury = -200 }
+				9 = { add_treasury = -180 }
+				8 = { add_treasury = -160 }
+				7 = { add_treasury = -140 }
+				6 = { add_treasury = -120 }
+				5 = { add_treasury = -100 }
+				4 = { add_treasury = -80 }
+				3 = { add_treasury = -60 }
+				2 = { add_treasury = -40 }
+				1 = { add_treasury = -20 }
+			}
+		}
+		G71_favour_taychendi = yes
+	}
+}
+
+country_event = {
+	id = flavour_G71.15
+	title = flavour_G71.15.t
+	desc = flavour_G71.15.d
+	picture = asiangfx_ADVISOR_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = G71
+		NOT = { has_country_flag = G71_loyal_cannorian_happened }
+	}
+
+	immediate = { set_country_flag = G71_loyal_cannorian_happened }
+
+	option = {		
+		name = flavour_G71.15.a
+		define_advisor = {
+			type = trader
+			skill = 2
+			culture = moon_elf
+			cost_multiplier = 0.25
+		}
+		G71_favour_cannorians = yes
+	}
+
+	option = {		
+		name = flavour_G71.15.b
+		define_advisor = {
+			type = spymaster
+			skill = 2
+			culture = kalavendhi
+			cost_multiplier = 0.25
+		}
+		G71_favour_taychendi = yes
+	}
+}
+
+country_event = {
+	id = flavour_G71.16
+	title = flavour_G71.16.t
+	desc = {
+		trigger = {
+			check_variable = {
+				which = G71TaychendiPower
+				which = G71CannorianPower
+			}
+		}
+		desc = flavour_G71.16.dt
+	}
+	desc = {
+		trigger = {
+			check_variable = {
+				which = G71CannorianPower
+				which = G71TaychendiPower
+			}
+		}
+		desc = flavour_G71.16.dc
+	}
+	picture = southamericagfx_CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
+	trigger = {
+		tag = G71
+		has_country_flag = G71_what_they_truly_want_happened
+		has_country_flag = G71_glory_not_gold_happened
+		has_country_flag = G71_warlords_doubt_ruler_happened
+		has_country_flag = G71_cutthroats_ravage_ships_happened
+		has_country_flag = G71_loyal_cannorian_happened
+		NOT = { has_country_flag = G71_unrest_in_kottar_orenkoraim_happened }
+	}
+	immediate = { hidden_effect = { set_country_flag = G71_unrest_in_kottar_orenkoraim_happened } }
+
+	option = {
+		name = flavour_G71.16.a
+		highlight = yes
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = flavour_G71_16_a_ctt
+				check_variable = {
+					which = G71TaychendiPower
+					which = G71CannorianPower
+				}
+			}
+		}
+		6559 = { particularist_rebels = 3 }
+		random_owned_province = { particularist_rebels = 2 }
+		random_owned_province = { particularist_rebels = 2 }
+		random_owned_province = { particularist_rebels = 1 }
+		remove_country_modifier = G71_cannorian_discontent
+		custom_tooltip = flavour_G71_16_ct
+	}
+
+	option = {
+		name = flavour_G71.16.b
+		highlight = yes
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = flavour_G71_16_b_ctt
+				check_variable = {
+					which = G71CannorianPower
+					which = G71TaychendiPower
+				}
+			}
+		}
+		6559 = { gods_of_the_taychend_rebels = 3 }
+		random_owned_province = { gods_of_the_taychend_rebels = 2 }
+		random_owned_province = { gods_of_the_taychend_rebels = 2 }
+		random_owned_province = { gods_of_the_taychend_rebels = 1 }
+		remove_country_modifier = G71_cannorian_discontent
+		custom_tooltip = flavour_G71_16_ct
+	}
+}
+
+country_event = {
+	id = flavour_G71.17
+	title = flavour_G71.17.t
+	desc = {
+		trigger = {
+			check_variable = {
+				which = G71TaychendiPower
+				which = G71CannorianPower
+			}
+		}
+		desc = flavour_G71.17.dt
+	}
+	desc = {
+		trigger = {
+			check_variable = {
+				which = G71CannorianPower
+				which = G71TaychendiPower
+			}
+		}
+		desc = flavour_G71.17.dc
+	}
+	picture = indiangfx_GREAT_BUILDING_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_G71.17.a
+		highlight = yes
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = flavour_G71_16_a_ctt
+				check_variable = {
+					which = G71TaychendiPower
+					which = G71CannorianPower
+				}
+			}
+		}
+		custom_tooltip = flavour_G71_17_ct
+		hidden_effect = {
+			add_stability_or_adm_power = yes
+			add_stability_or_adm_power = yes
+			set_country_flag = G71_plutocratic_coup_done
+			set_country_flag = G71_taychendi_won
+		}
+	}
+
+	option = {
+		name = flavour_G71.17.b
+		highlight = yes
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = flavour_G71_16_b_ctt
+				check_variable = {
+					which = G71CannorianPower
+					which = G71TaychendiPower
+				}
+			}
+		}
+		custom_tooltip = flavour_G71_17_ct
+		hidden_effect = {
+			add_stability_or_adm_power = yes
+			add_stability_or_adm_power = yes
+			set_country_flag = G71_plutocratic_coup_done
+			set_country_flag = G71_cannorians_won
+		}
+	}
+}
+
+country_event = {
+	id = flavour_G71.20
+	title = flavour_G71.20.t
+	desc = flavour_G71.20.d
+	picture = wihgfx_FEMALE_GENERAL_eventPicture
+
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		add_disaster_progress = {
+    		disaster = estate_burghers_disaster
+    		value = 80
+		}
+	}
+
+	option = {
+		name = flavour_G71.20.a
+	}
+}

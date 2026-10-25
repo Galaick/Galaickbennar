@@ -1,0 +1,1731 @@
+
+namespace = flavor_butuguzi
+
+#L63 Butuguzi Events
+
+
+
+#Taking Stock
+country_event = {
+	id = flavor_butuguzi.1
+	title = flavor_butuguzi.1.t
+	desc = flavor_butuguzi.1.d
+	picture = east_asian_CITY_DEVELOPMENT_eventPicture
+
+    is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				which = bamaliwuni_infusion_tracker_var
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.1.a
+		
+		set_capital = 5558 #Fuhoengwaan
+		5558 = {
+			add_province_modifier = {
+				name = L63_rebuilding_fuhoengwaan
+				duration = 7300
+			}
+		}
+	}
+}
+
+#Forced Liquidation
+country_event = {
+	id = flavor_butuguzi.2
+	title = flavor_butuguzi.2.t
+	desc = flavor_butuguzi.2.d
+	picture = AFRICAN_CARAVAN_eventPicture
+
+    is_triggered_only = yes
+
+	option = {
+		name = flavor_butuguzi.2.a
+		custom_tooltip = L63_distribute_dev_copper_TT
+		hidden_effect = {
+			distribute_development = {
+				amount = 3
+				type = production
+				limit = "trade_goods = copper"
+			}
+		}
+		add_country_modifier = {
+			name = L63_bronze_boom
+			duration = 7300
+		}
+	}
+	option = {
+		name = flavor_butuguzi.2.b
+		custom_tooltip = L63_distribute_dev_gem_TT
+		hidden_effect = {
+			distribute_development = {
+				amount = 2
+				type = production
+				limit = "trade_goods = gems"
+			}
+			distribute_development = {
+				amount = 2
+				type = manpower
+				limit = "trade_goods = gems"
+			}
+		}
+		5578 = { #shamarkilima
+			change_religion = transmutative_path
+		}
+		5566 = { #balanka-bo
+			change_religion = transmutative_path
+		}
+		5564 = { #Qaburimengi
+			change_religion = shadow_pact
+			add_province_modifier = {
+				name = L63_dormant_shadow_cultists
+				duration = 7300
+			}
+		}
+	}
+}
+
+#Returning to normalcy
+country_event = {
+	id = flavor_butuguzi.3
+	title = flavor_butuguzi.3.t
+	desc = flavor_butuguzi.3.d
+	picture = NZINGHA_eventPicture
+
+    is_triggered_only = yes
+
+	# We set the no elctions flag because the starting gov reform gives you normal elections
+	# And the tier 2 gov reforms give you your new election mechanic vian anb_special_elections, but your tier 1 is still there so without the flag you get both election events
+	immediate = {
+		hidden_effect = {
+			set_country_flag = no_elections
+			set_variable = {
+				which = L63_flux_points
+				value = 0
+			}
+			set_variable = {
+				which = L63_family_points
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.3.a
+		
+		add_government_reform = squabbling_state_reform
+		if = {
+			limit = {
+				has_ruler_flag = L63_ka_gunam_alive
+			}
+			add_ruler_modifier = {
+				name = L63_zong_family
+				duration = -1
+			}
+		}
+		custom_tooltip = L63_explain_chi_wells_tt
+	}
+}
+
+#Parley
+country_event = {
+	id = flavor_butuguzi.4
+	title = flavor_butuguzi.4.t
+	desc = flavor_butuguzi.4.d
+	picture = EP_ISLAND_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.4.a
+		
+		if = {
+			limit = {
+				Y64 = {
+					exists = yes
+				}
+			}
+			Y64 = {
+				country_event = {
+					id = flavor_butuguzi.5
+				}
+			}
+		}
+		else = {
+			kiubang_area = {
+				add_permanent_claim = ROOT
+			}
+			amkamsek_area = {
+				add_permanent_claim = ROOT
+			}
+			hoangdesinh_area = {
+				add_permanent_claim = ROOT
+			}
+			harumbasai_area = {
+				add_permanent_claim = ROOT
+			}
+			4807 = { #Moglingsaau
+				add_permanent_claim = ROOT
+			}
+			4962 = { #hasiksibou
+				add_permanent_claim = ROOT
+			}
+		}
+		add_country_modifier = {
+			name = L63_growing_league_influence
+			duration = 9125
+		}
+
+		ringlet_isles_region = {
+			add_permanent_claim = ROOT
+		}
+	}
+}
+
+
+#An offer to the captains
+country_event = {
+	id = flavor_butuguzi.5
+	title = flavor_butuguzi.5.t
+	desc = flavor_butuguzi.5.d
+	picture = malay_HARBOUR_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.5.a
+
+		add_treasury = 500
+		ai_chance = { factor = 100 }
+		every_owned_province = {
+			limit = {
+				OR = {
+					region = ringlet_isles_region
+					area = telekenid_islands_area
+					area = amkamsek_area
+				}
+			}
+			add_core = S84
+			cede_province = S84
+		}
+		S84 = {
+			add_treasury = -500
+			add_dip_power = -100
+			create_subject = {
+				subject_type = vassal
+				subject = ROOT
+			}
+		}
+		
+	}
+	option = {
+		ai_chance = { factor = 0 }
+		name = flavor_butuguzi.5.b
+	}
+}
+
+#Family Reunions
+country_event = {
+	id = flavor_butuguzi.6
+	title = flavor_butuguzi.6.t
+	desc = flavor_butuguzi.6.d
+	picture = WOKOU_INCIDENT_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.6.a
+	
+		if = {
+			limit = {
+				Y23 = {
+					exists = yes
+				}
+			}
+			create_alliance = Y23
+			add_trust = {
+				who = Y23
+				value = 25
+				mutual = yes
+			}
+			hungngon_area = {
+				add_permanent_claim = Y23
+				add_permanent_claim = ROOT
+			}
+			4885 = {
+				add_permanent_claim = Y23
+				add_permanent_claim = ROOT
+			}
+			iongsim_area = {
+				add_permanent_claim = Y23
+				add_permanent_claim = ROOT
+			}
+		}
+		else = {
+			hungngon_area = {
+				add_permanent_claim = ROOT
+			}
+			4885 = {
+				add_permanent_claim = ROOT
+			}
+			iongsim_area = {
+				add_permanent_claim = ROOT
+			}
+		}
+		
+		1371 = { #jellyfish coast
+			add_trade_modifier = {
+				who = ROOT
+				duration = 18250
+				power = 20
+				key = STRONG_MERCHANTS
+			}
+		}
+	}
+}
+
+
+#Baashidi Bidding
+country_event = {
+	id = flavor_butuguzi.7
+	title = flavor_butuguzi.7.t
+	desc = flavor_butuguzi.7.d
+	picture = CARIBBEAN_PIRATE_FORT_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.7.a
+		5581 = { #badda caydhsadde
+			change_trade_goods = naval_supplies
+			add_province_modifier = {
+				name = L63_kagona_family_shipworks
+				duration = -1
+			}
+		}
+		6052 = { #magaalad qasr
+			add_permanent_claim = ROOT
+		}
+		6678 = { #quasri maroodiqya
+			add_permanent_claim = ROOT
+		}
+		6127 = { #quasri murayhd
+			add_permanent_claim = ROOT
+		}
+		6060 = { #qasri abeesooyinka
+			add_permanent_claim = ROOT
+		}
+		6068 = { #hwasadaa
+			add_permanent_claim = ROOT
+		}
+		6076 = { #quasri huubika
+			add_permanent_claim = ROOT
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.7.b
+		5581 = { #badda caydhsadde
+			change_trade_goods = dyes
+			add_building = workshop
+		}
+		6052 = { #magaalad qasr
+			add_permanent_claim = ROOT
+		}
+		6678 = { #quasri maroodiqya
+			add_permanent_claim = ROOT
+		}
+		6127 = { #quasri murayhd
+			add_permanent_claim = ROOT
+		}
+		6060 = { #qasri abeesooyinka
+			add_permanent_claim = ROOT
+		}
+		6068 = { #hwasadaa
+			add_permanent_claim = ROOT
+		}
+		6076 = { #quasri huubika
+			add_permanent_claim = ROOT
+		}
+	}
+}
+
+#Storm Seekers
+country_event = {
+	id = flavor_butuguzi.8
+	title = flavor_butuguzi.8.t
+	desc = flavor_butuguzi.8.d
+	picture = MIRACLE_MONK_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.8.a
+		5550 = { #guwazi
+			add_bumbadada_to_size = yes
+			kill_units = {
+				who = controller
+				type = infantry
+				amount = 2
+			}
+		}
+		set_country_flag = unlocked_jungle_expansion_privilege
+		set_estate_privilege = estate_burghers_jungle_expansion
+	}
+}
+
+
+#Brewing beneath Waves
+country_event = {
+	id = flavor_butuguzi.9
+	title = flavor_butuguzi.9.t
+	desc = flavor_butuguzi.9.d
+	picture = muslimgfx_COLONIZATION_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.9.a
+		set_country_flag = moyo_family_ascendant
+		custom_tooltip = L63_moyo_ascendant_tt
+		custom_tooltip = L63_gain_flux_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_flux_points
+				value = 1
+			}
+		}
+		ibibakely_area = {
+			add_permanent_claim = ROOT
+		}
+		zohejirofo_area = {
+			add_permanent_claim = ROOT
+		}
+		tebolelmasi_area = {
+			add_permanent_claim = ROOT
+		}
+		tebajik_area = {
+			add_permanent_claim = ROOT
+		}
+		sombimofo_area = {
+			add_permanent_claim = ROOT
+		}
+		pikakely_area = {
+			add_permanent_claim = ROOT
+		}
+		far_uelos_isles_area = {
+			add_permanent_claim = ROOT
+		}
+		sil_berkhens_land_area = {
+			add_permanent_claim = ROOT
+		}
+		set_country_flag = L63_merfolk_cap_increase
+		custom_tooltip = L63_merfolk_cap_increase_tt
+	}
+
+	option = {
+		name = flavor_butuguzi.9.b
+		custom_tooltip = L63_cin_family_remains_tt
+		custom_tooltip = L63_gain_family_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_family_points
+				value = 1
+			}
+		}
+		custom_tooltip = L63_brewing_beneath_waves_tt
+		tooltip = {
+			add_province_modifier = {
+				name = L63_undersea_excavations
+				duration = 3650
+			}
+		}
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_flag = merfolk_settlement
+				}
+				add_province_modifier = {
+					name = L63_undersea_excavations
+					duration = 3650
+				}
+			}
+		}
+		ibibakely_area = {
+			add_permanent_claim = ROOT
+		}
+		zohejirofo_area = {
+			add_permanent_claim = ROOT
+		}
+		tebolelmasi_area = {
+			add_permanent_claim = ROOT
+		}
+		tebajik_area = {
+			add_permanent_claim = ROOT
+		}
+		sombimofo_area = {
+			add_permanent_claim = ROOT
+		}
+		pikakely_area = {
+			add_permanent_claim = ROOT
+		}
+		far_uelos_isles_area = {
+			add_permanent_claim = ROOT
+		}
+		sil_berkhens_land_area = {
+			add_permanent_claim = ROOT
+		}
+		set_country_flag = L63_merfolk_cap_increase
+		custom_tooltip = L63_merfolk_cap_increase_tt
+	}
+}
+
+#Kneecappers
+country_event = {
+	id = flavor_butuguzi.10
+	title = flavor_butuguzi.10.t
+	desc = flavor_butuguzi.10.d
+	picture = MUSLIM_PAGAN_DISPUTE_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.10.a
+		set_country_flag = L63_beetlebiter_family_ascendant
+		custom_tooltip = L63_beetlebiter_ascendant_tt
+		custom_tooltip = L63_gain_flux_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_flux_points
+				value = 1
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.10.b
+		custom_tooltip = L63_gunam_neip_family_remains_tt
+		custom_tooltip = L63_gain_family_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_family_points
+				value = 1
+			}
+		}
+		custom_tooltip = L63_distribute_dev_cloves_TT
+		hidden_effect = {
+			distribute_development = {
+				amount = 5
+				type = production
+				limit = "trade_goods = cloves"
+			}
+		}
+		every_owned_province = {
+			limit = {
+				OR = {
+					trade_goods = cloves
+					trade_goods = spices
+				}
+			}
+			add_unrest = 5
+		}
+	}
+}
+
+#hawking our wares
+country_event = {
+	id = flavor_butuguzi.11
+	title = flavor_butuguzi.11.t
+	desc = flavor_butuguzi.11.d
+	picture = AFRICAN_EUROPEAN_TRADE_eventPicture
+
+    is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = L63_change_loc_flag
+		}
+	}
+
+
+	option = {
+		name = flavor_butuguzi.11.a
+		hidden_effect = {
+			lencenor_region = {
+				limit = {
+					province_has_center_of_trade_of_level = 1
+					has_port = yes
+				}
+				discover_country = ROOT
+			}
+			east_dameshead_region = {
+				limit = {
+					province_has_center_of_trade_of_level = 1
+					has_port = yes
+				}
+				discover_country = ROOT
+			}
+			west_dameshead_region = {
+				limit = {
+					province_has_center_of_trade_of_level = 1
+					has_port = yes
+				}
+				discover_country = ROOT
+			}
+		}
+		custom_tooltip = L63_dicover_cannor_port_tt
+		add_country_modifier = {
+			name = L63_broken_monopoly
+			duration = -1
+		}
+		country_event = {
+			id = flavor_butuguzi.12
+			days = 180
+		}
+	}
+}
+
+#Foolish Investments
+country_event = {
+	id = flavor_butuguzi.12
+	title = flavor_butuguzi.12.t
+	desc = flavor_butuguzi.12.d
+	picture = REVOLT_eventPicture
+
+    is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = L63_foolish_investments_flag
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.12.a
+		set_country_flag = L63_mugisha_family_ascendant
+		set_country_flag = L63_gaa_family_ascendant
+		custom_tooltip = L63_mugisha_ascendant_tt
+		custom_tooltip = L63_gaa_ascendant_tt
+		custom_tooltip = L63_gain_flux_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_flux_points
+				value = 1
+			}
+		}
+		custom_tooltip = L63_rahen_claims_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					sea_zone = {
+						region = gulf_of_rahen_region
+					}
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.12.b
+		set_country_flag = L63_gaa_family_ascendant
+		custom_tooltip = L63_gaa_ascendant_tt
+		custom_tooltip = L63_urunekozi_family_remains_tt
+
+		add_stability = -1
+		add_treasury = -1000
+		custom_tooltip = L63_rahen_claims_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					sea_zone = {
+						region = gulf_of_rahen_region
+					}
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.12.c
+		set_country_flag = L63_mugisha_family_ascendant
+		custom_tooltip = L63_mugisha_ascendant_tt
+		custom_tooltip = L63_goeng_family_remains_tt
+
+		add_stability = -1
+		add_treasury = -1000
+		custom_tooltip = L63_rahen_claims_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					sea_zone = {
+						region = gulf_of_rahen_region
+					}
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.12.e
+		custom_tooltip = L63_urunekozi_family_remains_tt
+		custom_tooltip = L63_goeng_family_remains_tt
+		custom_tooltip = L63_gain_family_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_family_points
+				value = 1
+			}
+		}
+		add_stability = -2
+		add_treasury = -2000
+		custom_tooltip = L63_rahen_claims_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					sea_zone = {
+						region = gulf_of_rahen_region
+					}
+					has_port = yes
+					province_has_center_of_trade_of_level = 1
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+#An endless meeting
+country_event = {
+	id = flavor_butuguzi.13
+	title = flavor_butuguzi.13.t
+	desc = flavor_butuguzi.13.d
+	picture = SONGHAI_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.13.a
+		L63_broken_monopoly_handler = yes
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = L63_flux_points
+						which = L63_family_points
+					}
+				}
+			}
+			add_stability = -3
+		}
+		set_country_flag = L63_flux_state_flag
+		add_government_reform = flux_state_reform
+	}
+
+	option = {
+		name = flavor_butuguzi.13.b
+		L63_broken_monopoly_handler = yes
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = L63_family_points
+						which = L63_flux_points
+					}
+				}
+			}
+			add_stability = -3
+		}
+		set_country_flag = L63_familial_state_flag
+		add_government_reform = familial_state_reform
+	}
+}
+
+#Can I take your order?
+country_event = {
+	id = flavor_butuguzi.14
+	title = flavor_butuguzi.14.t
+	desc = flavor_butuguzi.14.d
+	picture = KOBOLD_HOARD_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.14.a
+		L63_broken_monopoly_handler = yes
+		define_advisor = {
+			type = court_mage
+			skill = 3
+			culture = moon_elf
+			religion = regent_court
+			cost_multiplier = 0.75
+		}
+		
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					province_has_center_of_trade_of_level = 1
+					has_port = yes
+				}
+				add_kobold_minority_size_effect = yes
+			}
+			europe = {
+				limit = {
+					has_terrain = city_terrain
+					has_port = yes
+					owner = {
+						has_25_opinion_sent_gift = { target = ROOT }
+					}
+				}
+				add_kobold_minority_size_effect = yes
+			}
+		}
+		custom_tooltip = L63_kobold_spread_tt
+	}
+}
+
+#Cover of night
+country_event = {
+	id = flavor_butuguzi.15
+	title = flavor_butuguzi.15.t
+	desc = flavor_butuguzi.15.d
+	picture = FIREBALL_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.15.a
+		
+		change_mana = { amount = -200 }
+		bulwar_superregion = {
+			limit = {
+				trade_goods = coffee
+				NOT = {
+					owned_by = ROOT
+				}
+			}
+			change_trade_goods = unknown
+			add_devastation = 75
+			set_province_flag = L63_coffee_destroyed_flag
+			owner = {
+				if = {
+					limit = {
+						NOT = {
+							is_subject_of = S84
+						}
+					}
+					country_event = {
+						id = flavor_butuguzi.16
+					}
+				}
+				
+			}
+		}
+		L63_broken_monopoly_handler = yes
+		increase_witch_king_points_medium = yes
+	}
+}
+
+#Dakinshi Coffee Attacks
+country_event = {
+	id = flavor_butuguzi.16
+	title = flavor_butuguzi.16.t
+	desc = flavor_butuguzi.16.d
+	picture = IMPALED_SOLDIERS_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.16.a
+		ai_chance = { factor = 100 }
+		declare_war_with_cb = {
+			who = S84
+			casus_belli = cb_trade_conflict
+		}
+		set_country_flag = L63_coffee_reclamation_flag
+	}
+
+	option = {
+		name = flavor_butuguzi.16.b
+		ai_chance = { factor = 0 }
+	}
+}
+
+#Family Ties
+country_event = {
+	id = flavor_butuguzi.17
+	title = flavor_butuguzi.17.t
+	desc = flavor_butuguzi.17.d
+	picture = asiangfx_ADVISOR_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.17.a
+		ai_chance = { factor = 100 }
+		lower_yanshen_region = {
+			add_permanent_claim = ROOT
+		}
+		S84 = {
+			create_subject = {
+				subject_type = twin_empire
+				subject = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.17.b
+		ai_chance = { factor = 0 }
+		lower_yanshen_region = {
+			add_permanent_claim = ROOT
+		}
+	}
+}
+
+#The Calm
+country_event = {
+	id = flavor_butuguzi.18
+	title = flavor_butuguzi.18.t
+	desc = flavor_butuguzi.18.d
+	picture = asiangfx_GREAT_BUILDING_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.18.a
+		bamaliwuni_region = {
+			add_province_modifier = {
+				name = L63_blessing_of_the_storm
+				duration = -1
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = flavor_butuguzi.19
+				days = 60
+			}
+		}
+	}
+}
+
+#The Storm
+country_event = {
+	id = flavor_butuguzi.19
+	title = flavor_butuguzi.19.t
+	desc = flavor_butuguzi.19.d
+	picture = 19_Monsoon_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.19.a
+		bamaliwuni_region = {
+			remove_province_modifier = L63_blessing_of_the_storm
+			add_province_modifier = {
+				name = L63_landing_hurricane
+				duration = -1
+			}
+		}
+		5563 = { #gubamalmay
+			add_province_modifier = {
+				name = L63_chi_deluge
+				duration = -1
+			}
+		}
+		5576 = { #degutkombe
+			add_province_modifier = {
+				name = L63_chi_deluge
+				duration = -1
+			}
+		}
+		5582 = { #katikbumay
+			add_province_modifier = {
+				name = L63_chi_deluge
+				duration = -1
+			}
+		}
+		5550 = { #guwazi
+			add_province_modifier = {
+				name = L63_chi_deluge
+				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_global_flag = rending_startup_complete }
+			}
+			custom_tooltip = L63_start_rending
+			hidden_effect = {
+				set_global_flag = start_rending_of_realms_earlier
+				country_event = {
+					id = spirits.700
+					days = 1
+				}
+			}
+		}
+
+		set_country_flag = L63_chi_hujan_rebels
+		custom_tooltip = L63_infuse_rebels_tt
+
+		country_event = {
+			id = flavor_butuguzi.27
+			days = 30
+		}
+	}
+}
+
+#Godfall
+country_event = {
+	id = flavor_butuguzi.20
+	title = flavor_butuguzi.20.t
+	desc = flavor_butuguzi.20.d
+	picture = BARBARY_PIRATES_eventPicture
+
+    is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			5550 = { #Guwazi
+				kill_units = {
+					who = ROOT
+					type = infantry
+					amount = 50
+				}
+			}
+			1342 = { #coffee coast
+				kill_units = {
+					who = ROOT
+					amount = 100
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.20.a
+		add_army_tradition = 20
+		bamaliwuni_region = {
+			limit = {
+				has_port = yes
+			}
+			add_devastation = 50
+		}
+		add_country_modifier = {
+			name = L63_quiet_skies
+			duration = -1
+		}
+		bamaliwuni_region = {
+			remove_province_modifier = L63_chi_deluge
+			remove_province_modifier = L63_landing_hurricane
+		}
+		custom_tooltip = L63_no_more_monsoon_tt
+		set_global_flag = L63_east_sarhal_no_monsoons
+
+		country_event = {
+			id = flavor_butuguzi.21
+			days = 180
+		}
+	}
+}
+
+#The Second Return
+country_event = {
+	id = flavor_butuguzi.21
+	title = flavor_butuguzi.21.t
+	desc = flavor_butuguzi.21.d
+	picture = east_asian_BAD_WITH_MONARCH_eventPicture
+
+    is_triggered_only = yes
+
+	option = {
+		name = flavor_butuguzi.21.a
+		custom_tooltip = L63_permanent_power_projection_tt
+		hidden_effect = {
+			add_power_projection = { 
+				type = 15_permanent_power_projection
+				amount = 15 
+			}
+		}
+	}
+}
+
+# add province mods for road
+country_event = {
+	id = flavor_butuguzi.22
+	title = flavor_butuguzi.22.t
+	desc = flavor_butuguzi.22.d
+	picture = MILITARY_CAMP_eventPicture
+
+    is_triggered_only = yes
+	hidden = yes
+
+
+	option = {
+		name = flavor_butuguzi.22.a
+		6301 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4754 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4752 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4745 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4746 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4742 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4731 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4729 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4728 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4774 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4727 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4722 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+		4763 = {
+			add_province_modifier = {
+				name = L63_relief_road
+				duration = -1
+			}
+		}
+	}
+}
+
+#Worlds biggest cup of coffee
+country_event = {
+	id = flavor_butuguzi.23
+	title = flavor_butuguzi.23.t
+	desc = flavor_butuguzi.23.d
+	picture = GREAT_SPIRIT_CINULAU_eventPicture
+
+    is_triggered_only = yes
+
+	option = {
+		name = flavor_butuguzi.23.a
+		add_country_modifier = {
+			name = L63_strongfinning
+			duration = -1
+		}
+		6156 = {
+			remove_province_modifier = maruvarax
+		}
+		6155 = {
+			add_province_modifier = {
+				name = maruvarax
+				duration = -1
+			}
+			add_province_modifier = {
+				name = L63_maruvarax_bonus
+				duration = -1
+			}
+		}
+	}
+}
+
+#A most generous offer
+country_event = {
+	id = flavor_butuguzi.24
+	title = flavor_butuguzi.24.t
+	desc = flavor_butuguzi.24.d
+	picture = east_asian_GOOD_WITH_MONARCH_eventPicture
+
+    is_triggered_only = yes
+
+	option = {
+		name = flavor_butuguzi.24.a
+		ai_chance = { factor = 100 }
+		every_owned_province = {
+			limit = {
+				region = lower_yanshen_region
+				has_port = yes
+				province_has_center_of_trade_of_level = 1
+			}
+			add_core = S84
+			cede_province = S84
+		}
+		S84 = {
+			add_dip_power = -150
+		}
+		add_country_modifier = {
+			name = L63_gilded_chains
+			duration = -1
+		}
+	}
+
+	option = {
+		name = flavor_butuguzi.24.b
+		ai_chance = { factor = 0 }
+	}
+}
+
+
+#perfect brew
+country_event = {
+	id = flavor_butuguzi.25
+	title = flavor_butuguzi.25.t
+	desc = flavor_butuguzi.25.d
+	picture = NZINGHA_eventPicture
+
+    is_triggered_only = yes
+
+	option = {
+		name = flavor_butuguzi.25.a
+		add_country_modifier = {
+			name = L63_perfect_brew
+			duration = -1
+		}
+	}
+}
+
+#Pearl Coup
+country_event = {
+	id = flavor_butuguzi.26
+	title = flavor_butuguzi.26.t
+	desc = flavor_butuguzi.26.d
+	picture = TIGER_BODYGUARD_eventPicture
+
+    is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavor_butuguzi.26.a
+		custom_tooltip = L63_pearl_moon_ascendant_tt
+		set_country_flag = L63_pearl_bazaar_unlock
+		set_country_flag = L63_pearl_moon_ascendant
+
+		custom_tooltip = L63_gain_flux_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_flux_points
+				value = 1
+			}
+		}
+
+		if = {
+			limit = {
+				L62 = {
+					is_subject_of = ROOT
+				}
+			}
+			6592 = { #van
+				cede_province = ROOT
+			}
+			add_dip_power = -50
+		}
+	}
+	option = {
+		name = flavor_butuguzi.26.b
+		set_country_flag = L63_pearl_bazaar_unlock
+		custom_tooltip = L63_mou_family_remains_tt
+		custom_tooltip = L63_gain_family_tt
+		hidden_effect = {
+			change_variable = {
+				which = L63_family_points
+				value = 1
+			}
+		}
+		
+		if = {
+			limit = {
+				L62 = {
+					is_subject_of = ROOT
+				}
+			}
+			6592 = {
+				cede_province = ROOT
+			}
+			add_dip_power = -50
+		}
+
+		6592 = {
+			add_nationalism = 10
+			add_building = trade_depot
+		}
+	}
+}
+
+#We Need a Plan
+country_event = {
+	id = flavor_butuguzi.27
+	title = flavor_butuguzi.27.t
+	desc = flavor_butuguzi.27.d
+	picture = muslimgfx_DEBATE_REPUBLICAN_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.27.a
+		set_country_flag = L63_silver_tooth_family_ascendant
+		custom_tooltip = L63_silver_tooth_family_ascendant_tt
+		set_country_flag = L63_missions_unlock
+		swap_non_generic_missions = yes
+
+		if = {
+			limit = {
+				NOT = { has_global_flag = rending_startup_complete }
+			}
+			custom_tooltip = L63_rending_tt
+			hidden_effect = {
+				set_global_flag = start_rending_of_realms_earlier
+				country_event = {
+					id = spirits.700
+					days = 1
+				}
+			}
+		}
+	}
+}
+
+#Fate of Zyujyut
+country_event = {
+	id = flavor_butuguzi.28
+	title = flavor_butuguzi.28.t
+	desc = flavor_butuguzi.28.d
+	picture = muslimgfx_DEBATE_REPUBLICAN_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = flavor_butuguzi.28.a
+		lower_yanshen_region = {
+			add_permanent_claim = ROOT
+		}
+	}
+	option = {
+		name = flavor_butuguzi.28.b
+		release = Y23
+		Y23 = {
+			change_religion = transmutative_path
+		}
+		every_owned_province = {
+			limit = {
+				region = lower_yanshen_region
+			}
+			add_core = Y23
+			remove_core = ROOT
+			cede_province = Y23
+		}
+		create_subject = {
+			subject_type = twin_empire
+			subject = Y23
+		}
+		lower_yanshen_region = {
+			add_permanent_claim = Y23
+		}
+	}
+}
+
+
+
+
+#Election event reelect
+country_event = {
+	id = flavor_butuguzi.700
+	title = flavor_butuguzi.700.t
+	desc = flavor_butuguzi.700.d
+	picture = AFRICAN_SOCIAL_GATHERING_eventPicture
+
+	trigger = {
+		is_or_was_tag = { tag = L63 }
+		OR = {
+			has_reform = squabbling_state_reform
+			has_reform = familial_state_reform
+			has_reform = flux_state_reform
+		}
+	}
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			L63_generate_election_families_effect = yes
+		}
+	}
+
+	option = { #reelect
+		name = flavor_butuguzi.700.a
+
+		trigger = {
+			has_regency = no
+			NOT = { 
+				check_variable = {
+					which = election_term
+					value = 8
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = { has_reform = familial_state_reform }
+				check_variable = {
+					which = election_term
+					value = 3
+				}
+				NOT = {
+					check_variable = {
+						which = election_term
+						value = 4
+					}
+				}
+			}
+			L63_upgrade_familiy_modifiers = yes
+		}
+		
+		custom_tooltip = remains_ruler
+
+		change_adm = 1
+		change_dip = 1
+		change_mil = 1
+
+		if = {
+			limit = {
+				NOT = { republican_tradition = 20 }
+				has_dlc = "Res Publica"
+			}
+			add_government_reform = presidential_despot_reform	
+		}
+		if = {
+			limit = {
+				NOT = { republican_tradition = 20 }
+				NOT = { has_dlc = "Res Publica" }
+			}
+			change_government = monarchy
+			#set_legacy_government = despotic_monarchy
+		}
+		add_scaled_republican_tradition = -10
+		random_list = {
+			10 = {
+				add_adm_power = 50
+			}
+			10 = {
+				add_dip_power = 50
+			}
+			10 = {
+				add_mil_power = 50
+			}
+		}
+
+		if = {
+			limit = {
+				has_reform = familial_state_reform
+			}
+			L63_familial_state_bonus_effect = yes
+		}
+		else = {
+			L63_divided_family_modifier_effect = yes
+		}
+
+		if = {
+			limit = {
+				has_government_attribute = reelection_depowers_estates
+			}
+			add_estate_influence_modifier = {
+				estate = all
+				influence = -10
+				duration = 1460
+				desc = REELCTION_DEPOWER_ESTATES
+			}
+		}
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty = {
+				estate = all
+				loyalty = 5
+			}
+		}
+		if = {
+			limit = { has_government_attribute = reelection_increases_absolutism }
+			tooltip = {
+				add_absolutism = 10
+			}
+			custom_tooltip = ADD_ABSOLUTISM_BASED_ON_ELECTION_TERM
+			hidden_effect = {
+				for_variable_amount = {
+					variable = election_term
+					effect = "
+						add_absolutism = 10
+					"
+				}
+			}
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_random_faction = {
+				influence = 20
+			}
+		}
+		add_karma = -5
+		hidden_effect = {
+			change_variable = {
+				which = election_term
+				value = 1
+			}
+		}
+	}
+
+	option = { #admin candidate
+		name = flavor_butuguzi.700.b
+		L63_generate_admin_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+	option = { #dip candidate
+		name = flavor_butuguzi.700.c
+		L63_generate_dip_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+	option = { #mil candidate
+		name = flavor_butuguzi.700.e
+		L63_generate_mil_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			L63_clear_election_flags = yes
+		}
+	}
+}
+
+#Election event death
+country_event = {
+	id = flavor_butuguzi.701
+	title = flavor_butuguzi.701.t
+	desc = flavor_butuguzi.701.d
+	picture = AFRICAN_SOCIAL_GATHERING_eventPicture
+
+	trigger = {
+		is_or_was_tag = { tag = L63 }
+		OR = {
+			has_reform = squabbling_state_reform
+			has_reform = familial_state_reform
+			has_reform = flux_state_reform
+		}
+	}
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			L63_generate_election_families_effect = yes
+		}
+	}
+
+	option = { #admin candidate
+		name = flavor_butuguzi.701.a
+		L63_generate_admin_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+	option = { #dip candidate
+		name = flavor_butuguzi.701.b
+		L63_generate_dip_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+	option = { #mil candidate
+		name = flavor_butuguzi.701.c
+		L63_generate_mil_candidate = yes
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+			L63_ruler_province_modifier_cleanup_effect = yes
+		}
+		if = {
+			limit = { has_government_attribute = elections_increase_factions_influence }
+			add_influence_to_adm_faction = {
+				influence = 20
+			}
+		}
+		add_karma = 10
+		if = {
+			limit = { has_government_attribute = elections_influence_estates }
+			add_estate_loyalty_by_class_adm = {
+				loyalty = 10
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			L63_clear_election_flags = yes
+		}
+	}
+}

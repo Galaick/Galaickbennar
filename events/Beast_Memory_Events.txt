@@ -1,0 +1,1169 @@
+namespace = beast_memory
+
+
+###cycle and shifter affinity setup for custom nation and other
+country_event = {
+	id = beast_memory.1
+	title = beast_memory.1.t
+	desc = beast_memory.1.d
+	picture = BURGHER_ESTATE_eventPicture
+
+	is_triggered_only = yes
+    fire_only_once = yes
+    hidden = yes
+
+	trigger = {
+		religion = beast_memory
+	}
+
+	option = {
+		name = beast_memory.1.a
+        ai_chance = { factor = 100 }
+        every_country = {
+            limit = { religion = beast_memory }
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_modifier = brave_mongoose_cycle
+                        has_country_modifier = wise_leopard_cycle
+                        has_country_modifier = noble_elephant_cycle
+                    }
+                }
+                add_country_modifier = { name = brave_mongoose_cycle duration = -1 } 
+            }
+            if = {
+                limit = {
+                    NOT = {
+                        has_ruler_modifier = ruler_is_mongoose_shifter
+                        has_ruler_modifier = ruler_is_leopard_shifter
+                        has_ruler_modifier = ruler_is_elephant_shifter
+                    }
+                }
+                country_event = { id = beast_memory.2 days = 1 }
+            }
+        }
+	}
+}
+
+###Shifter Affinity event chain on_new_monarch
+
+country_event = { #Living in the Wild
+	id = beast_memory.2
+	title = beast_memory.2.t
+	desc = beast_memory.2.d
+	picture = northamericagfx_MILITARY_CAMP_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = beast_memory
+        NOT = {
+            has_ruler_modifier = ruler_is_mongoose_shifter
+            has_ruler_modifier = ruler_is_leopard_shifter
+            has_ruler_modifier = ruler_is_elephant_shifter
+            has_country_modifier = heir_is_mongoose_shifter
+            has_country_modifier = heir_is_leopard_shifter
+            has_country_modifier = heir_is_elephant_shifter
+        }
+	}
+    
+    immediate = {
+        hidden_effect = {
+            set_variable = {
+                which = mongooseAffinityVar
+                value = 0
+            }
+            set_variable = {
+                which = leopardAffinityVar
+                value = 0
+            }
+            set_variable = {
+                which = elephantAffinityVar
+                value = 0
+            }
+        }
+    }
+
+    after = {
+        country_event = { id = beast_memory.3 days = 90 }
+        set_ruler_flag = shifter_event_phase_two
+    }
+
+	option = { #Mongoose
+		name = beast_memory.2.a
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = mongooseAffinityVar
+                value = 1
+            }
+        }
+        add_prestige = 20
+        custom_tooltip = beast_memory_mongoose_like_shifter_tt
+	}
+    option = { #Leopard
+		name = beast_memory.2.b
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = leopardAffinityVar
+                value = 1
+            }
+        }
+        add_church_power = 25
+        custom_tooltip = beast_memory_leopard_like_shifter_tt
+	}
+    option = { #Elephant
+		name = beast_memory.2.c
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = elephantAffinityVar
+                value = 1
+            }
+        }
+        add_legitimacy = 10
+        custom_tooltip = beast_memory_elephant_like_shifter_tt
+	}
+}
+
+country_event = { #Seeking Sustenance
+	id = beast_memory.3
+	title = beast_memory.3.t
+	desc = beast_memory.3.d
+	picture = AFRICAN_EXPLORER_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = beast_memory
+        NOT = {
+            has_ruler_modifier = ruler_is_mongoose_shifter
+            has_ruler_modifier = ruler_is_leopard_shifter
+            has_ruler_modifier = ruler_is_elephant_shifter
+        }
+        had_ruler_flag = {
+            flag = shifter_event_phase_two
+            days = 90
+        }
+	}
+    
+    after = {
+        country_event = { id = beast_memory.4 days = 90 }
+        set_ruler_flag = shifter_event_phase_three
+    }
+
+	option = { #Mongoose
+		name = beast_memory.3.a
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = mongooseAffinityVar
+                value = 1
+            }
+        }
+        add_adm_power = -25
+        custom_tooltip = beast_memory_mongoose_like_shifter_tt
+	}
+    option = { #Leopard
+		name = beast_memory.3.b
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = leopardAffinityVar
+                value = 1
+            }
+        }
+        add_dip_power = -25
+        custom_tooltip = beast_memory_leopard_like_shifter_tt
+	}
+    option = { #Elephant
+		name = beast_memory.3.c
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = elephantAffinityVar
+                value = 1
+            }
+        }
+        add_mil_power = -25
+        custom_tooltip = beast_memory_elephant_like_shifter_tt
+	}
+}
+
+country_event = { #Bedding Down
+	id = beast_memory.4
+	title = beast_memory.4.t
+	desc = beast_memory.4.d
+	picture = northamericagfx_CITY_DEVELOPMENT_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = beast_memory
+        NOT = {
+            has_ruler_modifier = ruler_is_mongoose_shifter
+            has_ruler_modifier = ruler_is_leopard_shifter
+            has_ruler_modifier = ruler_is_elephant_shifter
+        }
+        had_ruler_flag = {
+            flag = shifter_event_phase_three
+            days = 90
+        }
+	}
+    
+    after = {
+        country_event = { id = beast_memory.5 days = 90 }
+        set_ruler_flag = shifter_event_phase_final
+    }
+
+	option = { #Mongoose
+		name = beast_memory.4.a
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = mongooseAffinityVar
+                value = 1
+            }
+        }
+        add_adm_power = 50
+        custom_tooltip = beast_memory_mongoose_like_shifter_tt
+	}
+    option = { #Leopard
+		name = beast_memory.4.b
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = leopardAffinityVar
+                value = 1
+            }
+        }
+        add_dip_power = 50
+        custom_tooltip = beast_memory_leopard_like_shifter_tt
+	}
+    option = { #Elephant
+		name = beast_memory.4.c
+        ai_chance = { factor = 100 }
+        hidden_effect = {
+            change_variable = {
+                which = elephantAffinityVar
+                value = 1
+            }
+        }
+        add_mil_power = 50
+        custom_tooltip = beast_memory_elephant_like_shifter_tt
+	}
+}
+
+country_event = { #Returning Home
+	id = beast_memory.5
+	title = beast_memory.5.t
+	desc = beast_memory.5.d
+	picture = muslimgfx_COURT_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = beast_memory
+        NOT = {
+            has_ruler_modifier = ruler_is_mongoose_shifter
+            has_ruler_modifier = ruler_is_leopard_shifter
+            has_ruler_modifier = ruler_is_elephant_shifter
+        }
+        had_ruler_flag = {
+            flag = shifter_event_phase_final
+            days = 90
+        }
+	}
+
+	option = { #I am a Mongoose
+		name = beast_memory.5.a
+        ai_chance = { factor = 100 }
+        trigger = {
+            NOT = {
+                check_variable = {
+                    which = leopardAffinityVar
+                    value = 2
+                }
+                check_variable = {
+                    which = elephantAffinityVar
+                    value = 2
+                }
+            }
+        }
+        add_ruler_modifier = { name = ruler_is_mongoose_shifter duration = -1 }
+        random_list = {
+            1 = {
+                add_ruler_personality = shapeshifter_personality
+            }
+            2 = {
+
+            }
+        }
+	}
+    option = { #I am a Leopard
+		name = beast_memory.5.b
+        ai_chance = { factor = 100 }
+        trigger = {
+            NOT = {
+                check_variable = {
+                    which = mongooseAffinityVar
+                    value = 2
+                }
+                check_variable = {
+                    which = elephantAffinityVar
+                    value = 2
+                }
+            }
+        }
+        add_ruler_modifier = { name = ruler_is_leopard_shifter duration = -1 }
+        random_list = {
+            1 = {
+                add_ruler_personality = shapeshifter_personality
+            }
+            2 = {
+
+            }
+        }
+	}
+    option = { #I am an Elephant
+		name = beast_memory.5.c
+        ai_chance = { factor = 100 }
+        trigger = {
+            NOT = {
+                check_variable = {
+                    which = mongooseAffinityVar
+                    value = 2
+                }
+                check_variable = {
+                    which = leopardAffinityVar
+                    value = 2
+                }
+            }
+        }
+        add_ruler_modifier = { name = ruler_is_elephant_shifter duration = -1 }
+        random_list = {
+            1 = {
+                add_ruler_personality = shapeshifter_personality
+            }
+            2 = {
+
+            }
+        }
+	}
+}
+
+country_event = { #Heir Shifter
+	id = beast_memory.6
+	title = beast_memory.6.t
+	desc = beast_memory.6.d
+	picture = BURGHER_ESTATE_eventPicture
+
+	is_triggered_only = yes
+    hidden = yes
+
+	trigger = {
+		religion = beast_memory
+        OR = {
+            has_country_modifier = heir_is_mongoose_shifter
+            has_country_modifier = heir_is_leopard_shifter
+            has_country_modifier = heir_is_elephant_shifter
+        }
+	}
+
+	option = { 
+		name = beast_memory.6.a
+        ai_chance = { factor = 100 }
+        if = {
+            limit = { has_country_modifier = heir_is_mongoose_shifter }
+            add_ruler_modifier = { name = ruler_is_mongoose_shifter duration = -1 }
+        }
+        else_if = {
+            limit = { has_country_modifier = heir_is_leopard_shifter }
+            add_ruler_modifier = { name = ruler_is_leopard_shifter duration = -1 }
+        }
+        else_if = {
+            limit = { has_country_modifier = heir_is_elephant_shifter }
+            add_ruler_modifier = { name = ruler_is_elephant_shifter duration = -1 }
+        }
+
+        remove_country_modifier = heir_is_mongoose_shifter
+        remove_country_modifier = heir_is_leopard_shifter
+        remove_country_modifier = heir_is_elephant_shifter
+	}
+}
+
+country_event = { #Celebrate Festival
+	id = beast_memory.7
+	title = beast_memory.7.t
+    desc = {
+		trigger = { has_country_modifier = brave_mongoose_cycle }
+		desc = beast_memory.7.d1
+	}
+    desc = {
+		trigger = { has_country_modifier = wise_leopard_cycle }
+		desc = beast_memory.7.d2
+	}
+    desc = {
+		trigger = { has_country_modifier = noble_elephant_cycle }
+		desc = beast_memory.7.d3
+	}
+	picture = SOUTH_AMERICAN_FESTIVAL_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = beast_memory
+	}
+
+    after = {
+        if = {
+            limit = { has_country_modifier = brave_mongoose_cycle }
+            remove_country_modifier = brave_mongoose_cycle
+            add_country_modifier = { name = wise_leopard_cycle duration = -1 }
+        }
+        else_if = {
+            limit = { has_country_modifier = wise_leopard_cycle }
+            remove_country_modifier = wise_leopard_cycle
+            add_country_modifier = { name = noble_elephant_cycle duration = -1 }
+        }
+        else_if = {
+            limit = { has_country_modifier = noble_elephant_cycle }
+            remove_country_modifier = noble_elephant_cycle
+            add_country_modifier = { name = brave_mongoose_cycle duration = -1 }
+        }
+        remove_church_aspect = random
+        remove_church_aspect = random
+        remove_church_aspect = random
+        clr_country_flag = beast_memory_brave_mongoose_aspect_flag
+        clr_country_flag = beast_memory_wise_leopard_aspect_flag
+        clr_country_flag = beast_memory_noble_elephant_aspect_flag
+    }
+
+	option = { 
+        name = beast_memory.7.a 
+        ai_chance = { factor = 100 }
+        if = {
+            limit = { has_ruler_modifier = ruler_is_mongoose_shifter }
+            add_manpower = 5
+            add_army_tradition = 10
+        }
+        else_if = {
+            limit = { has_ruler_modifier = ruler_is_leopard_shifter }
+            hidden_effect = {
+                if = { 
+                    limit = { total_development = 1000 }
+                    add_treasury = 500
+                }
+                else = {
+                    add_owned_provinces_development_ducats = {
+                        multiplier = 0.5
+                        trigger = { always = yes }
+                    }
+                }
+            }
+            custom_tooltip = gainHalfDevCrowns
+            add_corruption = -2
+        }
+        else_if = {
+            limit = { has_ruler_modifier = ruler_is_elephant_shifter }
+            add_legitimacy = 25
+            add_stability = 1
+        }
+        trigger_switch = {
+            on_trigger = has_church_aspect
+            brave_mongoose_bold_major = { add_country_modifier = { name = brave_mongoose_bold_modifier duration = 7300 } }
+            brave_mongoose_charismatic_major = { add_country_modifier = { name = brave_mongoose_charismatic_modifier duration = 7300 } }
+            brave_mongoose_prideful_major = { add_country_modifier = { name = brave_mongoose_prideful_modifier duration = 7300 } }
+            brave_mongoose_ambitious_major = { add_country_modifier = { name = brave_mongoose_ambitious_modifier duration = 7300 } }
+            wise_leopard_cunning_major = { add_country_modifier = { name = wise_leopard_cunning_modifier duration = 7300 } }
+            wise_leopard_avaricious_major = { add_country_modifier = { name = wise_leopard_avaricious_modifier duration = 7300 } }
+            wise_leopard_calculating_major = { add_country_modifier = { name = wise_leopard_calculating_modifier duration = 7300 } }
+            wise_leopard_inflexible_major = { add_country_modifier = { name = wise_leopard_inflexible_modifier duration = 7300 } }
+            noble_elephant_loyal_major = { add_country_modifier = { name = noble_elephant_loyal_modifier duration = 7300 } }
+            noble_elephant_selfless_major = { add_country_modifier = { name = noble_elephant_selfless_modifier duration = 7300 } }
+            noble_elephant_impartial_major = { add_country_modifier = { name = noble_elephant_impartial_modifier duration = 7300 } }
+            noble_elephant_protector_major = { add_country_modifier = { name = noble_elephant_protector_modifier duration = 7300 } }
+        }
+	}
+}
+        
+
+#get animal companion
+country_event = {
+	id = beast_memory.10
+	title = beast_memory.10.t
+	desc = beast_memory.10.d
+	picture = PEASANTS_BARTERING_eventPicture
+
+	trigger = {
+		religion = beast_memory
+        NOT = { ruler_age = 30}
+	}
+
+
+    mean_time_to_happen = {
+        months = 240
+    }
+
+	option = {
+		name = beast_memory.10.a
+        add_ruler_modifier = {  name = tanizu_animal_companion_modifier duration = -1 }
+        add_legitimacy = 5
+        add_devotion = 10
+	}
+}
+
+
+#What Doesn't Kill You...
+country_event = {
+	id = beast_memory.21
+	title = beast_memory.21.t
+	desc = beast_memory.21.d
+	picture = MARAVI_FURNACE_eventPicture
+
+    is_triggered_only = yes
+
+	trigger = {
+        has_ruler_modifier = ruler_is_mongoose_shifter
+        NOT = { 
+            has_ruler_flag = had_mongoose_assassination_event_flag
+            has_country_modifier = beast_memory_cracking_down
+            has_country_modifier = beast_memory_divine_right
+            has_country_modifier = beast_memory_lawful_rule
+        }
+        OR = {
+            government = monarchy
+            government = tribal
+        }
+	}
+
+    immediate = {
+        hidden_effect = {
+            set_ruler_flag = had_mongoose_assassination_event_flag
+        }
+    }
+
+	option = {
+		name = beast_memory.21.a
+        ai_chance = { factor = 50 }
+        add_legitimacy = 10
+        add_prestige = 10
+        add_ruler_modifier = {
+            name = beast_memory_survived_assassination
+            duration = -1
+        }
+	}
+
+    option = {
+		name = beast_memory.21.b
+        ai_chance = { factor = 50 }
+        add_legitimacy = 10
+        add_yearly_manpower = -0.25
+        add_country_modifier = {
+            name = beast_memory_cracking_down
+            duration = 3650
+        }
+	}
+
+    option = {
+		name = beast_memory.21.c
+        highlight = yes
+        trigger = {
+            personality = zealot_personality
+        }
+        ai_chance = { factor = 100 }
+        add_legitimacy = 10
+        add_country_modifier = {
+            name = beast_memory_divine_right
+            duration = 3650
+        }
+	}
+
+    option = {
+		name = beast_memory.21.e
+        highlight = yes
+        trigger = {
+            personality = just_personality
+        }
+        ai_chance = { factor = 100 }
+        add_legitimacy = 10
+        add_country_modifier = {
+            name = beast_memory_lawful_rule
+            duration = 3650
+        }
+	}
+}
+
+#A wild kind of madness
+country_event = {
+	id = beast_memory.22
+	title = beast_memory.22.t
+	desc = beast_memory.22.d
+	picture = TRIBES_MEETING_eventPicture
+
+    is_triggered_only = yes
+
+	trigger = {
+        culture_group = inyaswarosa
+        NOT = { 
+            has_country_modifier = had_wild_kind_of_madness
+        }
+	}
+
+    immediate = {
+        hidden_effect = {
+            add_country_modifier = {
+                name = had_wild_kind_of_madness
+                duration = 5475
+                hidden = yes
+            }
+            random_owned_province = {
+                save_event_target_as = beast_memory_wild_shifter_target
+            }
+        }
+    }
+
+	option = {
+		name = beast_memory.22.a
+        ai_chance = { factor = 50 }
+        add_yearly_manpower = -0.25
+        if = {
+            limit = {
+                OR = {
+                    religion = sky_domain
+                    religion = beast_memory
+                }
+            }
+            add_church_power = -25
+        }
+	}
+
+    option = {
+		name = beast_memory.22.b
+        ai_chance = { factor = 50 }
+        add_treasury = -50
+        event_target:beast_memory_wild_shifter_target = {
+            add_province_modifier = {
+                name = beast_memory_mad_shapeshifter
+                duration = 365
+            }
+        }
+        random_list = {
+            50 = {
+                country_event = {
+                    id = beast_memory.23
+                    days = 365
+                }
+            }
+            50 = {
+                country_event = {
+                    id = beast_memory.24
+                    days = 365
+                }
+            }
+        }
+	}
+
+    option = {
+		name = beast_memory.22.c
+        highlight = yes
+        trigger = {
+            personality = zealot_personality
+            religion = beast_memory
+        }
+        ai_chance = { factor = 100 }
+        add_treasury = -50
+        event_target:beast_memory_wild_shifter_target = {
+            add_province_modifier = {
+                name = beast_memory_beast_judgement
+                duration = 365
+            }
+        }
+        random_list = {
+            25 = {
+                country_event = {
+                    id = beast_memory.23
+                    days = 365
+                }
+            }
+            75 = {
+                country_event = {
+                    id = beast_memory.24
+                    days = 365
+                }
+            }
+        }
+	}
+
+    option = {
+		name = beast_memory.22.d
+        highlight = yes
+        trigger = {
+            personality = kind_hearted_personality
+        }
+        ai_chance = { factor = 100 }
+        add_treasury = -50
+        event_target:beast_memory_wild_shifter_target = {
+            add_province_modifier = {
+                name = beast_memory_lost_guidance
+                duration = 365
+            }
+        }
+        random_list = {
+            25 = {
+                country_event = {
+                    id = beast_memory.23
+                    days = 365
+                }
+            }
+            75 = {
+                country_event = {
+                    id = beast_memory.24
+                    days = 365
+                }
+            }
+        }
+	}
+}
+
+
+#Those who succumb
+country_event = {
+	id = beast_memory.23
+	title = beast_memory.23.t
+	desc = beast_memory.23.d
+	picture = AFRICAN_EXPLORER_eventPicture
+
+    is_triggered_only = yes
+
+
+	option = {
+		name = beast_memory.23.a
+        add_yearly_manpower = -0.25
+        add_country_modifier = {
+            name = beast_memory_wild_shifters
+            duration = 3650
+        }
+	}
+}
+
+#Primal Devolution
+country_event = {
+	id = beast_memory.24
+	title = beast_memory.24.t
+	desc = beast_memory.24.d
+	picture = AFRICAN_EXPLORER_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = beast_memory.24.a
+        add_church_power = 50
+        add_manpower = -0.001
+        if = {
+            limit = {
+                OR = {
+                    religion = sky_domain
+                    religion = beast_memory
+                }
+            }
+            add_church_power = 25
+        }
+        add_country_modifier = {
+            name = beast_memory_kinship_with_nature
+            duration = 3650
+        }
+	}
+}
+
+#Purity of Blood
+country_event = {
+	id = beast_memory.25
+	title = beast_memory.25.t
+	desc = beast_memory.25.d
+	picture = MUSLIM_PAGAN_DISPUTE_eventPicture
+
+	is_triggered_only = yes
+
+    trigger = {
+        OR = {
+            has_country_modifier = ruler_is_mongoose_shifter
+            has_country_modifier = ruler_is_leopard_shifter
+            has_country_modifier = ruler_is_elephant_shifter
+        }
+        NOT = { 
+            has_country_modifier = had_purity_of_blood
+            personality = shapeshifter_personality
+            legitimacy = 70
+        }
+	}
+
+    immediate = {
+        hidden_effect = {
+            add_country_modifier = {
+                name = had_purity_of_blood
+                duration = 5475
+                hidden = yes
+            }
+        }
+    }
+
+	option = {
+		name = beast_memory.25.a
+        ai_chance = { factor = 50 }
+        add_legitimacy = 10
+        add_prestige = -10
+        
+        add_estate_influence_modifier = {
+			estate = estate_nobles
+			desc = beast_memory_impure_blood_desc
+			duration = 3650
+			influence = 10
+		}
+        add_estate_loyalty = {
+            estate = estate_nobles
+            loyalty = -10
+        }
+        add_estate_influence_modifier = {
+			estate = estate_church
+			desc = beast_memory_impure_blood_desc
+			duration = 3650
+			influence = 10
+		}
+        add_estate_loyalty = {
+            estate = estate_church
+            loyalty = -10
+        }
+	}
+    option = {
+		name = beast_memory.25.b
+        ai_chance = { factor = 50 }
+        add_legitimacy = 10
+        add_prestige = 10
+        add_church_power = 25
+        capital_scope = {
+            spawn_rebels = {
+                type = noble_rebels
+                size = 2
+            }
+        }
+	}
+    option = {
+		name = beast_memory.25.c
+        trigger = {
+            OR = {
+                personality = righteous_personality
+                personality = zealot_personality
+                personality = charismatic_negotiator_personality
+            }
+        }
+        highlight = yes
+        ai_chance = { factor = 100 }
+        add_country_modifier = {
+            name = beast_memory_talked_court_down
+            duration = 3650
+        }
+	}
+}
+
+
+#An Adherent's Guidance
+country_event = {
+	id = beast_memory.26
+	title = beast_memory.26.t
+	desc = beast_memory.26.d
+	picture = AN_EMPIRE_FOR_A_GIRAFFE_eventPicture
+
+	is_triggered_only = yes
+
+    trigger = {
+        num_of_religion = { religion = beast_memory value = 1 }
+        NOT = { 
+            any_owned_province = {
+                OR = {
+                    has_province_modifier = beast_memory_shifter_development_1
+                    has_province_modifier = beast_memory_shifter_development_2
+                    has_province_modifier = beast_memory_shifter_development_3
+                }
+            }
+        }
+	}
+
+    immediate = {
+        hidden_effect = {
+            random_owned_province = {
+                limit = { religion = beast_memory }
+                save_event_target_as = beast_memory_shifter_dev_target
+            }
+        }
+    }
+
+	option = {
+		name = beast_memory.26.a
+        trigger = {
+            OR = {
+                religion = beast_memory
+                is_or_was_tag = { tag = L63 }
+            }
+        }
+        ai_chance = { factor = 50 }
+        event_target:beast_memory_shifter_dev_target = {
+            add_base_production = 1
+            add_province_modifier = {
+                name = beast_memory_shifter_development_1
+                duration = 3650
+            }
+        }
+        add_church_power = 25
+	}
+    option = {
+		name = beast_memory.26.b
+        trigger = {
+            religion_group = east_sarhal_religion
+            NOT = { religion = beast_memory }
+        }
+        ai_chance = { factor = 50 }
+        event_target:beast_memory_shifter_dev_target = {
+            add_base_production = 1
+            add_province_modifier = {
+                name = beast_memory_shifter_development_2
+                duration = 3650
+            }
+        }
+	}
+    option = {
+		name = beast_memory.26.c
+        trigger = {
+            NOT = {
+                religion_group = east_sarhal_religion
+            }
+        }
+        ai_chance = { factor = 100 }
+        event_target:beast_memory_shifter_dev_target = {
+            add_base_production = 1
+            add_province_modifier = {
+                name = beast_memory_shifter_development_3
+                duration = 3650
+            }
+        }
+	}
+}
+
+
+#The Young and Restless
+country_event = {
+	id = beast_memory.27
+	title = beast_memory.27.t
+	desc = beast_memory.27.d
+	picture = NZINGHA_eventPicture
+
+	is_triggered_only = yes
+
+    trigger = {
+        religion = beast_memory
+        num_of_religion = { religion = beast_memory value = 1 }
+        NOT = {
+            has_country_modifier = had_young_and_restless
+        }
+	}
+
+    immediate = {
+        hidden_effect = {
+            random_owned_province = {
+                limit = { religion = beast_memory }
+                save_event_target_as = beast_memory_young_shifter_target
+            }
+        }
+        add_country_modifier = {
+            name = had_young_and_restless
+            duration = 5475
+            hidden = yes
+        }
+    }
+
+	option = {
+		name = beast_memory.27.a
+        ai_chance = { factor = 50 }
+        add_estate_influence_modifier = {
+			estate = estate_nobles
+			desc = beast_memory_inexperienced_ruler
+			duration = 3650
+			influence = -10
+		}
+        add_estate_loyalty = {
+            estate = estate_church
+            loyalty = 10
+        }
+        event_target:beast_memory_young_shifter_target = {
+            add_province_modifier = {
+                name = beast_memory_young_shifter_ruling
+                duration = 1825
+            }
+        }
+        hidden_effect = {
+            random_list = {
+                50 = {
+                    country_event = {
+                        id = beast_memory.28
+                        days = 1825
+                    }
+                }
+                50 = {
+                    country_event = {
+                        id = beast_memory.29
+                        days = 1825
+                    }
+                }
+            }
+        }
+	}
+    option = {
+		name = beast_memory.27.b
+        ai_chance = { factor = 50 }
+        add_estate_influence_modifier = {
+			estate = estate_nobles
+			desc = beast_memory_punished_upstart
+			duration = 3650
+			influence = 10
+		}
+        add_estate_loyalty = {
+            estate = estate_nobles
+            loyalty = 10
+        }
+        event_target:beast_memory_young_shifter_target = {
+            add_local_autonomy = -10
+            add_province_modifier = {
+                name = beast_memory_young_shifter_punished
+                duration = 3650
+            }
+        }
+	}
+    option = {
+		name = beast_memory.27.c
+        trigger = {
+            OR = {
+                ruler_has_personality = just_personality
+                ruler_has_personality = righteous_personality
+            }
+        }
+        ai_chance = { factor = 100 }
+        add_estate_loyalty = {
+            estate = estate_nobles
+            loyalty = 10
+        }
+        add_legitimacy = 5
+        add_prestige = 5
+        add_country_modifier = {
+            name = beast_memory_talked_court_down_again
+            duration = 1825
+        }
+	}
+    option = {
+		name = beast_memory.27.e
+        trigger = {
+            OR = {
+                ruler_has_personality = embezzler_personality
+                ruler_has_personality = greedy_personality
+            }
+        }
+        ai_chance = { factor = 100 }
+        add_estate_influence_modifier = {
+			estate = estate_nobles
+			desc = beast_memory_inexperienced_ruler
+			duration = 3650
+			influence = -10
+		}
+        add_estate_loyalty = {
+            estate = estate_church
+            loyalty = 10
+        }
+        add_prestige = 5
+        event_target:beast_memory_young_shifter_target = {
+            add_province_modifier = {
+                name = beast_memory_ruler_in_our_pocket
+                duration = 1825
+            }
+        }
+        hidden_effect = {
+            random_list = {
+                50 = {
+                    country_event = {
+                        id = beast_memory.28
+                        days = 1825
+                    }
+                }
+                50 = {
+                    country_event = {
+                        id = beast_memory.29
+                        days = 1825
+                    }
+                }
+            }
+        }
+	}
+}
+
+#Might makes right
+country_event = {
+	id = beast_memory.28
+	title = beast_memory.28.t
+	desc = beast_memory.28.d
+	picture = AFRICAN_DISCIPLINE_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = beast_memory.28.a
+        add_estate_influence_modifier = {
+			estate = estate_church
+			desc = beast_memory_strong_shifter_ruler
+			duration = 3650
+			influence = 10
+		}
+        add_estate_loyalty = {
+            estate = estate_church
+            loyalty = 10
+        }
+        event_target:beast_memory_young_shifter_target = {
+            add_base_tax = 1
+            add_province_modifier = {
+                name = beast_memory_young_leopard_rule
+                duration = 1825
+            }
+        }
+	}
+}
+
+#Fangs crack under pressure
+country_event = {
+	id = beast_memory.29
+	title = beast_memory.29.t
+	desc = beast_memory.29.d
+	picture = AFRICAN_CARAVAN_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = beast_memory.29.a
+        add_estate_influence_modifier = {
+			estate = estate_church
+			desc = beast_memory_failed_shifter_ruler
+			duration = 3650
+			influence = -10
+		}
+        add_estate_influence_modifier = {
+			estate = estate_nobles
+			desc = beast_memory_upstart_humbled
+			duration = 3650
+			influence = 5
+		}
+        event_target:beast_memory_young_shifter_target = {
+            add_base_tax = 1
+            add_province_modifier = {
+                name = beast_memory_failed_shifter_removed
+                duration = 1825
+            }
+        }
+	}
+}

@@ -1,0 +1,432 @@
+sudomegi_government = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		stability_cost_modifier = 0.25
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_council = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		advisor_cost = 0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_work = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		production_efficiency = -0.2
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_faith = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		global_missionary_strength = -0.015
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_home = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		core_creation = 0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_mind = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_adm_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_admin
+				has_country_flag = sudomegi_tier_two_admin
+				has_country_flag = sudomegi_tier_three_admin
+			}
+		}
+	}
+	modifier = {
+		all_power_cost = 0.075
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_admin
+	}
+	monarch_power = adm
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_community = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		diplomatic_reputation = -1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_others = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		improve_relation_modifier = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_travel = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		trade_efficiency = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_progress = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		monthly_reform_progress_modifier = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_peace = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		province_warscore_cost = 0.2
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_body = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_dip_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_dip
+				has_country_flag = sudomegi_tier_two_dip
+				has_country_flag = sudomegi_tier_three_dip
+			}
+		}
+	}
+	modifier = {
+		global_trade_goods_size_modifier = -0.15
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_dip
+	}
+	monarch_power = dip
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_expedience = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		movement_speed = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_sustenance = {
+	cost = 50
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		land_maintenance_modifier = 0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_one_aspect
+		set_country_flag = sudomegi_tier_one_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_duty = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		global_manpower_modifier = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_action = {
+	cost = 75
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		manpower_recovery_speed = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_two_aspect
+		set_country_flag = sudomegi_tier_two_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_war = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		land_morale = -0.1
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}
+sudomegi_spirit = {
+	cost = 100
+	trigger = {
+		custom_trigger_tooltip = {
+		tooltip = sudomegi_mil_aspects_tooltip
+		NOT = {
+				has_country_flag = sudomegi_tier_one_mil
+				has_country_flag = sudomegi_tier_two_mil
+				has_country_flag = sudomegi_tier_three_mil
+			}
+		}
+	}
+	modifier = {
+		discipline = -0.05
+	}
+	effect = {
+		custom_tooltip = sudomegi_has_tier_three_aspect
+		set_country_flag = sudomegi_tier_three_mil
+	}
+	monarch_power = mil
+	ai_will_do = {
+		factor = 15
+	}
+}

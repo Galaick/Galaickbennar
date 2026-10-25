@@ -1,0 +1,463 @@
+#### Diplomacy File for Sarhal ####
+#	alliance = {
+#		first = X       					# One side of the alliance - The "Giver" or "Overlord" depending the type
+#		second = X     						# The other side of the alliance - The "Receiver" or "Subject" depending the type
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# Types: alliance - royal_marriage - vassal - march
+	# dependency as seen bellow can also be used but requires the addition of "subject_type"
+
+#	dependency = { 
+#		subject_type = tributary_state_anb	# The type of subject for the relationship
+#		first = X      						# The overlord, if the relation is a overlord-subject relation
+#		second = X    						# The subject, if the relation is a overlord-subject relation
+#		start_date = 1400.1.1 				# When to start applying the relationship
+#		end_date = 1500.1.1   				# When to stop applying the relationship
+#	}
+	# NOTE: "vassal" and "march" type relations are created in the same way as alliances
+
+# Important Note: Bulwar Diplomacy can be found on its own file "anb_diplomacy_bulwar.txt"
+
+#### Western Sarhal ####
+
+# North Salahad
+ # Note: Eborthil - Deshak PU is on the Cannor File
+
+#### The Stewardship of the Sorrow ####
+	#3rd dynasty
+	1.1.1 = { celestial_emperor = U01 }
+	68.1.1 = { celestial_emperor = U01 }
+	105.1.1 = { celestial_emperor = U01 }
+	145.1.1 = { celestial_emperor = U01 }
+	#4th dynasty
+	154.1.1 = { celestial_emperor = U01 }
+	167.1.1 = { celestial_emperor = U01 }
+	188.1.1 = { celestial_emperor = U01 }
+	203.1.1 = { celestial_emperor = U01 }
+	#5th dynasty
+	233.1.1 = { celestial_emperor = U01 }
+	254.1.1 = { celestial_emperor = U01 }
+	287.1.1 = { celestial_emperor = U01 }
+	316.1.1 = { celestial_emperor = U01 }
+	367.1.1 = { celestial_emperor = U01 }
+	393.1.1 = { celestial_emperor = U01 }
+	463.1.1 = { celestial_emperor = U01 }
+	#Aakhet
+	475.1.1 = { celestial_emperor = U01 }
+	#6th dynasty
+	488.1.1 = { celestial_emperor = U01 }
+	522.1.1 = { celestial_emperor = U01 }
+	546.1.1 = { celestial_emperor = U01 }
+	581.1.1 = { celestial_emperor = U01 }
+	628.1.1 = { celestial_emperor = U01 }
+	662.1.1 = { celestial_emperor = U01 }
+	706.1.1 = { celestial_emperor = U01 }
+	757.1.1 = { celestial_emperor = U01 }
+	#7th dynasty
+	800.1.1 = { celestial_emperor = U01 }
+	862.1.1 = { celestial_emperor = U01 }
+	904.1.1 = { celestial_emperor = U01 }
+	949.1.1 = { celestial_emperor = U01 }
+	1008.1.1 = { celestial_emperor = U01 }
+	1068.1.1 = { celestial_emperor = U01 }
+	1112.1.1 = { celestial_emperor = U01 }
+	#Jexis
+	1140.1.1 = { celestial_emperor = F38 }
+	#7th continued
+	1162.1.1 = { celestial_emperor = U01 }
+	1212.1.1 = { celestial_emperor = U01 }
+	1278.1.1 = { celestial_emperor = U01 }
+	1349.1.1 = { celestial_emperor = U01 }
+	1398.1.1 = { celestial_emperor = U01 }
+	1439.1.1 = { celestial_emperor = U01 }
+
+#####
+
+alliance = {
+	first = U10
+	second = U07
+	start_date = 1400.1.1
+	end_date = 1500.1.1
+}
+
+ #Viakkoc - Ekha
+dependency = {
+	subject_type = tributary_state_anb
+	first = U07
+	second = U08
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = U01
+	second = U10
+	start_date = 1400.1.1
+	end_date = 1500.1.1
+}
+
+# Faungala and Horashesh
+
+ #Bokiya-Mausarjirad 
+vassal = {
+	first = L15
+	second = L18
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Aramoole-Gomuvuri
+march = {
+	first = F63
+	second = L12
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Muhaqaar-Mattabo
+march = {
+	first = F61
+	second = F70
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Amezajik-Anàniltra
+royal_marriage = {
+	first = L46
+	second = L44
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Mihitarab vassals (Mpirelmasi and Jakannakazy)
+vassal = {
+	first = L37
+	second = L39
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = L37
+	second = L35
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Mihitarab-Zuvavim
+alliance = {
+	first = L37
+	second = L09
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Bibyobi-Rayafo
+dependency = {
+    subject_type = sponsored_adventurer_subject
+    first = L38
+    second = S98
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+ #Negefaama-Damisi
+vassal = {
+	first = L14
+	second = S97
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+ #Binwarji-Maikirow
+vassal = {
+	first = L22
+	second = L20
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+#### Eastern Sarhal ####
+
+# Taneyas - Lizardfolk
+
+vassal = {
+	first = L69
+	second = L99
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = L69
+	second = L90
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = L95
+	second = L97
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = L95
+	second = L96
+	start_date = 1420.1.1
+	end_date = 1500.1.1
+}
+
+
+# Tanizu vassals
+
+ #Shalazar - Eel
+vassal = {
+	first = L84 #Shalazar
+	second = S34 #Cunning River Eel
+	start_date = 540.1.1
+	end_date = 1500.1.1
+}
+ #Shalazar - Gorilla
+vassal = {
+	first = L84 #Shalazar
+	second = S33 #Red Fanged Gorilla
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+ #Shangra - Duiker
+vassal = {
+	first = L83 #Shangra
+	second = S36 #Stealthy Duiker
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+ #Gawakhiza - Inyubi
+dependency = {
+	subject_type = tributary_state_anb
+	first = S21 #Gawakhiza
+	second = S11 #Sea Roaming Inyubi
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+ #Katidariga - Weaver Bird
+vassal = {
+	first = S83 #Katidariga
+	second = S39 #Hut Building Weaver Bird
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+ #Katidariga - Tchoken
+vassal = {
+	first = S83 #Katidariga
+	second = L82 #Way Pointing Tchoken
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+ #Katidariga - Kazatsa
+vassal = {
+	first = S83 #Katidariga
+	second = S12 #Foul Mouthed Kazatsa
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+ #Kidsit Yiti - Parrot
+vassal = {	
+	first = L67 #Kidsit Yiti
+	second = S42 #Friend Helping Parrot
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+ #Kidsit Yiti - Goose
+vassal = {
+	first = L67 #Kidsit Yiti
+	second = S43 #Violent Hearted Goose
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S42 #Friend Helping Parrot
+	second = S43 #Violent Hearted Goose
+	start_date = 1103.1.1
+	end_date = 1821.1.1
+}
+
+ #Bongo - Hippo
+vassal = {
+	first = S37 #Swift Legged Bongo
+	second = S38 #Work Doing Hippo
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+ #Bongo - Hippo
+vassal = {
+	first = S37 #Swift Legged Bongo
+	second = S40 #Forest Hiding Okapi
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+# The Baashidi
+
+dependency = {
+	subject_type = sponsored_adventurer_subject
+	first = S20
+	second = S22
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S19
+	second = S20
+	start_date = 1400.1.1
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S19
+	second = S21
+	start_date = 1400.1.1
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S20
+	second = S21
+	start_date = 1400.1.1
+	end_date = 1500.1.1
+}
+
+dependency = {
+	subject_type = tributary_state_anb
+	first = S17
+	second = S16
+	start_date = 1438.1.1
+	end_date = 1500.1.1
+}
+
+# Madrilamak
+
+ # Weriksedar Pact
+
+alliance = {
+	first = S58
+	second = S59
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S58
+	second = S56
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S56
+	second = S59
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+
+ #alliance of 3 kings
+
+alliance = {
+	first = S25
+	second = S57
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S25
+	second = S60
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S57
+	second = S60
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+ # Pechuketema members
+
+alliance = {
+	first = S44
+	second = S46
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S44
+	second = S67
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S44
+	second = S66
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S46
+	second = S67
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S46
+	second = S66
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S67
+	second = S66
+	start_date = 1368.9.6
+	end_date = 1500.1.1
+}
+
+alliance = {
+	first = S25
+	second = S64
+	start_date = 1443.5.5
+	end_date = 1500.1.1
+}
+
+ #Boyebareti vassals
+
+vassal = {
+	first = L57
+	second = L64
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}
+
+vassal = {
+	first = L57
+	second = S74
+	start_date = 1444.1.1
+	end_date = 1500.1.1
+}

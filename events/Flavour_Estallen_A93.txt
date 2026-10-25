@@ -1,0 +1,303 @@
+namespace = flavour_estallen
+
+country_event = {
+	id = flavour_estallen.1
+	title = flavour_estallen.1.t
+	desc = flavour_estallen.1.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.1.a
+		add_country_modifier = {
+			name = A93_rose_party_relations
+			duration = 7300
+		}
+	}
+}
+
+country_event = { #the sack of leslinpar
+	id = flavour_estallen.2
+	title = flavour_estallen.2.t
+	desc = flavour_estallen.2.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.2.a
+		280 = {
+			add_base_tax = 4
+			add_base_production = 4
+			add_base_manpower = 4
+			add_prosperity = 50
+			add_unrest = -10
+		}
+		901 = {
+			add_base_tax = -4
+			add_base_production = -4
+			add_base_manpower = -4
+			add_devastation = 50
+			add_unrest = 10
+		}
+		esmaria_region = { add_permanent_claim = ROOT }
+	}
+}
+
+country_event = { #lovers of ryala
+	id = flavour_estallen.3
+	title = flavour_estallen.3.t
+	desc = flavour_estallen.3.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.3.a
+		add_country_modifier = {
+			name = lovers_of_ryala
+			duration = -1
+		}
+	}
+}
+
+country_event = { #children of esmaryal
+	id = flavour_estallen.4
+	title = flavour_estallen.4.t
+	desc = flavour_estallen.4.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.4.a
+		add_country_modifier = {
+			name = children_of_esmaryal
+			duration = -1
+		}
+	}
+}
+
+country_event = { #heirs of balgar
+	id = flavour_estallen.5
+	title = flavour_estallen.5.t
+	desc = flavour_estallen.5.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.5.a
+		add_country_modifier = {
+			name = heirs_of_balgar
+			duration = -1
+		}
+		if = {
+			limit = {
+				ROOT = { is_elector = no }
+				A73 = {
+					NOT = { liberty_desire = 50 }
+					is_subject_of = ROOT
+					is_elector = yes
+				}
+			}
+			A73 = { elector = no }
+			elector = yes
+		}
+	}
+}
+
+country_event = { #imperial heart
+	id = flavour_estallen.6
+	title = flavour_estallen.6.t
+	desc = flavour_estallen.6.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.6.a
+		add_country_modifier = {
+			name = estallen_imperial_heartland
+			duration = -1
+		}
+		custom_tooltip = A93_when_we_form_eoa_tt
+		tooltip = {
+			add_country_modifier = {
+				name = A93_eoa_modifier
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = { #develop estallen
+	id = flavour_estallen.7
+	title = flavour_estallen.7.t
+	desc = flavour_estallen.7.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.7.a
+		if = {
+			limit = { NOT = { has_global_flag = esmari_fashion_happened } }
+			if = {
+				limit = { ai = no }
+				set_country_flag = estallen_spawns_esmari_fashion
+				custom_tooltip = estallen_esmari_fashion.tt
+			}
+			else = {
+				random = {
+					chance = 50
+					set_country_flag = estallen_spawns_esmari_fashion
+				}
+			}			
+		}
+		280 = {
+			add_center_of_trade_level  = 1
+		}
+	}
+}
+
+country_event = { #secrets of silk
+	id = flavour_estallen.8
+	title = flavour_estallen.8.t
+	desc = flavour_estallen.8.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.8.a
+		if = {
+			limit = {
+				280 = {
+					province_has_center_of_trade_of_level = 3
+				}
+			}
+			280 = {
+				add_building = trade_depot
+				change_trade_goods = silk
+			}
+		}
+		else = {
+			280 = {
+				add_center_of_trade_level = 1
+				change_trade_goods = silk
+			}
+		}
+		custom_tooltip = A93_not_completed_produce_more_silk
+		280 = {
+			add_permanent_province_modifier = {
+				name = A93_learning_the_method
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = { #increase production
+	id = flavour_estallen.9
+	title = flavour_estallen.9.t
+	desc = flavour_estallen.9.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.9.a
+		280 = {
+			remove_province_modifier = A93_learning_the_method
+			add_permanent_province_modifier = {
+				name = estalleni_silks
+				duration = -1
+			}
+		}
+		301 = {
+			remove_province_modifier = A93_learning_the_method
+			add_permanent_province_modifier = {
+				name = A93_prestenn_prismatics_mod
+				duration = -1
+			}
+		}
+		define_advisor = {
+			type = natural_scientist
+			name = "Marion síl Prestenn"
+			skill = 3
+			culture = esmari
+			religion = ROOT
+			discount = yes
+		}
+	}
+}
+
+country_event = { #reformed pinklady band
+	id = flavour_estallen.10
+	title = flavour_estallen.10.t
+	desc = flavour_estallen.10.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.10.a
+		country_event = { id = flavour_estallen.11 }
+	}
+	option = {
+		name = flavour_estallen.10.b
+		unlock_merc_company = { merc_company = merc_reformed_pinklady_band }
+		add_army_tradition = 10
+		add_prestige = -10
+	}
+}
+
+country_event = {
+	id = flavour_estallen.11
+	title = flavour_estallen.11.t
+	desc = flavour_estallen.11.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.11.a
+		add_prestige = -10
+		country_event = { id = flavour_estallen.12 }
+	}
+}
+
+country_event = {
+	id = flavour_estallen.12
+	title = flavour_estallen.12.t
+	desc = flavour_estallen.12.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.12.a
+		unlock_merc_company = { merc_company = merc_reformed_pinklady_band }
+		add_army_tradition = 10
+	}
+}
+
+country_event = { #our lovely ladies
+	id = flavour_estallen.13
+	title = flavour_estallen.13.t
+	desc = flavour_estallen.13.d
+	picture = HRE_eventpicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavour_estallen.13.a
+		add_country_modifier = {
+			name = "estalleni_courtesans"
+			duration = 9125
+		}
+		custom_tooltip = estalleni_courtesans.tt
+	}
+}

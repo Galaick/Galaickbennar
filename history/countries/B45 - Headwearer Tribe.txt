@@ -1,0 +1,43 @@
+
+setup_vision_cannor = yes
+government = tribal
+add_government_reform = greentide_horde
+government_rank = 1
+primary_culture = common_goblin
+religion = goblinic_shamanism
+technology_group = tech_goblin
+capital = 726
+#this one keeps a good ruler, they'll need it when gawed vores them
+1422.6.9 = {
+	monarch = {
+		name = "Aminkle"
+		dynasty = "Headwearer"
+		birth_date = 1401.1.23
+		adm = 2
+		dip = 6
+		mil = 6	
+	}
+	add_ruler_personality = malevolent_personality
+	add_ruler_personality = lawgiver_personality
+	queen = {
+		name = "Floorce"
+		dynasty = "Armorhide"
+		birth_date = 1403.6.30
+		death_date = 1462.6.29
+		adm = 2
+		dip = 1
+		mil = 4
+	}
+	add_queen_personality = babbling_buffoon_personality
+}
+1432.7.7 = {
+	heir = {
+		name = "Mogru"
+		dynasty = "Headwearer"
+		birth_date = 1432.7.7
+		death_date = 1489.7.7
+		adm = 4
+		dip = 2
+		mil = 4
+	}
+}

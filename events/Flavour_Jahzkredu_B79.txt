@@ -1,0 +1,42 @@
+namespace = flavour_jazhkredu
+
+country_event = {
+	id = flavour_jazhkredu.1
+	title = flavour_jazhkredu.1.t
+	desc = flavour_jazhkredu.1.d
+	picture = GOBLIN_AMBUSH_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_jazhkredu.1.a
+		custom_tooltip = flavour_jazhkredu.1.tt
+		
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						culture = common_goblin
+						culture = forest_goblin
+					}
+				}
+				change_culture = paradise_goblin
+			}
+			change_primary_culture = paradise_goblin
+			set_ruler_culture = paradise_goblin
+			set_heir_culture = paradise_goblin
+			set_consort_culture = paradise_goblin
+			every_owned_province = {
+				add_province_modifier = {
+					name = birth_of_a_new_people_prov_mod
+					duration = 3650
+				}
+			}
+		}
+		add_country_modifier = {
+			name = birth_of_a_new_people
+			duration = 3650
+		}
+	}
+}

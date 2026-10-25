@@ -1,0 +1,668 @@
+l63_called_in_markers = {
+	mercenary_cost = -0.1
+	mercenary_manpower = 0.1
+}
+
+l63_sum_of_all_debts = {
+	mercenary_cost = -0.15
+	mercenary_manpower = 0.15
+}
+
+L63_rebuilding_fuhoengwaan = {
+	local_development_cost = -0.1
+	local_monthly_devastation = -0.1
+	local_prosperity_growth = 0.25
+}
+
+L63_shifter_monk_monastery = {
+	local_has_samurai = yes
+	amount_of_samurai = 2
+	has_samurai = yes
+}
+
+L63_shifter_monk_monastery_2 = {
+	local_has_samurai = yes
+	amount_of_samurai = 5
+	local_development_cost = -0.05
+	local_defensiveness = 0.15
+	has_samurai = yes
+}
+
+L63_shifter_monk_monastery_3 = {
+	local_has_samurai = yes
+	amount_of_samurai = 10
+	local_development_cost = -0.1
+	local_defensiveness = 0.3
+	has_samurai = yes
+}
+
+L63_way_of_ancestral_wisdom_novice = {
+	is_samurai_modifier = yes
+	shock_damage = 0.10
+	drill_decay_modifier = -0.25
+}
+
+L63_way_of_ancestral_wisdom_empowered = {
+	is_samurai_modifier = yes
+	shock_damage = 0.15
+	discipline = 0.025
+	drill_decay_modifier = -0.5
+}
+
+L63_way_of_ancestral_wisdom_enlightened = {
+	is_samurai_modifier = yes
+	shock_damage = 0.2
+	discipline = 0.05
+	drill_decay_modifier = -1
+}
+
+L63_bribed_garrison = {
+	local_defensiveness = -0.2
+	local_garrison_size = -0.2
+}
+
+L63_druidic_cooperation = {
+	transmutation_experience_mod = 0.1
+}
+
+L63_bronze_boom = {
+	infantry_cost = -0.2
+}
+
+L63_dormant_shadow_cultists = {
+	local_missionary_strength = -1
+	local_religious_unity_contribution = -1
+}
+
+L63_into_the_storm = {
+	colonists = 1
+	global_colonial_growth = 25
+}
+
+L63_kot_family = {
+	diplomatic_reputation = 1
+}
+
+L63_kot_family_2x = {
+	diplomatic_reputation = 2
+}
+
+L63_kot_family_3x = {
+	diplomatic_reputation = 3
+}
+
+L63_lee_family = {
+	trade_efficiency = 0.05
+}
+
+L63_lee_family_2x = {
+	trade_efficiency = 0.1
+}
+
+L63_lee_family_3x = {
+	trade_efficiency = 0.15
+}
+
+L63_mbabazi_family = {
+	caravan_power = 0.10
+	tolerance_heathen = 1
+}
+
+L63_mbabazi_family_2x = {
+	caravan_power = 0.20
+	tolerance_heathen = 2
+}
+
+L63_mbabazi_family_3x = {
+	caravan_power = 0.30
+	tolerance_heathen = 3
+}
+
+L63_zong_family = {
+	mercenary_discipline = 0.05
+}
+
+L63_zong_family_2x = {
+	mercenary_discipline = 0.10
+}
+
+L63_zong_family_3x = {
+	mercenary_discipline = 0.15
+}
+
+L63_yi_family = {
+	production_efficiency = 0.05
+}
+
+L63_yi_family_2x = {
+	production_efficiency = 0.10
+}
+
+L63_yi_family_3x = {
+	production_efficiency = 0.15
+}
+
+L63_mou_family = {
+	placed_merchant_power = 5
+}
+
+L63_mou_family_2x = {
+	placed_merchant_power = 10
+}
+
+L63_mou_family_3x = {
+	placed_merchant_power = 15
+}
+
+L63_umulisa_family = {
+	build_cost = -0.05
+}
+
+L63_umulisa_family_2x = {
+	build_cost = -0.10
+}
+
+L63_umulisa_family_3x = {
+	build_cost = -0.15
+}
+
+L63_cin_family = {
+	global_unrest = -1
+}
+
+L63_cin_family_2x = {
+	global_unrest = -2
+}
+
+L63_cin_family_3x = {
+	global_unrest = -3
+}
+
+L63_sa_sinwauk_family = {
+	native_assimilation = 0.25
+	global_colonial_growth = 10
+}
+
+L63_sa_sinwauk_family_2x = {
+	native_assimilation = 0.50
+	global_colonial_growth = 20
+}
+
+L63_sa_sinwauk_family_3x = {
+	native_assimilation = 0.75
+	global_colonial_growth = 30
+}
+
+L63_kagona_family = {
+	global_trade_power = 0.05
+}
+
+L63_kagona_family_2x = {
+	global_trade_power = 0.10
+}
+
+L63_kagona_family_3x = {
+	global_trade_power = 0.15
+}
+
+L63_tembo_family = {
+	innovativeness_gain = 0.5
+}
+
+L63_tembo_family_2x = {
+	innovativeness_gain = 1
+}
+
+L63_tembo_family_3x = {
+	innovativeness_gain = 1.5
+}
+
+L63_han_neip_family = {
+	global_regiment_cost = -0.10
+}
+
+L63_han_neip_family_2x = {
+	global_regiment_cost = -0.20
+}
+
+L63_han_neip_family_3x = {
+	global_regiment_cost = -0.30
+}
+
+L63_rukundo_family = {
+	interest = -0.5
+}
+
+L63_rukundo_family_2x = {
+	interest = -1
+}
+
+L63_rukundo_family_3x = {
+	interest = -1.5
+}
+
+L63_gunam_neip_family = {
+	inflation_reduction = 0.1
+}
+
+L63_gunam_neip_family_2x = {
+	inflation_reduction = 0.2
+}
+
+L63_gunam_neip_family_3x = {
+	inflation_reduction = 0.3
+}
+
+L63_urunekozi_family = {
+	mages_mana_regen = 0.25
+}
+
+L63_urunekozi_family_2x = {
+	mages_mana_regen = 0.5
+}
+
+L63_urunekozi_family_3x = {
+	mages_mana_regen = 0.75
+}
+
+L63_goeng_family = {
+	is_samurai_modifier = yes
+	discipline = 0.025
+}
+
+L63_goeng_family_2x = {
+	is_samurai_modifier = yes
+	discipline = 0.05
+}
+
+L63_goeng_family_3x = {
+	is_samurai_modifier = yes
+	discipline = 0.075
+}
+
+L63_nkurunziza_family = {
+	republican_tradition = 0.25
+	stability_cost_modifier = -0.15
+}
+
+L63_nkurunziza_family_2x = {
+	republican_tradition = 0.5
+	stability_cost_modifier = -0.3
+}
+
+L63_nkurunziza_family_3x = {
+	republican_tradition = 0.75
+	stability_cost_modifier = -0.45
+}
+
+L63_mugisha_family = {
+	global_own_trade_power = 0.05
+}
+
+L63_mugisha_family_2x = {
+	global_own_trade_power = 0.1
+}
+
+L63_mugisha_family_3x = {
+	global_own_trade_power = 0.15
+}
+
+L63_gaa_family = {
+	global_trade_goods_size_modifier = 0.025
+}
+
+L63_gaa_family_2x = {
+	global_trade_goods_size_modifier = 0.05
+}
+
+L63_gaa_family_3x = {
+	global_trade_goods_size_modifier = 0.075
+}
+
+L63_pearl_moon_family = {
+	adventurers_loyalty_modifier = 0.05
+}
+
+L63_pearl_moon_family_2x = {
+	adventurers_loyalty_modifier = 0.1
+}
+
+L63_pearl_moon_family_3x = {
+	adventurers_loyalty_modifier = 0.15
+}
+
+L63_beetlebiter_family = {
+	trade_goods_size = 2
+}
+
+L63_beetlebiter_family_2x = {
+	trade_goods_size = 4
+}
+
+L63_beetlebiter_family_3x = {
+	trade_goods_size = 6
+}
+
+L63_silver_tooth_family = {
+	improve_relation_modifier = 0.1
+}
+
+L63_silver_tooth_family_2x = {
+	improve_relation_modifier = 0.2
+}
+
+L63_silver_tooth_family_3x = {
+	improve_relation_modifier = 0.3
+}
+
+L63_moyo_family = {
+	trade_goods_size = 1
+	trade_value_modifier = 0.25
+}
+
+L63_moyo_family_2x = {
+	trade_goods_size = 2
+	trade_value_modifier = 0.5
+}
+
+L63_moyo_family_3x = {
+	trade_goods_size = 3
+	trade_value_modifier = 0.75
+}
+
+L63_divided_families_1 = {
+	advisor_cost = -0.1
+	global_ship_cost = -0.1
+	stability_cost_modifier = 0.1
+}
+
+L63_divided_families_2 = {
+	advisor_cost = -0.1
+	global_ship_cost = -0.1
+	stability_cost_modifier = 0.2
+}
+
+L63_divided_families_3 = {
+	advisor_cost = -0.1
+	global_ship_cost = -0.1
+	stability_cost_modifier = 0.2
+	all_estate_loyalty_equilibrium = -0.05
+}
+
+L63_divided_families_4 = {
+	candidate_random_bonus = 2
+	stability_cost_modifier = 0.4
+	all_estate_loyalty_equilibrium = -0.05
+}
+
+L63_divided_families_5 = {
+	stability_cost_modifier = 0.5
+	all_estate_loyalty_equilibrium = -0.1
+	global_unrest = 2
+}
+
+L63_divided_families_flux_1 = {
+	advisor_cost = -0.15
+	global_ship_cost = -0.15
+}
+
+L63_divided_families_flux_2 = {
+	advisor_cost = -0.1
+	global_ship_cost = -0.1
+}
+
+L63_divided_families_flux_3 = {
+	advisor_cost = -0.1
+	global_ship_cost = -0.1
+	stability_cost_modifier = 0.1
+}
+
+L63_divided_families_flux_4 = {
+	candidate_random_bonus = 2
+	stability_cost_modifier = 0.2
+}
+
+L63_divided_families_flux_5 = {
+	stability_cost_modifier = 0.5
+}
+
+L63_growing_league_influence = {
+	diplomatic_reputation = 2
+	accept_vassalization_reasons = 15
+}
+
+bumbadada_nexus_1 = {
+	church_power_modifier = 0.02
+	statewide_governing_cost = -0.05
+	local_state_maintenance_modifier = 0.1
+	trade_goods_size_modifier = -0.1
+	local_unrest = 1
+	local_build_cost = 0.1
+	local_build_time = 0.1
+	trade_goods_size = 0.02
+	picture = "chi_wellspring_1"
+}
+bumbadada_nexus_2 = {
+	church_power_modifier = 0.04
+	statewide_governing_cost = -0.1
+	local_state_maintenance_modifier = 0.2
+	trade_goods_size_modifier = -0.2
+	local_unrest = 2
+	local_build_cost = 0.2
+	local_build_time = 0.2
+	trade_goods_size = 0.02
+	picture = "chi_wellspring_2"
+}
+bumbadada_nexus_3 = {
+	church_power_modifier = 0.08
+	statewide_governing_cost = -0.15
+	local_state_maintenance_modifier = 0.4
+	trade_goods_size_modifier = -0.3
+	local_unrest = 3
+	local_build_cost = 0.3
+	local_build_time = 0.3
+	trade_goods_size = 0.02
+	picture = "chi_wellspring_3"
+}
+bumbadada_nexus_4 = {
+	church_power_modifier = 0.16
+	statewide_governing_cost = -0.2
+	local_state_maintenance_modifier = 0.8
+	trade_goods_size_modifier = -0.4
+	local_unrest = 4
+	local_build_cost = 0.4
+	local_build_time = 0.4
+	trade_goods_size = 0.02
+	picture = "chi_wellspring_4"
+}
+bumbadada_nexus_5 = {
+	church_power_modifier = 0.32
+	statewide_governing_cost = -0.25
+	local_state_maintenance_modifier = 1.6
+	trade_goods_size_modifier = -0.5
+	local_unrest = 5
+	local_build_cost = 0.5
+	local_build_time = 0.5
+	trade_goods_size = 0.02
+	picture = "chi_wellspring_5"
+}
+
+estate_burghers_jungle_expansion_mod = {
+	local_development_cost = -0.2
+}
+
+L63_undersea_excavations = {
+	local_development_cost = -0.05
+	local_build_cost = -0.2
+}
+
+L63_monsoon_mastery = {
+	max_flagships = 1
+}
+
+L63_kagona_family_shipworks = {
+	trade_value = 1
+}
+
+L63_transmutation_1_plant_growth_local_mod_coffee_upgrade = {
+	trade_goods_size = 0.4
+	trade_goods_size_modifier = 0.3
+	picture = "transmutation_mod_icon_spell_modifier"
+}
+
+L63_coffee_mage_tower_upgrade_mod = {
+	local_development_cost = -0.1
+	local_hostile_attrition = 1
+}
+
+L63_spiced_coffee_craze = {
+	trade_steering = 0.15
+	prestige = 1
+}
+
+L63_transmutative_practices = {
+	local_development_cost = -0.1
+	local_has_samurai = yes
+}
+
+L63_through_you = {
+	local_development_cost = -0.1
+	local_production_efficiency = 0.1
+	local_has_samurai = yes
+}
+
+L63_broken_monopoly = {
+	global_trade_power = -0.2
+	global_unrest = 3
+}
+
+L63_signs_of_movement = {
+	global_trade_power = -0.15
+	global_unrest = 2
+}
+
+L63_recovering_market = {
+	global_trade_power = -0.1
+	global_unrest = 1
+}
+
+L63_healthy_competitor = {
+	global_trade_power = 0.05
+}
+
+L63_pearl_toll = {
+	province_trade_power_value = 10
+}
+
+L63_sculpted_terrain_1 = {
+	local_governing_cost_increase = -5
+	church_power_modifier = 0.02
+	picture = "paradise_garden"
+}
+
+L63_sculpted_terrain_2 = {
+	local_governing_cost_increase = -10
+	church_power_modifier = 0.04
+	picture = "paradise_garden"
+}
+
+L63_sculpted_terrain_3 = {
+	local_governing_cost_increase = -15
+	church_power_modifier = 0.08
+	picture = "paradise_garden"
+}
+
+L63_sculpted_terrain_4 = {
+	local_governing_cost_increase = -20
+	church_power_modifier = 0.16
+	picture = "efficient_irrigation"
+}
+
+L63_ecu_kiyaga_mod = {
+	global_trade_power = 0.015
+}
+
+L63_our_sea_mod = {
+	global_trade_power = 0.01
+}
+
+L63_blessing_of_the_storm = {
+	church_power_modifier = 0.01
+}
+
+L63_landing_hurricane = {
+	local_monthly_devastation = 5
+	picture = "desolated_by_the_stormwall"
+}
+
+L63_chi_deluge = {
+	church_power_modifier = 0.5
+}
+
+L63_poached_spirit_hunters = {
+	global_unrest = 5
+}
+
+L63_dreadnaughts_aid = {
+	naval_forcelimit_modifier = 0.15
+	global_sailors_modifier = 0.15
+}
+
+L63_quiet_skies = {
+	church_power_modifier = -10
+}
+
+L63_cinulaus_domain = {
+	local_missionary_strength = -1
+}
+
+L63_relief_road_construction = {
+	local_development_cost = -0.05
+	local_build_cost = 1
+	local_build_time = 1
+	picture = "golden_highway_construction"
+}
+
+L63_relief_road = {
+	local_friendly_movement_speed = 0.2
+	supply_limit_modifier = 0.4
+	province_trade_power_value = 4
+	picture = "golden_highway_complete"
+}
+
+L63_spirit_pillar_research_camp_magic = {
+	trade_goods_size = 0.25
+	mages_mana_regen = 0.25
+}
+
+L63_spirit_pillar_research_camp_artifice = {
+	trade_goods_size = 0.25
+}
+
+L63_strongfinning = {
+	diplomatic_reputation = 2
+	accept_vassalization_reasons = 15
+}
+
+L63_gilded_chains = {
+	global_trade_goods_size_modifier = 0.2
+	liberty_desire = -30
+}
+
+L63_perfect_brew = {
+	global_trade_goods_size_modifier = 0.1
+	development_cost = -0.1
+	military_tactics = 0.1
+	global_naval_engagement_modifier = 0.1
+}
+l63_rebuilt_plantations = {
+	province_trade_power_modifier = 0.15
+	local_production_efficiency = 0.15
+}
+L63_maruvarax_bonus = {
+	build_time = -0.15
+	monthly_reform_progress = 0.25
+}
+L63_won_yanshen_war = {}
+L63_won_vim_war = {}
+L63_won_rahen_war = {}

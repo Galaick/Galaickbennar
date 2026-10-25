@@ -1,0 +1,59 @@
+
+setup_vision_south_aelantir = yes
+government = tribal
+add_government_reform = tribal_despotism
+government_rank = 1
+mercantilism = 5
+primary_culture = quchamar
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 2388
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+1350.1.1 = {
+	monarch = { #Dynasty name literally means "High Successor". He is like, decrepitly old, thematic pillar of how the Quchamar have stagnated. Big peacemaker and stable guy, tries to ward off the imperialists in Cara Lafquén. [NOTE] Starts with exceptional willpower that disappears in 1446. So he will live to 110.
+		name = "Boryén VII"
+		dynasty = "Alú Olnir"
+		birth_date = 1336.1.1
+		adm = 5
+		dip = 6
+		mil = 2
+	}
+	add_ruler_personality = patron_of_arts_personality
+	add_ruler_personality = calm_personality
+	add_ruler_personality = just_personality
+}
+
+1440.1.1 = {
+	queen = { #Basically Cara Lafquen's real starting ruler because her husband is ancient. Dynasty name means River Guardian
+		name = "Véanya"
+		dynasty = "Aúnchapár"
+		birth_date = 1413.1.1 #this is a wild age gap, I know. But my thinking is that Boryen is very "Walder Frey", its supposed to be ugh when you see it.
+		death_date = 1450.1.1
+		adm = 1
+		dip = 4
+		mil = 2
+		female = yes
+	}
+	add_queen_personality = careful_personality
+}
+
+1442.1.1 = {
+	heir = { #Feolnir is a reference to the old name for Onisqado. Thinking that he could be some prophesised child that the Ancient Boryén disinherits his other sons in favour of, and he'd be the one that beats the Udralachi and that the Imperialists want to conquer Lake Chakantu. Maybe he gets assassinated, and thats part of the imperialists losing the debate?
+		name = "Feolnir"
+		dynasty = "Alú Olnir"
+		birth_date = 1442.1.1
+		death_date = 1450.1.1
+		adm = 5
+		dip = 4
+		mil = 6
+		claim = 100
+	}
+	add_heir_personality = conqueror_personality
+}
+
+add_exceptional_willpower_150 = {
+	duration = 730 #2 years
+	hidden = yes
+}

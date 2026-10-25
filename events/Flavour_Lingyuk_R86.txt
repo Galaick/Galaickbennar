@@ -1,0 +1,479 @@
+
+namespace = flavour_lingyuk
+
+country_event = { #liho's maidens seize power
+	id = flavour_lingyuk.1
+	title = flavour_lingyuk.1.t
+	desc = flavour_lingyuk.1.d
+	picture = ASSASSINATION_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.1.a
+
+		custom_tooltip = R86_lihos_maidens_seize_power_tt
+		set_country_flag = R86_no_clergy_disaster
+		hidden_effect = {
+			add_country_modifier = { #limit to clergy?
+				name = R86_clergy_revocation
+				duration = -1
+				hidden = yes
+			}
+		}
+	}
+}
+
+country_event = { #Huszien Gives to Us
+	id = flavour_lingyuk.2
+	title = flavour_lingyuk.2.t
+	desc = flavour_lingyuk.2.d
+	picture = BATTLE_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					OR = { 
+						trade_goods = grain 
+						trade_goods = livestock 
+					}
+				}
+				random_list = {
+					1 = {
+						spawn_rebels = {
+							size = 1
+							type = noble_rebels
+						}
+					}
+					1 = {
+
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = flavour_lingyuk.2.a
+		change_estate_land_share = {
+			estate = estate_nobles
+			share = -100
+		}
+
+		disable_estate_nobles = yes
+
+		add_country_modifier = {
+			name = R86_nobles_defeated
+			duration = 1825 #5 years
+		}
+
+		country_event = {
+			id = flavour_lingyuk.3
+			days = 1825 #5 years
+		}
+	}
+}
+
+
+country_event = { #We give to Huszien
+	id = flavour_lingyuk.3
+	title = flavour_lingyuk.3.t
+	desc = flavour_lingyuk.3.d
+	picture = FARMING_WIFE_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.3.a
+		custom_tooltip = R86_we_give_to_huszien_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = grain
+						trade_goods = livestock
+					}
+				}
+				add_province_modifier = {
+					name = R86_land_redistribution
+					duration = -1
+				}
+			}
+			set_country_flag = R86_sunny_day_enable
+		}
+	}
+}
+
+
+country_event = { #Sunny Day in Lingyuk
+	id = flavour_lingyuk.4
+	title = flavour_lingyuk.4.t
+	desc = flavour_lingyuk.4.d
+	picture = WESTERNISATION_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		tag = R86
+		had_country_flag = {
+			flag = R86_sunny_day_enable
+			days = 1825 #5 years
+		}
+		all_owned_province = {
+			OR = {
+				NOT = { trade_goods = grain }
+				NOT = { trade_goods = livestock }
+				NOT = { unrest = 1 }
+			}
+		}
+	}
+
+	option = {
+		name = flavour_lingyuk.4.a
+		set_country_flag = R86_sunny_day_complete
+	}
+}
+
+country_event = { #Stirrings in the Countryside
+	id = flavour_lingyuk.5
+	title = flavour_lingyuk.5.t
+	desc = flavour_lingyuk.5.d
+	picture = MERCHANTS_TALKING_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {}
+
+	option = {
+		name = flavour_lingyuk.5.a
+
+		add_country_modifier = {
+			name = R86_peasant_revolt
+			duration = 1825 #5 years
+		}
+
+		4871 = { #tianlou
+			spawn_rebels = {
+				size = 3
+				type = particularist_rebels
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = flavour_lingyuk.6
+				days = 1825 #5 years
+			}
+		}
+	}
+}
+
+country_event = { #Huszien our Light
+	id = flavour_lingyuk.6
+	title = flavour_lingyuk.6.t
+	desc = flavour_lingyuk.6.d
+	picture = REFORM_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {}
+
+	option = {
+		name = flavour_lingyuk.6.a
+
+		every_owned_province = {
+			limit = {
+				superregion = yanshen_superregion
+				has_terrain = city_terrain
+			}
+			add_province_modifier = {
+				name = R86_urbanite_massacre
+				duration = 1825 #5 years
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = flavour_lingyuk.7
+				days = 1825 #5 years
+			}
+		}
+	}
+}
+
+country_event = { #Wealth of Huszien
+	id = flavour_lingyuk.7
+	title = flavour_lingyuk.7.t
+	desc = flavour_lingyuk.7.d
+	picture = STREET_SPEECH_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {}
+
+	option = {
+		name = flavour_lingyuk.7.a
+
+		set_country_flag = R86_wealth_of_huszien_complete
+	}
+}
+
+country_event = { #Treason Against Lingyuk
+	id = flavour_lingyuk.8
+	title = flavour_lingyuk.8.t
+	desc = flavour_lingyuk.8.d
+	picture = GENERALS_DISCUSSING_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.8.a
+
+		add_country_modifier = {
+			name = R86_active_purge
+			duration = -1
+		}
+		hidden_effect = { #I hope this works
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			kill_leader = { type = general }
+			country_event = {
+				id = flavour_lingyuk.9
+				days = 30
+			}
+		}
+	}
+}
+
+country_event = { #Brigands of Yanshen
+	id = flavour_lingyuk.9
+	title = flavour_lingyuk.9.t
+	desc = flavour_lingyuk.9.d
+	picture = SIEGE_PRAGUE_CASTLE_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.9.a
+
+		add_country_modifier = {
+			name = R86_brigands_of_yanshen_mod
+			duration = -1
+		}
+		country_event = {
+			id = flavour_lingyuk.10
+			days = 3650
+		}
+	}
+}
+
+country_event = { #A Officer's Career
+	id = flavour_lingyuk.10
+	title = flavour_lingyuk.10.t
+	desc = flavour_lingyuk.10.d
+	picture = LAND_MILITARY_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.10.a
+
+		remove_country_modifier = R86_active_purge
+		remove_country_modifier = R86_brigands_of_yanshen_mod
+		set_country_flag = R86_purge_complete
+	}
+}
+
+country_event = { #Treason Against the Maidens of Liho
+	id = flavour_lingyuk.11
+	title = flavour_lingyuk.11.t
+	desc = flavour_lingyuk.11.d
+	picture = BANKRUPTCY_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.11.a
+		add_country_modifier = {
+			name = R86_purge_of_bureaucracy
+			duration = 1825 #5 years
+		}
+		hidden_effect = {
+			country_event = {
+				id = flavour_lingyuk.12
+				days = 1825 #5years
+			}
+		}
+	}
+}
+
+country_event = { #A distracted State
+	id = flavour_lingyuk.12
+	title = flavour_lingyuk.12.t
+	desc = flavour_lingyuk.12.d
+	picture = OVEREXTENSION_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.12.a
+		add_country_modifier = {
+			name = R86_distracted_state_mod
+			duration = -1
+		}
+		hidden_effect = {
+			country_event = {
+				id = flavour_lingyuk.13
+				days = 1825 #5years
+			}
+		}
+	}
+}
+
+country_event = { #Dissimination of Truth
+	id = flavour_lingyuk.13
+	title = flavour_lingyuk.13.t
+	desc = flavour_lingyuk.13.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	after = {
+		hidden_effect = { set_country_flag = R86_truth_complete }
+	}
+
+	option = {
+		name = flavour_lingyuk.13.a
+		custom_tooltip = R86_dissimination_of_truth_tt
+		tooltip = {
+			add_country_modifier = {
+				name = R86_all_power_to_the_hand_maiden
+				duration = -1
+			}
+		}
+		set_country_flag = R86_power_to_the_hand_maiden
+	}
+
+	option = {
+		name = flavour_lingyuk.13.b
+		custom_tooltip = R86_dissimination_of_truth_tt
+		tooltip = {
+			add_country_modifier = {
+				name = R86_trust_in_the_bueracracy
+				duration = -1
+			}
+		}
+		set_country_flag = R86_trust_bueracracy
+	}
+}
+
+country_event = { #The Children of the Fox and the Dragon
+	id = flavour_lingyuk.14
+	title = flavour_lingyuk.14.t
+	desc = flavour_lingyuk.14.d
+	picture = ADVISOR_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = flavour_lingyuk.14.a
+		custom_tooltip = R86_the_dakini_tt
+		hidden_effect = {
+			xianjie_region = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+				add_province_modifier = {
+					name = R86_the_children_of_the_fox_and_the_dragon
+					duration = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_subject_country = {
+					NOT = { is_subject_of_type = tributary_state }
+					capital_scope = {
+						region = xianjie_region
+					}
+				}
+			}
+			custom_tooltip = R86_the_dakini_vassal_claim_tt
+			hidden_effect = {
+				random_subject_country = {
+					limit = {
+						NOT = { is_subject_of_type = tributary_state }
+						capital_scope = {
+							region = xianjie_region
+						}
+					}
+					xianjie_region = {
+						limit = {
+							NOT = { country_or_non_sovereign_subject_holds = ROOT }
+							NOT = { is_core = PREV }
+						}
+						add_permanent_claim = PREV
+					}
+				}
+			}
+		}
+		else = {
+			custom_tooltip = R86_the_dakini_claim_tt
+			hidden_effect = {
+				xianjie_region = {
+					limit = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Shi Quan Shi Mei
+	id = flavour_lingyuk.15
+	title = flavour_lingyuk.15.t
+	desc = flavour_lingyuk.15.d
+	picture = UNIVERSITY_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {}
+
+	option = {
+		name = flavour_lingyuk.15.a
+		add_country_modifier = {
+			name = R86_shi_quan_shi_mei_mod
+			duration = -1
+		}
+		custom_tooltip = R86_shi_quan_shi_mei_tt
+		hidden_effect = {
+			set_country_flag = R86_allow_eternal_blossom_cb
+		}
+	}
+}

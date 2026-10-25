@@ -1,0 +1,647 @@
+
+########################################
+# Events for magocracy
+#
+# written by Johan Andersson
+########################################
+
+# Anbennar Changes
+# added NOT = { has_adventurer_reform = yes } to magocracy.1, adventurer ver in Adventurers.txt
+
+namespace = magocracy
+
+# country_event = {
+	# id =  magocracy.0
+	# title =  magocracy.0.t
+	# desc =  magocracy.0.d
+	# picture = WAR_OF_THE_ROSES_eventPicture
+	
+	# #fire_only_once = yes
+	# is_triggered_only = yes
+	
+	# hidden = yes
+	
+	# trigger = {
+		# has_heir = yes
+	# }
+	
+	# option = {
+		# name = "magocracy.0.a"
+	
+		# if = {
+			# limit = { 
+				# heir_mil = 2 
+				# NOT = { heir_mil = 4 }
+			# }
+			# define_heir_to_general = {
+				# fire = 1
+				# shock = 7
+				# manuever = 1
+				# siege = 2
+			# }
+		# }
+		# else_if = {
+			# limit = { 
+				# heir_mil = 4 
+				# NOT = { heir_mil = 5 }
+			# }
+			# define_heir_to_general = {
+				# fire = 1
+				# shock = 8
+				# manuever = 1
+				# siege = 2
+			# }
+		# }
+		# else_if = {
+			# limit = { 
+				# heir_mil = 5 
+				# NOT = { heir_mil = 6 }
+			# }
+			# define_heir_to_general = {
+				# fire = 2
+				# shock = 9
+				# manuever = 2
+				# siege = 4
+			# }
+		# }
+		# else_if = {
+			# limit = { 
+				# heir_mil = 6 
+			# }
+			# define_heir_to_general = {
+				# fire = 2
+				# shock = 10
+				# manuever = 2
+				# siege = 4
+			# }
+		# }
+	# }
+# }
+
+country_event = {
+	id = magocracy.1
+	title = theocracy.1.t
+	desc = theocracy.1.desc
+	picture = RELIGION_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_reform = magocracy_reform
+			has_reform = tehanek_magocracy_reform
+			has_reform = chaingrasper_dakocracy_reform
+			has_reform = arakeprun_magocracy
+		}
+		NOT = { has_country_flag = in_magocracy_heir_selection }
+		NOT = { ruler_is_immortal = yes }
+		has_government_attribute = heir
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = in_magocracy_heir_selection
+			
+			#FOOOOKIN UPDATE dsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			clr_country_flag = mago_gifted_academic_flag
+			clr_country_flag = mago_talented_sorcerer_flag
+			clr_country_flag = mago_military_theorist_flag
+			clr_country_flag = mago_young_mage_flag
+			
+			#Random Provs
+			random_core_province = {
+				save_event_target_as = gifted_academic_province
+			}
+			random_core_province = {
+				save_event_target_as = charismatic_sorcerer_province
+			}
+			random_core_province = {
+				save_event_target_as = military_theorist_province
+			}
+			random_core_province = {
+				save_event_target_as = estate_heir_province
+			}
+			anb_pre_election_setup = yes
+		}
+	}
+	
+	after = {
+		anb_post_election_cleanup = yes
+	}
+
+	option = {
+		name = magocracy.1.a		# A Gifted Academic
+		goto = gifted_academic_province
+		
+		set_country_flag = mago_gifted_academic_flag # USED IN DEVOTION.TXT
+		if = {
+			limit = { can_see_theocratic_heir_stats_trigger = yes }
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_adm = 2
+					culture = ROOT
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = gifted_academic_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					culture = event_target:gifted_academic_province
+					change_adm = 2
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = gifted_academic_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					culture = event_target:gifted_academic_province
+					change_adm = 2
+					number = 1
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					change_adm = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					change_adm = 2
+					number = 1
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_adm = 2
+					culture = ROOT
+					hidden = yes
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = gifted_academic_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					culture = event_target:gifted_academic_province
+					change_adm = 2
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = gifted_academic_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					culture = event_target:gifted_academic_province
+					change_adm = 2
+					number = 1
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					change_adm = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					change_adm = 2
+					number = 1
+				}
+			}
+		}
+		add_country_modifier = { name = magocracy_scholar_heir duration = 3650 }
+		clr_country_flag = in_magocracy_heir_selection
+		random_list = {
+			25 = {
+			modifier = {
+				factor = 3 # 
+				has_government_attribute = theocracy_magical_odds_boosted
+			}
+				define_powerful_mage = { type = heir }
+			}
+			75 = {
+			
+			}
+		}
+
+	}
+	
+	option = {
+		name = magocracy.1.b		# A Charismatic Sorcerer
+		goto = charismatic_sorcerer_province
+		
+		set_country_flag = mago_talented_sorcerer_flag # USED IN DEVOTION.TXT
+		if = {
+			limit = { can_see_theocratic_heir_stats_trigger = yes }
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_dip = 2
+					culture = ROOT
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = charismatic_sorcerer_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					culture = event_target:charismatic_sorcerer_province
+					change_dip = 2
+					female =yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = charismatic_sorcerer_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					culture = event_target:charismatic_sorcerer_province
+					change_dip = 2
+					number = 2
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					change_dip = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					change_dip = 2
+					number = 2
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_dip = 2
+					culture = ROOT
+					hidden = yes
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = charismatic_sorcerer_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					culture = event_target:charismatic_sorcerer_province
+					change_dip = 2
+					female =yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = charismatic_sorcerer_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					culture = event_target:charismatic_sorcerer_province
+					change_dip = 2
+					number = 2
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					change_dip = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					change_dip = 2
+					number = 2
+				}
+			}
+		}
+		make_spell_level_one_quarter_off = { level = 0 duration = 3650 }
+		clr_country_flag = in_magocracy_heir_selection
+		random_list = {
+			25 = {
+				modifier = {
+					factor = 3 # 
+					has_government_attribute = theocracy_magical_odds_boosted
+				}
+				define_powerful_mage = { type = heir }
+			}
+			75 = {
+			
+			}
+		}
+	}
+	
+	option = {
+		name = magocracy.1.c		# A Mage Knight
+		goto = military_theorist_province
+		
+		set_country_flag = mago_military_theorist_flag # USED IN DEVOTION.TXT
+		if = {
+			limit = { can_see_theocratic_heir_stats_trigger = yes }
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_mil = 2
+					culture = ROOT
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = military_theorist_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					culture = event_target:military_theorist_province
+					change_mil = 2
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = military_theorist_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					culture = event_target:military_theorist_province
+					change_mil = 2
+					number = 3
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					change_mil = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					change_mil = 2
+					number = 3
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 40
+					change_mil = 2
+					culture = ROOT
+					hidden = yes
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = military_theorist_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					culture = event_target:military_theorist_province
+					change_mil = 2
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = military_theorist_province
+				}
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					culture = event_target:military_theorist_province
+					change_mil = 2
+					number = 3
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 50
+					hidden = yes
+					change_mil = 2
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 50
+					hidden = yes
+					change_mil = 2
+					number = 3
+				}
+			}
+		}
+		add_country_modifier = { name = magocracy_knight_heir duration = 3650 }
+		custom_tooltip = free_battlemage_recruitment_tooltip
+		clr_country_flag = in_magocracy_heir_selection
+		random_list = {
+			25 = {
+				modifier = {
+					factor = 3 # 
+					has_government_attribute = theocracy_magical_odds_boosted
+				}
+				define_powerful_mage = { type = heir }
+			}
+			75 = {
+			
+			}
+		}
+	}
+	option = {
+		name = magocracy.1.e		# A Promising Young Mage
+		goto = estate_heir_province
+		
+		set_country_flag = mago_young_mage_flag # USED IN DEVOTION.TXT
+		if = {
+			limit = { can_see_theocratic_heir_stats_trigger = yes }
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 30
+					culture = ROOT
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = estate_heir_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 30
+					culture = event_target:estate_heir_province
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = estate_heir_province
+				}
+				define_heir_random_gender = {
+					age = 30
+					culture = event_target:estate_heir_province
+					number = 4
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 30
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 30
+					number = 4
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					wyvernheart_is_floodborn_council = yes
+				}
+				define_heir = {
+					age = 30
+					culture = ROOT
+					hidden = yes
+					dynasty = "of Wyvernheart"
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = estate_heir_province
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 30
+					hidden = yes
+					culture = event_target:estate_heir_province
+					female = yes
+				}
+			}
+			else_if = {
+				limit = {
+					has_saved_event_target = estate_heir_province
+				}
+				define_heir_random_gender = {
+					age = 30
+					hidden = yes
+					culture = event_target:estate_heir_province
+					number = 4
+				}
+			}
+			else_if = {
+				limit = {
+					culture_is_harpy = yes
+				}
+				define_heir = {
+					age = 30
+					hidden = yes
+					female = yes
+				}
+			}
+			else = {
+				define_heir_random_gender = {
+					age = 30
+					hidden = yes
+					number = 4
+				}
+			}
+		}		
+		clr_country_flag = in_magocracy_heir_selection
+		if = {
+			limit = { has_government_attribute = theocracy_magical_odds_boosted }
+			custom_tooltip = powerful_mage_bonus_legendary
+			hidden_effect = { set_country_flag = next_powerful_mage_bonus_legendary_school }
+		}
+		define_powerful_mage = { type = heir }
+	}
+}

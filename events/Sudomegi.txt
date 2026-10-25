@@ -1,0 +1,229 @@
+
+namespace = sudomegi
+
+country_event = {
+	id = sudomegi.1
+	title =  sudomegi.1.t
+	desc = sudomegi.1.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = sudomegi.1.a
+		if = {
+			limit = {
+				has_country_flag = sudomegi_tier_three_admin
+			}
+			add_adm_power = 200
+			add_years_of_income = 2
+			add_country_modifier = {
+				name = sudomegi_calm_mind
+				duration = 3650
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = sudomegi_tier_two_admin
+			}
+			add_adm_power = 100
+			add_years_of_income = 1
+		}
+		else = {
+			add_adm_power = 50
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = sudomegi_tier_three_dip
+			}
+			add_dip_power = 200
+			custom_tooltip = sudomegi_ae_tooltip_2
+			hidden_effect = {
+				every_known_country = {
+					limit = { NOT = { is_subject_of = ROOT } }
+					reverse_add_aggressive_expansion = {
+						who = ROOT
+						value = -50
+						apply_calc = no
+					}
+				}
+			}
+			add_country_modifier = {
+				name = sudomegi_strong_body
+				duration = 3650
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = sudomegi_tier_two_dip
+			}
+			add_dip_power = 100
+			custom_tooltip = sudomegi_ae_tooltip_1
+			hidden_effect = {
+				every_known_country = {
+					limit = { NOT = { is_subject_of = ROOT } }
+					reverse_add_aggressive_expansion = {
+						who = ROOT
+						value = -25
+						apply_calc = no
+					}
+				}
+			}
+		}
+		else = {
+			add_dip_power = 50
+		}
+
+		if = {
+			limit = {
+				has_country_flag = sudomegi_tier_three_mil
+			}
+			add_mil_power = 200
+			add_yearly_manpower = 1
+			add_country_modifier = {
+				name = sudomegi_iron_spirit
+				duration = 3650
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = sudomegi_tier_two_mil
+			}
+			add_mil_power = 100
+			add_yearly_manpower = 0.5
+		}
+		else = {
+			add_mil_power = 50
+		}
+
+		custom_tooltip = sudomegi_holy_order_charges_tt
+
+		hidden_effect = {
+			sudomegi_remove_adm_reflection = yes
+			sudomegi_remove_dip_reflection = yes
+			sudomegi_remove_mil_reflection = yes
+		}
+	}
+}
+
+country_event = {
+	id = sudomegi.2
+	title = sudomegi.2.t
+	desc = sudomegi.2.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			AND = {
+				has_country_flag = hall_of_ancestors_ironwraith_production
+				has_country_flag = hall_of_ancestors_establish_office
+				has_country_flag = hall_of_ancestors_improve_integration
+				has_country_flag = hall_of_ancestors_lawkeepers
+				has_country_flag = hall_of_ancestors_perpetual_stew
+				has_country_flag = hall_of_ancestors_sage_council
+				has_country_flag = hall_of_ancestors_smith_council
+				has_country_flag = hall_of_ancestors_warchief_council
+			}
+		}
+	}
+
+	option = {
+		name = sudomegi.2.a
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_ironwraith_production }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = ironwraith_production }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.b
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_establish_office }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = establish_office }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.c
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_improve_integration }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = improve_integration }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.e
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_lawkeepers }
+			is_year = 1600
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = lawkeepers }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.f
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_perpetual_stew }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = perpetual_stew }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.g
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_sage_council }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = sage_council }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.h
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_smith_council }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = smith_council }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+	option = {
+		name = sudomegi.2.i
+		trigger = {
+			NOT = { has_country_flag = hall_of_ancestors_warchief_council }
+		}
+		sudomegi_grant_ancestor_modifier = { modifier = warchief_council }
+		custom_tooltip = sudomegi_hall_of_ancestors_tooltip
+	}
+}
+
+province_event = {
+	id = sudomegi.3
+	title = sudomegi.3.t
+	desc = sudomegi.3.d
+	picture = DIPLOMACY_SIGNING_eventPicture
+
+	is_triggered_only = yes
+	hidden = yes
+
+	option = {
+		name = none
+		every_country = {
+			limit = {
+				religion = sudomegi
+			}
+			country_event = {
+				id = sudomegi.2
+			}
+		}
+	}
+
+	after = {
+		6838 = {
+			province_event = {
+				id = sudomegi.3
+				days = 18250
+			}
+		}
+	}
+}

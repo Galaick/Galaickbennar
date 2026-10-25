@@ -1,0 +1,1027 @@
+#Nekheis
+is_valid_nekhei = {
+	if = {
+		limit = { overlord = { OR = { tag = G51 was_tag = G51 } } } #Arpedifer
+		tag = G53 #Empkeios
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G47 was_tag = G47 } } } #Oktikheion
+		tag = G58 #Keyolion
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G49 was_tag = G49 } } } #Lokemeion
+		tag = G54 #Besolaki
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G50 was_tag = G50 } } } #Ormam
+		tag = G57 #Apikhoxi
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G48 was_tag = G48 } } } #Kherka
+		tag = G59 #Anisikheion
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G61 was_tag = G61 } } } #Kimanis
+		tag = G62 #Amgremos
+		is_subject_of_type = nekhei
+	}
+	else_if = {
+		limit = { overlord = { OR = { tag = G46 was_tag = G46 } } } #Degakheion
+		is_subject_of_type = nekhei
+		OR = { 
+			tag = G55 #Eneion
+			tag = G56 #Deyeion
+			AND = {
+				tag = G62 #Amgremos
+				overlord = { has_country_flag = G46_amgremos_nekhei }
+			}
+		}
+	}
+	else = { always = no }
+}
+
+has_valid_nekhei = {
+	if = {
+		limit = { OR = { tag = G51 was_tag = G51 } } #Arpedifer
+		G53 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Empkeios
+	}
+	else_if = {
+		limit = { OR = { tag = G47 was_tag = G47 } } #Oktikheion
+		G58 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Keyolion
+	}
+	else_if = {
+		limit = { OR = { tag = G49 was_tag = G49 } } #Lokemeion
+		G54 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Besolaki
+	}
+	else_if = {
+		limit = { OR = { tag = G50 was_tag = G50 } } #Ormam
+		G57 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Apikhoxi
+	}
+	else_if = {
+		limit = { OR = { tag = G48 was_tag = G48 } } #Kherka
+		G59 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Anisikheion
+	}
+	else_if = {
+		limit = { OR = { tag = G61 was_tag = G61 } } #Kimanis
+		G62 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Amgremos
+	}
+	else_if = {
+		limit = { OR = { tag = G46 was_tag = G46 } } #Degakheion
+		OR = {
+			G56 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Deyeion
+			G55 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Eneion
+			G62 = { #Amgremos
+				is_subject_of_type_with_overlord = { who = ROOT type = nekhei } 
+				overlord = { has_country_flag = G46_amgremos_nekhei }
+			} 
+		}
+	}
+	else = { always = no }
+}
+
+has_not_all_nekheis = {
+	if = {
+		limit = { OR = { tag = G51 was_tag = G51 } } #Arpedifer
+		NOT = { G53 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Empkeios
+	}
+	else_if = {
+		limit = { OR = { tag = G47 was_tag = G47 } } #Oktikheion
+		NOT = { G58 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Keyolion
+	}
+	else_if = {
+		limit = { OR = { tag = G49 was_tag = G49 } } #Lokemeion
+		NOT = { G54 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Besolaki
+	}
+	else_if = {
+		limit = { OR = { tag = G50 was_tag = G50 } } #Ormam
+		NOT = { G57 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Apikhoxi
+	}
+	else_if = {
+		limit = { OR = { tag = G48 was_tag = G48 } } #Kherka
+		NOT = { G59 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Anisikheion
+	}
+	else_if = {
+		limit = { OR = { tag = G61 was_tag = G61 } } #Kimanis
+		NOT = { G62 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } } #Amgremos
+	}
+	else_if = {
+		limit = { OR = { tag = G46 was_tag = G46 } } #Degakheion
+		NOT = {
+			AND = {
+				if = {
+					limit = { G55 = { NOT = { has_country_flag = G55_deyeion_inherited_flag } } }
+					G56 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Deyeion
+				}
+				G55 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Eneion
+				if = {
+					limit = { has_country_flag = G46_amgremos_nekhei }
+					G62 = { is_subject_of_type_with_overlord = { who = ROOT type = nekhei } } #Amgremos
+				}
+			}
+		}
+	}
+	else = { always = no }
+}
+
+has_invalid_nekhei = {
+	if = {
+		limit = { OR = { tag = G51 was_tag = G51 } } #Arpedifer
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G53 } #Empkeios
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G47 was_tag = G47 } } #Oktikheion
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G58 } #Keyolion
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G49 was_tag = G49 } } #Lokemeion
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G54 } #Besolaki
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G50 was_tag = G50 } } #Ormam
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G57 } #Apikhoxi
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G48 was_tag = G48 } } #Kherka
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G59 } #Anisikheion
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G61 was_tag = G61 } } #Kimanis
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = { tag = G62 } #Amgremos
+		}
+	}
+	else_if = {
+		limit = { OR = { tag = G46 was_tag = G46 } } #Degakheion
+		any_subject_country = {
+			is_subject_of_type = nekhei
+			NOT = {
+				tag = G55 #Eneion
+				tag = G56 #Deyeion
+				AND = {
+					ROOT = { has_country_flag = G46_amgremos_nekhei }
+					tag = G62 #Amgremos
+				}
+			}
+		}
+	}
+	else = {
+		always = yes
+	}
+}
+
+has_a_nekhei_overlord_modifier = {
+	OR = {
+		has_country_modifier = nekhei_overlord_modifier_1000
+		has_country_modifier = nekhei_overlord_modifier_900
+		has_country_modifier = nekhei_overlord_modifier_800
+		has_country_modifier = nekhei_overlord_modifier_700
+		has_country_modifier = nekhei_overlord_modifier_600
+		has_country_modifier = nekhei_overlord_modifier_500
+		has_country_modifier = nekhei_overlord_modifier_400
+		has_country_modifier = nekhei_overlord_modifier_300
+		has_country_modifier = nekhei_overlord_modifier_200
+		has_country_modifier = nekhei_overlord_modifier_100
+	}
+}
+
+has_a_nekhei_subject_modifier = {
+	OR = {
+		has_country_modifier = nekhei_subject_modifier_1000
+		has_country_modifier = nekhei_subject_modifier_900
+		has_country_modifier = nekhei_subject_modifier_800
+		has_country_modifier = nekhei_subject_modifier_700
+		has_country_modifier = nekhei_subject_modifier_600
+		has_country_modifier = nekhei_subject_modifier_500
+		has_country_modifier = nekhei_subject_modifier_400
+		has_country_modifier = nekhei_subject_modifier_300
+		has_country_modifier = nekhei_subject_modifier_200
+		has_country_modifier = nekhei_subject_modifier_100
+	}
+}
+
+is_a_kheion = {
+	custom_trigger_tooltip = {
+		tooltip = is_a_kheion_tt
+		OR = {
+			tag = G49 #Lokemeion
+			tag = G48 #Kherka
+			tag = G50 #Ormam
+			tag = G46 #Degakheion
+			tag = G47 #Oktikheion
+			tag = G51 #Arpedier
+			tag = G61 #Kimanis
+		}
+	}
+}
+
+is_a_nekhei = {
+	OR = {
+		tag = G53 #Empkeios
+		tag = G54 #Besolaki
+		tag = G55 #Eneion
+		tag = G56 #Deyeion
+		tag = G57 #Apikhoxi
+		tag = G58 #Keyolion
+		tag = G59 #Anisikheion
+		tag = G62 #Amgremos
+	}
+}
+
+#Degarikes 
+has_discovered_degarikes = {
+	custom_trigger_tooltip = {
+		tooltip = has_degarikes_tt
+		has_country_flag = has_degarikes
+	}
+}
+
+#Kheionist
+#Holy Order Triggers
+has_kheionist_holy_order = {
+	custom_trigger_tooltip = {
+		tooltip = has_$holy_order$_kheionist_holy_order_tt
+		has_province_flag = has_$holy_order$_order_flag
+	}
+}
+
+has_adm_kheionist_holy_order = {
+	custom_trigger_tooltip = {
+		tooltip = has_adm_kheionist_holy_order_tt
+		OR = {
+			has_province_flag = has_maederitic_rule_order_flag
+			has_province_flag = has_schaal_onitheia_order_flag
+			has_province_flag = has_teachings_of_varamelas_order_flag
+		}
+	}
+}
+
+has_dip_kheionist_holy_order = {
+	custom_trigger_tooltip = {
+		tooltip = has_dip_kheionist_holy_order_tt
+		OR = {
+			has_province_flag = has_dictats_of_isparokaeus_order_flag
+			has_province_flag = has_archatiradist_doctrine_order_flag
+			has_province_flag = has_anagbheism_order_flag
+		}
+	}
+}
+
+has_mil_kheionist_holy_order = {
+	custom_trigger_tooltip = {
+		tooltip = has_mil_kheionist_holy_order_tt
+		OR = {
+			has_province_flag = has_axierophonic_mandate_order_flag
+			has_province_flag = has_drivos_rochos_order_flag
+			has_province_flag = has_laskaris_creed_order_flag
+		}
+	}
+}
+
+has_kheionist_holy_order_of_level = {
+	custom_trigger_tooltip = {
+		tooltip = has_level_$level$_kheionist_holy_order_tt
+		OR = {
+			holy_order = maederitic_rule_order_level_$level$
+			holy_order = schaal_onitheia_order_level_$level$
+			holy_order = teachings_of_varamelas_order_level_$level$
+			holy_order = dictats_of_isparokaeus_order_level_$level$
+			holy_order = archatiradist_doctrine_order_level_$level$
+			holy_order = anagbheism_order_level_$level$
+			holy_order = axierophonic_mandate_order_level_$level$
+			holy_order = drivos_rochos_order_level_$level$
+			holy_order = laskaris_creed_order_level_$level$
+		}
+	}
+}
+has_national_kheionist_holy_order = {
+	custom_trigger_tooltip = {
+		tooltip = has_national_kheionist_holy_order_tt
+		OR = {
+			#Adm
+			AND = {
+				ROOT = { has_country_flag = has_maederitic_rule_kheionist_deity }
+				has_province_flag = has_maederitic_rule_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_schaal_onitheia_kheionist_deity }
+				has_province_flag = has_schaal_onitheia_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_teachings_of_varamelas_kheionist_deity }
+				has_province_flag = has_teachings_of_varamelas_order_flag
+			}
+
+			#Dip
+			AND = {
+				ROOT = { has_country_flag = has_dictats_of_isparokaeus_kheionist_deity }
+				has_province_flag = has_dictats_of_isparokaeus_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_archatiradist_doctrine_kheionist_deity }
+				has_province_flag = has_archatiradist_doctrine_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_anagbheism_kheionist_deity }
+				has_province_flag = has_anagbheism_order_flag
+			}
+
+			#Mil
+			AND = {
+				ROOT = { has_country_flag = has_axierophonic_mandate_kheionist_deity }
+				has_province_flag = has_axierophonic_mandate_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_drivos_rochos_kheionist_deity }
+				has_province_flag = has_drivos_rochos_order_flag
+			}
+			AND = {
+				ROOT = { has_country_flag = has_laskaris_creed_kheionist_deity }
+				has_province_flag = has_laskaris_creed_order_flag
+			}
+		}
+	}
+}
+
+#Deity Triggers
+has_kheionist_deity = { #Works for specific deities or mana type
+	custom_trigger_tooltip = {
+		tooltip = has_$deity$_kheionist_deity_tt
+		has_country_flag = has_$deity$_kheionist_deity
+	}
+}
+
+has_kheionist_deity_of_level = {
+	custom_trigger_tooltip = {
+		tooltip = has_level_$level$_kheionist_deity_tt
+		OR = {
+			has_personal_deity = maederitic_rule_deity_level_$level$
+			has_personal_deity = schaal_onitheia_deity_level_$level$
+			has_personal_deity = teachings_of_varamelas_deity_level_$level$
+			has_personal_deity = dictats_of_isparokaeus_deity_level_$level$
+			has_personal_deity = archatiradist_doctrine_deity_level_$level$
+			has_personal_deity = anagbheism_deity_level_$level$
+			has_personal_deity = axierophonic_mandate_deity_level_$level$
+			has_personal_deity = drivos_rochos_deity_level_$level$
+			has_personal_deity = laskaris_creed_deity_level_$level$
+		}
+	}
+}
+
+#Degalistea Great Project Trigger
+can_use_degalistea = {
+	owner = {
+		culture_group = kheionai_ruinborn_elf
+		religion = kheionism
+	}
+	culture_group = kheionai_ruinborn_elf
+	religion = kheionism
+}
+
+#Besolaki
+G54_faction_subtrigger = {
+	if = {
+		limit = { faction_in_power = $faction$ }
+		$trigger$ = {
+			who = $tag$
+			value = $low_value$
+		}
+	}
+	else = {
+		$trigger$ = {
+			who = $tag$
+			value = $high_value$
+		}
+	}
+}
+G54_faction_trigger = {
+	if = {
+		limit = { exists = $tag$ }
+		OR = {
+			G54_faction_subtrigger = {
+				faction = beso_skighubhen
+				trigger = has_spy_network_in
+				tag = $tag$
+				low_value = 75
+				high_value = 100
+			}
+			AND = {
+				G54_faction_subtrigger = {
+					faction = beso_nautabhen
+					trigger = reverse_has_opinion
+					tag = $tag$
+					low_value = 75
+					high_value = 100
+				}
+				G54_faction_subtrigger = {
+					faction = beso_skighubhen
+					trigger = has_spy_network_in
+					tag = $tag$
+					low_value = 25
+					high_value = 50
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = G54_faction_trigger_tt
+				always = no
+			}
+		}
+	}
+	else = {
+		[[$area$]
+			$area$ = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		]
+	}
+}
+
+G54_faction_highlight = {
+	OR = {
+		AND = {
+			exists = $tag$
+			is_capital_of = $tag$
+		}
+		[[area]
+			AND = {
+				NOT = { exists = $tag$ }
+				area = $area$
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+		]
+	}
+	ROOT = {
+		NOT = {
+			AND = {
+				[[additional_trigger] $additional_trigger$ ]
+				G54_faction_trigger = {
+					tag = $tag$
+					[[area] area = $area$ ]
+				}
+			}
+		}
+	}
+}
+
+G54_country_opinion_trigger = {
+	if = {
+		limit = { faction_in_power = beso_nautabhen }
+		custom_trigger_tooltip = {
+			tooltip = $low_tt$
+			any_known_country = {
+				$trigger$
+				has_opinion = { who = ROOT value = $low_opinion$ }
+			}
+		}
+	}
+	else = {
+		custom_trigger_tooltip = {
+			tooltip = $high_tt$
+			any_known_country = {
+				$trigger$
+				has_opinion = { who = ROOT value = $high_opinion$ }
+			}
+		}
+	}
+}
+
+G54_country_opinion_highlight = {
+	has_discovered = ROOT
+	is_capital = yes
+	owner = {
+		$trigger$
+		OR = {
+			ROOT = { faction_in_power = beso_nautabhen }
+			has_opinion = { who = ROOT value = $low_opinion$ }
+		}
+		OR = {
+			ROOT = { NOT = { faction_in_power = beso_nautabhen } }
+			has_opinion = { who = ROOT value = $high_opinion$ }
+		}
+	}
+}
+
+G54_is_loyal_subject = {
+	custom_trigger_tooltip = {
+		tooltip = G54_is_loyal_subject_$tag$_tt
+		$tag$ = {
+			is_subject_of = ROOT
+			NOT = { liberty_desire = 50 }
+		}
+	}
+}
+
+##############
+# Deathwinds #
+##############
+
+#Determines if you get the magical project, monument, and easy-mode decisions
+has_full_deathwinds_system = {
+	custom_trigger_tooltip = {
+		tooltip = has_full_deathwinds_system_access_tt
+		has_country_flag = has_full_deathwinds_system_flag
+	}
+		# -- These tags get it by default -- #
+	# is_a_kheion = yes
+	# tag = H22 #Kheios
+	# tag = G60 #Eltikan
+	# tag = J68 #Tirboilte
+	# tag = J69 #Gomairenu
+	# tag = U64 #Colonial Alecand
+}
+
+has_not_full_deathwinds_system = {
+	custom_trigger_tooltip = {
+		tooltip = has_not_full_deathwinds_system_tt
+		has_full_deathwinds_system = no
+	}
+}
+
+#Checks if there's deathwinds currently happening in the province
+has_deathwind_modifier = {
+	custom_trigger_tooltip = {
+		tooltip = has_deathwind_modifier_tt
+		OR = {
+			has_province_modifier = deathwind_level_10
+			has_province_modifier = deathwind_level_9
+			has_province_modifier = deathwind_level_8
+			has_province_modifier = deathwind_level_7
+			has_province_modifier = deathwind_level_6
+			has_province_modifier = deathwind_level_5
+			has_province_modifier = deathwind_level_4
+			has_province_modifier = deathwind_level_3
+			has_province_modifier = deathwind_level_2
+			has_province_modifier = deathwind_level_1
+		}
+	}
+}
+
+#Checks if there's a windward in the province
+has_windward_modifier = {
+	custom_trigger_tooltip = {
+		tooltip = has_windward_modifier_tt
+		OR = {
+			has_province_modifier = windward_level_10
+			has_province_modifier = windward_level_9
+			has_province_modifier = windward_level_8
+			has_province_modifier = windward_level_7
+			has_province_modifier = windward_level_6
+			has_province_modifier = windward_level_5
+			has_province_modifier = windward_level_4
+			has_province_modifier = windward_level_3
+			has_province_modifier = windward_level_2
+			has_province_modifier = windward_level_1
+		}
+	}
+}
+
+has_not_windward_modifier = {
+	custom_trigger_tooltip = {
+		tooltip = has_not_windward_modifier_tt
+		has_windward_modifier = no
+	}
+}
+
+#Used in button triggers to tell people they can't use the system only if they actually can't
+has_full_deathwinds_system_button = {
+	if = {
+		limit = { FROM = { has_not_full_deathwinds_system = yes } }
+		custom_trigger_tooltip = {
+			tooltip = has_full_deathwinds_system_tt
+			always = no
+		}
+	}
+}
+
+
+#Button trigger to show the trigger based on what event target it has.
+ #This is to have the provinces show up individually on the trigger instead of showing "All provinces in the X area:\n	<trigger>"
+ #Because each province can have a different trigger and the <trigger> shown is a random one of the different province triggers
+ #ex. If three provinces are upgrading from 0 > 1 and one province is upgrading from 1 > 2 it would show 
+ #"All provinces in the X area:\n	<0 > 1 trigger>" and not tell you about the 1 > 2 trigger
+windwards_area_trigger = {
+	windwards_area_subtrigger = { trigger = $trigger$ area = geneltik_area		prov_1 = 2751 prov_2 = 2748 prov_3 = 2779 prov_4 = 2780 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = lokegentia_area	prov_1 = 2752 prov_2 = 2753 prov_3 = 2782 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = lokemeion_area		prov_1 = 2745 prov_2 = 2746 prov_3 = 2743 prov_4 = 2744 prov_5 = 2778 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = ormam_area			prov_1 = 2738 prov_2 = 2739 prov_3 = 2775 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = kherka_area		prov_1 = 2773 prov_2 = 2772 prov_3 = 2776 prov_4 = 2777 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = eltikan_area		prov_1 = 2785 prov_2 = 2786 prov_3 = 2754 prov_4 = 2766 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = degakheion_area	prov_1 = 2736 prov_2 = 2771 prov_3 = 2770 prov_4 = 2769 prov_5 = 2737 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = kimanis_area		prov_1 = 2732 prov_2 = 2733 prov_3 = 2734 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = oktikheion_area	prov_1 = 2731 prov_2 = 2730 prov_3 = 2762 prov_4 = 2763 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = mtelian_area		prov_1 = 2756 prov_2 = 2758 prov_3 = 2755 prov_4 = 2760 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = arpedifer_area		prov_1 = 2728 prov_2 = 2761 prov_3 = 2759 prov_4 = 2727 prov_5 = 2726 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = arpenisi_area		prov_1 = 2735 prov_2 = 2725 prov_3 = 2724 }
+	windwards_area_subtrigger = { trigger = $trigger$ area = kheinos_area		prov_1 = 2764 prov_2 = 2765 prov_3 = 2767 prov_4 = 2768 }
+}
+
+windwards_area_subtrigger = {
+	if = {
+		limit = { area = $area$ }
+		OR = {
+			$prov_1$ = { $trigger$ = yes }
+			$prov_2$ = { $trigger$ = yes }
+			$prov_3$ = { $trigger$ = yes }
+			[[prov_4] $prov_4$ = { $trigger$ = yes } ]
+			[[prov_5] $prov_5$ = { $trigger$ = yes } ]
+		}
+	}
+}
+
+#Scripted effect for the requirements to upgrade the Windwards based on what level you have
+ #Why is basically every trigger inside a custom tooltip? 
+ #Because otherwise it's shown as "Province Owner: \n	<trigger>" which looks bad, isn't necessary or helpful, and I don't want it
+windward_upgrade_triggers = {
+	if = {
+		limit = { NOT = { owned_by = FROM } }
+		owned_by = FROM
+	}
+	if = { #Can't upgrade further if the province has a level 10 Windward
+		limit = { has_province_modifier = windward_level_10 }
+		custom_trigger_tooltip = {
+			tooltip = upgrade_windward_10_tt
+			always = no
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 9 > 10. Not possible atm, Kheios MT content
+		limit = { has_province_modifier = windward_level_9 }
+		tag = H22 #Kheios
+		always = no
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 8 > 9
+		limit = { has_province_modifier = windward_level_8 }
+		
+		if = { #If you have the magical project, show it's level trigger
+			limit = { owner = { has_full_deathwinds_system = yes } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_magic_project_level_2_tt
+				owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 2 } }
+			}
+		}
+		else = { #Otherwise show a custom tooltip telling them they can't upgrade further
+			custom_trigger_tooltip = {
+				tooltip = deathwinds_requires_magical_project_tt
+				always = no
+			}
+		}
+
+		if = { #Show the discounted triggers if the correct magical project level is completed
+			limit = { owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 3 } } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_1000_tt
+				owner = { treasury = 1000 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = owner_has_mana_50_tt
+				owner = { has_mana = { amount = 50 } }
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_2500_tt
+				owner = { treasury = 2500 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = owner_has_mana_100_hint_tt
+				owner = { has_mana = { amount = 100 } }
+			}
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 7 > 8
+		limit = { has_province_modifier = windward_level_7 }
+
+		if = { #If you have the magical project, show it's level trigger
+			limit = { owner = { has_full_deathwinds_system = yes } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_magic_project_level_1_tt
+				owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 1 } }
+			}
+		}
+		else = { #Otherwise show a custom tooltip telling them they can't upgrade further
+			custom_trigger_tooltip = {
+				tooltip = deathwinds_requires_magical_project_tt
+				always = no
+			}
+		}
+
+		if = { #Show the discounted triggers if the correct magical project level is completed
+			limit = { owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 3 } } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_750_tt
+				owner = { treasury = 750 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = owner_has_mana_30_tt
+				owner = { has_mana = { amount = 30 } }
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_2000_tt
+				owner = { treasury = 2000 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = owner_has_mana_100_hint_tt
+				owner = { has_mana = { amount = 100 } }
+			}
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = {  #Level 6 > 7
+		limit = { has_province_modifier = windward_level_6 }
+		if = { #Show the discounted triggers if the correct magical project level is completed
+			limit = { owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 1 } } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_500_tt
+				owner = { treasury = 500 }
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = owner_has_manpower_20_tt
+					owner = { manpower = 20 }
+				}
+				custom_trigger_tooltip = {
+					tooltip = owner_has_mana_20_tt
+					owner = { has_mana = { amount = 20 } }
+				}
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_1500_tt
+				owner = { treasury = 1500 }
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = owner_has_manpower_20_tt
+					owner = { manpower = 20 }
+				}
+				custom_trigger_tooltip = {
+					tooltip = owner_has_mana_200_hint_tt
+					owner = { has_mana = { amount = 200 } }
+				}
+			}
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 5 > 6
+		limit = { has_province_modifier = windward_level_5 }
+		if = { #Show the discounted triggers if the correct magical project level is completed
+			limit = { owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 1 } } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_250_tt
+				owner = { treasury = 250 }
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = owner_has_manpower_15_tt
+					owner = { manpower = 15 }
+				}
+				custom_trigger_tooltip = {
+					tooltip = owner_has_mana_10_tt
+					owner = { has_mana = { amount = 10 } }
+				}
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = owner_has_treasury_1000_tt
+				owner = { treasury = 1000 }
+			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = owner_has_manpower_15_tt
+					owner = { manpower = 15 }
+				}
+				custom_trigger_tooltip = {
+					tooltip = owner_has_mana_150_hint_tt
+					owner = { has_mana = { amount = 150 } }
+				}
+			}
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 4 > 5
+		limit = { has_province_modifier = windward_level_4 }
+		OR = {
+			if = {
+				limit = { has_dlc = Leviathan }
+				num_of_times_expanded_infrastructure = 1
+			}
+			else = {
+				development = 15
+				custom_trigger_tooltip = {
+					tooltip = owner_has_adm_power_50_tt
+					owner = { adm_power = 50 }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = owner_has_mana_100_tt
+				owner = { has_mana = { amount = 100 } }
+			}
+		}
+		if = { #Show the discounted triggers if the correct magical project level is completed
+			limit = { owner = { at_least_magic_project_level = { project = deathwinds_kheion_and_kaydhano level = 1 } } }
+			custom_trigger_tooltip = {
+				tooltip = owner_has_manpower_2_5_tt
+				owner = { manpower = 2.5 }
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = owner_has_manpower_10_hint_tt
+				owner = { manpower = 10 }
+			}
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 3 > 4
+		limit = { has_province_modifier = windward_level_3 }
+		OR = {
+			has_building = ramparts
+			base_manpower = 6
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 2 > 3
+		limit = { has_province_modifier = windward_level_2 }
+		OR = {
+			has_fort_16th_building_trigger = yes
+			has_building = mage_tower
+		}
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 1 > 2
+		limit = { has_province_modifier = windward_level_1 }
+		has_fort_building_trigger = yes
+	}
+	#-------------------------------------------------------------------------------------------------------------
+	if = { #Level 0 > 1
+		limit = { has_not_windward_modifier = yes }
+		custom_trigger_tooltip = {
+			tooltip = owner_has_adm_power_50_tt
+			owner = { adm_power = 50 }
+		}
+	}
+}
+
+#Trigger for the 2nd Deathwinds aPUI button
+windwards_reinforce_with_manpower_trigger = {
+	if = {
+		limit = { NOT = { owned_by = FROM } }
+		owned_by = FROM
+	}
+	has_full_deathwinds_system_button = yes
+	#Requires manpower equal to 5 + (2 * Maximum Potential Deathwind Level) 
+	if = {
+		limit = { is_year = 1520 } #Level 10 Max = 5+20=25
+		custom_trigger_tooltip = {
+			tooltip = owner_has_manpower_25_tt
+			owner = { manpower = 25 }
+		}
+	}
+	if = {
+		limit = { is_year = 1480 NOT = { is_year = 1520 } } #Level 8 Max = 5+16=21
+		custom_trigger_tooltip = {
+			tooltip = owner_has_manpower_21_tt
+			owner = { manpower = 21 }
+		}
+	}
+	if = {
+		limit = { is_year = 1450 NOT = { is_year = 1480 } } #Level 4 Max = 5+8=13
+		custom_trigger_tooltip = {
+			tooltip = owner_has_manpower_13_tt
+			owner = { manpower = 13 }
+		}
+	}
+	if = { #Level 1 Max
+		limit = { NOT = { is_year = 1450 } } #Level 4 Max = 5+2=7
+		custom_trigger_tooltip = {
+			tooltip = owner_has_manpower_7_tt
+			owner = { manpower = 7 }
+		}
+	}
+	custom_trigger_tooltip = {
+		tooltip = windwards_reinforce_with_manpower_trigger_tt
+		NOT = { has_province_flag = windwards_reinforce_with_manpower_flag }
+	}
+}
+
+#Trigger for the 3rd Deathwinds aPUI button
+windwards_reinforce_with_mana_trigger = {
+	if = {
+		limit = { NOT = { owned_by = FROM } }
+		owned_by = FROM
+	}
+	has_full_deathwinds_system_button = yes
+	has_deathwind_modifier = yes
+	custom_trigger_tooltip = {
+		tooltip = owner_is_overall_abjuration_level_1_minimum_tt
+		owner = { is_overall_abjuration_level_1_minimum = yes }
+	}
+	custom_trigger_tooltip = {
+		tooltip = owner_has_mana_15_tt
+		owner = { has_mana = { amount = 15 } }
+	}
+}
+
+#Trigger for the 4th Deathwinds aPUI button
+reduce_windward_triggers = {
+	if = {
+		limit = { NOT = { owned_by = FROM } }
+		owned_by = FROM
+	}
+	has_full_deathwinds_system_button = yes
+	has_windward_modifier = yes
+	NOT = { province_group = deirosi_capital_provinces }
+	if = {
+		limit = { has_province_flag = reduced_windward_flag }
+		custom_trigger_tooltip = {
+			tooltip = destroy_windward_cooldown_tt
+			had_province_flag = {
+				flag = reduced_windward_flag
+				days = 9125 #25 years
+			}
+		}
+	}
+}
+
+#Trigger for the decision to upgrade every Windward possible
+windward_mass_upgrade_triggers = {
+	owned_by = ROOT
+	OR = {
+		AND = {
+			has_province_modifier = windward_level_6
+			owner = {
+				treasury = 1000
+				manpower = 3
+			}
+		}
+		AND = {
+			has_province_modifier = windward_level_5
+			owner = {
+				treasury = 800
+				manpower = 2
+			}
+		}
+		AND = {
+			has_province_modifier = windward_level_4
+			owner = {
+				treasury = 400
+				manpower = 1.5
+			}
+		}
+		AND = {
+			has_province_modifier = windward_level_3
+			owner = {
+				treasury = 250
+				manpower = 1.25
+			}
+		}
+		AND = {
+			has_province_modifier = windward_level_2
+			owner = {
+				treasury = 150
+				manpower = 1
+			}
+		}
+		AND = {
+			has_province_modifier = windward_level_1
+			owner = {
+				treasury = 100
+				manpower = 0.75
+			}
+		}
+		AND = {
+			has_not_windward_modifier = yes
+			owner = {
+				treasury = 50
+				manpower = 0.5
+			}
+		}
+	}
+}

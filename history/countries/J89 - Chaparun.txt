@@ -1,0 +1,54 @@
+
+setup_vision_south_aelantir = yes
+government = tribal
+add_government_reform = tribal_despotism
+government_rank = 1
+mercantilism = 5
+primary_culture = quchamar
+religion = rioqay_diu
+technology_group = tech_south_aelantiri
+capital = 3205
+
+1000.1.1 = { set_estate_privilege = estate_mages_organization_guilds }
+
+1405.1.1 = {
+	monarch = { #Dynasty name means "clam blessed". Big clam farmer/diver
+		name = "Galché I"
+		dynasty = "Chamasqan"
+		birth_date = 1390.1.1
+		adm = 4
+		dip = 4
+		mil = 3
+	}
+	add_ruler_personality = architectural_visionary_personality
+	add_ruler_personality = industrious_personality
+	add_ruler_personality = greedy_personality
+}
+
+1411.1.1 = {
+	queen = {
+		name = "Ladáqa"
+		dynasty = "Sayumáncha"
+		birth_date = 1386.1.1
+		death_date = 1450.1.1
+		adm = 2
+		dip = 3
+		mil = 1
+		female = yes
+	}
+	add_queen_personality = pious_personality
+}
+
+1413.1.1 = {
+	heir = {
+		name = "Relaq"
+		dynasty = "Chamasqan"
+		birth_date = 1413.1.1
+		death_date = 1450.1.1
+		adm = 2
+		dip = 3
+		mil = 4
+		claim = 100
+	}
+	add_heir_personality = righteous_personality
+}

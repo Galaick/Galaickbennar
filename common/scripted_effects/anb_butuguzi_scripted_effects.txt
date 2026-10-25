@@ -1,0 +1,2631 @@
+#Selects families for the mil, admin, and dip candidates in the elction event via random list, blocking duplicates
+L63_generate_election_families_effect = {
+	random_list = { #admin family
+		1 = {
+			set_country_flag = kot_family_adm
+		}
+		1 = {
+			set_country_flag = lee_family_adm
+		}
+		1 = {
+			set_country_flag = mbabazi_family_adm
+		}
+		1 = {
+			set_country_flag = zong_family_adm
+		}
+		1 = {
+			set_country_flag = yi_family_adm
+		}
+		1 = {
+			set_country_flag = mou_family_adm
+		}
+		1 = {
+			set_country_flag = umulisa_family_adm
+		}
+		1 = {
+			set_country_flag = cin_family_adm
+		}
+		1 = {
+			set_country_flag = sa_sinwauk_family_adm
+		}
+		1 = {
+			set_country_flag = kagona_family_adm
+		}
+		1 = {
+			set_country_flag = tembo_family_adm
+		}
+		1 = {
+			set_country_flag = han_neip_family_adm
+		}
+		1 = {
+			set_country_flag = rukundo_family_adm
+		}
+		1 = {
+			set_country_flag = gunam_neip_family_adm
+		}
+		1 = {
+			set_country_flag = urunekozi_family_adm
+		}
+		1 = {
+			set_country_flag = goeng_family_adm
+		}
+		1 = {
+			set_country_flag = nkurunziza_family_adm
+		}
+	}
+	random_list = { #dip family
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = kot_family_adm }
+			}
+			set_country_flag = kot_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = lee_family_adm }
+			}
+			set_country_flag = lee_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = mbabazi_family_adm }
+			}
+			set_country_flag = mbabazi_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = zong_family_adm }
+			}
+			set_country_flag = zong_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = yi_family_adm }
+			}
+			set_country_flag = yi_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = mou_family_adm }
+			}
+			set_country_flag = mou_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = umulisa_family_adm }
+			}
+			set_country_flag = umulisa_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = cin_family_adm }
+			}
+			set_country_flag = cin_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = sa_sinwauk_family_adm }
+			}
+			set_country_flag = sa_sinwauk_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = kagona_family_adm }
+			}
+			set_country_flag = kagona_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = tembo_family_adm }
+			}
+			set_country_flag = tembo_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = han_neip_family_adm }
+			}
+			set_country_flag = han_neip_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = rukundo_family_adm }
+			}
+			set_country_flag = rukundo_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = gunam_neip_family_adm }
+			}
+			set_country_flag = gunam_neip_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = urunekozi_family_adm }
+			}
+			set_country_flag = urunekozi_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = goeng_family_adm }
+			}
+			set_country_flag = goeng_family_dip
+		}
+		1 = {
+			trigger= {
+				NOT = { has_country_flag = nkurunziza_family_adm }
+			}
+			set_country_flag = nkurunziza_family_dip
+		}
+	}
+	random_list = { #dip family
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = kot_family_adm
+					has_country_flag = kot_family_dip
+				}
+			}
+			set_country_flag = kot_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = lee_family_adm
+					has_country_flag = lee_family_dip
+				}
+			}
+			set_country_flag = lee_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = mbabazi_family_adm
+					has_country_flag = mbabazi_family_dip
+				}
+			}
+			set_country_flag = mbabazi_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = zong_family_adm
+					has_country_flag = zong_family_dip
+				}
+			}
+			set_country_flag = zong_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = yi_family_adm
+					has_country_flag = yi_family_dip
+				}
+			}
+			set_country_flag = yi_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = mou_family_adm
+					has_country_flag = mou_family_dip
+				}
+			}
+			set_country_flag = mou_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = umulisa_family_adm
+					has_country_flag = umulisa_family_dip
+				}
+			}
+			set_country_flag = umulisa_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = cin_family_adm
+					has_country_flag = cin_family_dip
+				}
+			}
+			set_country_flag = cin_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = sa_sinwauk_family_adm
+					has_country_flag = sa_sinwauk_family_dip
+				}
+			}
+			set_country_flag = sa_sinwauk_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = kagona_family_adm
+					has_country_flag = kagona_family_dip
+				}
+			}
+			set_country_flag = kagona_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = tembo_family_adm
+					has_country_flag = tembo_family_dip
+				}
+			}
+			set_country_flag = tembo_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = han_neip_family_adm
+					has_country_flag = han_neip_family_dip
+				}
+			}
+			set_country_flag = han_neip_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = rukundo_family_adm
+					has_country_flag = rukundo_family_dip
+				}
+			}
+			set_country_flag = rukundo_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = gunam_neip_family_adm
+					has_country_flag = gunam_neip_family_dip
+				}
+			}
+			set_country_flag = gunam_neip_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = urunekozi_family_adm
+					has_country_flag = urunekozi_family_dip
+				}
+			}
+			set_country_flag = urunekozi_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = goeng_family_adm
+					has_country_flag = goeng_family_dip
+				}
+			}
+			set_country_flag = goeng_family_mil
+		}
+		1 = {
+			trigger= {
+				NOT = {
+					has_country_flag = nkurunziza_family_adm
+					has_country_flag = nkurunziza_family_dip
+				}
+			}
+			set_country_flag = nkurunziza_family_mil
+		}
+	}
+}
+
+#Generate the appropriate admin candidate based on the selected flag
+L63_generate_admin_candidate = {
+	if = {
+		limit = {
+			has_country_flag = kot_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Kot"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kot_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = lee_family_adm
+		}
+		if = {
+			limit = { has_country_flag = L63_silver_tooth_family_ascendant }
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Silver Tooth"
+				culture = goldscale_kobold
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_silver_tooth_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Lee"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_lee_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mbabazi_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Mbabazi"
+			culture = wakoodak
+			religion = shadow_pact
+		}
+		add_ruler_modifier = {
+			name = L63_mbabazi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = zong_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Zong"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_zong_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = yi_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Yi"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_yi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mou_family_adm
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_pearl_moon_ascendant
+			}
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Pearl Moon"
+				culture = roaming_harimari
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_pearl_moon_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Mou"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mou_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = umulisa_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Umulisa"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_umulisa_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = cin_family_adm
+		}
+		if = {
+			limit = {
+				has_country_flag = moyo_family_ascendant
+			}
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Moyo"
+				culture = suhratbi
+				religion = transmutative_path
+			}
+			every_owned_province = {
+				limit = {
+					has_province_flag = merfolk_settlement
+				}
+				add_province_modifier = {
+					name = L63_moyo_family
+					duration = -1
+				}
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Cin"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_cin_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = sa_sinwauk_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "sa Sinwauk"
+			culture = gataw
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_sa_sinwauk_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = kagona_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Kagona"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kagona_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = tembo_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Tembo"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_tembo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = han_neip_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Han-Neip"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_han_neip_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = rukundo_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Rukundo"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_rukundo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = gunam_neip_family_adm
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_beetlebiter_family_ascendant
+			}
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Beetlebiter"
+				culture = mazava
+				religion = nakavy_avo
+			}
+			every_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = spices
+						trade_goods = cloves
+					}
+				}
+				add_province_modifier = {
+					name = L63_beetlebiter_family
+					duration = -1
+				}
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Gunam-Neip"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gunam_neip_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = urunekozi_family_adm
+		}
+		if = {
+			limit = { has_country_flag = L63_mugisha_family_ascendant }
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Mugisha"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mugisha_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Urunekozi"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_urunekozi_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = goeng_family_adm
+		}
+		if = {
+			limit = { has_country_flag = L63_gaa_family_ascendant }
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Gaa"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gaa_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 4
+				dip = 1
+				mil = 1
+				dynasty = "Goeng"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_goeng_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = nkurunziza_family_adm
+		}
+		define_ruler = {
+			adm = 4
+			dip = 1
+			mil = 1
+			dynasty = "Nkurunziza"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_nkurunziza_family
+			duration = -1
+		}
+	}
+}
+
+#Generate the appropriate dip candidate based on the selected flag
+L63_generate_dip_candidate = {
+	if = {
+		limit = {
+			has_country_flag = kot_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Kot"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kot_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = lee_family_dip
+		}
+		if = {
+			limit = { has_country_flag = L63_silver_tooth_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Silver Tooth"
+				culture = goldscale_kobold
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_silver_tooth_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Lee"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_lee_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mbabazi_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Mbabazi"
+			culture = wakoodak
+			religion = shadow_pact
+		}
+		add_ruler_modifier = {
+			name = L63_mbabazi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = zong_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Zong"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_zong_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = yi_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Yi"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_yi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mou_family_dip
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_pearl_moon_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Pearl Moon"
+				culture = roaming_harimari
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_pearl_moon_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Mou"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mou_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = umulisa_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Umulisa"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_umulisa_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = cin_family_dip
+		}
+		if = {
+			limit = {
+				has_country_flag = moyo_family_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Moyo"
+				culture = suhratbi
+				religion = transmutative_path
+			}
+			every_owned_province = {
+				limit = {
+					has_province_flag = merfolk_settlement
+				}
+				add_province_modifier = {
+					name = L63_moyo_family
+					duration = -1
+				}
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Cin"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_cin_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = sa_sinwauk_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "sa Sinwauk"
+			culture = gataw
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_sa_sinwauk_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = kagona_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Kagona"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kagona_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = tembo_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Tembo"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_tembo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = han_neip_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Han-Neip"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_han_neip_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = rukundo_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Rukundo"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_rukundo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = gunam_neip_family_dip
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_beetlebiter_family_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Beetlebiter"
+				culture = mazava
+				religion = nakavy_avo
+			}
+			custom_tooltip = L63_beetlebiter_election_modifier_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = spices
+							trade_goods = cloves
+						}
+					}
+					add_province_modifier = {
+						name = L63_beetlebiter_family
+						duration = -1
+					}
+				}
+			}
+			
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Gunam-Neip"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gunam_neip_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = urunekozi_family_dip
+		}
+		if = {
+			limit = { has_country_flag = L63_mugisha_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Mugisha"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mugisha_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Urunekozi"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_urunekozi_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = goeng_family_dip
+		}
+		if = {
+			limit = { has_country_flag = L63_gaa_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Gaa"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gaa_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 4
+				mil = 1
+				dynasty = "Goeng"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_goeng_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = nkurunziza_family_dip
+		}
+		define_ruler = {
+			adm = 1
+			dip = 4
+			mil = 1
+			dynasty = "Nkurunziza"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_nkurunziza_family
+			duration = -1
+		}
+	}
+}
+
+#Generate the appropriate mil candidate based on the selected flag
+L63_generate_mil_candidate = {
+	if = {
+		limit = {
+			has_country_flag = kot_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Kot"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kot_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = lee_family_mil
+		}
+		if = {
+			limit = { has_country_flag = L63_silver_tooth_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Silver Tooth"
+				culture = goldscale_kobold
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_silver_tooth_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Lee"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_lee_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mbabazi_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Mbabazi"
+			culture = wakoodak
+			religion = shadow_pact
+		}
+		add_ruler_modifier = {
+			name = L63_mbabazi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = zong_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Zong"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_zong_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = yi_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Yi"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_yi_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = mou_family_mil
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_pearl_moon_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Pearl Moon"
+				culture = roaming_harimari
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_pearl_moon_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Mou"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mou_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = umulisa_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Umulisa"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_umulisa_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = cin_family_mil
+		}
+		if = {
+			limit = {
+				has_country_flag = moyo_family_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Moyo"
+				culture = suhratbi
+				religion = transmutative_path
+			}
+			every_owned_province = {
+				limit = {
+					has_province_flag = merfolk_settlement
+				}
+				add_province_modifier = {
+					name = L63_moyo_family
+					duration = -1
+				}
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Cin"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_cin_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = sa_sinwauk_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "sa Sinwauk"
+			culture = gataw
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_sa_sinwauk_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = kagona_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Kagona"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_kagona_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = tembo_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Tembo"
+			culture = suhratbi
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_tembo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = han_neip_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Han-Neip"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_han_neip_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = rukundo_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Rukundo"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_rukundo_family
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = gunam_neip_family_mil
+		}
+		if = {
+			limit = {
+				has_country_flag = L63_beetlebiter_family_ascendant
+			}
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Beetlebiter"
+				culture = mazava
+				religion = nakavy_avo
+			}
+			custom_tooltip = L63_beetlebiter_election_modifier_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = spices
+							trade_goods = cloves
+						}
+					}
+					add_province_modifier = {
+						name = L63_beetlebiter_family
+						duration = -1
+					}
+				}
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Gunam-Neip"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gunam_neip_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = urunekozi_family_mil
+		}
+		if = {
+			limit = { has_country_flag = L63_mugisha_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Mugisha"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_mugisha_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Urunekozi"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_urunekozi_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = goeng_family_mil
+		}
+		if = {
+			limit = { has_country_flag = L63_gaa_family_ascendant }
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Gaa"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_gaa_family
+				duration = -1
+			}
+		}
+		else = {
+			define_ruler = {
+				adm = 1
+				dip = 1
+				mil = 4
+				dynasty = "Goeng"
+				culture = antmvura
+				religion = transmutative_path
+			}
+			add_ruler_modifier = {
+				name = L63_goeng_family
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = nkurunziza_family_mil
+		}
+		define_ruler = {
+			adm = 1
+			dip = 1
+			mil = 4
+			dynasty = "Nkurunziza"
+			culture = antmvura
+			religion = transmutative_path
+		}
+		add_ruler_modifier = {
+			name = L63_nkurunziza_family
+			duration = -1
+		}
+	}
+}
+
+#Clear election candidate flags after the event finishes
+L63_clear_election_flags = {
+	clr_country_flag = kot_family_mil
+	clr_country_flag = kot_family_dip
+	clr_country_flag = kot_family_adm
+
+	clr_country_flag = lee_family_mil
+	clr_country_flag = lee_family_dip
+	clr_country_flag = lee_family_adm
+
+	clr_country_flag = mbabazi_family_mil
+	clr_country_flag = mbabazi_family_dip
+	clr_country_flag = mbabazi_family_adm
+
+	clr_country_flag = zong_family_mil
+	clr_country_flag = zong_family_dip
+	clr_country_flag = zong_family_adm
+
+	clr_country_flag = yi_family_mil
+	clr_country_flag = yi_family_dip
+	clr_country_flag = yi_family_adm
+
+	clr_country_flag = mou_family_mil
+	clr_country_flag = mou_family_dip
+	clr_country_flag = mou_family_adm
+
+	clr_country_flag = umulisa_family_mil
+	clr_country_flag = umulisa_family_dip
+	clr_country_flag = umulisa_family_adm
+
+	clr_country_flag = cin_family_mil
+	clr_country_flag = cin_family_dip
+	clr_country_flag = cin_family_adm
+
+	clr_country_flag = sa_sinwauk_family_mil
+	clr_country_flag = sa_sinwauk_family_dip
+	clr_country_flag = sa_sinwauk_family_adm
+
+	clr_country_flag = kagona_family_mil
+	clr_country_flag = kagona_family_dip
+	clr_country_flag = kagona_family_adm
+
+	clr_country_flag = tembo_family_mil
+	clr_country_flag = tembo_family_dip
+	clr_country_flag = tembo_family_adm
+
+	clr_country_flag = han_neip_family_mil
+	clr_country_flag = han_neip_family_dip
+	clr_country_flag = han_neip_family_adm
+
+	clr_country_flag = rukundo_family_mil
+	clr_country_flag = rukundo_family_dip
+	clr_country_flag = rukundo_family_adm
+
+	clr_country_flag = gunam_neip_family_mil
+	clr_country_flag = gunam_neip_family_dip
+	clr_country_flag = gunam_neip_family_adm
+
+	clr_country_flag = urunekozi_family_mil
+	clr_country_flag = urunekozi_family_dip
+	clr_country_flag = urunekozi_family_adm
+
+	clr_country_flag = goeng_family_mil
+	clr_country_flag = goeng_family_dip
+	clr_country_flag = goeng_family_adm
+
+	clr_country_flag = nkurunziza_family_mil
+	clr_country_flag = nkurunziza_family_dip
+	clr_country_flag = nkurunziza_family_adm
+}
+
+#Apply divided family modifier approriate for the current gov reform and number of new elections
+L63_divided_family_modifier_effect = {
+	if = {
+		limit = {
+			check_variable = {
+				which = election_term
+				value = 7
+			}
+		}
+		if = {
+			limit = {
+				has_reform = flux_state_reform
+			}
+			remove_country_modifier = L63_divided_families_flux_4
+			add_ruler_modifier = {
+				name = L63_divided_families_flux_5
+				duration = -1
+			}
+		}
+		else = {
+			add_stability = -1
+			remove_country_modifier = L63_divided_families_4
+			add_ruler_modifier = {
+				name = L63_divided_families_5
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = election_term
+				value = 6
+			}
+		}
+		if = {
+			limit = {
+				has_reform = flux_state_reform
+			}
+			remove_country_modifier = L63_divided_families_flux_3
+			add_ruler_modifier = {
+				name = L63_divided_families_flux_4
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_divided_families_3
+			add_ruler_modifier = {
+				name = L63_divided_families_4
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = election_term
+				value = 5
+			}
+		}
+		if = {
+			limit = {
+				has_reform = flux_state_reform
+			}
+			remove_country_modifier = L63_divided_families_flux_2
+			add_ruler_modifier = {
+				name = L63_divided_families_flux_3
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_divided_families_2
+			add_ruler_modifier = {
+				name = L63_divided_families_3
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = election_term
+				value = 4
+			}
+		}
+		if = {
+			limit = {
+				has_reform = flux_state_reform
+			}
+			remove_country_modifier = L63_divided_families_flux_1
+			add_ruler_modifier = {
+				name = L63_divided_families_flux_2
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_divided_families_1
+			add_ruler_modifier = {
+				name = L63_divided_families_2
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = election_term
+				value = 3
+			}
+		}
+		if = {
+			limit = {
+				has_reform = flux_state_reform
+			}
+			add_ruler_modifier = {
+				name = L63_divided_families_flux_1
+				duration = -1
+			}
+		}
+		else = {
+			add_ruler_modifier = {
+				name = L63_divided_families_1
+				duration = -1
+			}
+		}
+	}
+}
+
+#Apply an extra family bonus every 3rd election with the familial state reform
+L63_familial_state_bonus_effect = {
+	if = {
+		limit = {
+			OR = {
+				is_variable_equal = { which = election_term value = 3 }
+				is_variable_equal = { which = election_term value = 6 }
+				is_variable_equal = { which = election_term value = 9 }
+				is_variable_equal = { which = election_term value = 12 }
+				is_variable_equal = { which = election_term value = 15 }
+				is_variable_equal = { which = election_term value = 18 }
+				is_variable_equal = { which = election_term value = 21 }
+			}
+		}
+		random_list = {
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_kot_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_kot_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_lee_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_lee_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = L63_silver_tooth_family_ascendant
+					NOT = { has_ruler_modifier = L63_silver_tooth_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_silver_tooth_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_mbabazi_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_mbabazi_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_zong_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_zong_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_yi_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_yi_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_mou_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_mou_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = L63_pearl_moon_ascendant
+					NOT = { has_ruler_modifier = L63_pearl_moon_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_pearl_moon_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_umulisa_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_umulisa_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_cin_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_cin_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = moyo_family_ascendant
+					NOT = {
+						any_owned_province = {
+							has_province_modifier = L63_moyo_family
+						}
+					}
+				}
+				every_owned_province = {
+					limit = {
+						has_province_flag = merfolk_settlement
+					}
+					add_province_modifier = {
+						name = L63_moyo_family
+						duration = -1
+					}
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_sa_sinwauk_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_sa_sinwauk_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_kagona_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_kagona_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_tembo_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_tembo_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_han_neip_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_han_neip_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_rukundo_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_rukundo_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_gunam_neip_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_gunam_neip_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = L63_beetlebiter_family_ascendant
+					NOT = {
+						any_owned_province = {
+							has_province_modifier = L63_beetlebiter_family
+						}
+					}
+				}
+				custom_tooltip = L63_beetlebiter_election_modifier_tt
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							OR = {
+								trade_goods = spices
+								trade_goods = cloves
+							}
+						}
+						add_province_modifier = {
+							name = L63_beetlebiter_family
+							duration = -1
+						}
+					}
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_urunekozi_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_urunekozi_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = L63_mugisha_family_ascendant
+					NOT = { has_ruler_modifier = L63_mugisha_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_mugisha_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_goeng_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_goeng_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					has_country_flag = L63_gaa_family_ascendant
+					NOT = { has_ruler_modifier = L63_gaa_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_gaa_family
+					duration = -1
+				}
+			}
+			1 = {
+				trigger= {
+					NOT = { has_ruler_modifier = L63_nkurunziza_family }
+				}
+				add_ruler_modifier = { 
+					name = L63_nkurunziza_family
+					duration = -1
+				}
+			}
+		}
+	}
+}
+
+#Upgrade the family bonus modifiers on 3rd reelection, 2x for squabbling state 3x for flux state
+L63_upgrade_familiy_modifiers = {
+	if = {
+		limit = { has_ruler_modifier = L63_kot_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_kot_family
+			add_ruler_modifier = {
+				name = L63_kot_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_kot_family
+			add_ruler_modifier = {
+				name = L63_kot_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_lee_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_lee_family
+			add_ruler_modifier = {
+				name = L63_lee_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_lee_family
+			add_ruler_modifier = {
+				name = L63_lee_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_mbabazi_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_mbabazi_family
+			add_ruler_modifier = {
+				name = L63_mbabazi_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_mbabazi_family
+			add_ruler_modifier = {
+				name = L63_mbabazi_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_zong_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_zong_family
+			add_ruler_modifier = {
+				name = L63_zong_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_zong_family
+			add_ruler_modifier = {
+				name = L63_zong_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_yi_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_yi_family
+			add_ruler_modifier = {
+				name = L63_yi_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_yi_family
+			add_ruler_modifier = {
+				name = L63_yi_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_mou_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_mou_family
+			add_ruler_modifier = {
+				name = L63_mou_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_mou_family
+			add_ruler_modifier = {
+				name = L63_mou_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_umulisa_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_umulisa_family
+			add_ruler_modifier = {
+				name = L63_umulisa_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_umulisa_family
+			add_ruler_modifier = {
+				name = L63_umulisa_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_cin_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_cin_family
+			add_ruler_modifier = {
+				name = L63_cin_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_cin_family
+			add_ruler_modifier = {
+				name = L63_cin_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_sa_sinwauk_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_sa_sinwauk_family
+			add_ruler_modifier = {
+				name = L63_sa_sinwauk_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_sa_sinwauk_family
+			add_ruler_modifier = {
+				name = L63_sa_sinwauk_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_kagona_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_kagona_family
+			add_ruler_modifier = {
+				name = L63_kagona_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_kagona_family
+			add_ruler_modifier = {
+				name = L63_kagona_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_tembo_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_tembo_family
+			add_ruler_modifier = {
+				name = L63_tembo_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_tembo_family
+			add_ruler_modifier = {
+				name = L63_tembo_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_han_neip_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_han_neip_family
+			add_ruler_modifier = {
+				name = L63_han_neip_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_han_neip_family
+			add_ruler_modifier = {
+				name = L63_han_neip_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_rukundo_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_rukundo_family
+			add_ruler_modifier = {
+				name = L63_rukundo_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_rukundo_family
+			add_ruler_modifier = {
+				name = L63_rukundo_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_gunam_neip_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_gunam_neip_family
+			add_ruler_modifier = {
+				name = L63_gunam_neip_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_gunam_neip_family
+			add_ruler_modifier = {
+				name = L63_gunam_neip_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_urunekozi_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_urunekozi_family
+			add_ruler_modifier = {
+				name = L63_urunekozi_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_urunekozi_family
+			add_ruler_modifier = {
+				name = L63_urunekozi_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_goeng_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_goeng_family
+			add_ruler_modifier = {
+				name = L63_goeng_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_goeng_family
+			add_ruler_modifier = {
+				name = L63_goeng_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_nkurunziza_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_nkurunziza_family
+			add_ruler_modifier = {
+				name = L63_nkurunziza_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_nkurunziza_family
+			add_ruler_modifier = {
+				name = L63_nkurunziza_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_mugisha_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_mugisha_family
+			add_ruler_modifier = {
+				name = L63_mugisha_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_mugisha_family
+			add_ruler_modifier = {
+				name = L63_mugisha_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_gaa_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_gaa_family
+			add_ruler_modifier = {
+				name = L63_gaa_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_gaa_family
+			add_ruler_modifier = {
+				name = L63_gaa_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_pearl_moon_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_pearl_moon_family
+			add_ruler_modifier = {
+				name = L63_pearl_moon_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_pearl_moon_family
+			add_ruler_modifier = {
+				name = L63_pearl_moon_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = { has_ruler_modifier = L63_silver_tooth_family }
+		if = {
+			limit = { has_reform = flux_state_reform }
+			remove_country_modifier = L63_silver_tooth_family
+			add_ruler_modifier = {
+				name = L63_silver_tooth_family_3x
+				duration = -1
+			}
+		}
+		else = {
+			remove_country_modifier = L63_silver_tooth_family
+			add_ruler_modifier = {
+				name = L63_silver_tooth_family_2x
+				duration = -1
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			any_owned_province = {
+				has_province_modifier = L63_moyo_family
+			}
+		}
+		if = {
+			limit = { has_reform = flux_state_reform }
+			every_owned_province = {
+				limit = {
+					has_province_modifier = L63_moyo_family
+				}
+				remove_province_modifier = L63_moyo_family
+				add_province_modifier = {
+					name = L63_moyo_family_3x
+					duration = -1
+				}
+			}
+		}
+		else = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = L63_moyo_family
+				}
+				remove_province_modifier = L63_moyo_family
+				add_province_modifier = {
+					name = L63_moyo_family_2x
+					duration = -1
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			any_owned_province = {
+				has_province_modifier = L63_beetlebiter_family
+			}
+		}
+		if = {
+			limit = { has_reform = flux_state_reform }
+			custom_tooltip = L63_beetlebiter_election_modifier_3x_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = spices
+							trade_goods = cloves
+						}
+					}
+					add_province_modifier = {
+						name = L63_beetlebiter_family
+						duration = -1
+					}
+				}
+			}
+		}
+		else = {
+			custom_tooltip = L63_beetlebiter_election_modifier_2x_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = spices
+							trade_goods = cloves
+						}
+					}
+					add_province_modifier = {
+						name = L63_beetlebiter_family
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+}
+
+#Remove all te province modifier family bonuses on electing a new ruler
+L63_ruler_province_modifier_cleanup_effect = {
+	every_owned_province = {
+		limit = {
+			OR = {
+				has_province_modifier = L63_beetlebiter_family
+				has_province_modifier = L63_beetlebiter_family_2x
+				has_province_modifier = L63_beetlebiter_family_3x
+				has_province_modifier = L63_moyo_family
+				has_province_modifier = L63_moyo_family_2x
+				has_province_modifier = L63_moyo_family_3x
+			}
+		}
+		remove_province_modifier = L63_beetlebiter_family
+		remove_province_modifier = L63_beetlebiter_family_2x
+		remove_province_modifier = L63_beetlebiter_family_3x
+		remove_province_modifier = L63_moyo_family
+		remove_province_modifier = L63_moyo_family_2x
+		remove_province_modifier = L63_moyo_family_3x
+	}
+}
+
+add_bumbadada_to_size = {
+	#Remove all modifiers - just be thorough for edge cases
+	remove_province_modifier = bumbadada_nexus_5
+	remove_province_modifier = bumbadada_nexus_4
+	remove_province_modifier = bumbadada_nexus_3
+	remove_province_modifier = bumbadada_nexus_2
+	remove_province_modifier = bumbadada_nexus_1
+
+	if = {
+		limit = { owner = { religion = transmutative_path } }
+		if = {
+			limit = { development = 50 }
+			add_province_modifier = {
+				name = bumbadada_nexus_5
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = { development = 40 }
+			add_province_modifier = {
+				name = bumbadada_nexus_4
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = { development = 30 }
+			add_province_modifier = {
+				name = bumbadada_nexus_3
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = { development = 20 }
+			add_province_modifier = {
+				name = bumbadada_nexus_2
+				duration = -1
+			}
+		}
+		else = {
+			add_province_modifier = {
+				name = bumbadada_nexus_1
+				duration = -1
+			}
+		}
+	}
+}
+
+if_bumbadada_reset_size_activity = {
+	if = {
+		limit = {
+			OR = {
+				has_province_modifier = bumbadada_nexus_1
+				has_province_modifier = bumbadada_nexus_2
+				has_province_modifier = bumbadada_nexus_3
+				has_province_modifier = bumbadada_nexus_4
+				has_province_modifier = bumbadada_nexus_5
+			}
+		}
+		add_bumbadada_to_size = yes
+	}
+}
+
+L63_broken_monopoly_handler = {
+	if = {
+		limit = {
+			has_country_modifier = L63_broken_monopoly
+		}
+		remove_country_modifier = L63_broken_monopoly
+		add_country_modifier = {
+			name = L63_signs_of_movement
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_modifier = L63_signs_of_movement
+		}
+		remove_country_modifier = L63_signs_of_movement
+		add_country_modifier = {
+			name = L63_recovering_market
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_modifier = L63_recovering_market
+		}
+		remove_country_modifier = L63_recovering_market
+		add_country_modifier = {
+			name = L63_healthy_competitor
+			duration = -1
+		}
+	}
+}
+
+L63_sculpted_terrain_upgrade = {
+	if = {
+		limit = {
+			has_province_modifier = L63_sculpted_terrain_3
+		}
+		remove_province_modifier = L63_sculpted_terrain_3
+		add_province_modifier = {
+			name = L63_sculpted_terrain_4
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_province_modifier = L63_sculpted_terrain_2
+		}
+		remove_province_modifier = L63_sculpted_terrain_2
+		add_province_modifier = {
+			name = L63_sculpted_terrain_3
+			duration = -1
+		}
+	}
+	else_if = {
+		limit = {
+			has_province_modifier = L63_sculpted_terrain_1
+		}
+		remove_province_modifier = L63_sculpted_terrain_1
+		add_province_modifier = {
+			name = L63_sculpted_terrain_2
+			duration = -1
+		}
+	}
+	else = {
+		add_province_modifier = {
+			name = L63_sculpted_terrain_1
+			duration = -1
+		}
+	}
+}
