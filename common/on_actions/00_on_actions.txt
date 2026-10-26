@@ -30589,7 +30589,7 @@ on_institution_embracement = {
 	}
 	if = { #Artificery start general
 		limit = {
-			has_institution = manufactories
+			has_institution = global_trade
 			NOT = {
 				#has_country_flag = artificery_unlocked
 				has_country_flag = artificery_choice
@@ -30618,7 +30618,7 @@ on_institution_embracement = {
 		}
 	}
 	if = { #Clearing the artificery cheese flag
-		limit = { has_institution = manufactories }
+		limit = { has_institution = global_trade }
 		clr_country_flag = non_artificery_culture
 	}
 	if = { #Anbennar - isobelin events
@@ -30661,7 +30661,7 @@ on_institution_embracement = {
 		add_stability = -2
 	}
 	if = {
-		limit = { is_or_was_tag = { tag = R03 } has_institution = manufactories }
+		limit = { is_or_was_tag = { tag = R03 } has_institution = global_trade }
 		country_event = { id = sanghariyar.7 days = 3650 }
 	}
 	if = {
