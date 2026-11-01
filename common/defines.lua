@@ -68,10 +68,10 @@ NDiplomacy = {
 	DEMAND_UNLAWFUL_TERRITORY_DESIRE_AE_MODIFIER = -1,
 
 	TREASURE_FLEET_OPINION_HIT = -25,				-- Opinion hit from pirating trasure flet max (scaled by gold pirated / 50).
-	DISHONORABLE_PEACE_MONTHS = 12,					-- See DISHONORABLE_PEACE_WARSCORE. Set to 0 to entirely disable the feature.
-	DISHONORABLE_PEACE_WARSCORE = -10,				-- If you have more than this amount of individual warscore, peacing out within DISHONORABLE_PEACE_MONTHS of war start counts as a dishonorable act and incurs a CALL_ALLY_DECLINE_PRESTIGE_PENALTY hit.
+	DISHONORABLE_PEACE_MONTHS = 1,					-- See DISHONORABLE_PEACE_WARSCORE. Set to 0 to entirely disable the feature.
+	DISHONORABLE_PEACE_WARSCORE = -1,				-- If you have more than this amount of individual warscore, peacing out within DISHONORABLE_PEACE_MONTHS of war start counts as a dishonorable act and incurs a CALL_ALLY_DECLINE_PRESTIGE_PENALTY hit.
 
-	DAYS_TO_DECLARE_WAR = 30,						-- Days from start of game before you can DOW anyone
+	DAYS_TO_DECLARE_WAR = 1,						-- Days from start of game before you can DOW anyone
 
 	INCREASE_TRUST_COST = 10,						-- Cost in favors to increase trust
 	INCREASE_TRUST_AMOUNT = 5,						-- Amount of trust per increase
@@ -475,7 +475,7 @@ NDiplomacy = {
 	IMPERIAL_REALM_WAR_MONTHS = 60,					-- How many months the CB will be available
 	SAME_TRIBUTARY_OVERLORD_SUPPORT_INDEPENDENCE_CHANCE = -50,
 	
-	UNCONDITIONAL_SURRENDER_MIN_MONTHS = 12,
+	UNCONDITIONAL_SURRENDER_MIN_MONTHS = 3,
 },
 
 NCountry = {
