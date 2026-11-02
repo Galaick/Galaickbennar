@@ -39016,12 +39016,12 @@ pashaine_cutting_critique = {
 	stability_cost_modifier = 0.25
 }
 pashaine_bank_of_luna = {
-	trade_goods_size = 2
+	trade_goods_size = 1
 	local_gold_depletion_chance_modifier = -1
 	inflation_reduction = 0.1 
 }
 pashaine_bank_of_anbennar = {
-	trade_goods_size = 3
+	trade_goods_size = 1.5
 	local_gold_depletion_chance_modifier = -1
 	inflation_reduction = 0.2
 	interest = -0.5
@@ -39091,7 +39091,7 @@ pashaine_haless_expedition = {
 	spy_offence = 0.1
 }
 pashaine_urban_development = {
-	local_development_cost = -0.2
+	local_development_cost = -0.1
 	local_governing_cost = -0.2
 }
 pashaine_supplying_the_guards = {
@@ -39099,14 +39099,14 @@ pashaine_supplying_the_guards = {
 }
 pashaine_blackpowder_guard = {
 	fire_damage = 0.1
-	infantry_fire = 0.15
-	artillery_fire = 0.25
+	infantry_fire = 0.10
+	artillery_fire = 0.15
 	is_revolutionary_guard_modifier = yes
 }
 pashaine_blackpowder_legions = {
-	fire_damage = 0.2
-	infantry_fire = 0.35
-	artillery_fire = 0.5
+	fire_damage = 0.15
+	infantry_fire = 0.20
+	artillery_fire = 0.25
 	is_revolutionary_guard_modifier = yes
 }
 pashaine_mending_the_scars = {
@@ -39132,10 +39132,10 @@ pashaine_mithril_bonus = {
 	prestige = 1
 }
 pashaine_industrial_growth = {
-	local_development_cost = -0.4
+	local_development_cost = -0.2
 }
 pashaine_foundry_of_anbennar = {
-	trade_goods_size = 3
+	trade_goods_size = 2
 	global_regiment_cost = -0.25
 }
 pashaine_economic_boom = {
