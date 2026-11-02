@@ -1,4 +1,5 @@
-		expanded_infra_potential = {
+country_decisions = {
+	expanded_infra_potential = {
 		major = yes
         color = { 235 102 255 }
         potential = {

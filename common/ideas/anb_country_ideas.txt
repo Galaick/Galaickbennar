@@ -1918,10 +1918,10 @@ A79_ideas = {
 	free = yes
 
 	A79_reconstitute_reconstruct_repatriate = {
-		development_cost = -0.15
+		development_cost = -0.10
 	}
 	A79_all_small_artillerists = {
-		backrow_artillery_damage = 0.15
+		backrow_artillery_damage = 0.10
 	}
 	A79_damestear_born_damestear_developed = {
 		idea_cost = -0.1
@@ -3895,7 +3895,7 @@ Z37_ideas = {
 Z50_ideas = {
 	start = {
 		infantry_cost = -0.15
-		infantry_power = 0.2
+		infantry_power = 0.15
 	}
 	bonus = {
 		production_efficiency = 0.15
