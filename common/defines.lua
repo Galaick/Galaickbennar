@@ -521,7 +521,7 @@ NCountry = {
 	ABDICATE_PRESTIGE_HIT = -50,
 
 
-	DISINHERIT_PRESTIGE_HIT = -50,
+	DISINHERIT_PRESTIGE_HIT = -25,
 	DISINHERIT_PRESTIGE_THRESHOLD = 0,
 	
 	ADVISOR_MIN_DEFAULT_AGE = 18, 				--Default value used for defining new advisors in script
