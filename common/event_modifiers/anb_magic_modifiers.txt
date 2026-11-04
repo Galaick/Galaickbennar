@@ -837,8 +837,8 @@ evocation_1_centaur_thunderborn_5_spell_three_quarter = { picture = "evocation_m
 
 ### Abjuration
 abjuration_0_combat_ward_mod = {
-	own_territory_dice_roll_bonus = 1
-	picture = "war_magic"
+	garrison_size = 0.3 # Submod: Combat ward changed from +1 own territory dice roll to 30% garrison size and -0.02 war exhaustion
+	war_exhaustion = -0.02
 }
 abjuration_1_ward_mod_0 = {
 	local_defensiveness = 0.5
@@ -881,9 +881,9 @@ abjuration_2_mage_armor_mod_buffed = {
 abjuration_3_field_of_forbiddance_cooldown_mod = {}
 abjuration_3_field_of_forbiddance_local_mod = {
 	min_local_autonomy = -40
-	local_manpower_modifier = 1
+	local_manpower_modifier = 0.5
 	local_tax_modifier = 2
-	local_development_cost = -0.1
+	local_development_cost = -0.05
 	picture = "abjuration_mod_icon_spell_modifier"
 }
 
@@ -985,20 +985,21 @@ is_scrying_mod_buffed = {
 	picture = "divination_mod_icon_spell_modifier"
 }
 divination_2_manipulated_fortune_mod = {
-	global_attacker_dice_roll_bonus = 1
+	discipline = 0.025
 	picture = "war_magic"
 }
 divination_2_manipulated_fortune_mod_buffed = {
-	global_attacker_dice_roll_bonus = 1
-	global_defender_dice_roll_bonus = 1
+	discipline = 0.05
 	picture = "war_magic"
 }
 divination_3_foresight_mod = {
 	all_power_cost = -0.1
+	development_cost = 0.05
 	picture = "divination_mod_icon_spell_modifier"
 }
 divination_3_foresight_mod_buffed = {
 	all_power_cost = -0.15
+	development_cost = 0.1
 	picture = "divination_mod_icon_spell_modifier"
 }
 

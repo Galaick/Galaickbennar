@@ -386,7 +386,7 @@ barracks = {
 	cost = 100
 	time = 12
 	modifier = {
-		local_manpower_modifier = 0.5
+		local_manpower_modifier = 0.33
 	}
 	on_built = {
 		on_built_manpower_building_effect = yes 
@@ -1590,7 +1590,7 @@ training_fields = {
 	make_obsolete = barracks
 
 	modifier = {
-		local_manpower_modifier = 1
+		local_manpower_modifier = 0.66
 	}
 
 	on_built = {

@@ -3702,7 +3702,7 @@ merc_human_iyashlagila_4 = {
 ###################
 
 merc_angels_base = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 10
 	max_size = 10
 	cost_modifier = 0.01
@@ -3711,11 +3711,10 @@ merc_angels_base = {
 
 	trigger = { has_country_flag = summon_extraplanars_angels_base }
 	modifier = { reinforce_speed = 0.25 }
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_angels_defense = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3727,10 +3726,9 @@ merc_angels_defense = {
 		reinforce_speed = 0.25
 		morale_damage_received = -0.15
 	}
-	counts_towards_force_limit = no
 }
 merc_angels_defense_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3743,10 +3741,9 @@ merc_angels_defense_2 = {
 		morale_damage_received = -0.15
 		assault_fort_ability = 0.5
 	}
-	counts_towards_force_limit = no
 }
 merc_angels_offense = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3756,13 +3753,12 @@ merc_angels_offense = {
 	trigger = { has_country_flag = summon_extraplanars_angels_offense }
 	modifier = {
 		reinforce_speed = 0.25
-		infantry_power = 0.25
+		infantry_power = 0.10
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_angels_offense_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3772,14 +3768,13 @@ merc_angels_offense_2 = {
 	trigger = { has_country_flag = summon_extraplanars_angels_offense_2 }
 	modifier = {
 		reinforce_speed = 0.25
-		infantry_power = 0.25
-		discipline = 0.1
+		infantry_power = 0.15
+		discipline = 0.05
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_eldritch_base = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 10
 	max_size = 10
 	cost_modifier = 0.01
@@ -3791,11 +3786,10 @@ merc_eldritch_base = {
 		cav_to_inf_ratio = 1
 		reinforce_speed = 0.25
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_eldritch_fast = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3808,11 +3802,10 @@ merc_eldritch_fast = {
 		reinforce_speed = 0.25
 		movement_speed = 0.33
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_eldritch_fast_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3824,14 +3817,13 @@ merc_eldritch_fast_2 = {
 		cav_to_inf_ratio = 1
 		reinforce_speed = 0.25
 		movement_speed = 0.33
-		shock_damage = 0.2
+		shock_damage = 0.15
 		cavalry_flanking = 0.5
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_eldritch_mass = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3844,10 +3836,9 @@ merc_eldritch_mass = {
 		cavalry_power = 0.1
 		reinforce_speed = 1
 	}
-	counts_towards_force_limit = no
 }
 merc_eldritch_mass_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3859,23 +3850,21 @@ merc_eldritch_mass_2 = {
 		cav_to_inf_ratio = 1
 		cavalry_power = 0.1
 		reinforce_speed = 1
-		cavalry_fire = 0.75
+		cavalry_fire = 0.5
 	}
-	counts_towards_force_limit = no
 }
 merc_devils_base = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 10
 	max_size = 10
 	cost_modifier = 0.01
 	cavalry_weight = 0
 	artillery_weight = 1
 	trigger = { has_country_flag = summon_extraplanars_devils_base }
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_devils_frontline = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3883,10 +3872,9 @@ merc_devils_frontline = {
 	artillery_weight = 1
 	trigger = { has_country_flag = summon_extraplanars_devils_frontline }
 	modifier = { artillery_shock = 0.5 }
-	counts_towards_force_limit = no
 }
 merc_devils_frontline_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3895,12 +3883,11 @@ merc_devils_frontline_2 = {
 	trigger = { has_country_flag = summon_extraplanars_devils_frontline_2 }
 	modifier = {
 		artillery_shock = 0.5
-		land_morale = 0.25
+		land_morale = 0.2
 	}
-	counts_towards_force_limit = no
 }
 merc_devils_backline = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 25
 	max_size = 25
 	cost_modifier = 0.01
@@ -3908,11 +3895,10 @@ merc_devils_backline = {
 	artillery_weight = 1
 	trigger = { has_country_flag = summon_extraplanars_devils_backline }
 	modifier = { backrow_artillery_damage = 0.1 }
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_devils_backline_2 = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	min_size = 40
 	max_size = 40
 	cost_modifier = 0.01
@@ -3921,13 +3907,12 @@ merc_devils_backline_2 = {
 	trigger = { has_country_flag = summon_extraplanars_devils_backline_2 }
 	modifier = {
 		backrow_artillery_damage = 0.1
-		fire_damage = 0.15
+		fire_damage = 0.10
 	}
-	counts_towards_force_limit = no
 	no_additional_manpower_from_max_size = yes
 }
 merc_elemental_animals = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	regiments_per_development = 0.1
 	cost_modifier = 0.01
 	cavalry_weight = 0.2
@@ -3944,10 +3929,9 @@ merc_elemental_animals = {
 		land_attrition = -0.25
 	}
 
-	counts_towards_force_limit = no
 }
 merc_spiritfire_elementals = {
-	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_AND_FORCELIMIT_COST
+	mercenary_desc_key = FREE_OF_ARMY_PROFESSIONALISM_COST
 	regiments_per_development = 0.05
 	cost_modifier = 0.01
 	cavalry_weight = 0.33
@@ -3959,10 +3943,9 @@ merc_spiritfire_elementals = {
 	modifier = {
 		fire_damage_received = -0.2
 		land_morale = 0.1
-		fire_damage = 0.15
+		fire_damage = 0.10
 	}
 
-	counts_towards_force_limit = no
 }
 
 #Heirs of the Vanguard

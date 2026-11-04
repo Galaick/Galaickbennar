@@ -596,8 +596,7 @@ pay_half_mana_for_level_3_spell = { 			change_mana = { amount = -100 } 	count_ma
 pay_three_quarter_mana_for_level_3_spell = { 	change_mana = { amount = -150 } 	count_mana_spent_on_spells = { amount = 150 school = $school$ } }
 pay_mana_for_level_3_spell = { 					change_mana = { amount = -200 } 	count_mana_spent_on_spells = { amount = 200 school = $school$ } }
 
-clear_active_war_magic = {
-	remove_country_modifier = abjuration_0_combat_ward_mod 
+clear_active_war_magic = { 
 	remove_country_modifier = abjuration_2_mage_armor_mod 
 	remove_country_modifier = abjuration_2_mage_armor_mod_buffed 
 	remove_country_modifier = divination_2_manipulated_fortune_mod 
@@ -838,7 +837,7 @@ on_abjuration_spell_cast = {
 }
 
 abjuration_0_combat_ward_effect = { # Combat Ward
-	add_country_modifier = { name = abjuration_0_combat_ward_mod duration = 90 }
+	add_country_modifier = { name = abjuration_0_combat_ward_mod duration = 365 }
 }
 abjuration_1_ward_effect = { # Ward
 	PREV = {

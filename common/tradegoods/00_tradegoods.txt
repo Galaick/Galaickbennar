@@ -3158,10 +3158,10 @@ coal = {
 				}
 			}
 			provincial_institution_progress = {
-				which = enlightenment
+				which = global_trade
 				value = 100
 			}
-			owner = { has_institution = enlightenment }
+			owner = { has_institution = global_trade }
 		}
 		else_if = {
 			limit = { owner = { has_country_flag = even_earlier_coal_available } }
@@ -3176,12 +3176,12 @@ coal = {
 		}
 		else = {
 			provincial_institution_progress = {
-				which = manufactories
+				which = global_trade
 				value = 100
 			}
 			owner = {
-				has_institution = manufactories
-				adm_tech = 23
+				has_institution = global_trade
+				adm_tech = 16
 			}
 		}
 	}
