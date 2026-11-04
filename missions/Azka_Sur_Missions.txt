@@ -19,20 +19,11 @@ azka_sur_1 = {
 		provinces_to_highlight = { province_id = 4124 } 
 
 		trigger = {
-			H78 = {
-				has_opinion = {
-					who = ROOT
-					value = 150
-				}
-			}
+			
 		}
 
 		effect = {
-			add_trust = {
-				who = H78
-				value = 40
-				mutual = yes
-			}
+			
 		}
 	}
 
