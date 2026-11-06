@@ -2187,50 +2187,43 @@ naval_ideas = {
 	}
 
 	bonus = {
-		global_naval_barrage_cost = -1
-		disengagement_chance = 0.15
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 
 	boarding_parties = {
-		leader_naval_shock = 1
-		landing_penalty = -1 #1.35
+		global_sailors_modifier = 0.01 #1.35
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	improved_rams = {
-		galley_power = 0.25
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	naval_cadets = {
-		leader_naval_fire = 1
-		sunk_ship_morale_hit_recieved = -0.33
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	naval_glory = {
-		navy_tradition = 1
-		siege_blockade_progress = 1
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	press_gangs = {
-		sailors_recovery_speed = 0.25
-		allowed_marine_fraction = 0.25
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	oak_forests_for_ships = {
-		heavy_ship_power = 0.20
-		ship_durability = 0.1
+		global_sailors_modifier = 0.01
 		effect = { on_idea_taken_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes }
 	}
 	superior_seamanship = {
-		naval_morale = 0.1
-		global_naval_engagement_modifier = 0.1
+		global_sailors_modifier = 0.01
 		#Anbennar
 		effect = { on_idea_taken_effect = yes on_idea_group_finished_effect = yes }
 		removed_effect = { on_idea_removed_effect = yes on_idea_group_unfinished_effect = yes }
