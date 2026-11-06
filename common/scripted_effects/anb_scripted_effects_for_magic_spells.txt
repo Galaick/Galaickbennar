@@ -3155,20 +3155,20 @@ transmutation_2_reshape_terrain_effect = { # Reshape Terrain
 				has_country_modifier = witch_king_hoard_modifier
 			}
 		}
-		add_country_modifier = { name = transmutation_2_reshape_terrain_buffed_mod duration = 3650 }
+		add_country_modifier = { name = transmutation_2_reshape_terrain_buffed_mod duration = 1825 }
 		if = {
 			limit = { has_country_modifier = witch_king_hoard_modifier }
 			custom_tooltip = magic_booster_by_witch_king_tt
 		}
 		else = { custom_tooltip = magic_booster_by_eilisin_tt }
 	}
-	else = { add_country_modifier = { name = transmutation_2_reshape_terrain_mod duration = 3650 } }
+	else = { add_country_modifier = { name = transmutation_2_reshape_terrain_mod duration = 1825 } }
 
 	if = {
 		limit = {
 			has_country_flag = S50_upgraded_reshape_terrain
 		}
-		add_country_modifier = { name = S50_transmutation_2_reshape_terrain_buffed_mod duration = 3650 }
+		add_country_modifier = { name = S50_transmutation_2_reshape_terrain_buffed_mod duration = 1825 }
 	}
 	if = {
 		limit = { has_country_modifier = transmutation_2_harpy_default_3_tracking_mod }
@@ -3186,7 +3186,7 @@ transmutation_2_reshape_terrain_effect = { # Reshape Terrain
 	if = { #Volcanic Armoury Magical Project
 		limit = { has_country_flag = landslide_infantry_reshape_terrain }
 		custom_tooltip = landslide_infantry_reshape_terrain_tt
-		add_country_modifier = { name = yanacotle_volcanic_fissures duration = 3650 }
+		add_country_modifier = { name = yanacotle_volcanic_fissures duration = 1825 }
 	}
 }
 transmutation_3_rite_of_conception_effect = { # Rite of Conception

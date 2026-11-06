@@ -1107,8 +1107,8 @@ illusion_2_shadows_in_the_night_cooldown_mod = {
 	picture = "illusion_mod_icon_spell_modifier"
 }
 illusion_2_shadows_in_the_night_sabotage_mod = {
-	defensiveness = -0.25
-	garrison_size = -0.25
+	hostile_attrition = -3
+	garrison_size = -0.30
 	picture = "illusion_mod_icon_spell_modifier"
 }
 illusion_3_lead_the_crowds_mod = {
