@@ -1998,6 +1998,8 @@ estate_artificers_porcelain_shields = { #Blocks siege magic on ramparts
 		OR = {
 			trading_part = { trade_goods = chinaware value = 0.1 }
 			chinaware = 1
+			gems = 1
+			glass = 1 
 			any_ally = { chinaware = 1 }
 			overlord = { chinaware = 1 }
 			any_subject_country = { chinaware = 1 }
