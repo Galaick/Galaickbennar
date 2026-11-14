@@ -933,7 +933,6 @@ surakes_slot_4 = {
 						}
                         province_id = 625
 			            province_id = 608
-			            province_id = 496
 				        province_id = 561
 				        province_id = 549
 				        province_id = 538					
