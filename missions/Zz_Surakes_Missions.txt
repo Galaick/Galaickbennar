@@ -982,7 +982,6 @@ surakes_slot_4 = {
 				limit = { religion = bulwari_sun_cult }
 				owns = 625
 			    owns = 608
-			    owns = 496
 				owns = 561
 				owns = 549
 				owns = 538
